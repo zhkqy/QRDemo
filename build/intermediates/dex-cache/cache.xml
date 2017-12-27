@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="false"
+        jar="/Users/zbb/Desktop/QRDemo/app/libs/QRSDK_Ver2.2.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.0"
+        sha1="5fcf0cc6dba315dee58c7da8d85d5cb1463ab0d9">
+        <dex dex="/Users/zbb/Desktop/QRDemo/app/build/intermediates/pre-dexed/debug/QRSDK_Ver2.2.0_c311c2b98090cd394a727bac83858627c863a6b2.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/zbb/Library/Android/sdk/extras/android/m2repository/com/android/support/support-v4/19.1.0/support-v4-19.1.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.0"
+        sha1="85f201b380937e61a9dce6ca90ccf6872abbfb67">
+        <dex dex="/Users/zbb/Desktop/QRDemo/app/build/intermediates/pre-dexed/debug/support-v4-19.1.0_33ca11648b10c3461c02a4564c5abf10b325ad99.jar" />
+    </item>
+
+</items>

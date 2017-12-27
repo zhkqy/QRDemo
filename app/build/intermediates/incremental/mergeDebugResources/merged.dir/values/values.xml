@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="cardview_dark_background">#FF202020</color>
+    <color name="cardview_light_background">#FFFAFAFA</color>
+    <color name="cardview_shadow_end_color">#03000000</color>
+    <color name="cardview_shadow_start_color">#37000000</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <declare-styleable name="CardView"><attr format="color" name="cardBackgroundColor"/><attr format="dimension" name="cardCornerRadius"/><attr format="dimension" name="cardElevation"/><attr format="dimension" name="cardMaxElevation"/><attr format="boolean" name="cardUseCompatPadding"/><attr format="boolean" name="cardPreventCornerOverlap"/><attr format="dimension" name="contentPadding"/><attr format="dimension" name="contentPaddingLeft"/><attr format="dimension" name="contentPaddingRight"/><attr format="dimension" name="contentPaddingTop"/><attr format="dimension" name="contentPaddingBottom"/></declare-styleable>
+    <dimen name="cardview_compat_inset_shadow">1dp</dimen>
+    <dimen name="cardview_default_elevation">2dp</dimen>
+    <dimen name="cardview_default_radius">2dp</dimen>
+    <string name="FontBold">FontBold</string>
+    <string name="FontUnderLine">FontUnderLine</string>
+    <string name="Position">Position</string>
+    <string name="PrintNum">样单数：</string>
+    <string name="Rotation">Rotation</string>
+    <string name="app_name">启锐QR386打印机</string>
+    <string name="bt_not_enabled_leaving">bt_not_enabled_leaving.</string>
+    <string name="button_scan">扫描</string>
+    <string name="connect">connect</string>
+    <string name="discoverable">discoverable</string>
+    <string name="doubleheight">DoubleHeight</string>
+    <string name="doublewidth">DoubleWidth</string>
+    <string name="none_found">没有找到设备</string>
+    <string name="none_paired">没有配对</string>
+    <string name="not_connected">没有连接</string>
+    <string name="scanning">正在扫描中......</string>
+    <string name="select_device">设备选择</string>
+    <string name="send">打印样单</string>
+    <string name="testtext">QR386 PRINTTEXT</string>
+    <string name="title_connected_to">已连接设备: </string>
+    <string name="title_connecting">正在连接中......</string>
+    <string name="title_not_connected">没有连接设备</string>
+    <string name="title_other_devices">其他设备</string>
+    <string name="title_paired_devices">已配对设备</string>
+    <style name="CardView">
+        <item name="cardBackgroundColor">@color/cardview_light_background</item>
+        <item name="cardCornerRadius">@dimen/cardview_default_radius</item>
+        <item name="cardElevation">@dimen/cardview_default_elevation</item>
+        <item name="cardMaxElevation">@dimen/cardview_default_elevation</item>
+        <item name="cardUseCompatPadding">false</item>
+        <item name="cardPreventCornerOverlap">true</item>
+    </style>
+    <style name="CardView.Dark">
+        <item name="cardBackgroundColor">@color/cardview_dark_background</item>
+    </style>
+    <style name="CardView.Light">
+        <item name="cardBackgroundColor">@color/cardview_light_background</item>
+    </style>
+</resources>

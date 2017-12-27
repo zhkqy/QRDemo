@@ -1,0 +1,42 @@
+[
+    {
+        "merged": "/Users/zbb/Desktop/QRDemo/app/build/intermediates/res/merged/debug/layout/custom_title.xml",
+        "source": "/Users/zbb/Desktop/QRDemo/app/src/main/res/layout/custom_title.xml"
+    },
+    {
+        "merged": "/Users/zbb/Desktop/QRDemo/app/build/intermediates/res/merged/debug/layout/device_list.xml",
+        "source": "/Users/zbb/Desktop/QRDemo/app/src/main/res/layout/device_list.xml"
+    },
+    {
+        "merged": "/Users/zbb/Desktop/QRDemo/app/build/intermediates/res/merged/debug/layout/device_name.xml",
+        "source": "/Users/zbb/Desktop/QRDemo/app/src/main/res/layout/device_name.xml"
+    },
+    {
+        "merged": "/Users/zbb/Desktop/QRDemo/app/build/intermediates/res/merged/debug/layout/option_menu.xml",
+        "source": "/Users/zbb/Desktop/QRDemo/app/src/main/res/layout/option_menu.xml"
+    },
+    {
+        "merged": "/Users/zbb/Desktop/QR386开发参考资料/QRDemo/app/build/intermediates/res/merged/debug/layout/custom_title.xml",
+        "source": "/Users/zbb/Desktop/QR386开发参考资料/QRDemo/app/src/main/res/layout/custom_title.xml"
+    },
+    {
+        "merged": "/Users/zbb/Desktop/QR386开发参考资料/QRDemo/app/build/intermediates/res/merged/debug/layout/option_menu.xml",
+        "source": "/Users/zbb/Desktop/QR386开发参考资料/QRDemo/app/src/main/res/layout/option_menu.xml"
+    },
+    {
+        "merged": "/Users/zbb/Desktop/QR386开发参考资料/QRDemo/app/build/intermediates/res/merged/debug/layout/device_name.xml",
+        "source": "/Users/zbb/Desktop/QR386开发参考资料/QRDemo/app/src/main/res/layout/device_name.xml"
+    },
+    {
+        "merged": "/Users/zbb/Desktop/QRDemo/app/build/intermediates/res/merged/debug/layout/main1.xml",
+        "source": "/Users/zbb/Desktop/QRDemo/app/src/main/res/layout/main1.xml"
+    },
+    {
+        "merged": "/Users/zbb/Desktop/QR386开发参考资料/QRDemo/app/build/intermediates/res/merged/debug/layout/device_list.xml",
+        "source": "/Users/zbb/Desktop/QR386开发参考资料/QRDemo/app/src/main/res/layout/device_list.xml"
+    },
+    {
+        "merged": "/Users/zbb/Desktop/QR386开发参考资料/QRDemo/app/build/intermediates/res/merged/debug/layout/main1.xml",
+        "source": "/Users/zbb/Desktop/QR386开发参考资料/QRDemo/app/src/main/res/layout/main1.xml"
+    }
+]

@@ -1,0 +1,28 @@
+{
+    "logs": [
+        {
+            "outputFile": "D:\\androidstuidoproject\\QRDemo\\app\\build\\intermediates\\res\\merged\\androidTest\\debug\\values_values.arsc.flat",
+            "map": [
+                {
+                    "source": "C:\\Users\\sun\\.gradle\\caches\\transforms-1\\files-1.1\\cardview-v7-22.2.1.aar\\77c8f74f6550a0a6c129b30ca79ad263\\res\\values\\values.xml",
+                    "from": {
+                        "startLines": "4,5,6,7,11,12,13,16,24,27",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "286,347,409,471,1388,1447,1504,1789,2255,2381",
+                        "endLines": "4,5,6,7,11,12,13,23,26,29",
+                        "endColumns": "60,61,61,63,58,56,53,12,12,12",
+                        "endOffsets": "342,404,466,530,1442,1499,1553,2250,2376,2504"
+                    },
+                    "to": {
+                        "startLines": "2,3,4,5,7,8,9,10,18,21",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,116,178,240,926,985,1042,1096,1562,1688",
+                        "endLines": "2,3,4,5,7,8,9,17,20,23",
+                        "endColumns": "60,61,61,63,58,56,53,12,12,12",
+                        "endOffsets": "111,173,235,299,980,1037,1091,1557,1683,1811"
+                    }
+                }
+            ]
+        }
+    ]
+}
