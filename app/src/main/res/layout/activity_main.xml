@@ -30,19 +30,26 @@
         <Button
             android:id="@+id/connentprint"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:text="连接打印机" />
 
         <Button
-            android:id="@+id/model"
+            android:id="@+id/passengerrecord"
             android:layout_width="match_parent"
-            android:layout_height="45dp"
-            android:text="选择模板"
+            android:layout_height="50dp"
+            android:text="客运记录模板"
+            android:textSize="16sp" />
+
+        <Button
+            android:id="@+id/traintelegram"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="列车电报模板"
             android:textSize="16sp" />
 
         <Button
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:text="查看已保持列表" />
 
     </LinearLayout>

@@ -29,6 +29,7 @@ public class LabelListActivity extends BaseActivity {
 
     LabelListAdapter labelListAdapter;
 
+    private String type;
 
     @Override
     protected void setContentView() {
@@ -43,7 +44,7 @@ public class LabelListActivity extends BaseActivity {
 
     @Override
     protected void initUI() {
-
+        type = getIntent().getStringExtra("type");
     }
 
     @Override
@@ -52,13 +53,23 @@ public class LabelListActivity extends BaseActivity {
     }
 
     @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        setIntent(intent);
+    }
+
+    @Override
     protected void initData() {
+
 
         labelListAdapter = new LabelListAdapter(this);
         mListView.setAdapter(labelListAdapter);
-        labelListAdapter.setDatas(Constants.getLabelModelArray());
 
-
+        if ("passengerrecord".equals(type)) {
+            labelListAdapter.setDatas(Constants.getPassengerRecordList());
+        } else if ("traintelegram".equals(type)) {
+            labelListAdapter.setDatas(Constants.getTrainTelegramList());
+        }
     }
 
 

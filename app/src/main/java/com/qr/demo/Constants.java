@@ -9,10 +9,11 @@ import java.util.ArrayList;
 public class Constants {
 
     /**
-     * 获取模板列表
+     * 客运记录模板
+     *
      * @return
      */
-    public static ArrayList<String> getLabelModelArray() {
+    public static ArrayList<String> getPassengerRecordList() {
 
         ArrayList<String> list = new ArrayList<>();
 
@@ -35,6 +36,19 @@ public class Constants {
         list.add("移交不明物体击伤旅客");
         list.add("移交砸伤旅客");
         list.add("移交挤手旅客");
+
+        return list;
+    }
+
+    /**
+     * 列车电报模板
+     *
+     * @return
+     */
+    public static ArrayList<String> getTrainTelegramList() {
+
+        ArrayList<String> list = new ArrayList<>();
+
         list.add("超员电报");
         list.add("旅客意外伤电报");
         list.add("石击列车电报");
@@ -42,4 +56,6 @@ public class Constants {
 
         return list;
     }
+
+
 }

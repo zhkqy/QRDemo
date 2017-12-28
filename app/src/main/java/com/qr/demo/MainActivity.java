@@ -23,7 +23,6 @@ import butterknife.OnClick;
 
 public class MainActivity extends BaseActivity {
 
-    private static final String TAG = "MainActivity";
     private PrintPP_CPCL printPP_cpcl;
     private static final boolean D = true;
     private boolean isConnected = false;
@@ -50,8 +49,6 @@ public class MainActivity extends BaseActivity {
             finish();
             return;
         }
-        Intent serverIntent = new Intent(this, DeviceListActivity.class);
-        startActivityForResult(serverIntent, REQUEST_CONNECT_DEVICE);
 
         printPP_cpcl = new PrintPP_CPCL();
 
@@ -116,29 +113,31 @@ public class MainActivity extends BaseActivity {
         startActivityForResult(serverIntent, REQUEST_CONNECT_DEVICE);
     }
 
-    @OnClick(R.id.model)
-    public void modelLabelListOnClicked(View v) {
-        startActivity(new Intent(this, LabelListActivity.class));
-
+    @OnClick(R.id.passengerrecord)
+    public void passengerrecordOnClicked(View v) {
+        startActivity(new Intent(this, LabelListActivity.class).putExtra("type", "passengerrecord"));
     }
+
+    @OnClick(R.id.traintelegram)
+    public void traintelegramOnClicked(View v) {
+        startActivity(new Intent(this, LabelListActivity.class).putExtra("type", "traintelegram"));
+    }
+
 
     @Override
     public void onStart() {
         super.onStart();
         // If BT is not on, request that it be enabled
         // setupChat() will then be called during onActivityRe//sultsetupChat
-        if (!mBluetoothAdapter.isEnabled()) {
-            Intent enableIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
-            startActivityForResult(enableIntent, REQUEST_ENABLE_BT);
-        }
+//        if (!mBluetoothAdapter.isEnabled()) {
+//            Intent enableIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
+//            startActivityForResult(enableIntent, REQUEST_ENABLE_BT);
+//        }
 
     }
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (D) {
-            Log.d(TAG, "onActivityResult " + resultCode);
-        }
 
         switch (requestCode) {
             case REQUEST_CONNECT_DEVICE:
@@ -169,25 +168,8 @@ public class MainActivity extends BaseActivity {
         }
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.scan:
-                Intent serverIntent = new Intent(this, DeviceListActivity.class);
-                startActivityForResult(serverIntent, REQUEST_CONNECT_DEVICE);
-                return true;
-            case R.id.discoverable:
-                ensureDiscoverable();
-                return true;
-        }
-        return false;
-    }
-
 
     private void ensureDiscoverable() {
-        if (D) {
-            Log.d(TAG, "ensure discoverable");
-        }
         if (mBluetoothAdapter.getScanMode() !=
                 BluetoothAdapter.SCAN_MODE_CONNECTABLE_DISCOVERABLE) {
             Intent discoverableIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_DISCOVERABLE);

@@ -2,8 +2,6 @@ package com.qr.demo.activity;
 
 import android.app.AlertDialog;
 import android.content.Intent;
-import android.view.View;
-import android.widget.AdapterView;
 import android.widget.TextView;
 
 import com.qr.demo.adapter.CommonModel;
@@ -30,7 +28,7 @@ public class YjgzckActivity extends NewBaseCommonActivity implements ContractNew
 
         models.add(new CommonModel("当前日期", CommonModel.TYPE_TEXT_ARROW));
 
-        models.add(new CommonModel("所在车厢", CommonModel.TYPE_TEXT_ARROW));
+//        models.add(new CommonModel("所在车厢", CommonModel.TYPE_TEXT_ARROW));
 
         models.add(new CommonModel(
                 new CommonTextEditTextModel("乘客姓名", "", "请输入乘客姓名")));
