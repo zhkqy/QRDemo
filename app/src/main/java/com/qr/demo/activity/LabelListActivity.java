@@ -1,6 +1,7 @@
 package com.qr.demo.activity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -91,6 +92,14 @@ public class LabelListActivity extends BaseActivity {
             View v = View.inflate(mContext, R.layout.item_label, null);
             TextView text = v.findViewById(R.id.text);
             text.setText(datas.get(position));
+
+
+            v.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    startActivity(new Intent(mContext, YjgzckActivity.class));
+                }
+            });
             return v;
         }
 

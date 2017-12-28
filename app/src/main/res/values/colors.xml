@@ -7,4 +7,31 @@
     <color name="colorLine">#D2D2D2</color>
     <color name="red">#ffff4444</color>
 
+    <!-- 邀请管理 -->
+    <color name="invitation_agree_bg">#34C3BF</color>
+    <color name="shadow">#cc222222</color>
+    <color name="white">#FFFFFF</color>
+    <color name="write">#FFFFFF</color>
+    <color name="gray_f2">#f2f2f2</color>
+    <!-- 比较浅的灰色 -->
+    <color name="gray_fa">#fafafa</color>
+    <color name="gray_f5">#f5f5f5</color>
+    <color name="gray_dd">#dddddd</color>
+    <color name="gray_bb">#bbbbbb</color>
+    <color name="gray_99">#999999</color>
+    <color name="black_84">#848485</color>
+    <color name="yellow_ff">#ffc976</color>
+    <color name="product_name">#9A9A9A</color>
+    <color name="product_unit">#7A7A7A</color>
+    <color name="text_gray">#b9b9b9</color>
+    <color name="contract_fee_type">#05C76E</color>
+    <color name="contract_task_type_cuikuan">#F7B233</color>
+    <color name="common_text_gray">#676767</color>
+    <color name="common_text_black">#4c4c4c</color>
+    <color name="black_4c">#4c4c4c</color>
+    <color name="kaoqin_blue">#47a3ff</color>
+    <color name="kaoqin_green">#00d1a7</color>
+    <color name="crm_blue">#47a3ff</color>
+    <color name="crm_green">#00d1a7</color>
+    <color name="daka_orange">#ff943e</color>
 </resources>

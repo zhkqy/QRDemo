@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+    <style name="AppBaseTheme" parent="@android:style/Theme.Light.NoTitleBar">
+    </style>
+
+    <style name="AppTheme" parent="AppBaseTheme">
+    </style>
+
+    <declare-styleable name="title_view_edit">
+        <attr name="text" format="string" />
+        <attr name="text_color" format="color" />
+        <attr name="hint" format="string" />
+    </declare-styleable>
+
+    <declare-styleable name="title_view">
+        <attr name="title" format="string" />
+        <attr name="left_icon" format="reference" />
+        <attr name="arrow" format="reference" />
+        <attr name="title_color" format="color" />
+        <attr name="hide_discreption" format="string" />
+
+    </declare-styleable>
+</resources>

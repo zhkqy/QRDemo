@@ -7,8 +7,6 @@ public class PrintLabel {
 
         iPrinter.pageSetup(586, 800);
 
-
-
         //第一联
 
 
@@ -16,8 +14,6 @@ public class PrintLabel {
 
 
 //          iPrinter.drawText(0, 0, 586, 500, "李四" + " " + "你好吗在的你是分身乏术寒风阿发生发放撒的黑呢的人放哪马上地方而是顺丰顺丰", 2, 0, 0, false, false);
-
-
 
 
 //        iPrinter.drawLine(2, 0, 0, 300, 0, false);//第一联横线1
