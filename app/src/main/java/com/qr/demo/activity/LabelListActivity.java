@@ -107,7 +107,7 @@ public class LabelListActivity extends BaseActivity {
             v.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    startActivity(new Intent(mContext, YjgzckActivity.class).putExtra("title", datas.get(position)));
+                    startActivity(new Intent(mContext, YjgzlkActivity.class).putExtra("title", datas.get(position)));
                 }
             });
             return v;

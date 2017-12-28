@@ -2,7 +2,6 @@ package com.qr.demo.activity;
 
 import android.app.AlertDialog;
 import android.content.Intent;
-import android.widget.TextView;
 
 import com.qr.demo.adapter.CommonModel;
 import com.qr.demo.adapter.ContractNewCommonAdapter;
@@ -12,7 +11,10 @@ import com.qr.demo.utils.TimeUtils;
 
 import java.util.Calendar;
 
-public class YjgzckActivity extends NewBaseCommonActivity implements ContractNewCommonAdapter.CommonListener {
+/**
+ * 移交过站旅客
+ */
+public class YjgzlkActivity extends NewBaseCommonActivity implements ContractNewCommonAdapter.CommonListener {
 
     CommonModel timeCommonModel;
     public Calendar currentCalendar;
@@ -51,6 +53,8 @@ public class YjgzckActivity extends NewBaseCommonActivity implements ContractNew
 
         models.add(new CommonModel("到达站　", CommonModel.TYPE_TEXT_ARROW));
 
+        models.add(new CommonModel("保存", CommonModel.TYPE_BUTTON));
+
         adapter.setDatas(models);
 
         adapter.setListener(this);
@@ -81,7 +85,8 @@ public class YjgzckActivity extends NewBaseCommonActivity implements ContractNew
 
         if (model.title.equals("当前日期")) {
             showDialog();
+        } else if (model.title.equals("保存")) {
+            startActivity(new Intent(this, PrintActivity.class));
         }
-
     }
 }

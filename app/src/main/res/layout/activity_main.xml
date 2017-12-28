@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:background="@android:color/white"
@@ -20,37 +21,80 @@
 
     </TableLayout>
 
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="200dp"
         android:orientation="vertical">
 
-        <Button
-            android:id="@+id/connentprint"
+        <android.support.v7.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:text="连接打印机" />
+            android:layout_height="wrap_content"
+            app:cardElevation="3dp"
+            app:cardPreventCornerOverlap="false"
+            app:cardUseCompatPadding="true">
 
-        <Button
-            android:id="@+id/passengerrecord"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:text="客运记录模板"
-            android:textSize="16sp" />
+            <TextView
+                android:id="@+id/connentprint"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:gravity="center"
+                android:text="连接打印机" />
 
-        <Button
-            android:id="@+id/traintelegram"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:text="列车电报模板"
-            android:textSize="16sp" />
+        </android.support.v7.widget.CardView>
 
-        <Button
+
+        <android.support.v7.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:text="查看已保持列表" />
+            android:layout_height="wrap_content"
+            app:cardElevation="3dp"
+            app:cardPreventCornerOverlap="false"
+            app:cardUseCompatPadding="true">
+
+            <TextView
+                android:id="@+id/passengerrecord"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:gravity="center"
+                android:text="客运记录模板"
+                android:textSize="16sp" />
+
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardElevation="3dp"
+            app:cardPreventCornerOverlap="false"
+            app:cardUseCompatPadding="true">
+
+
+            <TextView
+                android:id="@+id/traintelegram"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:gravity="center"
+                android:text="列车电报模板"
+                android:textSize="16sp" />
+
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardElevation="3dp"
+            app:cardPreventCornerOverlap="false"
+            app:cardUseCompatPadding="true">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:gravity="center"
+                android:text="查看已保持列表"
+                android:textSize="16sp" />
+
+        </android.support.v7.widget.CardView>
+
 
     </LinearLayout>
 

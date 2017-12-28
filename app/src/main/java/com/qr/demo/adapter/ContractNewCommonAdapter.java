@@ -62,38 +62,18 @@ public class ContractNewCommonAdapter extends BaseAdapter {
         View contentView;
 
         if (type.equals(CommonModel.TYPE_TEXT_ARROW)) {//带箭头的item
-            contentView = View.inflate(context,
-                    R.layout.item_new_common_text_arrow, null);
-            holder.titleView = contentView
-                    .findViewById(R.id.title);
+            contentView = View.inflate(context, R.layout.item_new_common_text_arrow, null);
+            holder.titleView = contentView.findViewById(R.id.title);
             holder.type = type;
         } else if (type.equals(CommonModel.TYPE_TEXT_EDITTEXT)) {  //带输入框的item
             contentView = View.inflate(context, R.layout.item_new_common_text_edittext, null);
             holder.textEdit = contentView.findViewById(R.id.text_edit);
             holder.type = type;
-        }
-
-//        else if (type.equals(CommonModel.TYPE_TEXT_TOGGLEBUTTON)) { //单选择框的item
-//            contentView = View.inflate(context,
-//                    R.layout.item_new_common_text_togglebutton, null);
-//            holder.toggleTitle = (TextView) contentView.findViewById(R.id.toggle_title);
-//            holder.toggleOpen = (ImageView) contentView.findViewById(R.id.iv_switch_open_sound);
-//            holder.toggleClose = (ImageView) contentView.findViewById(R.id.iv_switch_close_sound);
-//            holder.toggleSwitch = (FrameLayout) contentView.findViewById(R.id.toggle_switch);
-//            holder.type = type;
-//        } else if (type.equals(CommonModel.TYPE_LINE)) { //一行
-//            contentView = View.inflate(context, R.layout.item_new_common_line, null);
-//            holder.line = contentView.findViewById(R.id.line);
-//            holder.type = type;
-//        } else if (type.equals(CommonModel.TYPE_LEFT_TEXT_RIGHT_ICON)) {  //左面显示text  右面显示icon
-//            contentView = View.inflate(context,
-//                    R.layout.item_new_common_text_icon, null);
-//            holder.title = (TextView) contentView.findViewById(R.id.title_name);
-//            holder.rightIcon = (ImageView) contentView.findViewById(R.id.right_icon);
-//            holder.type = type;
-//        }
-
-        else {
+        } else if (type.equals(CommonModel.TYPE_BUTTON)) {  //button
+            contentView = View.inflate(context, R.layout.item_new_common_button, null);
+            holder.button = contentView.findViewById(R.id.button);
+            holder.type = type;
+        } else {
             contentView = View.inflate(context, R.layout.null_layout, null);
         }
         contentView.setTag(holder);
@@ -108,38 +88,24 @@ public class ContractNewCommonAdapter extends BaseAdapter {
             createTxtEditView(holder, m, position);
         } else if (type.equals(CommonModel.TYPE_TEXT_ARROW)) {
             createTxtArrowView(holder, m, position);
-        } else if (type.equals(CommonModel.TYPE_LEFT_TEXT_RIGHT_ICON)) {
-            createLeftTextRightIconView(holder, m);
+        } else if (type.equals(CommonModel.TYPE_BUTTON)) {
+            createButtonView(holder, m, position);
         } else {
 
         }
     }
 
+    private void createButtonView(MyViewHodler holder, final CommonModel m, final int position) {
 
-    private void createLeftTextRightIconView(MyViewHodler holder, CommonModel m) {
-        holder.title.setText(m.title);
-        final CommonLeftTextRightIconModel leftTextRightIconModel = m.getLeftTextRightIconModel();
-
-        if (leftTextRightIconModel.getRightIcon() != 0) {
-            holder.rightIcon.setBackgroundResource(leftTextRightIconModel.getRightIcon());
-            holder.rightIcon.setVisibility(View.VISIBLE);
-        } else {
-            holder.rightIcon.setVisibility(View.GONE);
-        }
-
-        if (leftTextRightIconModel.getTextColor() != 0) {
-            holder.title.setTextColor(context.getResources().getColor(leftTextRightIconModel.getTextColor()));
-        }
-
-        if (leftTextRightIconModel.getRightIconlistener() != null) {
-            holder.rightIcon.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    leftTextRightIconModel.getRightIconlistener().onclicked();
+        holder.button.setText(m.title);
+        holder.button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (listener != null) {
+                    listener.onclick(position, m);
                 }
-            });
-        }
-
+            }
+        });
     }
 
 //    private void createLineView(final MyViewHodler holder, final CommonModel m) {
@@ -152,30 +118,6 @@ public class ContractNewCommonAdapter extends BaseAdapter {
 //        holder.line.setBackgroundResource(model.lineColor);
 //    }
 
-    private void createToggleView(final MyViewHodler holder, final CommonModel m, int position) {
-
-        holder.toggleTitle.setText(m.title);
-
-        if (m.getToggleModel().switchStatus) {
-            holder.toggleOpen.setVisibility(View.VISIBLE);
-            holder.toggleClose.setVisibility(View.INVISIBLE);
-        } else {
-            holder.toggleOpen.setVisibility(View.INVISIBLE);
-            holder.toggleClose.setVisibility(View.VISIBLE);
-        }
-
-        holder.toggleSwitch.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (holder.toggleClose.getVisibility() == View.VISIBLE) {
-                    m.getToggleModel().setSwitchStatus(true);
-                } else {
-                    m.getToggleModel().setSwitchStatus(false);
-                }
-                notifyDataSetChanged();
-            }
-        });
-    }
 
     private void createTxtArrowView(MyViewHodler holder,
                                     final CommonModel m, final int position) {
@@ -194,9 +136,9 @@ public class ContractNewCommonAdapter extends BaseAdapter {
             holder.titleView.hindArrow();
         }
 
-        if(!TextUtils.isEmpty(m.getDiscrption())){
+        if (!TextUtils.isEmpty(m.getDiscrption())) {
             holder.titleView.setDiscrption(m.getDiscrption());
-        }else{
+        } else {
             holder.titleView.setDiscrption("");
         }
     }
@@ -264,11 +206,8 @@ public class ContractNewCommonAdapter extends BaseAdapter {
     public class MyViewHodler {
         String type;
         TextView title;
+        TextView button;
         ImageView rightIcon;
-        TextView toggleTitle;
-        ImageView toggleOpen;
-        ImageView toggleClose;
-        FrameLayout toggleSwitch;
         TitleEditAlignLeftView textEdit;
         NewTitleView titleView;
     }
