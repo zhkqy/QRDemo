@@ -117,7 +117,7 @@ public class LabelListActivity extends BaseActivity {
             v.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    startActivity(new Intent(mContext, YjgzlkActivity.class).putExtra("title", datas.get(position)));
+                    skip(datas.get(position));
                 }
             });
             return v;
@@ -127,6 +127,14 @@ public class LabelListActivity extends BaseActivity {
             this.datas = datas;
             notifyDataSetChanged();
         }
+    }
+
+    public void skip(String str) {
+
+        if (str.equals("移交过站旅客")) {
+            startActivity(new Intent(mContext, YjgzlkActivity.class).putExtra("title", "移交过站旅客"));
+        }
+
     }
 
 

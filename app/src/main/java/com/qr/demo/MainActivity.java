@@ -16,6 +16,7 @@ import com.qr.demo.Label.PrintLabel;
 import com.qr.demo.activity.BaseActivity;
 import com.qr.demo.activity.DeviceListActivity;
 import com.qr.demo.activity.LabelListActivity;
+import com.qr.demo.db.DBManager;
 import com.qr.print.*;
 
 import butterknife.OnClick;
@@ -99,6 +100,10 @@ public class MainActivity extends BaseActivity {
     @Override
     protected void initData() {
 
+
+        DBManager dbManager = new DBManager(this);
+        dbManager.openDatabase();
+        dbManager.closeDatabase();
     }
 
     @OnClick(R.id.connentprint)

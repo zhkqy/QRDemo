@@ -66,7 +66,6 @@ public class YjgzlkActivity extends NewBaseCommonActivity implements ContractNew
         super.onActivityResult(requestCode, resultCode, data);
     }
 
-
     public void showDialog() {
 
         dialog = new DateTimePickerDialog(this, currentCalendar.getTimeInMillis(), true);

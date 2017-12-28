@@ -1,5 +1,6 @@
 package com.qr.demo.activity;
 
+import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
@@ -12,6 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 
 public class NewBaseCommonActivity extends BaseActivity {
 
@@ -21,7 +23,7 @@ public class NewBaseCommonActivity extends BaseActivity {
     protected ContractNewCommonAdapter adapter;
     protected FrameLayout bottomFramelayout;
 
-    @BindView(R.id.title)
+    @BindView(R.id.tv_main_title)
     protected TextView title;
 
     @Override
@@ -55,4 +57,10 @@ public class NewBaseCommonActivity extends BaseActivity {
     protected void initData() {
 
     }
+
+    @OnClick(R.id.rl_title_bar_left)
+    public void back(View v) {
+        finish();
+    }
+
 }

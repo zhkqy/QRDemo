@@ -1,5 +1,5 @@
 apply plugin: 'com.android.application'
-
+apply plugin: 'org.greenrobot.greendao'
 android {
     compileSdkVersion 26
     buildToolsVersion "26.0.0"
@@ -9,7 +9,10 @@ android {
         minSdkVersion 14
         targetSdkVersion 26
     }
-
+    greendao{
+        schemaVersion 1
+        targetGenDir 'src/main/java'
+    }
     buildTypes {
         release {
             minifyEnabled false
@@ -26,4 +29,5 @@ dependencies {
 
     compile 'com.jakewharton:butterknife:8.4.0'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.4.0'
+    compile 'org.greenrobot:greendao:3.1.0'
 }
