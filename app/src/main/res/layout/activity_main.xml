@@ -1,36 +1,14 @@
-<?xml version="1.0" encoding="utf-8"?><!--
-     Copyright (C) 2009 The Android Open Source Project
-
-     Licensed under the Apache License, Version 2.0 (the "License");
-     you may not use this file except in compliance with the License.
-     You may obtain a copy of the License at
-
-          http://www.apache.org/licenses/LICENSE-2.0
-
-     Unless required by applicable law or agreed to in writing, software
-     distributed under the License is distributed on an "AS IS" BASIS,
-     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-     See the License for the specific language governing permissions and
-     limitations under the License.
--->
+<?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:background="@android:color/white"
     android:orientation="vertical">
 
-    <include
-        android:id="@+id/layout1"
-        layout="@layout/custom_title"
-        android:layout_width="fill_parent"
-        android:layout_height="35dp"
-        android:layout_alignParentTop="true" />
-
     <TableLayout
         android:id="@+id/table1"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/layout1">
+        android:layout_height="wrap_content">
 
         <Button
             android:id="@+id/button_send"
@@ -42,11 +20,38 @@
 
     </TableLayout>
 
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="200dp"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/connentprint"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="连接打印机" />
+
+        <Button
+            android:id="@+id/model"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:text="选择模板"
+            android:textSize="16sp" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="查看已保持列表" />
+
+    </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="30dp"
         android:layout_alignParentBottom="true"
-        android:background="@android:color/holo_red_light"
+        android:background="@color/red"
         android:orientation="horizontal">
 
         <TextView

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">启锐QR386打印机</string>
+    <string name="app_name">记录系统</string>
     <string name="send">打印样单</string>
     <string name="not_connected">没有连接</string>
     <string name="bt_not_enabled_leaving">bt_not_enabled_leaving.</string>

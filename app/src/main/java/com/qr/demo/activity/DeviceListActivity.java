@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.qr.demo;
+package com.qr.demo.activity;
 
 import java.util.Set;
 
@@ -37,6 +37,8 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.AdapterView.OnItemClickListener;
+
+import com.qr.demo.R;
 
 /**
  * This Activity appears as a dialog. It lists any paired devices and

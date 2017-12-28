@@ -4,22 +4,24 @@ package com.qr.demo;
 import android.app.Activity;
 import android.bluetooth.BluetoothAdapter;
 import android.content.Intent;
-import android.os.Bundle;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.TextView;
 import android.widget.Toast;
 
+import com.qr.demo.Label.PrintLabel;
+import com.qr.demo.activity.BaseActivity;
+import com.qr.demo.activity.DeviceListActivity;
+import com.qr.demo.activity.LabelListActivity;
 import com.qr.print.*;
 
+import butterknife.OnClick;
 
-public class MainActivity extends Activity {
+
+public class MainActivity extends BaseActivity {
 
     private static final String TAG = "MainActivity";
     private PrintPP_CPCL printPP_cpcl;
@@ -31,25 +33,14 @@ public class MainActivity extends Activity {
     private String name = "";
     private BluetoothAdapter mBluetoothAdapter = null;
     // Layout Views
-    private TextView mTitle;
     private Button mSendButton;
     private int interval;
     private boolean isSending = false;
-    private ImageButton searchButton;
-
-    public static final String Author = "zhougf(edivista@vip.qq.com)" +
-            "微信：edivista" +
-            "QQ: 77175792";
 
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.main1);
-
-        mTitle = (TextView) findViewById(R.id.title_left_text);
-        mTitle.setText(R.string.app_name);
-        mTitle = (TextView) findViewById(R.id.title_right_text);
+    protected void setContentView() {
+        setContentView(R.layout.activity_main);
 
         //obtain the local Bluetooth adapter
         mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
@@ -63,15 +54,6 @@ public class MainActivity extends Activity {
         startActivityForResult(serverIntent, REQUEST_CONNECT_DEVICE);
 
         printPP_cpcl = new PrintPP_CPCL();
-
-        searchButton = (ImageButton) findViewById(R.id.search);
-        searchButton.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent serverIntent = new Intent(MainActivity.this, DeviceListActivity.class);
-                startActivityForResult(serverIntent, REQUEST_CONNECT_DEVICE);
-            }
-        });
 
 
         mSendButton = (Button) findViewById(R.id.button_send);
@@ -106,6 +88,37 @@ public class MainActivity extends Activity {
                 }
             }
         });
+    }
+
+    @Override
+    protected void initPresenter() {
+
+    }
+
+    @Override
+    protected void initUI() {
+
+    }
+
+    @Override
+    protected void initListener() {
+
+    }
+
+    @Override
+    protected void initData() {
+
+    }
+
+    @OnClick(R.id.connentprint)
+    public void connentprintOnclicked(View v) {
+        Intent serverIntent = new Intent(MainActivity.this, DeviceListActivity.class);
+        startActivityForResult(serverIntent, REQUEST_CONNECT_DEVICE);
+    }
+
+    @OnClick(R.id.model)
+    public void modelLabelListOnClicked(View v) {
+        startActivity(new Intent(this, LabelListActivity.class));
 
     }
 
@@ -141,15 +154,12 @@ public class MainActivity extends Activity {
                     if (!isConnected) {
                         if (printPP_cpcl.connect(name, address)) {
                             isConnected = true;
-                            mTitle.setText(R.string.title_connected_to);
-                            mTitle.append(name);
+//                            mTitle.setText(R.string.title_connected_to);
+//                            mTitle.append(name);
 
                         } else {
-
                             isConnected = false;
-
                         }
-
                     }
 
                 }
@@ -157,13 +167,6 @@ public class MainActivity extends Activity {
             case REQUEST_ENABLE_BT:
 
         }
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.layout.option_menu, menu);
-        return true;
     }
 
     @Override
