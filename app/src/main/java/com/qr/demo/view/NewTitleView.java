@@ -31,6 +31,7 @@ public class NewTitleView extends LinearLayout {
     }
 
     TextView title;
+    ImageView arrow;
 
     private void initView(Context context, AttributeSet attrs) {
         this.mContext = context;
@@ -41,16 +42,15 @@ public class NewTitleView extends LinearLayout {
         int arrowID = ta.getResourceId(R.styleable.title_view_arrow, 0);
 
         title = findViewById(R.id.title_name);
-        ImageView arrow = findViewById(R.id.arrow);
+        arrow = findViewById(R.id.arrow);
         discrption = findViewById(R.id.discrption);
-
-        title.setText(text);
         if (arrowID != 0) {
             arrow.setVisibility(View.VISIBLE);
             arrow.setImageResource(arrowID);
         } else {
             arrow.setVisibility(View.GONE);
         }
+        title.setText(text);
         ta.recycle();
     }
 
@@ -63,4 +63,12 @@ public class NewTitleView extends LinearLayout {
         title.setText(str);
     }
 
+
+    public void showArrow() {
+        arrow.setVisibility(View.VISIBLE);
+    }
+
+    public void hindArrow() {
+        arrow.setVisibility(View.INVISIBLE);
+    }
 }

@@ -9,48 +9,42 @@ import com.qr.demo.common.CommonToggleModel;
 public class CommonModel {
     public String type = "";  //自己定义的type 展示listview不同的item
     public String title = ""; // 左边的title
-    public String formItemId = "";
+    private String discrption = "";
     public String dataType = "";
-    public String keyId = "";
-    
+    public boolean showArrow = true;
+
 
     public static String TYPE_LINE = "type_line";    //显示一线
     public static String TYPE_TEXT_ARROW = "type_text_arrow";  //带箭头点击模式
     public static String TYPE_TEXT_EDITTEXT = "type_text_edittext";  //编辑模式
     public static String TYPE_LEFT_TEXT_RIGHT_ICON = "type_left_text_right_icon";  //左面text 右面icon的样式
 
-    public String discrption;
 
     public CommonLineModel lineModel;
     public CommonToggleModel toggleModel = new CommonToggleModel();
     public CommonTextEditTextModel editTextModel = new CommonTextEditTextModel("", "", "");
     public CommonLeftTextRightIconModel leftTextRightIconModel = new CommonLeftTextRightIconModel("", 0);
     public CommonCheckBoxModel checkBoxModel = new CommonCheckBoxModel();
-    /**
-     * 点击的类型   日期  5  下拉菜单 6
-     */
-    public String clickType = "";
+
 
     public CommonModel(String title, String type) {
         this.title = title;
         this.type = type;
+
+
     }
 
-    public CommonModel(String formItemId, String title, String type) {
-        this(title, type);
-        this.formItemId = formItemId;
+    public CommonModel(String title, String type, boolean showArrow) {
+        this.title = title;
+        this.type = type;
+        this.showArrow = showArrow;
     }
 
-    public CommonModel(String formItemId, String title, String editTextHide, String type) {
-        this(formItemId, title, type);
+
+    public CommonModel(String title, String editTextHide, String type) {
         if (type.equals(TYPE_TEXT_EDITTEXT)) {
             editTextModel = new CommonTextEditTextModel(title, "", editTextHide);
         }
-    }
-
-    public CommonModel(String formItemId, CommonTextEditTextModel model) {
-        this(formItemId, model.title, TYPE_TEXT_EDITTEXT);
-        editTextModel = model;
     }
 
     public CommonModel(CommonTextEditTextModel model) {
@@ -58,14 +52,14 @@ public class CommonModel {
         editTextModel = model;
     }
 
-    public CommonModel(CommonLeftTextRightIconModel model) {
-        this(model.title, TYPE_LEFT_TEXT_RIGHT_ICON);
-        leftTextRightIconModel = model;
+
+    public String getDiscrption() {
+        return discrption;
     }
 
-    public CommonModel(CommonLineModel lineModel) {
-        this.lineModel = lineModel;
-        this.type = TYPE_LINE;
+    public CommonModel setDiscrption(String discrption) {
+        this.discrption = discrption;
+        return this;
     }
 
     public CommonToggleModel getToggleModel() {
@@ -117,15 +111,9 @@ public class CommonModel {
         this.type = type;
     }
 
-	public CommonModel setDataType(String dataType) {
+    public CommonModel setDataType(String dataType) {
         this.dataType = dataType;
-		return this;
-	}
+        return this;
+    }
 
-	public CommonModel setKeyId(String keyId) {
-		this.keyId = keyId;
-		return this;
-	}
-	
-    
 }

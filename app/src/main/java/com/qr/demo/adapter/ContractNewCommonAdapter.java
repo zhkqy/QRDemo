@@ -188,13 +188,17 @@ public class ContractNewCommonAdapter extends BaseAdapter {
                 }
             }
         });
-//        if (!TextUtils.isEmpty(m.selectType.getLabelValue())) {
-//            holder.titleView.setSelectType(m.selectType.getLabelName(),
-//                    m.selectType.getLabelValue());
-//        } else {
-//            holder.titleView.setSelectType(m.selectType.getLabelName(),
-//                    m.selectType.getLabelName());
-//        }
+        if (m.showArrow) {
+            holder.titleView.showArrow();
+        } else {
+            holder.titleView.hindArrow();
+        }
+
+        if(!TextUtils.isEmpty(m.getDiscrption())){
+            holder.titleView.setDiscrption(m.getDiscrption());
+        }else{
+            holder.titleView.setDiscrption("");
+        }
     }
 
     private void createTxtEditView(final MyViewHodler holder,

@@ -24,14 +24,12 @@ import butterknife.OnClick;
 public class MainActivity extends BaseActivity {
 
     private PrintPP_CPCL printPP_cpcl;
-    private static final boolean D = true;
     private boolean isConnected = false;
     private static final int REQUEST_CONNECT_DEVICE = 1;
     private static final int REQUEST_ENABLE_BT = 2;
     private String address = "";
     private String name = "";
     private BluetoothAdapter mBluetoothAdapter = null;
-    // Layout Views
     private Button mSendButton;
     private int interval;
     private boolean isSending = false;

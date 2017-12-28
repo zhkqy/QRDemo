@@ -98,17 +98,16 @@ public class LabelListActivity extends BaseActivity {
         }
 
         @Override
-        public View getView(int position, View convertView, ViewGroup parent) {
+        public View getView(final int position, View convertView, ViewGroup parent) {
 
             View v = View.inflate(mContext, R.layout.item_label, null);
             TextView text = v.findViewById(R.id.text);
             text.setText(datas.get(position));
 
-
             v.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    startActivity(new Intent(mContext, YjgzckActivity.class));
+                    startActivity(new Intent(mContext, YjgzckActivity.class).putExtra("title", datas.get(position)));
                 }
             });
             return v;

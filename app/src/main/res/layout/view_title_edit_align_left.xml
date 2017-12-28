@@ -24,7 +24,7 @@
         android:gravity="left|center_vertical"
         android:inputType="none"
         android:textColor="@color/common_text_black"
-        android:textColorHint="@color/black_84"
+        android:textColorHint="@color/gray_bb"
         android:textSize="15sp" />
 
 </LinearLayout>

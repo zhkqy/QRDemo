@@ -14,29 +14,42 @@ import java.util.Calendar;
 
 public class YjgzckActivity extends NewBaseCommonActivity implements ContractNewCommonAdapter.CommonListener {
 
+    CommonModel timeCommonModel;
+    public Calendar currentCalendar;
+
+    DateTimePickerDialog dialog;
 
     @Override
     protected void initData() {
         super.initData();
 
+        String t = getIntent().getStringExtra("title");
         currentCalendar = Calendar.getInstance();
-
-        title.setText("移交过站旅客");
+        title.setText(t);
         models.clear();
 
-        models.add(new CommonModel("列车车次", CommonModel.TYPE_TEXT_ARROW));
+        models.add(new CommonModel("列车车次", CommonModel.TYPE_TEXT_ARROW, false).setDiscrption("ktest21"));
 
-        models.add(new CommonModel("当前日期", CommonModel.TYPE_TEXT_ARROW));
+        String currentTime = TimeUtils.getCurrentTime();
+
+        timeCommonModel = new CommonModel("当前日期", CommonModel.TYPE_TEXT_ARROW).setDiscrption(currentTime);
+
+        models.add(timeCommonModel);
 
 //        models.add(new CommonModel("所在车厢", CommonModel.TYPE_TEXT_ARROW));
 
-        models.add(new CommonModel(
-                new CommonTextEditTextModel("乘客姓名", "", "请输入乘客姓名")));
-        models.add(new CommonModel(
-                new CommonTextEditTextModel("身份证号", "", "请录入身份证号")));
-        models.add(new CommonModel(
-                new CommonTextEditTextModel("乘客票号", "", "请录入票号")));
+        models.add(new CommonModel("开车车站", CommonModel.TYPE_TEXT_ARROW));
 
+        models.add(new CommonModel(
+                new CommonTextEditTextModel("旅客姓名", "", "请输入旅客姓名")));
+        models.add(new CommonModel(
+                new CommonTextEditTextModel("身份证号", "", "请输入身份证号")));
+        models.add(new CommonModel(
+                new CommonTextEditTextModel("乘客票号", "", "请输入票号")));
+
+        models.add(new CommonModel("出发站　", CommonModel.TYPE_TEXT_ARROW));
+
+        models.add(new CommonModel("到达站　", CommonModel.TYPE_TEXT_ARROW));
 
         adapter.setDatas(models);
 
@@ -49,18 +62,14 @@ public class YjgzckActivity extends NewBaseCommonActivity implements ContractNew
         super.onActivityResult(requestCode, resultCode, data);
     }
 
-    private TextView currentTime;
-    public static long currentDateLong = 0;
-    public Calendar currentCalendar;
-
 
     public void showDialog() {
-        DateTimePickerDialog dialog = new DateTimePickerDialog(this, currentCalendar.getTimeInMillis(), true);
+
+        dialog = new DateTimePickerDialog(this, currentCalendar.getTimeInMillis(), true);
         dialog.setOnDateTimeSetListener(new DateTimePickerDialog.OnDateTimeSetListener() {
             public void OnDateTimeSet(AlertDialog dialog, long date, Calendar calendar) {
-
-                currentTime.setText(calendar.get(Calendar.YEAR) + "年" + (calendar.get(Calendar.MONTH) + 1) + "月" + calendar.get(Calendar.DAY_OF_MONTH) + "日");
-                currentDateLong = TimeUtils.calendarConvertLong(calendar);
+                timeCommonModel.setDiscrption(calendar.get(Calendar.YEAR) + "-" + (calendar.get(Calendar.MONTH) + 1) + "-" + calendar.get(Calendar.DAY_OF_MONTH));
+                adapter.notifyDataSetChanged();
             }
         });
         dialog.show();
