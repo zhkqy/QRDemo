@@ -14,6 +14,7 @@ import com.qr.demo.R;
 import java.util.ArrayList;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 
 /**
  * Created by sun on 2017/12/28.
@@ -26,6 +27,9 @@ public class LabelListActivity extends BaseActivity {
 
     @BindView(R.id.listview)
     ListView mListView;
+    @BindView(R.id.tv_main_title)
+    TextView mainTitle;
+
 
     LabelListAdapter labelListAdapter;
 
@@ -66,12 +70,18 @@ public class LabelListActivity extends BaseActivity {
         mListView.setAdapter(labelListAdapter);
 
         if ("passengerrecord".equals(type)) {
+            mainTitle.setText("客户记录模板");
             labelListAdapter.setDatas(Constants.getPassengerRecordList());
         } else if ("traintelegram".equals(type)) {
+            mainTitle.setText("列车电报模板");
             labelListAdapter.setDatas(Constants.getTrainTelegramList());
         }
     }
 
+    @OnClick(R.id.rl_title_bar_left)
+    public void back(View v) {
+        finish();
+    }
 
     class LabelListAdapter extends BaseAdapter {
 

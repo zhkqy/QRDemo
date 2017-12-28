@@ -2,8 +2,48 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#ffffff"
+    android:background="@color/gray_f5"
     android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top">
+
+        <RelativeLayout
+            android:id="@+id/rl_common_titlebar"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@android:color/white"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp">
+
+            <include
+                android:id="@+id/rl_title_bar_left"
+                layout="@layout/layout_common_title_bar_left" />
+
+            <TextView
+                android:id="@+id/tv_main_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:ellipsize="end"
+                android:gravity="center"
+                android:singleLine="true"
+                android:text=""
+                android:textColor="@android:color/black"
+                android:textSize="20sp" />
+        </RelativeLayout>
+
+        <ImageView
+            android:id="@+id/ivCommonTitleBarDivider"
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_below="@id/rl_common_titlebar"
+            android:background="@color/colorLine"
+            android:contentDescription="@null" />
+
+    </RelativeLayout>
 
     <ListView
         android:id="@+id/listview"

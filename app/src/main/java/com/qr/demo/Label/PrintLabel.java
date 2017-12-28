@@ -1,9 +1,12 @@
 package com.qr.demo.Label;
 
+import android.content.Context;
+
+import com.qr.demo.utils.ToastUtils;
 import com.qr.print.*;
 
 public class PrintLabel {
-    public static void Lable(PrintPP_CPCL iPrinter) {
+    public static void Lable(Context context, PrintPP_CPCL iPrinter) {
 
         iPrinter.pageSetup(586, 800);
 
@@ -127,7 +130,7 @@ public class PrintLabel {
 //        //寄件联
 //        iPrinter.drawText(568 - 32 + 3 + 8, 1096 + 104 + 16, 32, 96, "寄件联", 2, 0, 0, false, false);
 //
-        iPrinter.print(0, 0);
-
+        String result = iPrinter.print(0, 0);
+        ToastUtils.show(context, result);
     }
 }
