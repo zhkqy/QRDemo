@@ -5,8 +5,6 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.Environment;
 import android.util.Log;
 
-import com.qr.demo.R;
-
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -24,12 +22,17 @@ public class DBManager {
     private SQLiteDatabase database;
     private Context context;
 
-    public DBManager(Context context) {
+    private DBManager(Context context) {
         this.context = context;
     }
 
-    public void openDatabase() {
+    public static DBManager getInstance(Context context) {
+        return new DBManager(context);
+    }
+
+    public SQLiteDatabase openDatabase() {
         this.database = this.openDatabase(DB_PATH + "/" + DB_NAME);
+        return database;
     }
 
     private SQLiteDatabase openDatabase(String dbfile) {
@@ -78,7 +81,7 @@ public class DBManager {
 
 
     public String getInnerDataPath() {
-        return Environment.getExternalStorageDirectory()+"/data/" + DB_NAME;
+        return Environment.getExternalStorageDirectory() + "/data/" + DB_NAME;
     }
 
 }

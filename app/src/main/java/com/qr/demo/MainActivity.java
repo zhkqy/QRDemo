@@ -99,11 +99,6 @@ public class MainActivity extends BaseActivity {
 
     @Override
     protected void initData() {
-
-
-        DBManager dbManager = new DBManager(this);
-        dbManager.openDatabase();
-        dbManager.closeDatabase();
     }
 
     @OnClick(R.id.connentprint)

@@ -1,5 +1,6 @@
 package com.qr.demo.activity;
 
+import com.qr.demo.Label.YjgzlkLabel;
 import com.qr.demo.R;
 
 /**
@@ -7,10 +8,39 @@ import com.qr.demo.R;
  */
 
 public class PrintActivity extends BaseActivity {
+
+    private boolean isSending = false;
+    private int interval;
+
     @Override
     protected void setContentView() {
 
         setContentView(R.layout.activity_print);
+
+//        if (!isSending) {
+//            new Thread(new Runnable() {
+//                @Override
+//                public void run() {
+//                    isSending = true;
+//                    if (isConnected) {
+//                        YjgzlkLabel pl = new YjgzlkLabel();
+//                        pl.Lable(PrintActivity.this, printPP_cpcl);
+//                    }
+//                    try {
+//                        interval = 0;
+//                        Thread.sleep(interval);
+//                    } catch (InterruptedException e) {
+//                        e.printStackTrace();
+//                    }
+//
+//                    isSending = false;
+//
+//
+//                }
+//            }).start();
+//        }
+
+
     }
 
     @Override
@@ -32,4 +62,5 @@ public class PrintActivity extends BaseActivity {
     protected void initData() {
 
     }
+
 }
