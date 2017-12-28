@@ -32,7 +32,6 @@ public class MainActivity extends BaseActivity {
     private String name = "";
     private BluetoothAdapter mBluetoothAdapter = null;
     private int interval;
-    private boolean isSending = false;
 
     @Override
     protected void setContentView() {
@@ -49,37 +48,6 @@ public class MainActivity extends BaseActivity {
 
         printPP_cpcl = new PrintPP_CPCL();
 
-
-//        mSendButton.setOnClickListener(new OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//                if (!isSending) {
-//                    new Thread(new Runnable() {
-//                        @Override
-//                        public void run() {
-//                            isSending = true;
-//                            if (isConnected) {
-//                                PrintLabel pl = new PrintLabel();
-//                                pl.Lable(MainActivity.this, printPP_cpcl);
-//
-//                            }
-//
-//                            try {
-//                                interval = 0;
-//                                Thread.sleep(interval);
-//                            } catch (InterruptedException e) {
-//                                e.printStackTrace();
-//                            }
-//
-//                            isSending = false;
-//
-//
-//                        }
-//                    }).start();
-//                }
-//            }
-//        });
     }
 
     @Override
