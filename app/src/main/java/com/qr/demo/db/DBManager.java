@@ -43,18 +43,17 @@ public class DBManager {
             if (new File(preDb).exists()) {
 
                 File f = new File(dbfile);
-                if (f.exists()) {
-                    f.delete();
+                if (!f.exists()) {
+                    InputStream is = new FileInputStream(new File(preDb));
+                    FileOutputStream fos = new FileOutputStream(dbfile);
+                    byte[] buffer = new byte[BUFFER_SIZE];
+                    int count = 0;
+                    while ((count = is.read(buffer)) > 0) {
+                        fos.write(buffer, 0, count);
+                    }
+                    fos.close();
+                    is.close();
                 }
-                InputStream is = new FileInputStream(new File(preDb));
-                FileOutputStream fos = new FileOutputStream(dbfile);
-                byte[] buffer = new byte[BUFFER_SIZE];
-                int count = 0;
-                while ((count = is.read(buffer)) > 0) {
-                    fos.write(buffer, 0, count);
-                }
-                fos.close();
-                is.close();
 
                 SQLiteDatabase db = SQLiteDatabase.openOrCreateDatabase(dbfile,
                         null);

@@ -9,6 +9,7 @@
         android:id="@+id/lv"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@drawable/bg_white_corner"
         android:divider="@color/colorLine"
         android:dividerHeight="1px" />
 
