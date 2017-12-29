@@ -8,9 +8,14 @@ import com.qr.print.PrintPP_CPCL;
  * Created by sun on 2017/12/28.
  */
 
-public class MyApplication extends Application{
-
-    PrintPP_CPCL printPP_cpcl = new PrintPP_CPCL();
+public class MyApplication extends Application {
+    private boolean isConnected = false;
+    private PrintPP_CPCL printPP_cpcl = null;
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        printPP_cpcl = new PrintPP_CPCL();
+    }
 
     public PrintPP_CPCL getPrintPP_cpcl() {
         return printPP_cpcl;
@@ -18,5 +23,13 @@ public class MyApplication extends Application{
 
     public void setPrintPP_cpcl(PrintPP_CPCL printPP_cpcl) {
         this.printPP_cpcl = printPP_cpcl;
+    }
+
+    public boolean isConnected() {
+        return isConnected;
+    }
+
+    public void setConnected(boolean connected) {
+        isConnected = connected;
     }
 }

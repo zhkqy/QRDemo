@@ -25,13 +25,15 @@ import butterknife.OnClick;
 public class MainActivity extends BaseActivity {
 
     private PrintPP_CPCL printPP_cpcl;
-    private boolean isConnected = false;
+
     private static final int REQUEST_CONNECT_DEVICE = 1;
     private static final int REQUEST_ENABLE_BT = 2;
     private String address = "";
     private String name = "";
     private BluetoothAdapter mBluetoothAdapter = null;
     private int interval;
+
+    private MyApplication myApplication;
 
     @Override
     protected void setContentView() {
@@ -46,8 +48,10 @@ public class MainActivity extends BaseActivity {
             return;
         }
 
-        printPP_cpcl = new PrintPP_CPCL();
+        myApplication = (MyApplication) getApplication();
 
+        printPP_cpcl = new PrintPP_CPCL();
+        myApplication.setPrintPP_cpcl(printPP_cpcl);
     }
 
     @Override
@@ -104,22 +108,22 @@ public class MainActivity extends BaseActivity {
         switch (requestCode) {
             case REQUEST_CONNECT_DEVICE:
                 if (resultCode == Activity.RESULT_OK) {
-                    if (isConnected & (printPP_cpcl != null)) {
+                    if (myApplication.isConnected() & (printPP_cpcl != null)) {
                         printPP_cpcl.disconnect();
-                        isConnected = false;
+                        myApplication.setConnected(false);
                     }
                     String sdata = data.getExtras()
                             .getString(DeviceListActivity.EXTRA_DEVICE_ADDRESS);
                     address = sdata.substring(sdata.length() - 17);
                     name = sdata.substring(0, (sdata.length() - 17));
-                    if (!isConnected) {
+                    if (!myApplication.isConnected()) {
                         if (printPP_cpcl.connect(name, address)) {
-                            isConnected = true;
+                            myApplication.setConnected(true);
 //                            mTitle.setText(R.string.title_connected_to);
 //                            mTitle.append(name);
 
                         } else {
-                            isConnected = false;
+                            myApplication.setConnected(false);
                         }
                     }
 

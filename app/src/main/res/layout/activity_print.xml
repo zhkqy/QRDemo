@@ -27,7 +27,7 @@
             app:cardUseCompatPadding="true">
 
             <TextView
-                android:id="@+id/connentprint"
+                android:id="@+id/printOne"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:gravity="center"
@@ -44,7 +44,7 @@
             app:cardUseCompatPadding="true">
 
             <TextView
-                android:id="@+id/passengerrecord"
+                android:id="@+id/printTwo"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:gravity="center"
