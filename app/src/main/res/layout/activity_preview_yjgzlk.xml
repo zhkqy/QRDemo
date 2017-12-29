@@ -92,9 +92,9 @@
                     android:text="xx站"
                     android:textSize="16sp" />
 
-                <TextView
-                    android:id="@+id/discreption"
-                    android:layout_width="wrap_content"
+                <com.qr.demo.view.CustomFontsTextView
+                    android:id="@+id/description"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="2dp"
                     android:text="内容"
@@ -121,6 +121,7 @@
             android:orientation="horizontal">
 
             <TextView
+                android:id="@+id/printOne"
                 android:layout_width="0dp"
                 android:layout_height="45dp"
                 android:layout_marginLeft="10dp"
