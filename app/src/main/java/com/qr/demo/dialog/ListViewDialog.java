@@ -13,6 +13,8 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.qr.demo.R;
+import com.qr.demo.db.DbHelper;
+import com.qr.demo.model.ZcStopTimeModel;
 
 import java.util.ArrayList;
 
@@ -27,7 +29,6 @@ public class ListViewDialog extends Dialog {
         super(context, themeResId);
         init(context);
     }
-
 
     private void init(Context context) {
         mContext = context;
@@ -45,8 +46,12 @@ public class ListViewDialog extends Dialog {
 
     private void initListView() {
         ArrayList<String> arrayList = new ArrayList<>();
-        for (int i = 0; i < 30; i++) {
-            arrayList.add("item " + i);
+        ArrayList<ZcStopTimeModel> zcStopTimeModels = DbHelper.getTrainList(getContext());
+
+        if (zcStopTimeModels != null) {
+            for (int x = 0; x < zcStopTimeModels.size(); x++) {
+                arrayList.add(zcStopTimeModels.get(x).station_name);
+            }
         }
 
         adapter.setDatas(arrayList);

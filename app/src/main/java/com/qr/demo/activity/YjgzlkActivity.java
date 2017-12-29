@@ -10,8 +10,10 @@ import com.qr.demo.common.CommonTextEditTextModel;
 import com.qr.demo.db.DbHelper;
 import com.qr.demo.dialog.DateTimePickerDialog;
 import com.qr.demo.dialog.ListViewDialog;
+import com.qr.demo.model.ZcStopTimeModel;
 import com.qr.demo.utils.TimeUtils;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 
 /**
@@ -44,7 +46,7 @@ public class YjgzlkActivity extends NewBaseCommonActivity implements ContractNew
 
 //        models.add(new CommonModel("所在车厢", CommonModel.TYPE_TEXT_ARROW));
 
-        models.add(new CommonModel("开车车站", CommonModel.TYPE_TEXT_ARROW));
+        models.add(new CommonModel("交接车站", CommonModel.TYPE_TEXT_ARROW));
 
         models.add(new CommonModel(
                 new CommonTextEditTextModel("旅客姓名", "", "请输入旅客姓名")));
@@ -90,7 +92,11 @@ public class YjgzlkActivity extends NewBaseCommonActivity implements ContractNew
             showDialog();
         } else if (model.title.equals("保存")) {
             startActivity(new Intent(this, PrintActivity.class));
+        } else if ("交接车站".equals(model.title)) {
+            new ListViewDialog(this, R.style.listDialog).show();
         } else if ("出发站　".equals(model.title)) {
+            new ListViewDialog(this, R.style.listDialog).show();
+        } else if ("到达站　".equals(model.title)) {
             new ListViewDialog(this, R.style.listDialog).show();
         }
     }

@@ -9,7 +9,6 @@
         android:layout_width="match_parent"
         android:layout_height="35dp"
         android:gravity="center"
-        android:background="@drawable/bg_white_corner"
         android:textColor="@color/common_text_black"
         android:textSize="15sp" />
 
