@@ -19,7 +19,6 @@ public class DBManager {
     public static final String DB_PATH = "/data"
             + Environment.getDataDirectory().getAbsolutePath() + "/" + PACKAGE_NAME;  //在手机里存放数据库的位置
 
-    private SQLiteDatabase database;
     private Context context;
 
     private DBManager(Context context) {
@@ -31,8 +30,7 @@ public class DBManager {
     }
 
     public SQLiteDatabase openDatabase() {
-        this.database = this.openDatabase(DB_PATH + "/" + DB_NAME);
-        return database;
+        return openDatabase(DB_PATH + "/" + DB_NAME);
     }
 
     private SQLiteDatabase openDatabase(String dbfile) {
@@ -69,13 +67,6 @@ public class DBManager {
             e.printStackTrace();
         }
         return null;
-    }
-
-    public void closeDatabase() {
-
-        if (database != null) {
-            this.database.close();
-        }
     }
 
 

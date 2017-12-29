@@ -1,6 +1,7 @@
 package com.qr.demo.db;
 
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 /**
@@ -15,15 +16,23 @@ public class DbHelper {
      */
 
     public static String getTrainNum(Context context) {
+
+        String trainCode = "";
         DBManager manager = DBManager.getInstance(context);
 
         SQLiteDatabase sqLiteDatabase = manager.openDatabase();
 
-//        if (sqLiteDatabase != null) {
-//            sqLiteDatabase.query();
-//
-//        }
-        return "";
+        Cursor cursor = sqLiteDatabase.rawQuery("select train_code from ZC_train_dir_1307", null);
+
+        if (cursor != null && cursor.getCount() > 0) {
+            cursor.moveToFirst();
+            trainCode = cursor.getString(cursor.getColumnIndex("train_code"));
+        }
+        if (cursor != null) {
+            cursor.close();
+        }
+        sqLiteDatabase.close();
+        return trainCode;
     }
 
     /**

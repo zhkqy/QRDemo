@@ -7,6 +7,7 @@ import com.qr.demo.R;
 import com.qr.demo.adapter.CommonModel;
 import com.qr.demo.adapter.ContractNewCommonAdapter;
 import com.qr.demo.common.CommonTextEditTextModel;
+import com.qr.demo.db.DbHelper;
 import com.qr.demo.dialog.DateTimePickerDialog;
 import com.qr.demo.dialog.ListViewDialog;
 import com.qr.demo.utils.TimeUtils;
@@ -32,7 +33,8 @@ public class YjgzlkActivity extends NewBaseCommonActivity implements ContractNew
         title.setText(t);
         models.clear();
 
-        models.add(new CommonModel("列车车次", CommonModel.TYPE_TEXT_ARROW, false).setDiscrption("ktest21"));
+        String trainCode = DbHelper.getTrainNum(this);
+        models.add(new CommonModel("列车车次", CommonModel.TYPE_TEXT_ARROW, false).setDiscrption(trainCode));
 
         String currentTime = TimeUtils.getCurrentTime();
 
