@@ -81,7 +81,6 @@ public class YjgzlkPreviewActivity extends BaseActivity {
     }
 
     @OnClick(R.id.printOne)
-
     public void printOneOnclicked(View v) {
         final PrintPP_CPCL printPP_cpcl = ((MyApplication) getApplication()).getPrintPP_cpcl();
         if (!isSending) {

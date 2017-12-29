@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.qr.demo.Label.PrintLabel;
@@ -19,6 +20,7 @@ import com.qr.demo.activity.LabelListActivity;
 import com.qr.demo.db.DBManager;
 import com.qr.print.*;
 
+import butterknife.BindView;
 import butterknife.OnClick;
 
 
@@ -32,6 +34,9 @@ public class MainActivity extends BaseActivity {
     private String name = "";
     private BluetoothAdapter mBluetoothAdapter = null;
     private int interval;
+
+    @BindView(R.id.title_right_text)
+    TextView title_right_text;
 
     private MyApplication myApplication;
 
@@ -119,8 +124,8 @@ public class MainActivity extends BaseActivity {
                     if (!myApplication.isConnected()) {
                         if (printPP_cpcl.connect(name, address)) {
                             myApplication.setConnected(true);
-//                            mTitle.setText(R.string.title_connected_to);
-//                            mTitle.append(name);
+                            title_right_text.setText(R.string.title_connected_to);
+                            title_right_text.append(name);
 
                         } else {
                             myApplication.setConnected(false);

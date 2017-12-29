@@ -13,14 +13,20 @@ public class YjgzlkLabel {
             return;
         }
 
-        iPrinter.pageSetup(586, 800);
+        int pageWidth = 576;
+
+        iPrinter.pageSetup(pageWidth, 800);
 
         //第一联
 
-        iPrinter.drawText(0, 0, 586, 34, "客运记录", 2, 0, 0, false, false);
-        iPrinter.drawText(0, 34, 586, 34, recordThing, 2, 0, 0, false, false);
-        iPrinter.drawText(0, 34 * 2, 586, 34 * 2, connectStation, 2, 0, 0, false, false);
-        iPrinter.drawText(0, 34 * 3, 586, 34 * 3, description, 2, 0, 0, false, false);
+        int top = 60;
+        int fontHeight = 32;
+        int titleHeight = 48;
+
+        iPrinter.drawText(pageWidth / 2 - 32 * 2, top, pageWidth, titleHeight, "客运记录", 3, 0, 0, false, false);
+        iPrinter.drawText(0, top + titleHeight, pageWidth, top + titleHeight, recordThing, 2, 0, 0, false, false);
+        iPrinter.drawText(0, top + titleHeight + fontHeight, pageWidth, top + titleHeight + fontHeight, connectStation, 2, 0, 0, false, false);
+        iPrinter.drawText(0, top + titleHeight + fontHeight * 2, pageWidth, top + titleHeight + fontHeight * 2, description, 2, 0, 0, false, false);
 
         iPrinter.print(0, 0);
 
