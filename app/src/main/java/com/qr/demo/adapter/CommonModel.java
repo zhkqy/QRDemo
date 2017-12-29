@@ -12,6 +12,7 @@ public class CommonModel {
     private String discrption = "";
     public String dataType = "";
     public boolean showArrow = true;
+    public int requestCode = 0;  //请求码
 
 
     public static String TYPE_LINE = "type_line";    //显示一线
@@ -30,7 +31,6 @@ public class CommonModel {
     public CommonModel(String title, String type) {
         this.title = title;
         this.type = type;
-
 
     }
 
@@ -52,6 +52,15 @@ public class CommonModel {
         editTextModel = model;
     }
 
+
+    public CommonModel setRequestCode(int requestCode) {
+        this.requestCode = requestCode;
+        return this;
+    }
+
+    public int getRequestCode() {
+        return requestCode;
+    }
 
     public String getDiscrption() {
         return discrption;

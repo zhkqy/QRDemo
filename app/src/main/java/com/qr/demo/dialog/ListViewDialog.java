@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -18,12 +19,12 @@ import com.qr.demo.model.ZcStopTimeModel;
 
 import java.util.ArrayList;
 
-public class ListViewDialog extends Dialog {
+public class ListViewDialog extends Dialog implements AdapterView.OnItemClickListener {
 
     private Context mContext;
     private ListView mListView;
     private Adapter adapter;
-
+    private Listener listener;
 
     public ListViewDialog(@NonNull Context context, int themeResId) {
         super(context, themeResId);
@@ -56,6 +57,7 @@ public class ListViewDialog extends Dialog {
 
         adapter.setDatas(arrayList);
         mListView.setAdapter(adapter);
+        mListView.setOnItemClickListener(this);
     }
 
 
@@ -78,6 +80,23 @@ public class ListViewDialog extends Dialog {
     }
 
 
+    public void setListener(Listener listener) {
+        this.listener = listener;
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+        if (listener != null) {
+            listener.onItemClicked(adapter.getItem(position));
+            dismiss();
+        }
+    }
+
+    public interface Listener {
+        void onItemClicked(String str);
+    }
+
     class Adapter extends BaseAdapter {
 
         Context mContext;
@@ -93,8 +112,8 @@ public class ListViewDialog extends Dialog {
         }
 
         @Override
-        public Object getItem(int position) {
-            return null;
+        public String getItem(int position) {
+            return datas.get(position);
         }
 
         @Override
@@ -109,12 +128,6 @@ public class ListViewDialog extends Dialog {
             TextView text = v.findViewById(R.id.text);
             text.setText(datas.get(position));
 
-            v.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    skip(datas.get(position));
-                }
-            });
             return v;
         }
 
@@ -122,11 +135,6 @@ public class ListViewDialog extends Dialog {
             this.datas = datas;
             notifyDataSetChanged();
         }
-    }
-
-    public void skip(String str) {
-
-
     }
 
 }

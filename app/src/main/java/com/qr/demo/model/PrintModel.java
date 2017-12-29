@@ -1,13 +1,15 @@
 package com.qr.demo.model;
 
+import java.io.Serializable;
+
 /**
  * Created by sun on 2017/12/29.
  */
 
-public class PrintModel {
+public class PrintModel implements Serializable {
 
-    public String thing = "";//  记录事由
-    public String startStation = "";//开始站
+    public String recordThing = "";//  记录事由
+    public String connectStation = "";//交接站
     public String year = "";
     public String month = "";
     public String day = "";

@@ -6,32 +6,16 @@
     android:background="@color/gray_f5"
     android:orientation="vertical">
 
-    <FrameLayout
+    <TextView
+        android:id="@+id/button"
         android:layout_width="match_parent"
-        android:layout_height="60dp">
-
-        <!--保存 跳转能到打印页  -->
-        <android.support.v7.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginBottom="4dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginTop="4dp"
-            app:cardElevation="3dp"
-            app:cardPreventCornerOverlap="false"
-            app:cardUseCompatPadding="true">
-
-            <TextView
-                android:id="@+id/button"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@color/white"
-
-                android:gravity="center"
-                android:textSize="16sp" />
-
-        </android.support.v7.widget.CardView>
-    </FrameLayout>
+        android:layout_height="45dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/bg_blue_corner"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:textSize="16sp" />
 
 </LinearLayout>

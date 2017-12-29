@@ -20,12 +20,12 @@ public class YjgzlkLabel {
 
         iPrinter.drawText(0, 0, 586, 800, "客运记录", 2, 0, 0, false, false);
 
-        iPrinter.drawText(0, 0, 586, 800, "记录事由" + printModel.thing, 2, 0, 0, false, false);
+        iPrinter.drawText(0, 0, 586, 800, "记录事由" + printModel.recordThing, 2, 0, 0, false, false);
 
         iPrinter.drawText(0, 0, 586, 800, "" + "站", 2, 0, 0, false, false);
 
 
-        String print = printModel.year + "年" + printModel.month + "月" + printModel.day + "日，" + printModel.trainNum + "次列车" + printModel.startStation + "站开车后，" +
+        String print =printModel.year + "年" + printModel.month + "月" + printModel.day + "日，" + printModel.trainNum + "次列车" + printModel.connectStation + "站开车后，" +
                 "旅客" + printModel.name + ",身份证号码" + printModel.cardNum + ",持" + printModel.beginStation + "站至" + printModel.stopStation + "站车票，" + "" +
                 "票号" + printModel.ticketNum + ",找到列车长，自称坐过站。现交你站，请按章处理";
 

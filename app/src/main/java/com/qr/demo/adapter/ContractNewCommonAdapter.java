@@ -34,7 +34,7 @@ public class ContractNewCommonAdapter extends BaseAdapter {
     }
 
     @Override
-    public Object getItem(int i) {
+    public CommonModel getItem(int i) {
         return models.get(i);
     }
 

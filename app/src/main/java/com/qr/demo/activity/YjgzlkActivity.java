@@ -2,6 +2,7 @@ package com.qr.demo.activity;
 
 import android.app.AlertDialog;
 import android.content.Intent;
+import android.os.Bundle;
 
 import com.qr.demo.R;
 import com.qr.demo.adapter.CommonModel;
@@ -10,10 +11,10 @@ import com.qr.demo.common.CommonTextEditTextModel;
 import com.qr.demo.db.DbHelper;
 import com.qr.demo.dialog.DateTimePickerDialog;
 import com.qr.demo.dialog.ListViewDialog;
-import com.qr.demo.model.ZcStopTimeModel;
+import com.qr.demo.model.PrintModel;
+import com.qr.demo.previewactivity.YjgzlkPreviewActivity;
 import com.qr.demo.utils.TimeUtils;
 
-import java.util.ArrayList;
 import java.util.Calendar;
 
 /**
@@ -26,27 +27,32 @@ public class YjgzlkActivity extends NewBaseCommonActivity implements ContractNew
 
     DateTimePickerDialog dialog;
 
+    ListViewDialog listViewDialog;
+    String strTitle;
+
     @Override
     protected void initData() {
         super.initData();
 
-        String t = getIntent().getStringExtra("title");
+        strTitle = getIntent().getStringExtra("title");
         currentCalendar = Calendar.getInstance();
-        title.setText(t);
+        title.setText(strTitle);
         models.clear();
 
         String trainCode = DbHelper.getTrainNum(this);
-        models.add(new CommonModel("列车车次", CommonModel.TYPE_TEXT_ARROW, false).setDiscrption(trainCode));
+        models.add(new CommonModel("列车车次", CommonModel.TYPE_TEXT_ARROW, false).
+                setDiscrption(trainCode));
 
         String currentTime = TimeUtils.getCurrentTime();
 
-        timeCommonModel = new CommonModel("当前日期", CommonModel.TYPE_TEXT_ARROW).setDiscrption(currentTime);
+        timeCommonModel = new CommonModel("当前日期", CommonModel.TYPE_TEXT_ARROW).
+                setDiscrption(currentTime).setRequestCode(1101);
 
         models.add(timeCommonModel);
 
 //        models.add(new CommonModel("所在车厢", CommonModel.TYPE_TEXT_ARROW));
 
-        models.add(new CommonModel("交接车站", CommonModel.TYPE_TEXT_ARROW));
+        models.add(new CommonModel("交接车站", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1102));
 
         models.add(new CommonModel(
                 new CommonTextEditTextModel("旅客姓名", "", "请输入旅客姓名")));
@@ -55,11 +61,11 @@ public class YjgzlkActivity extends NewBaseCommonActivity implements ContractNew
         models.add(new CommonModel(
                 new CommonTextEditTextModel("乘客票号", "", "请输入票号")));
 
-        models.add(new CommonModel("出发站　", CommonModel.TYPE_TEXT_ARROW));
+        models.add(new CommonModel("出发站　", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1103));
 
-        models.add(new CommonModel("到达站　", CommonModel.TYPE_TEXT_ARROW));
+        models.add(new CommonModel("到达站　", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1104));
 
-        models.add(new CommonModel("保存", CommonModel.TYPE_BUTTON));
+        models.add(new CommonModel("预览", CommonModel.TYPE_BUTTON).setRequestCode(1105));
 
         adapter.setDatas(models);
 
@@ -86,18 +92,58 @@ public class YjgzlkActivity extends NewBaseCommonActivity implements ContractNew
 
 
     @Override
-    public void onclick(int position, CommonModel model) {
+    public void onclick(final int position, CommonModel model) {
 
-        if (model.title.equals("当前日期")) {
+        if (model.getRequestCode() == 1101) {
             showDialog();
-        } else if (model.title.equals("保存")) {
-            startActivity(new Intent(this, PrintActivity.class));
-        } else if ("交接车站".equals(model.title)) {
-            new ListViewDialog(this, R.style.listDialog).show();
-        } else if ("出发站　".equals(model.title)) {
-            new ListViewDialog(this, R.style.listDialog).show();
-        } else if ("到达站　".equals(model.title)) {
-            new ListViewDialog(this, R.style.listDialog).show();
+        } else if (model.getRequestCode() == 1102 ||
+                model.getRequestCode() == 1103 ||
+                model.getRequestCode() == 1104) {
+            if (listViewDialog == null) {
+                listViewDialog = new ListViewDialog(this, R.style.listDialog);
+            }
+            listViewDialog.setListener(null);
+            listViewDialog.setListener(new ListViewDialog.Listener() {
+                @Override
+                public void onItemClicked(String str) {
+                    adapter.getItem(position).setDiscrption(str);
+                    adapter.notifyDataSetChanged();
+                }
+            });
+            listViewDialog.show();
+        } else if (model.getRequestCode() == 1105) {
+
+            PrintModel printModel = new PrintModel();
+
+            printModel.recordThing = strTitle;
+            printModel.connectStation = adapter.getItem(2).getDiscrption();
+
+
+            String time = adapter.getItem(1).getDiscrption();
+
+            String[] str = time.split("-");
+
+            if (str != null && str.length == 3) {
+                printModel.year = str[0];
+                printModel.month = str[1];
+                printModel.day = str[2];
+            }
+
+            printModel.trainNum = adapter.getItem(0).getDiscrption();
+            printModel.name = adapter.getItem(3).getEditTextModel().getEditTextStr();// 旅客名称
+            printModel.cardNum = adapter.getItem(4).getEditTextModel().getEditTextStr();//  身份证号码
+            printModel.ticketNum = adapter.getItem(5).getEditTextModel().getEditTextStr();// 票号
+            printModel.beginStation = adapter.getItem(6).getDiscrption();// 旅客买的票 的开始位置
+            printModel.stopStation = adapter.getItem(7).getDiscrption();// 旅客买的票 的结束位置
+
+
+            Intent mIntent = new Intent(this, YjgzlkPreviewActivity.class);
+            Bundle mBundle = new Bundle();
+            mBundle.putSerializable("data", printModel);
+            mIntent.putExtras(mBundle);
+
+            startActivity(mIntent);
         }
+
     }
 }
