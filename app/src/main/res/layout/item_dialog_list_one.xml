@@ -7,11 +7,10 @@
     <TextView
         android:id="@+id/text"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:textSize="16sp"
-        android:background="?android:attr/selectableItemBackground"
-        android:gravity="center_vertical"
-        android:paddingLeft="15dp"
-     />
+        android:layout_height="35dp"
+        android:gravity="center"
+        android:background="@drawable/bg_white_corner"
+        android:textColor="@color/common_text_black"
+        android:textSize="15sp" />
 
 </LinearLayout>

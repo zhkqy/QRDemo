@@ -3,10 +3,12 @@ package com.qr.demo.activity;
 import android.app.AlertDialog;
 import android.content.Intent;
 
+import com.qr.demo.R;
 import com.qr.demo.adapter.CommonModel;
 import com.qr.demo.adapter.ContractNewCommonAdapter;
 import com.qr.demo.common.CommonTextEditTextModel;
 import com.qr.demo.dialog.DateTimePickerDialog;
+import com.qr.demo.dialog.ListViewDialog;
 import com.qr.demo.utils.TimeUtils;
 
 import java.util.Calendar;
@@ -86,6 +88,8 @@ public class YjgzlkActivity extends NewBaseCommonActivity implements ContractNew
             showDialog();
         } else if (model.title.equals("保存")) {
             startActivity(new Intent(this, PrintActivity.class));
+        } else if ("出发站　".equals(model.title)) {
+            new ListViewDialog(this, R.style.listDialog).show();
         }
     }
 }
