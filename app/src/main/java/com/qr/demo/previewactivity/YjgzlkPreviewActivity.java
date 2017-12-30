@@ -89,8 +89,9 @@ public class YjgzlkPreviewActivity extends BaseActivity {
                 public void run() {
                     isSending = true;
                     if (((MyApplication) getApplication()).isConnected()) {
-                        YjgzlkLabel pl = new YjgzlkLabel();
-                        pl.Lable(printPP_cpcl, recordThing.getText().toString(), connectStation.getText().toString(),
+                        YjgzlkLabel pl = new YjgzlkLabel(printPP_cpcl);
+
+                        pl.Lable(recordThing.getText().toString(), connectStation.getText().toString(),
                                 description.getText().toString());
                     }
                     try {
