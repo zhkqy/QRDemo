@@ -3,14 +3,11 @@ package com.qr.demo.activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
-import android.view.KeyEvent;
-import android.widget.Toast;
 
 import butterknife.ButterKnife;
 
 public  abstract class BaseActivity extends FragmentActivity {
     private long mExitTime;
-
 
 
     protected Context mContext;

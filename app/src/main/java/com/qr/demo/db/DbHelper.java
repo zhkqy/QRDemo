@@ -84,35 +84,34 @@ public class DbHelper {
 
     public static ArrayList<CarriageNumModel> getTrainCarriageNum(Context context) {
 
-//        DBManager manager = DBManager.getInstance(context);
-//
-//        SQLiteDatabase sqLiteDatabase = manager.openDatabase();
-//
-//        Cursor cursor = sqLiteDatabase.rawQuery("select * from ZC_stop_time_1307", null);
-//
-//
-//        ArrayList<ZcStopTimeModel> zcStopTimeModels = new ArrayList<>();
-//        zcStopTimeModels.clear();
-//
-//        if (cursor != null && cursor.getCount() > 0) {
-//            cursor.moveToFirst();
-//            while (!cursor.isAfterLast()) {
-//
-//                ZcStopTimeModel zcStopTimeModel = new ZcStopTimeModel();
-//
-//                zcStopTimeModel.station_name = cursor.getString(cursor.getColumnIndex("station_name"));
-//                zcStopTimeModel.start_train_date = cursor.getString(cursor.getColumnIndex("start_train_date"));
-//
-//                zcStopTimeModels.add(zcStopTimeModel);
-//                cursor.moveToNext();
-//            }
-//        }
-//
-//        if (cursor != null) {
-//            cursor.close();
-//        }
-//        sqLiteDatabase.close();
-        return null;
+        DBManager manager = DBManager.getInstance(context);
+
+        SQLiteDatabase sqLiteDatabase = manager.openDatabase();
+
+        Cursor cursor = sqLiteDatabase.rawQuery("select * from ZC_train_seat_1307", null);
+
+        ArrayList<CarriageNumModel> carriageNumModels = new ArrayList<>();
+        carriageNumModels.clear();
+
+        if (cursor != null && cursor.getCount() > 0) {
+            cursor.moveToFirst();
+            while (!cursor.isAfterLast()) {
+
+                CarriageNumModel model = new CarriageNumModel();
+
+                model.CarriageNum = cursor.getString(cursor.getColumnIndex("coach_no"));
+                model.seatNum = cursor.getString(cursor.getColumnIndex("seat_no"));
+
+                carriageNumModels.add(model);
+                cursor.moveToNext();
+            }
+        }
+
+        if (cursor != null) {
+            cursor.close();
+        }
+        sqLiteDatabase.close();
+        return carriageNumModels;
 
     }
 }

@@ -9,6 +9,7 @@ import com.qr.demo.adapter.CommonModel;
 import com.qr.demo.adapter.ContractNewCommonAdapter;
 import com.qr.demo.common.CommonTextEditTextModel;
 import com.qr.demo.db.DbHelper;
+import com.qr.demo.dialog.CarriageDialog;
 import com.qr.demo.dialog.DateTimePickerDialog;
 import com.qr.demo.dialog.ListViewDialog;
 import com.qr.demo.model.PrintModel;
@@ -29,6 +30,7 @@ public class YjhblkActivity extends NewBaseCommonActivity implements ContractNew
     DateTimePickerDialog dialog;
 
     ListViewDialog listViewDialog;
+    CarriageDialog carriageDialog;
     String strTitle;
 
     @Override
@@ -148,18 +150,18 @@ public class YjhblkActivity extends NewBaseCommonActivity implements ContractNew
             startActivity(mIntent);
         } else if (model.getRequestCode() == 1106) {
 
-            if (listViewDialog == null) {
-                listViewDialog = new ListViewDialog(this, R.style.listDialog);
+            if (carriageDialog == null) {
+                carriageDialog = new CarriageDialog(this, R.style.listDialog);
             }
-            listViewDialog.setListener(null);
-            listViewDialog.setListener(new ListViewDialog.Listener() {
-                @Override
-                public void onItemClicked(String str) {
-                    adapter.getItem(position).setDiscrption(str);
-                    adapter.notifyDataSetChanged();
-                }
-            });
-            listViewDialog.show();
+            carriageDialog.setListener(null);
+//            carriageDialog.setListener(new ListViewDialog.Listener() {
+//                @Override
+//                public void onItemClicked(String str) {
+//                    adapter.getItem(position).setDiscrption(str);
+//                    adapter.notifyDataSetChanged();
+//                }
+//            });
+            carriageDialog.show();
         }
     }
 }
