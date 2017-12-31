@@ -133,6 +133,10 @@ public class LabelListActivity extends BaseActivity {
 
         if (str.equals("移交过站旅客")) {
             startActivity(new Intent(mContext, YjgzlkActivity.class).putExtra("title", "移交过站旅客"));
+        }else if("移交患病旅客".equals(str)){
+            startActivity(new Intent(mContext, YjhblkActivity.class).putExtra("title", "移交患病旅客"));
+
+
         }
 
     }

@@ -4,6 +4,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
+import com.qr.demo.model.CarriageNumModel;
 import com.qr.demo.model.ZcStopTimeModel;
 
 import java.util.ArrayList;
@@ -43,7 +44,7 @@ public class DbHelper {
      * 获取车站列表
      */
 
-    public static  ArrayList<ZcStopTimeModel> getTrainList(Context context) {
+    public static ArrayList<ZcStopTimeModel> getTrainList(Context context) {
 
         DBManager manager = DBManager.getInstance(context);
 
@@ -80,4 +81,38 @@ public class DbHelper {
     /**
      * 获取车厢号列表
      */
+
+    public static ArrayList<CarriageNumModel> getTrainCarriageNum(Context context) {
+
+//        DBManager manager = DBManager.getInstance(context);
+//
+//        SQLiteDatabase sqLiteDatabase = manager.openDatabase();
+//
+//        Cursor cursor = sqLiteDatabase.rawQuery("select * from ZC_stop_time_1307", null);
+//
+//
+//        ArrayList<ZcStopTimeModel> zcStopTimeModels = new ArrayList<>();
+//        zcStopTimeModels.clear();
+//
+//        if (cursor != null && cursor.getCount() > 0) {
+//            cursor.moveToFirst();
+//            while (!cursor.isAfterLast()) {
+//
+//                ZcStopTimeModel zcStopTimeModel = new ZcStopTimeModel();
+//
+//                zcStopTimeModel.station_name = cursor.getString(cursor.getColumnIndex("station_name"));
+//                zcStopTimeModel.start_train_date = cursor.getString(cursor.getColumnIndex("start_train_date"));
+//
+//                zcStopTimeModels.add(zcStopTimeModel);
+//                cursor.moveToNext();
+//            }
+//        }
+//
+//        if (cursor != null) {
+//            cursor.close();
+//        }
+//        sqLiteDatabase.close();
+        return null;
+
+    }
 }
