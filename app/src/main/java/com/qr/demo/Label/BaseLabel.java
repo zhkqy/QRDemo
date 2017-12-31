@@ -12,7 +12,7 @@ public abstract class BaseLabel {
 
     //第一联
     int topPadding = 10;
-    int bottomPadding = 40;
+    int bottomPadding = 60;
     protected int pageWidth = 576;
     protected int pageHeight = 760;
 
@@ -43,6 +43,13 @@ public abstract class BaseLabel {
         int bottomY5 = bottomY4 - bottomfontPoint / 2;
 
 
+        iPrinter.drawText(0, bottomY5 - bottomfontPoint * 3, pageWidth, bottomfontPoint,
+                "注：1.站、车需要编织记录时适用。", bottomfont, 0, 0, false, false);
+
+        iPrinter.drawText(0, bottomY5 - bottomfontPoint * 2, pageWidth, bottomfontPoint,
+                "　　2.本记录不能作为乘车凭证。", bottomfont, 0, 0, false, false);
+
+
         iPrinter.drawText(pageWidth - 12 * bottomfontPoint - bottomfontPoint, bottomY5, bottomfontPoint, bottomfontPoint * 2,
                 "站段", bottomfont, 0, 0, false, false);
 
@@ -61,11 +68,13 @@ public abstract class BaseLabel {
                 "20　　　年　　　月　　　日编制　　", bottomfont, 0, 0, false, false);
 
         iPrinter.print(0, 0);
+
     }
 
 
     /**
      * 子类必须调用的方法
+     *
      * @param pageWidth
      * @param pageHeight
      */
