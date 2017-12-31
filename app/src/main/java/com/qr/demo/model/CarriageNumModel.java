@@ -7,6 +7,6 @@ package com.qr.demo.model;
 public class CarriageNumModel {
 
 
-    public String CarriageNum = ""; //车厢号
+    public String carriageNum = ""; //车厢号
     public String seatNum = "";//座位号
 }

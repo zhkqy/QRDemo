@@ -16,7 +16,7 @@ import android.widget.TextView;
 import com.qr.demo.R;
 import com.qr.demo.db.DbHelper;
 import com.qr.demo.model.CarriageNumModel;
-import com.qr.demo.model.ZcStopTimeModel;
+import com.qr.demo.utils.DisplayUtil;
 
 import java.util.ArrayList;
 import java.util.Map;
@@ -55,18 +55,18 @@ public class CarriageDialog extends Dialog implements AdapterView.OnItemClickLis
     }
 
     private void initListView() {
-        ArrayList<String> leftList = new ArrayList<>();
+        final ArrayList<String> leftList = new ArrayList<>();
         leftList.clear();
 
-        ArrayList<CarriageNumModel> carriageNumModels = DbHelper.getTrainCarriageNum(getContext());
+        final ArrayList<CarriageNumModel> carriageNumModels = DbHelper.getTrainCarriageNum(getContext());
 
-        TreeMap<String, String> map = new TreeMap<>();
+        final TreeMap<String, String> map = new TreeMap<>();
         map.clear();
         //这里将数据加工
-        if (carriageNumModels != null && carriageNumModels.size() > 0) {
+        if (carriageNumModels != null) {
             for (int x = 0; x < carriageNumModels.size(); x++) {
                 CarriageNumModel carriageNumModel = carriageNumModels.get(x);
-                map.put(carriageNumModel.CarriageNum, "");
+                map.put(carriageNumModel.carriageNum, "");
             }
         }
 
@@ -76,9 +76,27 @@ public class CarriageDialog extends Dialog implements AdapterView.OnItemClickLis
 
         adapterLeft.setDatas(leftList);
         leftListView.setAdapter(adapterLeft);
+        rightListView.setAdapter(adapterRight);
         leftListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+
+                if (carriageNumModels != null) {
+                    final ArrayList<String> rightList = new ArrayList<>();
+                    rightList.clear();
+                    String num = adapterLeft.getItem(i);
+
+                    for (int x = 0; x < carriageNumModels.size(); x++) {
+                        CarriageNumModel carriageNumModel = carriageNumModels.get(x);
+                        if (num.equals(carriageNumModel.carriageNum)) {
+                            rightList.add(carriageNumModel.seatNum);
+                        }
+                    }
+
+                    adapterRight.setDatas(rightList);
+                    rightListView.setSelection(0);
+                }
 
             }
         });
@@ -100,6 +118,8 @@ public class CarriageDialog extends Dialog implements AdapterView.OnItemClickLis
         if (window.getDecorView().getHeight() >= (int) (displayMetrics.heightPixels * 0.7)) {
             attributes.height = (int) (displayMetrics.heightPixels * 0.7);
         }
+        attributes.width = displayMetrics.widthPixels - DisplayUtil.dipToPixels(getContext(), 40);
+
         window.setAttributes(attributes);
     }
 

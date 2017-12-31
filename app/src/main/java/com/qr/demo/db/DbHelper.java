@@ -99,7 +99,7 @@ public class DbHelper {
 
                 CarriageNumModel model = new CarriageNumModel();
 
-                model.CarriageNum = cursor.getString(cursor.getColumnIndex("coach_no"));
+                model.carriageNum = cursor.getString(cursor.getColumnIndex("coach_no"));
                 model.seatNum = cursor.getString(cursor.getColumnIndex("seat_no"));
 
                 carriageNumModels.add(model);
