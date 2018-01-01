@@ -24,4 +24,9 @@ public class PrintModel implements Serializable {
     public String carriageNum = "";// 车厢号
     public String seatNum = "";// 座位号
 
+    public String netOrderNum = "";//网购订单号
+    public String netBeginStation = "";//网购原票发站
+    public String netStopStation = "";//网购原票到站
+    public String netErrorReason = "";//网购出错理由
+
 }
