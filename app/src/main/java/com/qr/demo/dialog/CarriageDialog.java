@@ -154,12 +154,21 @@ public class CarriageDialog extends Dialog {
         public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
             rightPressPosition = position;
             adapterRight.notifyDataSetChanged();
+
+            if (listener != null) {
+
+                String carriageNum = adapterLeft.getItem(leftPressPosition);
+                String seatNum = adapterRight.getItem(rightPressPosition);
+
+                listener.onItemClicked(carriageNum, seatNum);
+            }
+            dismiss();
         }
     }
 
 
     public interface Listener {
-        void onItemClicked(String str);
+        void onItemClicked(String carriageNum, String seatNum);
     }
 
     class AdapterRight extends BaseAdapter {

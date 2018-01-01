@@ -20,4 +20,8 @@ public class PrintModel implements Serializable {
     public String stopStation = "";// 旅客买的票 的结束位置
     public String ticketNum = "";// 票号
 
+
+    public String carriageNum = "";// 车厢号
+    public String seatNum = "";// 座位号
+
 }

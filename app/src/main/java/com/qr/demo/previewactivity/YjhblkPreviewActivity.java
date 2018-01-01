@@ -92,7 +92,8 @@ public class YjhblkPreviewActivity extends BaseActivity {
 
     private void refreshDescription() {
         String discrep = "　　" + printModel.year + "年" + printModel.month + "月" + printModel.day + "日，" + printModel.trainNum + "次列车" + printModel.connectStation + "站开车后，" +
-                "旅客" + printModel.name + ",身份证号码" + printModel.cardNum + ",持" + printModel.beginStation + "站至" + printModel.stopStation + "站车票，" + "" +
+                "旅客" + printModel.name + ",身份证号码" + printModel.cardNum + ",持" + printModel.beginStation + "站至" + printModel.stopStation + "站车票，"
+                + printModel.carriageNum + "车" + printModel.seatNum + "号席（铺）位," +
                 "票号" + printModel.ticketNum + "," + replace1.getText().toString();
 
         int s = printModel.connectStation.length();

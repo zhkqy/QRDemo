@@ -26,14 +26,17 @@ import butterknife.OnItemClick;
  */
 public class YjhblkActivity extends NewBaseCommonActivity implements ContractNewCommonAdapter.CommonListener {
 
-    CommonModel timeCommonModel;
+    private CommonModel timeCommonModel;
     public Calendar currentCalendar;
 
-    DateTimePickerDialog dialog;
+    private DateTimePickerDialog dialog;
 
-    ListViewDialog listViewDialog;
-    CarriageDialog carriageDialog;
-    String strTitle;
+    private ListViewDialog listViewDialog;
+    private CarriageDialog carriageDialog;
+    private String strTitle;
+
+    private String carriageNum = "";
+    private String seatNum = "";
 
     @Override
     protected void initData() {
@@ -141,7 +144,8 @@ public class YjhblkActivity extends NewBaseCommonActivity implements ContractNew
             printModel.ticketNum = adapter.getItem(5).getEditTextModel().getEditTextStr();// 票号
             printModel.beginStation = adapter.getItem(6).getDiscrption();// 旅客买的票 的开始位置
             printModel.stopStation = adapter.getItem(7).getDiscrption();// 旅客买的票 的结束位置
-
+            printModel.carriageNum = carriageNum;// 旅客买的票 的结束位置
+            printModel.seatNum = seatNum;
 
             Intent mIntent = new Intent(this, YjhblkPreviewActivity.class);
             Bundle mBundle = new Bundle();
@@ -155,13 +159,17 @@ public class YjhblkActivity extends NewBaseCommonActivity implements ContractNew
                 carriageDialog = new CarriageDialog(this, R.style.listDialog);
             }
             carriageDialog.setListener(null);
-//            carriageDialog.setListener(new ListViewDialog.Listener() {
-//                @Override
-//                public void onItemClicked(String str) {
-//                    adapter.getItem(position).setDiscrption(str);
-//                    adapter.notifyDataSetChanged();
-//                }
-//            });
+            carriageDialog.setListener(new CarriageDialog.Listener() {
+                @Override
+                public void onItemClicked(String carriageNum, String seatNum) {
+
+                    YjhblkActivity.this.carriageNum = carriageNum;
+                    YjhblkActivity.this.seatNum = seatNum;
+
+                    adapter.getItem(position).setDiscrption(carriageNum + "车" + seatNum + "号");
+                    adapter.notifyDataSetChanged();
+                }
+            });
             carriageDialog.show();
         }
     }
