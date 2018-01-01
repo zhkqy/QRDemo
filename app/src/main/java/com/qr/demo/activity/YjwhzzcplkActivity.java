@@ -14,6 +14,7 @@ import com.qr.demo.dialog.DateTimePickerDialog;
 import com.qr.demo.dialog.ListViewDialog;
 import com.qr.demo.model.PrintModel;
 import com.qr.demo.previewactivity.CgspbcpztxcPreviewActivity;
+import com.qr.demo.previewactivity.YjwhzzcplkPreviewActivity;
 import com.qr.demo.utils.TimeUtils;
 
 import java.util.Calendar;
@@ -120,11 +121,7 @@ public class YjwhzzcplkActivity extends NewBaseCommonActivity implements Contrac
             PrintModel printModel = new PrintModel();
 
             printModel.recordThing = strTitle;
-            printModel.connectStation = adapter.getItem(2).getDiscrption();
-
-
             String time = adapter.getItem(1).getDiscrption();
-
             String[] str = time.split("-");
 
             if (str != null && str.length == 3) {
@@ -134,15 +131,17 @@ public class YjwhzzcplkActivity extends NewBaseCommonActivity implements Contrac
             }
 
             printModel.trainNum = adapter.getItem(0).getDiscrption();
+            printModel.connectStation = adapter.getItem(2).getDiscrption();
             printModel.name = adapter.getItem(3).getEditTextModel().getEditTextStr();// 旅客名称
             printModel.cardNum = adapter.getItem(4).getEditTextModel().getEditTextStr();//  身份证号码
-            printModel.ticketNum = adapter.getItem(5).getEditTextModel().getEditTextStr();// 票号
-            printModel.beginStation = adapter.getItem(6).getDiscrption();// 旅客买的票 的开始位置
-            printModel.stopStation = adapter.getItem(7).getDiscrption();// 旅客买的票 的结束位置
+            printModel.netOrderNum = adapter.getItem(5).getEditTextModel().getEditTextStr();//网购订单号
+            printModel.netErrorReason = adapter.getItem(6).getEditTextModel().getEditTextStr();//自述因
+            printModel.netBeginStation = adapter.getItem(7).getDiscrption();// 旅客买的票 的开始位置
+            printModel.netStopStation = adapter.getItem(8).getDiscrption();// 旅客买的票 的结束位置
             printModel.carriageNum = carriageNum;// 旅客买的票 的结束位置
             printModel.seatNum = seatNum;
 
-            Intent mIntent = new Intent(this, CgspbcpztxcPreviewActivity.class);
+            Intent mIntent = new Intent(this, YjwhzzcplkPreviewActivity.class);
             Bundle mBundle = new Bundle();
             mBundle.putSerializable("data", printModel);
             mIntent.putExtras(mBundle);

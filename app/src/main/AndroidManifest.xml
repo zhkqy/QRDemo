@@ -83,7 +83,9 @@
         <activity
             android:name=".previewactivity.GsbcpdztkPreviewActivity"
             android:screenOrientation="portrait" />
-
+        <activity
+            android:name=".previewactivity.YjwhzzcplkPreviewActivity"
+            android:screenOrientation="portrait" />
 
     </application>
 
