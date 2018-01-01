@@ -13,7 +13,6 @@ import com.qr.demo.dialog.CarriageDialog;
 import com.qr.demo.dialog.DateTimePickerDialog;
 import com.qr.demo.dialog.ListViewDialog;
 import com.qr.demo.model.PrintModel;
-import com.qr.demo.previewactivity.YjgzlkPreviewActivity;
 import com.qr.demo.previewactivity.YjhblkPreviewActivity;
 import com.qr.demo.utils.TimeUtils;
 
@@ -53,8 +52,6 @@ public class YjhblkActivity extends NewBaseCommonActivity implements ContractNew
 
         models.add(timeCommonModel);
 
-//        models.add(new CommonModel("所在车厢", CommonModel.TYPE_TEXT_ARROW));
-
         models.add(new CommonModel("交接车站", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1102));
 
         models.add(new CommonModel(
@@ -64,11 +61,11 @@ public class YjhblkActivity extends NewBaseCommonActivity implements ContractNew
         models.add(new CommonModel(
                 new CommonTextEditTextModel("乘客票号", "", "请输入票号")));
 
-        models.add(new CommonModel("出发站　", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1103));
+        models.add(new CommonModel("原票发站", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1103));
 
-        models.add(new CommonModel("到达站　", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1104));
+        models.add(new CommonModel("原票到站", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1104));
 
-        models.add(new CommonModel("座位号　", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1106));
+        models.add(new CommonModel("车厢号　", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1106));
 
         models.add(new CommonModel("预览", CommonModel.TYPE_BUTTON).setRequestCode(1105));
 

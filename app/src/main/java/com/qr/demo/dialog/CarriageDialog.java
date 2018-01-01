@@ -33,6 +33,10 @@ public class CarriageDialog extends Dialog implements AdapterView.OnItemClickLis
     private ListView leftListView;
     private ListView rightListView;
 
+    private int leftPressPosition = 0;
+    private int rightPressPosition = 0;
+
+
     public CarriageDialog(@NonNull Context context, int themeResId) {
         super(context, themeResId);
         init(context);
@@ -81,6 +85,8 @@ public class CarriageDialog extends Dialog implements AdapterView.OnItemClickLis
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
+                leftPressPosition = i;
+                rightPressPosition = 0;
 
                 if (carriageNumModels != null) {
                     final ArrayList<String> rightList = new ArrayList<>();
@@ -97,6 +103,8 @@ public class CarriageDialog extends Dialog implements AdapterView.OnItemClickLis
                     adapterRight.setDatas(rightList);
                     rightListView.setSelection(0);
                 }
+
+                adapterLeft.notifyDataSetChanged();
 
             }
         });
@@ -172,6 +180,12 @@ public class CarriageDialog extends Dialog implements AdapterView.OnItemClickLis
             TextView text = v.findViewById(R.id.text);
             text.setText(datas.get(position));
 
+            if (rightPressPosition == position) {
+                text.setBackgroundResource(R.color.gray_dd);
+            } else {
+                text.setBackgroundResource(R.color.white);
+            }
+
             return v;
         }
 
@@ -210,7 +224,15 @@ public class CarriageDialog extends Dialog implements AdapterView.OnItemClickLis
         public View getView(final int position, View convertView, ViewGroup parent) {
 
             View v = View.inflate(mContext, R.layout.item_dialog_left, null);
+
             TextView text = v.findViewById(R.id.text);
+
+            if (leftPressPosition == position) {
+                text.setBackgroundResource(R.color.gray_dd);
+            } else {
+                text.setBackgroundResource(R.color.white);
+            }
+
             text.setText(datas.get(position));
 
             return v;

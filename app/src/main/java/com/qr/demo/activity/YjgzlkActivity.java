@@ -50,8 +50,6 @@ public class YjgzlkActivity extends NewBaseCommonActivity implements ContractNew
 
         models.add(timeCommonModel);
 
-//        models.add(new CommonModel("所在车厢", CommonModel.TYPE_TEXT_ARROW));
-
         models.add(new CommonModel("交接车站", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1102));
 
         models.add(new CommonModel(
@@ -61,9 +59,9 @@ public class YjgzlkActivity extends NewBaseCommonActivity implements ContractNew
         models.add(new CommonModel(
                 new CommonTextEditTextModel("乘客票号", "", "请输入票号")));
 
-        models.add(new CommonModel("出发站　", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1103));
+        models.add(new CommonModel("原票发站", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1103));
 
-        models.add(new CommonModel("到达站　", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1104));
+        models.add(new CommonModel("原票到站", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1104));
 
         models.add(new CommonModel("预览", CommonModel.TYPE_BUTTON).setRequestCode(1105));
 
