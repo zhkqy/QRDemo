@@ -3,6 +3,7 @@ package com.qr.demo.activity;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Toast;
 
 import com.qr.demo.R;
 import com.qr.demo.adapter.CommonModel;
@@ -17,6 +18,8 @@ import com.qr.demo.previewactivity.YjhblkPreviewActivity;
 import com.qr.demo.utils.TimeUtils;
 
 import java.util.Calendar;
+
+import butterknife.OnItemClick;
 
 /**
  * 移交患病旅客
@@ -116,6 +119,7 @@ public class YjhblkActivity extends NewBaseCommonActivity implements ContractNew
         } else if (model.getRequestCode() == 1105) {
 
             PrintModel printModel = new PrintModel();
+
 
             printModel.recordThing = strTitle;
             printModel.connectStation = adapter.getItem(2).getDiscrption();

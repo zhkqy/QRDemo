@@ -22,7 +22,7 @@ import java.util.ArrayList;
 import java.util.Map;
 import java.util.TreeMap;
 
-public class CarriageDialog extends Dialog implements AdapterView.OnItemClickListener {
+public class CarriageDialog extends Dialog {
 
     private Context mContext;
     private Listener listener;
@@ -35,6 +35,8 @@ public class CarriageDialog extends Dialog implements AdapterView.OnItemClickLis
 
     private int leftPressPosition = 0;
     private int rightPressPosition = 0;
+
+    private ArrayList<CarriageNumModel> carriageNumModels;
 
 
     public CarriageDialog(@NonNull Context context, int themeResId) {
@@ -62,7 +64,7 @@ public class CarriageDialog extends Dialog implements AdapterView.OnItemClickLis
         final ArrayList<String> leftList = new ArrayList<>();
         leftList.clear();
 
-        final ArrayList<CarriageNumModel> carriageNumModels = DbHelper.getTrainCarriageNum(getContext());
+        carriageNumModels = DbHelper.getTrainCarriageNum(getContext());
 
         final TreeMap<String, String> map = new TreeMap<>();
         map.clear();
@@ -81,33 +83,10 @@ public class CarriageDialog extends Dialog implements AdapterView.OnItemClickLis
         adapterLeft.setDatas(leftList);
         leftListView.setAdapter(adapterLeft);
         rightListView.setAdapter(adapterRight);
-        leftListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
-                leftPressPosition = i;
-                rightPressPosition = 0;
-
-                if (carriageNumModels != null) {
-                    final ArrayList<String> rightList = new ArrayList<>();
-                    rightList.clear();
-                    String num = adapterLeft.getItem(i);
-
-                    for (int x = 0; x < carriageNumModels.size(); x++) {
-                        CarriageNumModel carriageNumModel = carriageNumModels.get(x);
-                        if (num.equals(carriageNumModel.carriageNum)) {
-                            rightList.add(carriageNumModel.seatNum);
-                        }
-                    }
-
-                    adapterRight.setDatas(rightList);
-                    rightListView.setSelection(0);
-                }
-
-                adapterLeft.notifyDataSetChanged();
-
-            }
-        });
+        leftListView.setOnItemClickListener(new LeftItemClicked());
+        rightListView.setOnItemClickListener(new RightItemClicked());
+        leftItemClicked(0);
     }
 
 
@@ -136,14 +115,48 @@ public class CarriageDialog extends Dialog implements AdapterView.OnItemClickLis
         this.listener = listener;
     }
 
-    @Override
-    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+    class LeftItemClicked implements AdapterView.OnItemClickListener {
 
-//        if (listener != null) {
-//            listener.onItemClicked(adapter.getItem(position));
-//            dismiss();
-//        }
+        @Override
+        public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+            leftItemClicked(position);
+        }
     }
+
+
+    public void leftItemClicked(int position) {
+        leftPressPosition = position;
+        rightPressPosition = 0;
+
+        if (carriageNumModels != null) {
+            final ArrayList<String> rightList = new ArrayList<>();
+            rightList.clear();
+            String num = adapterLeft.getItem(leftPressPosition);
+
+            for (int x = 0; x < carriageNumModels.size(); x++) {
+                CarriageNumModel carriageNumModel = carriageNumModels.get(x);
+                if (num.equals(carriageNumModel.carriageNum)) {
+                    rightList.add(carriageNumModel.seatNum);
+                }
+            }
+
+            adapterRight.setDatas(rightList);
+            rightListView.setSelection(0);
+        }
+
+        adapterLeft.notifyDataSetChanged();
+    }
+
+    class RightItemClicked implements AdapterView.OnItemClickListener {
+
+
+        @Override
+        public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+            rightPressPosition = position;
+            adapterRight.notifyDataSetChanged();
+        }
+    }
+
 
     public interface Listener {
         void onItemClicked(String str);
