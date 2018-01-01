@@ -3,7 +3,6 @@ package com.qr.demo.activity;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.Toast;
 
 import com.qr.demo.R;
 import com.qr.demo.adapter.CommonModel;
@@ -14,26 +13,25 @@ import com.qr.demo.dialog.CarriageDialog;
 import com.qr.demo.dialog.DateTimePickerDialog;
 import com.qr.demo.dialog.ListViewDialog;
 import com.qr.demo.model.PrintModel;
-import com.qr.demo.previewactivity.YjhblkPreviewActivity;
+import com.qr.demo.previewactivity.CgspbcpztxcPreviewActivity;
+import com.qr.demo.previewactivity.YjgzlkPreviewActivity;
 import com.qr.demo.utils.TimeUtils;
 
 import java.util.Calendar;
 
-import butterknife.OnItemClick;
-
 /**
- * 移交患病旅客
+ * 持挂失补车票中途下车到站退款
  */
-public class YjhblkActivity extends NewBaseCommonActivity implements ContractNewCommonAdapter.CommonListener {
+public class CgspbcpztxcActivity extends NewBaseCommonActivity implements ContractNewCommonAdapter.CommonListener {
 
     private CommonModel timeCommonModel;
-    public Calendar currentCalendar;
-
+    private Calendar currentCalendar;
     private DateTimePickerDialog dialog;
-
     private ListViewDialog listViewDialog;
     private CarriageDialog carriageDialog;
+
     private String strTitle;
+
 
     @Override
     protected void initData() {
@@ -67,7 +65,6 @@ public class YjhblkActivity extends NewBaseCommonActivity implements ContractNew
         models.add(new CommonModel("原票发站", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1103));
 
         models.add(new CommonModel("原票到站", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1104));
-
         models.add(new CommonModel("车厢号　", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1106));
 
         models.add(new CommonModel("预览", CommonModel.TYPE_BUTTON).setRequestCode(1105));
@@ -120,7 +117,6 @@ public class YjhblkActivity extends NewBaseCommonActivity implements ContractNew
 
             PrintModel printModel = new PrintModel();
 
-
             printModel.recordThing = strTitle;
             printModel.connectStation = adapter.getItem(2).getDiscrption();
 
@@ -144,14 +140,13 @@ public class YjhblkActivity extends NewBaseCommonActivity implements ContractNew
             printModel.carriageNum = carriageNum;// 旅客买的票 的结束位置
             printModel.seatNum = seatNum;
 
-            Intent mIntent = new Intent(this, YjhblkPreviewActivity.class);
+            Intent mIntent = new Intent(this, CgspbcpztxcPreviewActivity.class);
             Bundle mBundle = new Bundle();
             mBundle.putSerializable("data", printModel);
             mIntent.putExtras(mBundle);
 
             startActivity(mIntent);
         } else if (model.getRequestCode() == 1106) {
-
             if (carriageDialog == null) {
                 carriageDialog = new CarriageDialog(this, R.style.listDialog);
             }
@@ -160,8 +155,8 @@ public class YjhblkActivity extends NewBaseCommonActivity implements ContractNew
                 @Override
                 public void onItemClicked(String carriageNum, String seatNum) {
 
-                    YjhblkActivity.this.carriageNum = carriageNum;
-                    YjhblkActivity.this.seatNum = seatNum;
+                    CgspbcpztxcActivity.this.carriageNum = carriageNum;
+                    CgspbcpztxcActivity.this.seatNum = seatNum;
 
                     adapter.getItem(position).setDiscrption(carriageNum + "车" + seatNum + "号");
                     adapter.notifyDataSetChanged();
@@ -169,5 +164,6 @@ public class YjhblkActivity extends NewBaseCommonActivity implements ContractNew
             });
             carriageDialog.show();
         }
+
     }
 }

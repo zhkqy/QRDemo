@@ -26,6 +26,10 @@ public class NewBaseCommonActivity extends BaseActivity {
     @BindView(R.id.tv_main_title)
     protected TextView title;
 
+
+    protected String carriageNum = "";
+    protected String seatNum = "";
+
     @Override
     protected void setContentView() {
         setContentView(R.layout.activity_new_common);

@@ -44,8 +44,14 @@
             android:name=".activity.LabelListActivity"
             android:screenOrientation="portrait" />
 
+        <!--添加页面-->
         <activity
             android:name=".activity.YjgzlkActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden" />
+
+        <activity
+            android:name=".activity.CgspbcpztxcActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden" />
 
@@ -53,13 +59,23 @@
             android:name=".activity.YjhblkActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden" />
+
+        <!--预览页面-->
+
         <activity
             android:name=".previewactivity.YjgzlkPreviewActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:windowSoftInputMode="adjustPan|stateHidden"
             android:name=".previewactivity.YjhblkPreviewActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan|stateHidden" />
+        <activity
+            android:name=".previewactivity.CgspbcpztxcPreviewActivity"
+            android:screenOrientation="portrait"/>
+
+
+
+
 
 
     </application>

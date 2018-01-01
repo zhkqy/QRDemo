@@ -68,10 +68,6 @@ public class YjgzlkPreviewActivity extends BaseActivity {
                 "旅客" + printModel.name + ",身份证号码" + printModel.cardNum + ",持" + printModel.beginStation + "站至" + printModel.stopStation + "站车票，" + "" +
                 "票号" + printModel.ticketNum + ",找到列车长，自称坐过站。现交你站，请按章处理。";
 
-        int s = printModel.connectStation.length();
-
-        Log.i("sss", s + "");
-
         description.setText(discrep);
     }
 

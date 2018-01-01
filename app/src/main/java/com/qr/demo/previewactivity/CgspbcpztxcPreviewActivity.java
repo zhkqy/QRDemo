@@ -1,10 +1,7 @@
 package com.qr.demo.previewactivity;
 
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.TextView;
 
 import com.qr.demo.Label.YjgzlkLabel;
@@ -20,9 +17,10 @@ import butterknife.OnClick;
 
 /**
  * Created by sun on 2017/12/29.
+ * 持挂失补车票中途下车到站退款
  */
 
-public class YjhblkPreviewActivity extends BaseActivity {
+public class CgspbcpztxcPreviewActivity extends BaseActivity {
 
     PrintModel printModel;
 
@@ -32,10 +30,6 @@ public class YjhblkPreviewActivity extends BaseActivity {
     @BindView(R.id.connectStation)
     TextView connectStation;
 
-    @BindView(R.id.replace1)
-    EditText replace1;
-
-
     CustomFontsTextView description;
     private boolean isSending = false;
     private int interval;
@@ -43,7 +37,7 @@ public class YjhblkPreviewActivity extends BaseActivity {
 
     @Override
     protected void setContentView() {
-        setContentView(R.layout.activity_preview_yjhblk);
+        setContentView(R.layout.activity_preview_cgspbcpztxc);
         description = findViewById(R.id.description);
     }
 
@@ -60,22 +54,6 @@ public class YjhblkPreviewActivity extends BaseActivity {
     @Override
     protected void initListener() {
 
-        replace1.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-                refreshDescription();
-            }
-        });
     }
 
     @Override
@@ -85,16 +63,12 @@ public class YjhblkPreviewActivity extends BaseActivity {
 
         recordThing.setText("记录事由:" + printModel.recordThing);
 
-        connectStation.setText(printModel.connectStation + "站");
+        connectStation.setText(printModel.connectStation + "站（中途下车站）:");
 
-        refreshDescription();
-    }
-
-    private void refreshDescription() {
         String discrep = "　　" + printModel.year + "年" + printModel.month + "月" + printModel.day + "日，" + printModel.trainNum + "次列车" + printModel.connectStation + "站开车后，" +
                 "旅客" + printModel.name + ",身份证号码" + printModel.cardNum + ",持" + printModel.beginStation + "站至" + printModel.stopStation + "站车票，"
                 + printModel.carriageNum + "车" + printModel.seatNum + "号席（铺）位," +
-                "票号" + printModel.ticketNum + "," + replace1.getText().toString();
+                "票号" + printModel.ticketNum + ",要求在你站下车，经确认席位使用正常，可办理退票，现交你站，请按章办理。";
 
         description.setText(discrep);
     }
@@ -129,6 +103,4 @@ public class YjhblkPreviewActivity extends BaseActivity {
             }).start();
         }
     }
-
-
 }
