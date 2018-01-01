@@ -29,4 +29,7 @@ public class PrintModel implements Serializable {
     public String netStopStation = "";//网购原票到站
     public String netErrorReason = "";//网购出错理由
 
+
+    public String zishuStartStation = "";  //自述上站
+
 }

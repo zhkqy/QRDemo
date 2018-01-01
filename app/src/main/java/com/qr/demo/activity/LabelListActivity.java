@@ -141,7 +141,10 @@ public class LabelListActivity extends BaseActivity {
             startActivity(new Intent(mContext, GsbcpdztkActivity.class).putExtra("title", "挂失补车票到站退款"));
         } else if ("移交未换纸质车票旅客".equals(str)) {
             startActivity(new Intent(mContext, YjwhzzcplkActivity.class).putExtra("title", "移交未换纸质车票旅客"));
+        } else if ("移交无票人员".equals(str)) {
+            startActivity(new Intent(mContext, YjwpryActivity.class).putExtra("title", "移交无票人员"));
         } else if ("".equals(str)) {
+
 
         }
 
