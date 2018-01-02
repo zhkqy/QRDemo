@@ -39,4 +39,10 @@ public class PrintModel implements Serializable {
     public String zhongzhuanTicketNum = "";  //中转票号
     public String zhongzhuanCarriageNum = "";  //中转车厢号
     public String zhongzhuanSeatNum = "";  //中转座位号
+
+    public String wuchengTrainNum = "";  //误乘车次
+    public String wuchengBeginStation = "";  //误乘发站
+    public String wuchengStopStation = "";  //误乘到站
+    public String wuchengTicketNum = "";  //误乘票号
+
 }
