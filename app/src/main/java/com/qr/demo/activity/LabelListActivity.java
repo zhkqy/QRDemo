@@ -169,6 +169,8 @@ public class LabelListActivity extends BaseActivity {
             startActivity(new Intent(mContext, YjjsActivity.class).putExtra("title", "移交挤手旅客"));
         }else if ("超员电报".equals(str)) {
             startActivity(new Intent(mContext, CyMessageActivity.class).putExtra("title", "超员电报"));
+        }else if ("旅客意外伤电报".equals(str)) {
+            startActivity(new Intent(mContext, LkywsMessageActivity.class).putExtra("title", "旅客意外伤电报"));
         }
 
     }
