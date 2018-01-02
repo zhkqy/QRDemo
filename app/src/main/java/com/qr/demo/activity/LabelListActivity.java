@@ -38,7 +38,7 @@ public class LabelListActivity extends BaseActivity {
     @Override
     protected void setContentView() {
 
-        setContentView(R.layout.activity_login);
+        setContentView(R.layout.activity_label_list);
     }
 
     @Override
@@ -167,6 +167,8 @@ public class LabelListActivity extends BaseActivity {
             startActivity(new Intent(mContext, YjzsActivity.class).putExtra("title", "移交砸伤旅客"));
         }else if ("移交挤手旅客".equals(str)) {
             startActivity(new Intent(mContext, YjjsActivity.class).putExtra("title", "移交挤手旅客"));
+        }else if ("超员电报".equals(str)) {
+            startActivity(new Intent(mContext, CyMessageActivity.class).putExtra("title", "超员电报"));
         }
 
     }

@@ -32,4 +32,9 @@
     <color name="crm_blue">#47a3ff</color>
     <color name="crm_green">#00d1a7</color>
     <color name="daka_orange">#ff943e</color>
+
+    <color name="colorTextGray">#939393</color>
+    <color name="colorText">#353535</color>
+
+
 </resources>

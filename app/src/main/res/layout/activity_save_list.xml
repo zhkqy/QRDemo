@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/gray_f5"
@@ -29,8 +30,9 @@
                 android:layout_centerInParent="true"
                 android:ellipsize="end"
                 android:gravity="center"
+                android:maxWidth="200dp"
                 android:singleLine="true"
-                android:text=""
+                android:text="已存列表"
                 android:textColor="@android:color/black"
                 android:textSize="20sp" />
         </RelativeLayout>
@@ -45,11 +47,16 @@
 
     </RelativeLayout>
 
-    <ListView
-        android:id="@+id/listview"
+
+    <View
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:divider="@color/colorLine"
-        android:dividerHeight="1px" />
+        android:layout_height="1px"
+        android:background="@color/gray_f5" />
+
+    <ListView
+        android:layout_width="match_parent"
+
+        android:layout_height="match_parent" />
+
 
 </LinearLayout>

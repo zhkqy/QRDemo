@@ -27,13 +27,19 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="com.qr.demo.MainActivity">
+        <activity android:name="com.qr.demo.activity.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+
+        <activity
+            android:name="com.qr.demo.MainActivity"
+            android:screenOrientation="portrait" />
+
         <activity
             android:name="com.qr.demo.activity.DeviceListActivity"
             android:configChanges="orientation|keyboardHidden"
@@ -44,6 +50,9 @@
             android:name=".activity.LabelListActivity"
             android:screenOrientation="portrait" />
 
+        <activity
+            android:name=".activity.SaveListActivity"
+            android:screenOrientation="portrait" />
         <!--添加页面-->
         <activity
             android:name=".activity.YjgzlkActivity"
@@ -117,6 +126,11 @@
             android:windowSoftInputMode="stateHidden" />
         <activity
             android:name=".activity.YjjsActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden" />
+
+        <activity
+            android:name=".activity.CyMessageActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden" />
 

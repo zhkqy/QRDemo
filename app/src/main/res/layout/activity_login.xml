@@ -1,55 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/gray_f5"
     android:orientation="vertical">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="top">
 
-        <RelativeLayout
-            android:id="@+id/rl_common_titlebar"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:background="@android:color/white"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp">
-
-            <include
-                android:id="@+id/rl_title_bar_left"
-                layout="@layout/layout_common_title_bar_left" />
-
-            <TextView
-                android:id="@+id/tv_main_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:ellipsize="end"
-                android:gravity="center"
-                android:singleLine="true"
-                android:text=""
-                android:textColor="@android:color/black"
-                android:textSize="20sp" />
-        </RelativeLayout>
-
-        <ImageView
-            android:id="@+id/ivCommonTitleBarDivider"
-            android:layout_width="match_parent"
-            android:layout_height="1px"
-            android:layout_below="@id/rl_common_titlebar"
-            android:background="@color/colorLine"
-            android:contentDescription="@null" />
-
-    </RelativeLayout>
-
-    <ListView
-        android:id="@+id/listview"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:divider="@color/colorLine"
-        android:dividerHeight="1px" />
+        android:layout_marginTop="100dp"
+        android:orientation="vertical"
+        android:padding="15dp">
 
+        <EditText
+            android:id="@+id/account"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:drawablePadding="@dimen/normalLarge"
+            android:drawableStart="@drawable/ic_login_policing_number"
+            android:hint="请输入账号"
+            android:textColor="@color/colorText"
+            android:textColorHint="@color/colorTextGray" />
+
+        <EditText
+            android:id="@+id/pwd"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:drawablePadding="@dimen/normalLarge"
+            android:drawableStart="@drawable/ic_login_password"
+            android:hint="请输入密码"
+            android:inputType="textPassword"
+            android:lines="1"
+            android:textColor="@color/colorText"
+            android:textColorHint="@color/colorTextGray" />
+
+        <Button
+            android:id="@+id/btn_login"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/bg_blue_corner"
+            android:text="登　录"
+            android:textColor="@color/white" />
+    </LinearLayout>
 </LinearLayout>

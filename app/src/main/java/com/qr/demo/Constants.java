@@ -8,6 +8,8 @@ import java.util.ArrayList;
 
 public class Constants {
 
+    public static String FILE_ROOT_NAME = "qrlabel";
+
     /**
      * 客运记录模板
      *

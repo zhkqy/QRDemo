@@ -17,7 +17,9 @@ import com.qr.demo.Label.PrintLabel;
 import com.qr.demo.activity.BaseActivity;
 import com.qr.demo.activity.DeviceListActivity;
 import com.qr.demo.activity.LabelListActivity;
+import com.qr.demo.activity.SaveListActivity;
 import com.qr.demo.db.DBManager;
+import com.qr.demo.utils.SharedPreferencesUtil;
 import com.qr.print.*;
 
 import butterknife.BindView;
@@ -33,7 +35,6 @@ public class MainActivity extends BaseActivity {
     private String address = "";
     private String name = "";
     private BluetoothAdapter mBluetoothAdapter = null;
-    private int interval;
 
     @BindView(R.id.title_right_text)
     TextView title_right_text;
@@ -94,9 +95,15 @@ public class MainActivity extends BaseActivity {
         startActivity(new Intent(this, LabelListActivity.class).putExtra("type", "traintelegram"));
     }
 
+    @OnClick(R.id.saveList)
+    public void saveListOnClicked(View v) {
+        startActivity(new Intent(this, SaveListActivity.class));
+    }
+
     @OnClick(R.id.logout)
     public void logoutOnClicked(View v) {
-
+        SharedPreferencesUtil.getInstance(this).putString(SharedPreferencesUtil.ACCOUNT, "");
+        finish();
     }
 
     @Override
