@@ -13,7 +13,6 @@ import com.qr.demo.dialog.CarriageDialog;
 import com.qr.demo.dialog.DateTimePickerDialog;
 import com.qr.demo.dialog.ListViewDialog;
 import com.qr.demo.model.PrintModel;
-import com.qr.demo.previewactivity.CgspbcpztxcPreviewActivity;
 import com.qr.demo.previewactivity.GsbcpdztkPreviewActivity;
 import com.qr.demo.utils.TimeUtils;
 
@@ -43,12 +42,12 @@ public class GsbcpdztkActivity extends NewBaseCommonActivity implements Contract
 
         String trainCode = DbHelper.getTrainNum(this);
         models.add(new CommonModel("列车车次", CommonModel.TYPE_TEXT_ARROW, false).
-                setDiscrption(trainCode));
+                setDescription(trainCode));
 
         String currentTime = TimeUtils.getCurrentTime();
 
         timeCommonModel = new CommonModel("当前日期", CommonModel.TYPE_TEXT_ARROW).
-                setDiscrption(currentTime).setRequestCode(1101);
+                setDescription(currentTime).setRequestCode(1101);
 
         models.add(timeCommonModel);
 
@@ -84,7 +83,7 @@ public class GsbcpdztkActivity extends NewBaseCommonActivity implements Contract
         dialog = new DateTimePickerDialog(this, currentCalendar.getTimeInMillis(), true);
         dialog.setOnDateTimeSetListener(new DateTimePickerDialog.OnDateTimeSetListener() {
             public void OnDateTimeSet(AlertDialog dialog, long date, Calendar calendar) {
-                timeCommonModel.setDiscrption(calendar.get(Calendar.YEAR) + "-" + (calendar.get(Calendar.MONTH) + 1) + "-" + calendar.get(Calendar.DAY_OF_MONTH));
+                timeCommonModel.setDescription(calendar.get(Calendar.YEAR) + "-" + (calendar.get(Calendar.MONTH) + 1) + "-" + calendar.get(Calendar.DAY_OF_MONTH));
                 adapter.notifyDataSetChanged();
             }
         });
@@ -107,7 +106,7 @@ public class GsbcpdztkActivity extends NewBaseCommonActivity implements Contract
             listViewDialog.setListener(new ListViewDialog.Listener() {
                 @Override
                 public void onItemClicked(String str) {
-                    adapter.getItem(position).setDiscrption(str);
+                    adapter.getItem(position).setDescription(str);
                     adapter.notifyDataSetChanged();
                 }
             });
@@ -117,10 +116,10 @@ public class GsbcpdztkActivity extends NewBaseCommonActivity implements Contract
             PrintModel printModel = new PrintModel();
 
             printModel.recordThing = strTitle;
-            printModel.connectStation = adapter.getItem(2).getDiscrption();
+            printModel.connectStation = adapter.getItem(2).getDescription();
 
 
-            String time = adapter.getItem(1).getDiscrption();
+            String time = adapter.getItem(1).getDescription();
 
             String[] str = time.split("-");
 
@@ -130,12 +129,12 @@ public class GsbcpdztkActivity extends NewBaseCommonActivity implements Contract
                 printModel.day = str[2];
             }
 
-            printModel.trainNum = adapter.getItem(0).getDiscrption();
+            printModel.trainNum = adapter.getItem(0).getDescription();
             printModel.name = adapter.getItem(3).getEditTextModel().getEditTextStr();// 旅客名称
             printModel.cardNum = adapter.getItem(4).getEditTextModel().getEditTextStr();//  身份证号码
             printModel.ticketNum = adapter.getItem(5).getEditTextModel().getEditTextStr();// 票号
-            printModel.beginStation = adapter.getItem(6).getDiscrption();// 旅客买的票 的开始位置
-            printModel.stopStation = adapter.getItem(7).getDiscrption();// 旅客买的票 的结束位置
+            printModel.beginStation = adapter.getItem(6).getDescription();// 旅客买的票 的开始位置
+            printModel.stopStation = adapter.getItem(7).getDescription();// 旅客买的票 的结束位置
             printModel.carriageNum = carriageNum;// 旅客买的票 的结束位置
             printModel.seatNum = seatNum;
 
@@ -157,7 +156,7 @@ public class GsbcpdztkActivity extends NewBaseCommonActivity implements Contract
                     GsbcpdztkActivity.this.carriageNum = carriageNum;
                     GsbcpdztkActivity.this.seatNum = seatNum;
 
-                    adapter.getItem(position).setDiscrption(carriageNum + "车" + seatNum + "号");
+                    adapter.getItem(position).setDescription(carriageNum + "车" + seatNum + "号");
                     adapter.notifyDataSetChanged();
                 }
             });

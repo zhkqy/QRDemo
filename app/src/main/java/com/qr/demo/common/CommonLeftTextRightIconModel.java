@@ -9,7 +9,6 @@ public class CommonLeftTextRightIconModel {
     public int rightIcon = 0;
     public int textColor = 0;
 
-    public RightIconClickLinstener rightIconlistener;
 
     public CommonLeftTextRightIconModel(String title, int rightIcon) {
         this.title = title;
@@ -26,15 +25,6 @@ public class CommonLeftTextRightIconModel {
     }
 
 
-    public RightIconClickLinstener getRightIconlistener() {
-        return rightIconlistener;
-    }
-
-    public CommonLeftTextRightIconModel setRightIconlistener(RightIconClickLinstener rightIconlistener) {
-        this.rightIconlistener = rightIconlistener;
-        return this;
-    }
-
     public CommonLeftTextRightIconModel setTextColor(int textColor) {
         this.textColor = textColor;
         return this;
@@ -42,19 +32,6 @@ public class CommonLeftTextRightIconModel {
 
     public void setTitle(String title) {
         this.title = title;
-    }
-
-    public int getRightIcon() {
-        return rightIcon;
-    }
-
-    public void setRightIcon(int rightIcon) {
-        this.rightIcon = rightIcon;
-    }
-
-    public interface RightIconClickLinstener {
-
-        void onclicked();
     }
 
 }

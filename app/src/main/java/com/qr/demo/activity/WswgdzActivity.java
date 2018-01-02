@@ -12,15 +12,15 @@ import com.qr.demo.db.DbHelper;
 import com.qr.demo.dialog.DateTimePickerDialog;
 import com.qr.demo.dialog.ListViewDialog;
 import com.qr.demo.model.PrintModel;
-import com.qr.demo.previewactivity.YjwxpPreviewActivity;
+import com.qr.demo.previewactivity.WswgdzPreviewActivity;
 import com.qr.demo.utils.TimeUtils;
 
 import java.util.Calendar;
 
 /**
- * 移交危险品
+ * 误售、误购到站退款
  */
-public class YjwxpActivity extends NewBaseCommonActivity implements ContractNewCommonAdapter.CommonListener {
+public class WswgdzActivity extends NewBaseCommonActivity implements ContractNewCommonAdapter.CommonListener {
 
     private CommonModel timeCommonModel;
     public Calendar currentCalendar;
@@ -55,15 +55,13 @@ public class YjwxpActivity extends NewBaseCommonActivity implements ContractNewC
         models.add(new CommonModel(
                 new CommonTextEditTextModel("旅客姓名", "", "请输入旅客姓名")));
         models.add(new CommonModel(
-                new CommonTextEditTextModel("身份证号", "", "请输入身份证号")));
-        models.add(new CommonModel(
                 new CommonTextEditTextModel("原票票号", "", "请输入原票票号")));
 
         models.add(new CommonModel("原票发站", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1102));
 
         models.add(new CommonModel("原票到站", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1102));
-        models.add(new CommonModel(
-                new CommonTextEditTextModel("携带物品", "", "请输入携带物品")));
+
+        models.add(new CommonModel("实际到站", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1102));
 
         models.add(new CommonModel("预览", CommonModel.TYPE_BUTTON).setRequestCode(1105));
 
@@ -130,13 +128,12 @@ public class YjwxpActivity extends NewBaseCommonActivity implements ContractNewC
 
             printModel.trainNum = adapter.getItem(0).getDescription();
             printModel.name = adapter.getItem(3).getEditTextModel().getEditTextStr();// 旅客名称
-            printModel.cardNum = adapter.getItem(4).getEditTextModel().getEditTextStr();//  身份证号码
-            printModel.ticketNum = adapter.getItem(5).getEditTextModel().getEditTextStr();// 票号
-            printModel.beginStation = adapter.getItem(6).getDescription();// 旅客买的票 的开始位置
-            printModel.stopStation = adapter.getItem(7).getDescription();// 旅客买的票 的结束位置
-            printModel.goods = adapter.getItem(8).getEditTextModel().getEditTextStr();
+            printModel.ticketNum = adapter.getItem(4).getEditTextModel().getEditTextStr();// 票号
+            printModel.beginStation = adapter.getItem(5).getDescription();// 旅客买的票 的开始位置
+            printModel.stopStation = adapter.getItem(6).getDescription();// 旅客买的票 的结束位置
+            printModel.actualStation = adapter.getItem(7).getDescription();
 
-            Intent mIntent = new Intent(this, YjwxpPreviewActivity.class);
+            Intent mIntent = new Intent(this, WswgdzPreviewActivity.class);
             Bundle mBundle = new Bundle();
             mBundle.putSerializable("data", printModel);
             mIntent.putExtras(mBundle);

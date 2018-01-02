@@ -6,14 +6,10 @@ import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.FrameLayout;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.qr.demo.R;
-import com.qr.demo.common.CommonLeftTextRightIconModel;
-import com.qr.demo.common.CommonLineModel;
 import com.qr.demo.common.CommonTextEditTextModel;
 import com.qr.demo.view.NewTitleView;
 import com.qr.demo.view.TitleEditAlignLeftView;
@@ -138,8 +134,8 @@ public class ContractNewCommonAdapter extends BaseAdapter {
             holder.titleView.hindArrow();
         }
 
-        if (!TextUtils.isEmpty(m.getDiscrption())) {
-            holder.titleView.setDiscrption(m.getDiscrption());
+        if (!TextUtils.isEmpty(m.getDescription())) {
+            holder.titleView.setDiscrption(m.getDescription());
         } else {
             holder.titleView.setDiscrption("");
         }

@@ -59,5 +59,7 @@ public class PrintModel implements Serializable {
 
     public String goods = "";//携带物品
 
+    public String actualStation = "";   //实际到站
+
 
 }

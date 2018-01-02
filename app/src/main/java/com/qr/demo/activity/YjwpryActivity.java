@@ -7,13 +7,11 @@ import android.os.Bundle;
 import com.qr.demo.R;
 import com.qr.demo.adapter.CommonModel;
 import com.qr.demo.adapter.ContractNewCommonAdapter;
-import com.qr.demo.common.CommonTextEditTextModel;
 import com.qr.demo.db.DbHelper;
 import com.qr.demo.dialog.CarriageDialog;
 import com.qr.demo.dialog.DateTimePickerDialog;
 import com.qr.demo.dialog.ListViewDialog;
 import com.qr.demo.model.PrintModel;
-import com.qr.demo.previewactivity.YjgzlkPreviewActivity;
 import com.qr.demo.previewactivity.YjwpryPreviewActivity;
 import com.qr.demo.utils.TimeUtils;
 
@@ -44,12 +42,12 @@ public class YjwpryActivity extends NewBaseCommonActivity implements ContractNew
 
         String trainCode = DbHelper.getTrainNum(this);
         models.add(new CommonModel("列车车次", CommonModel.TYPE_TEXT_ARROW, false).
-                setDiscrption(trainCode));
+                setDescription(trainCode));
 
         String currentTime = TimeUtils.getCurrentTime();
 
         timeCommonModel = new CommonModel("当前日期", CommonModel.TYPE_TEXT_ARROW).
-                setDiscrption(currentTime).setRequestCode(1101);
+                setDescription(currentTime).setRequestCode(1101);
 
         models.add(timeCommonModel);
 
@@ -77,7 +75,7 @@ public class YjwpryActivity extends NewBaseCommonActivity implements ContractNew
         dialog = new DateTimePickerDialog(this, currentCalendar.getTimeInMillis(), true);
         dialog.setOnDateTimeSetListener(new DateTimePickerDialog.OnDateTimeSetListener() {
             public void OnDateTimeSet(AlertDialog dialog, long date, Calendar calendar) {
-                timeCommonModel.setDiscrption(calendar.get(Calendar.YEAR) + "-" + (calendar.get(Calendar.MONTH) + 1) + "-" + calendar.get(Calendar.DAY_OF_MONTH));
+                timeCommonModel.setDescription(calendar.get(Calendar.YEAR) + "-" + (calendar.get(Calendar.MONTH) + 1) + "-" + calendar.get(Calendar.DAY_OF_MONTH));
                 adapter.notifyDataSetChanged();
             }
         });
@@ -99,7 +97,7 @@ public class YjwpryActivity extends NewBaseCommonActivity implements ContractNew
             listViewDialog.setListener(new ListViewDialog.Listener() {
                 @Override
                 public void onItemClicked(String str) {
-                    adapter.getItem(position).setDiscrption(str);
+                    adapter.getItem(position).setDescription(str);
                     adapter.notifyDataSetChanged();
                 }
             });
@@ -109,10 +107,10 @@ public class YjwpryActivity extends NewBaseCommonActivity implements ContractNew
             PrintModel printModel = new PrintModel();
 
             printModel.recordThing = strTitle;
-            printModel.connectStation = adapter.getItem(2).getDiscrption();
+            printModel.connectStation = adapter.getItem(2).getDescription();
 
 
-            String time = adapter.getItem(1).getDiscrption();
+            String time = adapter.getItem(1).getDescription();
 
             String[] str = time.split("-");
 
@@ -122,8 +120,8 @@ public class YjwpryActivity extends NewBaseCommonActivity implements ContractNew
                 printModel.day = str[2];
             }
 
-            printModel.trainNum = adapter.getItem(0).getDiscrption();
-            printModel.zishuStartStation = adapter.getItem(4).getDiscrption();
+            printModel.trainNum = adapter.getItem(0).getDescription();
+            printModel.zishuStartStation = adapter.getItem(4).getDescription();
             printModel.carriageNum = carriageNum;
             printModel.seatNum = seatNum;
 
@@ -146,7 +144,7 @@ public class YjwpryActivity extends NewBaseCommonActivity implements ContractNew
                     YjwpryActivity.this.carriageNum = carriageNum;
                     YjwpryActivity.this.seatNum = seatNum;
 
-                    adapter.getItem(position).setDiscrption(carriageNum + "车" + seatNum + "号");
+                    adapter.getItem(position).setDescription(carriageNum + "车" + seatNum + "号");
                     adapter.notifyDataSetChanged();
                 }
             });

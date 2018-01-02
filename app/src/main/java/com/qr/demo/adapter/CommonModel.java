@@ -1,15 +1,12 @@
 package com.qr.demo.adapter;
 
-import com.qr.demo.common.CommonCheckBoxModel;
-import com.qr.demo.common.CommonLeftTextRightIconModel;
 import com.qr.demo.common.CommonLineModel;
 import com.qr.demo.common.CommonTextEditTextModel;
-import com.qr.demo.common.CommonToggleModel;
 
 public class CommonModel {
     public String type = "";  //自己定义的type 展示listview不同的item
     public String title = ""; // 左边的title
-    private String discrption = "";
+    private String description = "";
     public String dataType = "";
     public boolean showArrow = true;
     public int requestCode = 0;  //请求码
@@ -17,15 +14,10 @@ public class CommonModel {
     public static String TYPE_LINE = "type_line";    //显示一线
     public static String TYPE_TEXT_ARROW = "type_text_arrow";  //带箭头点击模式
     public static String TYPE_TEXT_EDITTEXT = "type_text_edittext";  //编辑模式
-    public static String TYPE_LEFT_TEXT_RIGHT_ICON = "type_left_text_right_icon";  //左面text 右面icon的样式
     public static String TYPE_BUTTON = "type_button";  //按钮模式   例： 保存按钮
 
     public CommonLineModel lineModel;
-    public CommonToggleModel toggleModel = new CommonToggleModel();
     public CommonTextEditTextModel editTextModel = new CommonTextEditTextModel("", "", "");
-    public CommonLeftTextRightIconModel leftTextRightIconModel = new CommonLeftTextRightIconModel("", 0);
-    public CommonCheckBoxModel checkBoxModel = new CommonCheckBoxModel();
-
 
     public CommonModel(String title, String type) {
         this.title = title;
@@ -61,38 +53,14 @@ public class CommonModel {
         return requestCode;
     }
 
-    public String getDiscrption() {
-        return discrption;
+    public String getDescription() {
+        return description;
     }
 
-    public CommonModel setDiscrption(String discrption) {
-        this.discrption = discrption;
+    public CommonModel setDescription(String description) {
+        this.description = description;
         return this;
-    }
 
-    public CommonToggleModel getToggleModel() {
-        return toggleModel;
-    }
-
-
-    public CommonCheckBoxModel getCheckBoxModel() {
-        return checkBoxModel;
-    }
-
-    public void setCheckBoxModel(CommonCheckBoxModel checkBoxModel) {
-        this.checkBoxModel = checkBoxModel;
-    }
-
-    public void setToggleModel(CommonToggleModel toggleModel) {
-        this.toggleModel = toggleModel;
-    }
-
-    public CommonLeftTextRightIconModel getLeftTextRightIconModel() {
-        return leftTextRightIconModel;
-    }
-
-    public void setLeftTextRightIconModel(CommonLeftTextRightIconModel leftTextRightIconModel) {
-        this.leftTextRightIconModel = leftTextRightIconModel;
     }
 
     public CommonTextEditTextModel getEditTextModel() {
