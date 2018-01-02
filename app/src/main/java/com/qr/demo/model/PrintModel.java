@@ -57,4 +57,7 @@ public class PrintModel implements Serializable {
 
     public String money = "";//现金
 
+    public String goods = "";//携带物品
+
+
 }
