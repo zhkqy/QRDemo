@@ -64,6 +64,7 @@ public class PrintModel implements Serializable {
     public String beforStation = "";   //在哪一站之前
 
     public String limitNum = "";//定员
+    public String haveNum = "";  //现有人数
 
     public String otherBeginStation = "";  //other发站
     public String otherStopStation = "";  //other发站到站
@@ -77,6 +78,11 @@ public class PrintModel implements Serializable {
 
     public String runBeginStation = "";  //运行开始站
     public String runStopStation = "";  //运行结束站
+
+
+    public String zhusongBeginStation = "";  //主送发站
+    public String zhusongStopStation = "";  //主送到站
+    public String chaoyuanStation = "";  //超员车站
 
 
 }

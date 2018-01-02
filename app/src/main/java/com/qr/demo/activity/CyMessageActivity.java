@@ -12,7 +12,7 @@ import com.qr.demo.db.DbHelper;
 import com.qr.demo.dialog.DateTimePickerDialog;
 import com.qr.demo.dialog.ListViewDialog;
 import com.qr.demo.model.PrintModel;
-import com.qr.demo.previewactivity.YjgzlkPreviewActivity;
+import com.qr.demo.previewactivity.CyMessagePreViewActivity;
 import com.qr.demo.utils.TimeUtils;
 
 import java.util.Calendar;
@@ -56,10 +56,11 @@ public class CyMessageActivity extends NewBaseCommonActivity implements Contract
         models.add(new CommonModel(
                 new CommonTextEditTextModel("现有人数", "", "现有人数")));
 
+        models.add(new CommonModel("主送发站", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1102));
 
-        models.add(new CommonModel("区间发站", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1103));
+        models.add(new CommonModel("主送到站", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1102));
 
-        models.add(new CommonModel("区间到站", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1104));
+        models.add(new CommonModel("超员车站", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1102));
 
         models.add(new CommonModel("预览", CommonModel.TYPE_BUTTON).setRequestCode(1105));
 
@@ -92,9 +93,7 @@ public class CyMessageActivity extends NewBaseCommonActivity implements Contract
 
         if (model.getRequestCode() == 1101) {
             showDialog();
-        } else if (model.getRequestCode() == 1102 ||
-                model.getRequestCode() == 1103 ||
-                model.getRequestCode() == 1104) {
+        } else if (model.getRequestCode() == 1102) {
             if (listViewDialog == null) {
                 listViewDialog = new ListViewDialog(this, R.style.listDialog);
             }
@@ -112,8 +111,6 @@ public class CyMessageActivity extends NewBaseCommonActivity implements Contract
             PrintModel printModel = new PrintModel();
 
             printModel.recordThing = strTitle;
-            printModel.connectStation = adapter.getItem(2).getDescription();
-
 
             String time = adapter.getItem(1).getDescription();
 
@@ -126,14 +123,14 @@ public class CyMessageActivity extends NewBaseCommonActivity implements Contract
             }
 
             printModel.trainNum = adapter.getItem(0).getDescription();
-            printModel.name = adapter.getItem(3).getEditTextModel().getEditTextStr();// 旅客名称
-            printModel.cardNum = adapter.getItem(4).getEditTextModel().getEditTextStr();//  身份证号码
-            printModel.ticketNum = adapter.getItem(5).getEditTextModel().getEditTextStr();// 票号
-            printModel.beginStation = adapter.getItem(6).getDescription();// 旅客买的票 的开始位置
-            printModel.stopStation = adapter.getItem(7).getDescription();// 旅客买的票 的结束位置
+            printModel.limitNum = adapter.getItem(2).getEditTextModel().getEditTextStr();
+            printModel.haveNum = adapter.getItem(3).getEditTextModel().getEditTextStr();
 
+            printModel.zhusongBeginStation = adapter.getItem(4).getDescription();
+            printModel.zhusongStopStation = adapter.getItem(5).getDescription();
+            printModel.chaoyuanStation = adapter.getItem(6).getDescription();
 
-            Intent mIntent = new Intent(this, YjgzlkPreviewActivity.class);
+            Intent mIntent = new Intent(this, CyMessagePreViewActivity.class);
             Bundle mBundle = new Bundle();
             mBundle.putSerializable("data", printModel);
             mIntent.putExtras(mBundle);

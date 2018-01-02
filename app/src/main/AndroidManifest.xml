@@ -200,7 +200,10 @@
             android:name=".previewactivity.YjjsPreviewActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden" />
-
+        <activity
+            android:name=".previewactivity.CyMessagePreViewActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden" />
     </application>
 
 </manifest>
