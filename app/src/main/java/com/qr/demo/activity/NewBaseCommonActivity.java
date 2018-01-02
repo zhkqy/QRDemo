@@ -31,7 +31,8 @@ public class NewBaseCommonActivity extends BaseActivity {
     protected String seatNum = "";
     protected String zhongzhuanCarriageNum = "";  //中转车厢号
     protected String zhongzhuanSeatNum = "";  //中转座位号
-
+    protected String otherCarriageNum ="";  //other发站车厢号
+    protected String otherSeatNum ="";  //other发站座位号
 
     @Override
     protected void setContentView() {

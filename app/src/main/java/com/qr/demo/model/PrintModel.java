@@ -63,5 +63,13 @@ public class PrintModel implements Serializable {
 
     public String limitNum = "";//定员
 
+    public String otherBeginStation = "";  //other发站
+    public String otherStopStation = "";  //other发站到站
+    public String otherTicketNum = "";  //other发站票号
+    public String otherCarriageNum = "";  //other发站车厢号
+    public String otherSeatNum = "";  //other发站座位号
+    public String otherAge = "";  //other旅客年龄
+    public String otherSex = "";  //other旅客性别
+    public String otherName = "";  //other旅客姓名
 
 }

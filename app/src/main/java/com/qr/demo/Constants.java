@@ -32,7 +32,6 @@ public class Constants {
         list.add("误售、误购到站退票");
         list.add("车辆故障到站退款");
 
-
         list.add("移交烫伤旅客");
         list.add("移交不明物体击伤旅客");
         list.add("移交砸伤旅客");

@@ -155,10 +155,12 @@ public class LabelListActivity extends BaseActivity {
             startActivity(new Intent(mContext, YjyswpActivity.class).putExtra("title", "移交遗失物品"));
         } else if ("移交危险品".equals(str)) {
             startActivity(new Intent(mContext, YjwxpActivity.class).putExtra("title", "移交危险品"));
-        }else if ("误售、误购到站退票".equals(str)) {
+        } else if ("误售、误购到站退票".equals(str)) {
             startActivity(new Intent(mContext, WswgdzActivity.class).putExtra("title", "误售、误购到站退票"));
-        }else if ("车辆故障到站退款".equals(str)) {
+        } else if ("车辆故障到站退款".equals(str)) {
             startActivity(new Intent(mContext, ClgzdztkActivity.class).putExtra("title", "车辆故障到站退款"));
+        } else if ("移交烫伤旅客".equals(str)) {
+            startActivity(new Intent(mContext, YjtslkActivity.class).putExtra("title", "移交烫伤旅客"));
         }
 
     }
