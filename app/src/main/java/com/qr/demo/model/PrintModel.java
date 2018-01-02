@@ -61,5 +61,7 @@ public class PrintModel implements Serializable {
 
     public String actualStation = "";   //实际到站
 
+    public String limitNum = "";//定员
+
 
 }

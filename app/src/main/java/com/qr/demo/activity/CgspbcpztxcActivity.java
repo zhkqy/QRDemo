@@ -9,7 +9,7 @@ import com.qr.demo.adapter.CommonModel;
 import com.qr.demo.adapter.ContractNewCommonAdapter;
 import com.qr.demo.common.CommonTextEditTextModel;
 import com.qr.demo.db.DbHelper;
-import com.qr.demo.dialog.CarriageDialog;
+import com.qr.demo.dialog.CarriageAndSeatDialog;
 import com.qr.demo.dialog.DateTimePickerDialog;
 import com.qr.demo.dialog.ListViewDialog;
 import com.qr.demo.model.PrintModel;
@@ -27,7 +27,7 @@ public class CgspbcpztxcActivity extends NewBaseCommonActivity implements Contra
     private Calendar currentCalendar;
     private DateTimePickerDialog dialog;
     private ListViewDialog listViewDialog;
-    private CarriageDialog carriageDialog;
+    private CarriageAndSeatDialog carriageAndSeatDialog;
 
     private String strTitle;
 
@@ -59,7 +59,7 @@ public class CgspbcpztxcActivity extends NewBaseCommonActivity implements Contra
         models.add(new CommonModel(
                 new CommonTextEditTextModel("身份证号", "", "请输入身份证号")));
         models.add(new CommonModel(
-                new CommonTextEditTextModel("乘客票号", "", "请输入票号")));
+                new CommonTextEditTextModel("原票票号", "", "请输入原票票号")));
 
         models.add(new CommonModel("原票发站", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1103));
 
@@ -146,11 +146,11 @@ public class CgspbcpztxcActivity extends NewBaseCommonActivity implements Contra
 
             startActivity(mIntent);
         } else if (model.getRequestCode() == 1106) {
-            if (carriageDialog == null) {
-                carriageDialog = new CarriageDialog(this, R.style.listDialog);
+            if (carriageAndSeatDialog == null) {
+                carriageAndSeatDialog = new CarriageAndSeatDialog(this, R.style.listDialog);
             }
-            carriageDialog.setListener(null);
-            carriageDialog.setListener(new CarriageDialog.Listener() {
+            carriageAndSeatDialog.setListener(null);
+            carriageAndSeatDialog.setListener(new CarriageAndSeatDialog.Listener() {
                 @Override
                 public void onItemClicked(String carriageNum, String seatNum) {
 
@@ -161,7 +161,7 @@ public class CgspbcpztxcActivity extends NewBaseCommonActivity implements Contra
                     adapter.notifyDataSetChanged();
                 }
             });
-            carriageDialog.show();
+            carriageAndSeatDialog.show();
         }
 
     }

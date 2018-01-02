@@ -9,7 +9,7 @@ import com.qr.demo.adapter.CommonModel;
 import com.qr.demo.adapter.ContractNewCommonAdapter;
 import com.qr.demo.common.CommonTextEditTextModel;
 import com.qr.demo.db.DbHelper;
-import com.qr.demo.dialog.CarriageDialog;
+import com.qr.demo.dialog.CarriageAndSeatDialog;
 import com.qr.demo.dialog.DateTimePickerDialog;
 import com.qr.demo.dialog.ListViewDialog;
 import com.qr.demo.model.PrintModel;
@@ -30,7 +30,7 @@ public class YjyswpActivity extends NewBaseCommonActivity implements ContractNew
 
     ListViewDialog listViewDialog;
     String strTitle;
-    private CarriageDialog carriageDialog;
+    private CarriageAndSeatDialog carriageAndSeatDialog;
 
     @Override
     protected void initData() {
@@ -132,11 +132,11 @@ public class YjyswpActivity extends NewBaseCommonActivity implements ContractNew
             startActivity(mIntent);
         } else if (model.getRequestCode() == 1106) {
 
-            if (carriageDialog == null) {
-                carriageDialog = new CarriageDialog(this, R.style.listDialog);
+            if (carriageAndSeatDialog == null) {
+                carriageAndSeatDialog = new CarriageAndSeatDialog(this, R.style.listDialog);
             }
-            carriageDialog.setListener(null);
-            carriageDialog.setListener(new CarriageDialog.Listener() {
+            carriageAndSeatDialog.setListener(null);
+            carriageAndSeatDialog.setListener(new CarriageAndSeatDialog.Listener() {
                 @Override
                 public void onItemClicked(String carriageNum, String seatNum) {
 
@@ -147,7 +147,7 @@ public class YjyswpActivity extends NewBaseCommonActivity implements ContractNew
                     adapter.notifyDataSetChanged();
                 }
             });
-            carriageDialog.show();
+            carriageAndSeatDialog.show();
         }
 
     }

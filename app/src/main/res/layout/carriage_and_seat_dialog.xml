@@ -34,6 +34,20 @@
             android:dividerHeight="1px"
             android:listSelector="@android:color/transparent" />
 
+        <View
+            android:layout_width="1px"
+            android:layout_height="match_parent"
+            android:background="@color/gray_f5" />
+
+        <ListView
+            android:id="@+id/rightList"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:divider="@color/colorLine"
+            android:dividerHeight="1px"
+            android:listSelector="@android:color/transparent" />
+
     </LinearLayout>
 
 

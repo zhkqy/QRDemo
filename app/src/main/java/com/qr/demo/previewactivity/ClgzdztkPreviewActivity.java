@@ -11,7 +11,6 @@ import com.qr.demo.MyApplication;
 import com.qr.demo.R;
 import com.qr.demo.activity.BaseActivity;
 import com.qr.demo.model.PrintModel;
-import com.qr.demo.utils.MoneyUtils;
 import com.qr.demo.view.CustomFontsTextView;
 import com.qr.print.PrintPP_CPCL;
 
@@ -22,7 +21,7 @@ import butterknife.OnClick;
  * Created by sun on 2017/12/29.
  */
 
-public class YjyswpPreviewActivity extends BaseActivity {
+public class ClgzdztkPreviewActivity extends BaseActivity {
 
     PrintModel printModel;
 
@@ -37,16 +36,17 @@ public class YjyswpPreviewActivity extends BaseActivity {
     @BindView(R.id.replace2)
     EditText replace2;
 
+
     CustomFontsTextView description;
     private boolean isSending = false;
     private int interval;
 
-    String replaceStr1 = "拾到黑色行李箱一个，经会同乘警共同清点";
-    String replaceStr2 = "物品清单一份，xx牌电脑壹台，未开封的xx牌普洱茶肆盒。";
+    String replaceStr1 = "由于车轮严重擦伤已甩车";
+    private String replaceStr2 = "列车无能力安排，该旅客乘硬座至到站";
 
     @Override
     protected void setContentView() {
-        setContentView(R.layout.activity_preview_yjyswp);
+        setContentView(R.layout.activity_preview_clgzdztk);
         description = findViewById(R.id.description);
     }
 
@@ -81,17 +81,17 @@ public class YjyswpPreviewActivity extends BaseActivity {
         });
         replace2.addTextChangedListener(new TextWatcher() {
             @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
             }
 
             @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
 
             }
 
             @Override
-            public void afterTextChanged(Editable editable) {
+            public void afterTextChanged(Editable s) {
                 refreshDescription();
             }
         });
@@ -101,23 +101,23 @@ public class YjyswpPreviewActivity extends BaseActivity {
     protected void initData() {
 
         printModel = (PrintModel) getIntent().getSerializableExtra("data");
-        recordThing.setText("记录事由:" + printModel.recordThing);
-        connectStation.setText(printModel.connectStation + "站");
+
         replace1.setText(replaceStr1);
         replace2.setText(replaceStr2);
+
+        recordThing.setText("记录事由:" + printModel.recordThing);
+
+        connectStation.setText(printModel.connectStation + "站");
+
         refreshDescription();
     }
 
     private void refreshDescription() {
 
-        String discrep = null;
-        try {
-            discrep = "　　" + printModel.year + "年" + printModel.month + "月" + printModel.day + "日，" +
-                    printModel.trainNum + "次列车终到" + printModel.connectStation + "站后，列车员在" + printModel.carriageNum + "车" + printModel.seatNum + "号座（铺）下" +
-                    replace1.getText().toString() + "，内有现金" + MoneyUtils.arabNumToChineseRMB(Double.parseDouble(printModel.money)) + "，现交你站按章处理 。";
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        String discrep = "　　" + printModel.year + "年" + printModel.month + "月" + printModel.day + "日，" +
+                printModel.trainNum + "次列车运行至" + printModel.connectStation + "站，" + printModel.carriageNum + "车," + "定员" + printModel.limitNum + "人," + replace1.getText().toString() +
+                ",旅客" + printModel.name + ",身份证号码" + printModel.cardNum + ",持" + printModel.beginStation + "站至" + printModel.stopStation + "站车票，" +
+                "票号" + printModel.ticketNum + "," + replace2.getText().toString() + ",现交你站，请按章办理。";
 
         description.setText(discrep);
     }

@@ -22,17 +22,24 @@ import java.util.ArrayList;
 import java.util.Map;
 import java.util.TreeMap;
 
-public class CarriageDialog extends Dialog {
+public class CarriageAndSeatDialog extends Dialog {
 
     private Context mContext;
     private Listener listener;
 
     private AdapterLeft adapterLeft;
+    private AdapterRight adapterRight;
+
     private ListView leftListView;
+    private ListView rightListView;
+
+    private int leftPressPosition = 0;
+    private int rightPressPosition = 0;
 
     private ArrayList<CarriageNumModel> carriageNumModels;
 
-    public CarriageDialog(@NonNull Context context, int themeResId) {
+
+    public CarriageAndSeatDialog(@NonNull Context context, int themeResId) {
         super(context, themeResId);
         init(context);
     }
@@ -44,10 +51,13 @@ public class CarriageDialog extends Dialog {
     }
 
     private void initView() {
-        View contentView = View.inflate(mContext, R.layout.carriage_dialog, null);
+        View contentView = View.inflate(mContext, R.layout.carriage_and_seat_dialog, null);
         leftListView = contentView.findViewById(R.id.leftList);
+        rightListView = contentView.findViewById(R.id.rightList);
         setContentView(contentView);
+
         adapterLeft = new AdapterLeft(getContext());
+        adapterRight = new AdapterRight(getContext());
     }
 
     private void initListView() {
@@ -72,7 +82,11 @@ public class CarriageDialog extends Dialog {
 
         adapterLeft.setDatas(leftList);
         leftListView.setAdapter(adapterLeft);
+        rightListView.setAdapter(adapterRight);
+
         leftListView.setOnItemClickListener(new LeftItemClicked());
+        rightListView.setOnItemClickListener(new RightItemClicked());
+        leftItemClicked(0);
     }
 
 
@@ -105,15 +119,102 @@ public class CarriageDialog extends Dialog {
 
         @Override
         public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+            leftItemClicked(position);
+        }
+    }
+
+
+    public void leftItemClicked(int position) {
+        leftPressPosition = position;
+        rightPressPosition = 0;
+
+        if (carriageNumModels != null) {
+            final ArrayList<String> rightList = new ArrayList<>();
+            rightList.clear();
+            String num = adapterLeft.getItem(leftPressPosition);
+
+            for (int x = 0; x < carriageNumModels.size(); x++) {
+                CarriageNumModel carriageNumModel = carriageNumModels.get(x);
+                if (num.equals(carriageNumModel.carriageNum)) {
+                    rightList.add(carriageNumModel.seatNum);
+                }
+            }
+
+            adapterRight.setDatas(rightList);
+            rightListView.setSelection(0);
+        }
+
+        adapterLeft.notifyDataSetChanged();
+    }
+
+    class RightItemClicked implements AdapterView.OnItemClickListener {
+
+
+        @Override
+        public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+            rightPressPosition = position;
+            adapterRight.notifyDataSetChanged();
+
             if (listener != null) {
-                listener.onItemClicked(adapterLeft.getItem(position));
+
+                String carriageNum = adapterLeft.getItem(leftPressPosition);
+                String seatNum = adapterRight.getItem(rightPressPosition);
+
+                listener.onItemClicked(carriageNum, seatNum);
             }
             dismiss();
         }
     }
 
+
     public interface Listener {
-        void onItemClicked(String carriageNum);
+        void onItemClicked(String carriageNum, String seatNum);
+    }
+
+    class AdapterRight extends BaseAdapter {
+
+        Context mContext;
+        private ArrayList<String> datas;
+
+        public AdapterRight(Context mContext) {
+            this.mContext = mContext;
+        }
+
+        @Override
+        public int getCount() {
+            return datas == null ? 0 : datas.size();
+        }
+
+        @Override
+        public String getItem(int position) {
+            return datas.get(position);
+        }
+
+        @Override
+        public long getItemId(int position) {
+            return 0;
+        }
+
+        @Override
+        public View getView(final int position, View convertView, ViewGroup parent) {
+
+            View v = View.inflate(mContext, R.layout.item_dialog_right, null);
+            TextView text = v.findViewById(R.id.text);
+            text.setText(datas.get(position));
+
+            if (rightPressPosition == position) {
+                text.setBackgroundResource(R.color.gray_dd);
+            } else {
+                text.setBackgroundResource(R.color.white);
+            }
+
+            return v;
+        }
+
+        public void setDatas(ArrayList<String> datas) {
+            this.datas = datas;
+            notifyDataSetChanged();
+        }
     }
 
 
@@ -147,6 +248,12 @@ public class CarriageDialog extends Dialog {
             View v = View.inflate(mContext, R.layout.item_dialog_left, null);
 
             TextView text = v.findViewById(R.id.text);
+
+            if (leftPressPosition == position) {
+                text.setBackgroundResource(R.color.gray_dd);
+            } else {
+                text.setBackgroundResource(R.color.white);
+            }
 
             text.setText(datas.get(position));
 

@@ -57,7 +57,7 @@ public class YjgzlkActivity extends NewBaseCommonActivity implements ContractNew
         models.add(new CommonModel(
                 new CommonTextEditTextModel("身份证号", "", "请输入身份证号")));
         models.add(new CommonModel(
-                new CommonTextEditTextModel("乘客票号", "", "请输入票号")));
+                new CommonTextEditTextModel("原票票号", "", "请输入原票票号")));
 
         models.add(new CommonModel("原票发站", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1103));
 
