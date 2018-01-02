@@ -85,8 +85,10 @@
             android:name=".activity.YjjsycActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden" />
-
-
+        <activity
+            android:name=".activity.YjyswpActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden" />
         <!--预览页面-->
 
         <activity
@@ -121,7 +123,10 @@
             android:name=".previewactivity.YjjsycPreviewActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden" />
-
+        <activity
+            android:name=".previewactivity.YjyswpPreviewActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden" />
 
     </application>
 

@@ -25,8 +25,6 @@ public class Constants {
         list.add("移交无票人员");
         list.add("移交列车晚点中转旅客");
         list.add("移交误乘旅客");
-
-
         list.add("丢失车票补票后又找到原票到站退票");
         list.add("移交精神异常旅客");
 
@@ -55,7 +53,6 @@ public class Constants {
         list.add("超员电报");
         list.add("旅客意外伤电报");
         list.add("石击列车电报");
-
 
         return list;
     }
