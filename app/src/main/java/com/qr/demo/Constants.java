@@ -34,7 +34,6 @@ public class Constants {
         list.add("移交烫伤旅客");
         list.add("移交不明物体击伤旅客");
         list.add("移交砸伤旅客");
-
         list.add("移交挤手旅客");
 
         return list;

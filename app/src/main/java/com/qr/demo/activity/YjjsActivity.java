@@ -10,18 +10,19 @@ import com.qr.demo.adapter.ContractNewCommonAdapter;
 import com.qr.demo.common.CommonTextEditTextModel;
 import com.qr.demo.db.DbHelper;
 import com.qr.demo.dialog.CarriageAndSeatDialog;
+import com.qr.demo.dialog.CarriageDialog;
 import com.qr.demo.dialog.DateTimePickerDialog;
 import com.qr.demo.dialog.ListViewDialog;
 import com.qr.demo.model.PrintModel;
-import com.qr.demo.previewactivity.YjzsPreviewActivity;
+import com.qr.demo.previewactivity.YjjsPreviewActivity;
 import com.qr.demo.utils.TimeUtils;
 
 import java.util.Calendar;
 
 /**
- * 移交砸伤旅客
+ * 移交挤手旅客
  */
-public class YjzsActivity extends NewBaseCommonActivity implements ContractNewCommonAdapter.CommonListener {
+public class YjjsActivity extends NewBaseCommonActivity implements ContractNewCommonAdapter.CommonListener {
 
     CommonModel timeCommonModel;
     public Calendar currentCalendar;
@@ -30,7 +31,7 @@ public class YjzsActivity extends NewBaseCommonActivity implements ContractNewCo
 
     ListViewDialog listViewDialog;
     String strTitle;
-    private CarriageAndSeatDialog carriageAndSeatDialog;
+    private CarriageDialog carriageDialog;
 
     @Override
     protected void initData() {
@@ -53,10 +54,7 @@ public class YjzsActivity extends NewBaseCommonActivity implements ContractNewCo
         models.add(timeCommonModel);
 
         models.add(new CommonModel("交接车站", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1102));
-
-        models.add(new CommonModel("运行期间出事故站点", CommonModel.TYPE_LINE));
-        models.add(new CommonModel("运行始站", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1102));
-        models.add(new CommonModel("运行到站", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1102));
+        models.add(new CommonModel("事故站点", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1102));
 
         models.add(new CommonModel("旅客A", CommonModel.TYPE_LINE));
         models.add(new CommonModel(
@@ -65,10 +63,11 @@ public class YjzsActivity extends NewBaseCommonActivity implements ContractNewCo
                 new CommonTextEditTextModel("身份证号", "", "请输入身份证号")));
         models.add(new CommonModel(
                 new CommonTextEditTextModel("原票票号", "", "请输入原票票号")));
-
         models.add(new CommonModel("原票发站", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1102));
         models.add(new CommonModel("原票到站", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1102));
         models.add(new CommonModel("车厢号　", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1106));
+
+
         models.add(new CommonModel("旅客B", CommonModel.TYPE_LINE));
         models.add(new CommonModel(
                 new CommonTextEditTextModel("旅客姓名", "", "请输入旅客姓名")));
@@ -79,7 +78,6 @@ public class YjzsActivity extends NewBaseCommonActivity implements ContractNewCo
         models.add(new CommonModel("原票发站", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1102));
 
         models.add(new CommonModel("原票到站", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1102));
-        models.add(new CommonModel("车厢号　", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1107));
 
         models.add(new CommonModel("预览", CommonModel.TYPE_BUTTON).setRequestCode(1105));
 
@@ -145,29 +143,23 @@ public class YjzsActivity extends NewBaseCommonActivity implements ContractNewCo
 
             printModel.trainNum = adapter.getItem(0).getDescription();
 
-            printModel.runBeginStation = adapter.getItem(4).getDescription();
-            printModel.runStopStation = adapter.getItem(5).getDescription();
+            printModel.beforStation = adapter.getItem(3).getDescription();
 
-            printModel.name = adapter.getItem(7).getEditTextModel().getEditTextStr();// 旅客名称
-            printModel.cardNum = adapter.getItem(8).getEditTextModel().getEditTextStr();//  身份证号码
-            printModel.ticketNum = adapter.getItem(9).getEditTextModel().getEditTextStr();// 票号
-            printModel.beginStation = adapter.getItem(10).getDescription();// 旅客买的票 的开始位置
-            printModel.stopStation = adapter.getItem(11).getDescription();// 旅客买的票 的结束位置
+            printModel.name = adapter.getItem(5).getEditTextModel().getEditTextStr();// 旅客名称
+            printModel.cardNum = adapter.getItem(6).getEditTextModel().getEditTextStr();//  身份证号码
+            printModel.ticketNum = adapter.getItem(7).getEditTextModel().getEditTextStr();// 票号
+            printModel.beginStation = adapter.getItem(8).getDescription();// 旅客买的票 的开始位置
+            printModel.stopStation = adapter.getItem(9).getDescription();// 旅客买的票 的结束位置
 
-            printModel.otherName = adapter.getItem(14).getEditTextModel().getEditTextStr();
-            printModel.otherCardNum = adapter.getItem(15).getEditTextModel().getEditTextStr();
-            printModel.otherTicketNum = adapter.getItem(16).getEditTextModel().getEditTextStr();
-            printModel.otherBeginStation = adapter.getItem(17).getDescription();  //other发站
-            printModel.otherStopStation = adapter.getItem(18).getDescription();  //other到站
-
+            printModel.otherName = adapter.getItem(12).getEditTextModel().getEditTextStr();
+            printModel.otherCardNum = adapter.getItem(13).getEditTextModel().getEditTextStr();
+            printModel.otherTicketNum = adapter.getItem(14).getEditTextModel().getEditTextStr();
+            printModel.otherBeginStation = adapter.getItem(15).getDescription();  //other发站
+            printModel.otherStopStation = adapter.getItem(16).getDescription();  //other到站
 
             printModel.carriageNum = carriageNum;
-            printModel.seatNum = seatNum;
-            printModel.otherCarriageNum = otherCarriageNum;
-            printModel.otherSeatNum = otherSeatNum;
 
-
-            Intent mIntent = new Intent(this, YjzsPreviewActivity.class);
+            Intent mIntent = new Intent(this, YjjsPreviewActivity.class);
             Bundle mBundle = new Bundle();
             mBundle.putSerializable("data", printModel);
             mIntent.putExtras(mBundle);
@@ -175,40 +167,19 @@ public class YjzsActivity extends NewBaseCommonActivity implements ContractNewCo
             startActivity(mIntent);
         } else if (model.getRequestCode() == 1106) {
 
-            if (carriageAndSeatDialog == null) {
-                carriageAndSeatDialog = new CarriageAndSeatDialog(this, R.style.listDialog);
+            if (carriageDialog == null) {
+                carriageDialog = new CarriageDialog(this, R.style.listDialog);
             }
-            carriageAndSeatDialog.setListener(null);
-            carriageAndSeatDialog.setListener(new CarriageAndSeatDialog.Listener() {
+            carriageDialog.setListener(null);
+            carriageDialog.setListener(new CarriageDialog.Listener() {
                 @Override
-                public void onItemClicked(String carriageNum, String seatNum) {
-
-                    YjzsActivity.this.carriageNum = carriageNum;
-                    YjzsActivity.this.seatNum = seatNum;
-
-                    adapter.getItem(position).setDescription(carriageNum + "车" + seatNum + "号");
+                public void onItemClicked(String carriageNum) {
+                    YjjsActivity.this.carriageNum = carriageNum;
+                    adapter.getItem(position).setDescription(carriageNum + "车");
                     adapter.notifyDataSetChanged();
                 }
             });
-            carriageAndSeatDialog.show();
-        } else if (model.getRequestCode() == 1107) {
-
-            if (carriageAndSeatDialog == null) {
-                carriageAndSeatDialog = new CarriageAndSeatDialog(this, R.style.listDialog);
-            }
-            carriageAndSeatDialog.setListener(null);
-            carriageAndSeatDialog.setListener(new CarriageAndSeatDialog.Listener() {
-                @Override
-                public void onItemClicked(String carriageNum, String seatNum) {
-
-                    YjzsActivity.this.otherCarriageNum = carriageNum;
-                    YjzsActivity.this.otherSeatNum = seatNum;
-
-                    adapter.getItem(position).setDescription(carriageNum + "车" + seatNum + "号");
-                    adapter.notifyDataSetChanged();
-                }
-            });
-            carriageAndSeatDialog.show();
+            carriageDialog.show();
         }
     }
 }

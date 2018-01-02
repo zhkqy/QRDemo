@@ -61,6 +61,8 @@ public class PrintModel implements Serializable {
 
     public String actualStation = "";   //实际到站
 
+    public String beforStation = "";   //在哪一站之前
+
     public String limitNum = "";//定员
 
     public String otherBeginStation = "";  //other发站
@@ -70,7 +72,7 @@ public class PrintModel implements Serializable {
     public String otherSeatNum = "";  //other发站座位号
     public String otherAge = "";  //other旅客年龄
     public String otherSex = "";  //other旅客性别
-    public String othercardNum = "";  //other旅客身份证号
+    public String otherCardNum = "";  //other旅客身份证号
     public String otherName = "";  //other旅客姓名
 
     public String runBeginStation = "";  //运行开始站

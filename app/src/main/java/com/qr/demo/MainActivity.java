@@ -94,6 +94,10 @@ public class MainActivity extends BaseActivity {
         startActivity(new Intent(this, LabelListActivity.class).putExtra("type", "traintelegram"));
     }
 
+    @OnClick(R.id.logout)
+    public void logoutOnClicked(View v) {
+
+    }
 
     @Override
     public void onStart() {

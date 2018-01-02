@@ -21,7 +21,7 @@ import butterknife.OnClick;
  * Created by sun on 2017/12/29.
  */
 
-public class YjzsPreviewActivity extends BaseActivity {
+public class YjjsPreviewActivity extends BaseActivity {
 
     PrintModel printModel;
 
@@ -35,18 +35,20 @@ public class YjzsPreviewActivity extends BaseActivity {
     EditText replace1;
     @BindView(R.id.replace2)
     EditText replace2;
-
+    @BindView(R.id.replace3)
+    EditText replace3;
 
     CustomFontsTextView description;
     private boolean isSending = false;
     private int interval;
 
-    String replaceStr1 = "在拿取行李时不慎将行李从行李架上滑落，砸中";
-    private String replaceStr2 = "头部左后部，外观无伤痕，被砸旅客自称头痛、恶心";
+    private String replaceStr1 = "硬座车厢一名";
+    private String replaceStr2 = "上厕所关门时不慎将";
+    private String replaceStr3 = "左手中指挤破流血";
 
     @Override
     protected void setContentView() {
-        setContentView(R.layout.activity_preview_clgzdztk);
+        setContentView(R.layout.activity_preview_replace3);
         description = findViewById(R.id.description);
     }
 
@@ -63,39 +65,11 @@ public class YjzsPreviewActivity extends BaseActivity {
     @Override
     protected void initListener() {
 
-        replace1.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-                refreshDescription();
-            }
-        });
-        replace2.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-                refreshDescription();
-            }
-        });
+        replace1.addTextChangedListener(new MyTextWatcher());
+        replace2.addTextChangedListener(new MyTextWatcher());
+        replace3.addTextChangedListener(new MyTextWatcher());
     }
+
 
     @Override
     protected void initData() {
@@ -104,9 +78,9 @@ public class YjzsPreviewActivity extends BaseActivity {
 
         replace1.setText(replaceStr1);
         replace2.setText(replaceStr2);
+        replace3.setText(replaceStr3);
 
         recordThing.setText("记录事由:" + printModel.recordThing);
-
         connectStation.setText(printModel.connectStation + "站");
 
         refreshDescription();
@@ -114,14 +88,12 @@ public class YjzsPreviewActivity extends BaseActivity {
 
     private void refreshDescription() {
 
-        String discrep = "　　" + printModel.year + "年" + printModel.month + "月" + printModel.day + "日，" +
-                printModel.trainNum + "次列车运行至" + printModel.runBeginStation + "站至" + printModel.runStopStation + "站间,"
-                + printModel.carriageNum + "车" + printModel.seatNum + "座席旅客" + printModel.name + "，身份证号码" + printModel.cardNum +
-                ",持" + printModel.beginStation + "站至" + printModel.stopStation + "站硬座车票，" +
-                "票号" + printModel.ticketNum + "," + replace1.getText().toString()
-                + printModel.otherCarriageNum + "车" + printModel.otherSeatNum + "座席旅客" + printModel.otherName + "，(身份证号码" + printModel.otherCardNum +
-                ",持" + printModel.otherBeginStation + "站至" + printModel.otherStopStation + "站车票，" +
-                "票号" + printModel.otherTicketNum + ")的" + replace2.getText().toString() + "，要求下车治疗，现交你站，请按章办理。";
+        String discrep = "　　" + printModel.year + "年" + printModel.month + "月" + printModel.day + "日，" + printModel.trainNum + "次列车，" + printModel.beforStation
+                + "站到站前，" + printModel.carriageNum + "号" + replace1.getText().toString() + "旅客" + printModel.name + "，身份证号码" + printModel.cardNum + "，持" + printModel.beginStation +
+                "站至" + printModel.stopStation + "站硬座车票，票号" + printModel.ticketNum + "，" + replace2.getText().toString() + "旅客" + printModel.otherName +
+                "（身份证号码" + printModel.otherCardNum + "，持" + printModel.otherBeginStation + "站至" +
+                printModel.otherStopStation + "站的硬座车票，票号" + printModel.otherTicketNum + ")的" +
+                replace3.getText().toString() + "，列车进行了简单包扎处理，该旅客要求下车治疗，现移交你站，请按章办理。";
 
 
         description.setText(discrep);
@@ -158,5 +130,24 @@ public class YjzsPreviewActivity extends BaseActivity {
         }
     }
 
+
+    class MyTextWatcher implements TextWatcher {
+
+
+        @Override
+        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+        }
+
+        @Override
+        public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+        }
+
+        @Override
+        public void afterTextChanged(Editable s) {
+            refreshDescription();
+        }
+    }
 
 }
