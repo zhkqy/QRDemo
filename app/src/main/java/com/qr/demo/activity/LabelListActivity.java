@@ -161,6 +161,8 @@ public class LabelListActivity extends BaseActivity {
             startActivity(new Intent(mContext, ClgzdztkActivity.class).putExtra("title", "车辆故障到站退款"));
         } else if ("移交烫伤旅客".equals(str)) {
             startActivity(new Intent(mContext, YjtslkActivity.class).putExtra("title", "移交烫伤旅客"));
+        }else if ("移交不明物体击伤旅客".equals(str)) {
+            startActivity(new Intent(mContext, YjbmwtjsActivity.class).putExtra("title", "移交不明物体击伤旅客"));
         }
 
     }
