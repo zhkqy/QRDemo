@@ -2,7 +2,6 @@ package com.qr.demo.previewactivity;
 
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -22,7 +21,7 @@ import butterknife.OnClick;
  * Created by sun on 2017/12/29.
  */
 
-public class YjhblkPreviewActivity extends BaseActivity {
+public class YjjsycPreviewActivity extends BaseActivity {
 
     PrintModel printModel;
 
@@ -40,7 +39,7 @@ public class YjhblkPreviewActivity extends BaseActivity {
     private boolean isSending = false;
     private int interval;
 
-    String replaceStr1 = "突发疾病，列车已进行简单救治，该旅客要求下车治疗，先交你站，按章办理。";
+    String replaceStr1 = "突发精神异常，危及他人安全";
 
     @Override
     protected void setContentView() {
@@ -83,21 +82,17 @@ public class YjhblkPreviewActivity extends BaseActivity {
     protected void initData() {
 
         printModel = (PrintModel) getIntent().getSerializableExtra("data");
-
-        replace1.setText(replaceStr1);
-
         recordThing.setText("记录事由:" + printModel.recordThing);
-
         connectStation.setText(printModel.connectStation + "站");
-
+        replace1.setText(replaceStr1);
         refreshDescription();
     }
 
     private void refreshDescription() {
-        String discrep = "　　" + printModel.year + "年" + printModel.month + "月" + printModel.day + "日，" + printModel.trainNum + "次列车" + printModel.connectStation + "站开车后，" +
-                "旅客" + printModel.name + ",身份证号码" + printModel.cardNum + ",持" + printModel.beginStation + "站至" + printModel.stopStation + "站车票，"
-                + printModel.carriageNum + "车" + printModel.seatNum + "号席（铺）位," +
-                "票号" + printModel.ticketNum + "," + replace1.getText().toString();
+
+        String discrep = "　　" + printModel.year + "年" + printModel.month + "月" + printModel.day + "日，" + printModel.trainNum + "次列车运行至" + printModel.connectStation + "站间，" +
+                "旅客" + printModel.name + ",身份证号码" + printModel.cardNum + "家住" + printModel.address + ",持" + printModel.beginStation + "站至" + printModel.stopStation + "站的车票，" +
+                "票号" + printModel.ticketNum + "," + replace1.getText().toString() + "，现交你站，请按章办理。";
 
         description.setText(discrep);
     }

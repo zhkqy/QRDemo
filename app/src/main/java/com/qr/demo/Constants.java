@@ -29,6 +29,8 @@ public class Constants {
 
         list.add("丢失车票补票后又找到原票到站退票");
         list.add("移交精神异常旅客");
+
+
         list.add("移交遗失物品");
         list.add("移交危险品");
         list.add("误售、误购到站退票");

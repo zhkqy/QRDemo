@@ -118,7 +118,7 @@
                 android:layout_marginTop="5dp"
                 android:background="@drawable/bg_white_stroke"
                 android:padding="10dp"
-                android:text="突发疾病，列车已进行简单救治，该旅客要求下车治疗，先交你站，按章办理。"
+                android:text=""
                 android:textSize="15sp" />
 
 

@@ -3,7 +3,6 @@ package com.qr.demo.activity;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.Toast;
 
 import com.qr.demo.R;
 import com.qr.demo.adapter.CommonModel;
@@ -15,16 +14,15 @@ import com.qr.demo.dialog.DateTimePickerDialog;
 import com.qr.demo.dialog.ListViewDialog;
 import com.qr.demo.model.PrintModel;
 import com.qr.demo.previewactivity.YjhblkPreviewActivity;
+import com.qr.demo.previewactivity.YjjsycPreviewActivity;
 import com.qr.demo.utils.TimeUtils;
 
 import java.util.Calendar;
 
-import butterknife.OnItemClick;
-
 /**
- * 移交患病旅客
+ * 移交精神异常旅客
  */
-public class YjhblkActivity extends NewBaseCommonActivity implements ContractNewCommonAdapter.CommonListener {
+public class YjjsycActivity extends NewBaseCommonActivity implements ContractNewCommonAdapter.CommonListener {
 
     private CommonModel timeCommonModel;
     public Calendar currentCalendar;
@@ -32,7 +30,6 @@ public class YjhblkActivity extends NewBaseCommonActivity implements ContractNew
     private DateTimePickerDialog dialog;
 
     private ListViewDialog listViewDialog;
-    private CarriageDialog carriageDialog;
     private String strTitle;
 
     @Override
@@ -61,14 +58,16 @@ public class YjhblkActivity extends NewBaseCommonActivity implements ContractNew
                 new CommonTextEditTextModel("旅客姓名", "", "请输入旅客姓名")));
         models.add(new CommonModel(
                 new CommonTextEditTextModel("身份证号", "", "请输入身份证号")));
+
         models.add(new CommonModel(
-                new CommonTextEditTextModel("原票票号", "", "请输入原票票号")));
+                new CommonTextEditTextModel("家庭住址", "", "请输入家庭住址")));
 
         models.add(new CommonModel("原票发站", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1103));
 
         models.add(new CommonModel("原票到站", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1104));
 
-        models.add(new CommonModel("车厢号　", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1106));
+        models.add(new CommonModel(
+                new CommonTextEditTextModel("原票票号", "", "原票票号")));
 
         models.add(new CommonModel("预览", CommonModel.TYPE_BUTTON).setRequestCode(1105));
 
@@ -138,36 +137,18 @@ public class YjhblkActivity extends NewBaseCommonActivity implements ContractNew
             printModel.trainNum = adapter.getItem(0).getDiscrption();
             printModel.name = adapter.getItem(3).getEditTextModel().getEditTextStr();// 旅客名称
             printModel.cardNum = adapter.getItem(4).getEditTextModel().getEditTextStr();//  身份证号码
-            printModel.ticketNum = adapter.getItem(5).getEditTextModel().getEditTextStr();// 票号
+
+            printModel.address = adapter.getItem(5).getEditTextModel().getEditTextStr();
             printModel.beginStation = adapter.getItem(6).getDiscrption();// 旅客买的票 的开始位置
             printModel.stopStation = adapter.getItem(7).getDiscrption();// 旅客买的票 的结束位置
-            printModel.carriageNum = carriageNum;
-            printModel.seatNum = seatNum;
+            printModel.ticketNum = adapter.getItem(8).getEditTextModel().getEditTextStr();// 票号
 
-            Intent mIntent = new Intent(this, YjhblkPreviewActivity.class);
+            Intent mIntent = new Intent(this, YjjsycPreviewActivity.class);
             Bundle mBundle = new Bundle();
             mBundle.putSerializable("data", printModel);
             mIntent.putExtras(mBundle);
 
             startActivity(mIntent);
-        } else if (model.getRequestCode() == 1106) {
-
-            if (carriageDialog == null) {
-                carriageDialog = new CarriageDialog(this, R.style.listDialog);
-            }
-            carriageDialog.setListener(null);
-            carriageDialog.setListener(new CarriageDialog.Listener() {
-                @Override
-                public void onItemClicked(String carriageNum, String seatNum) {
-
-                    YjhblkActivity.this.carriageNum = carriageNum;
-                    YjhblkActivity.this.seatNum = seatNum;
-
-                    adapter.getItem(position).setDiscrption(carriageNum + "车" + seatNum + "号");
-                    adapter.notifyDataSetChanged();
-                }
-            });
-            carriageDialog.show();
         }
     }
 }

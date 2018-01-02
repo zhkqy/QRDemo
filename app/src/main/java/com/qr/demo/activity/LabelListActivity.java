@@ -149,9 +149,8 @@ public class LabelListActivity extends BaseActivity {
             startActivity(new Intent(mContext, YjwcActivity.class).putExtra("title", "移交误乘旅客"));
         } else if ("丢失车票补票后又找到原票到站退票".equals(str)) {
             startActivity(new Intent(mContext, DscpbphActivity.class).putExtra("title", "丢失车票补票后又找到原票到站退票"));
-        } else if ("".equals(str)) {
-
-
+        } else if ("移交精神异常旅客".equals(str)) {
+            startActivity(new Intent(mContext, YjjsycActivity.class).putExtra("title", "移交精神异常旅客"));
         } else if ("".equals(str)) {
 
 

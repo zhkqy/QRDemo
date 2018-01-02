@@ -53,4 +53,7 @@ public class PrintModel implements Serializable {
     public String diupiaoStation = "";  //丢票车站
     public String foundStation = "";  //找到车票车站
 
+
+    public String address = "";//家庭住址
+
 }
