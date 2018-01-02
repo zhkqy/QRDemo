@@ -110,7 +110,7 @@ public class CyMessagePreViewActivity extends BaseActivity {
         String chaosong = "抄送：铁路总公司运输局客调，" + replace1.getText().toString();
         String discrep = "内容：" + printModel.year + "年" + printModel.month + "月" + printModel.day + "日，" +
                 "过" + printModel.chaoyuanStation + "站" + printModel.trainNum + "次列车超员严重，" + "硬座实际定员" + printModel.limitNum + "人" +
-                "，车内现有人数" + printModel.haveNum + "人" + "超员" + chaoyuanbi + "%,请各站严格控制票额，以确保列车安全正点";
+                "，车内现有人数" + printModel.haveNum + "人" + ",超员" + chaoyuanbi + "%,请各站严格控制票额，以确保列车安全正点";
         description.setText(discrep);
 
         this.zhusong.setText(zhusong);
