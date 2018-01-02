@@ -14,7 +14,6 @@ public class CommonModel {
     public boolean showArrow = true;
     public int requestCode = 0;  //请求码
 
-
     public static String TYPE_LINE = "type_line";    //显示一线
     public static String TYPE_TEXT_ARROW = "type_text_arrow";  //带箭头点击模式
     public static String TYPE_TEXT_EDITTEXT = "type_text_edittext";  //编辑模式

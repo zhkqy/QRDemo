@@ -8,10 +8,12 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.qr.demo.R;
 import com.qr.demo.common.CommonLeftTextRightIconModel;
+import com.qr.demo.common.CommonLineModel;
 import com.qr.demo.common.CommonTextEditTextModel;
 import com.qr.demo.view.NewTitleView;
 import com.qr.demo.view.TitleEditAlignLeftView;
@@ -69,9 +71,13 @@ public class ContractNewCommonAdapter extends BaseAdapter {
             contentView = View.inflate(context, R.layout.item_new_common_text_edittext, null);
             holder.textEdit = contentView.findViewById(R.id.text_edit);
             holder.type = type;
-        } else if (type.equals(CommonModel.TYPE_BUTTON)) {  //button
+        } else if (type.equals(CommonModel.TYPE_BUTTON)) {  //TYPE_BUTTON
             contentView = View.inflate(context, R.layout.item_new_common_button, null);
             holder.button = contentView.findViewById(R.id.button);
+            holder.type = type;
+        } else if (type.equals(CommonModel.TYPE_LINE)) {  //TYPE_LINE
+            contentView = View.inflate(context, R.layout.item_new_common_line, null);
+            holder.lineText = contentView.findViewById(R.id.lineText);
             holder.type = type;
         } else {
             contentView = View.inflate(context, R.layout.null_layout, null);
@@ -90,6 +96,8 @@ public class ContractNewCommonAdapter extends BaseAdapter {
             createTxtArrowView(holder, m, position);
         } else if (type.equals(CommonModel.TYPE_BUTTON)) {
             createButtonView(holder, m, position);
+        } else if (type.equals(CommonModel.TYPE_LINE)) {
+            createLineView(holder, m, position);
         } else {
 
         }
@@ -108,15 +116,9 @@ public class ContractNewCommonAdapter extends BaseAdapter {
         });
     }
 
-//    private void createLineView(final MyViewHodler holder, final CommonModel m) {
-//
-//        CommonLineModel model = m.getLineModel();
-//        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,
-//                LinearLayout.LayoutParams.WRAP_CONTENT);
-//        params.height = model.lineHeight;
-//        holder.line.setLayoutParams(params);
-//        holder.line.setBackgroundResource(model.lineColor);
-//    }
+    private void createLineView(MyViewHodler holder, final CommonModel m, final int position) {
+        holder.lineText.setText(m.title);
+    }
 
 
     private void createTxtArrowView(MyViewHodler holder,
@@ -210,6 +212,7 @@ public class ContractNewCommonAdapter extends BaseAdapter {
         ImageView rightIcon;
         TitleEditAlignLeftView textEdit;
         NewTitleView titleView;
+        TextView lineText;
     }
 
     CommonListener listener;
