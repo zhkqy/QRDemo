@@ -70,6 +70,11 @@ public class PrintModel implements Serializable {
     public String otherSeatNum = "";  //other发站座位号
     public String otherAge = "";  //other旅客年龄
     public String otherSex = "";  //other旅客性别
+    public String othercardNum = "";  //other旅客身份证号
     public String otherName = "";  //other旅客姓名
+
+    public String runBeginStation = "";  //运行开始站
+    public String runStopStation = "";  //运行结束站
+
 
 }
