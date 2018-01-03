@@ -6,7 +6,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.qr.demo.Label.YjgzlkLabel;
+import com.qr.demo.Label.DianBaoLabel;
 import com.qr.demo.MyApplication;
 import com.qr.demo.R;
 import com.qr.demo.activity.BaseActivity;
@@ -124,28 +124,27 @@ public class CyMessagePreViewActivity extends BaseActivity {
 
     @OnClick(R.id.printOne)
     public void printOneOnclicked(View v) {
-//        final PrintPP_CPCL printPP_cpcl = ((MyApplication) getApplication()).getPrintPP_cpcl();
-//        if (!isSending) {
-//            new Thread(new Runnable() {
-//                @Override
-//                public void run() {
-//                    isSending = true;
-//                    if (((MyApplication) getApplication()).isConnected()) {
-//                        YjgzlkLabel pl = new YjgzlkLabel(printPP_cpcl);
-//
-//                        pl.Lable(recordThing.getText().toString(), connectStation.getText().toString(),
-//                                description.getText().toString());
-//                    }
-//                    try {
-//                        interval = 0;
-//                        Thread.sleep(interval);
-//                    } catch (InterruptedException e) {
-//                        e.printStackTrace();
-//                    }
-//                    isSending = false;
-//                }
-//            }).start();
-//        }
+        final PrintPP_CPCL printPP_cpcl = ((MyApplication) getApplication()).getPrintPP_cpcl();
+        if (!isSending) {
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    isSending = true;
+                    if (((MyApplication) getApplication()).isConnected()) {
+                        DianBaoLabel pl = new DianBaoLabel(printPP_cpcl);
+                        pl.Lable(type.getText().toString(), zhusong.getText().toString(),
+                                chasong.getText().toString(), description.getText().toString());
+                    }
+                    try {
+                        interval = 0;
+                        Thread.sleep(interval);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                    isSending = false;
+                }
+            }).start();
+        }
     }
 
 

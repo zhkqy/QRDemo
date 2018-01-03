@@ -1,10 +1,9 @@
 package com.qr.demo.previewactivity;
 
-import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
-import com.qr.demo.Label.YjgzlkLabel;
+import com.qr.demo.Label.keYunRecordLabel;
 import com.qr.demo.MyApplication;
 import com.qr.demo.R;
 import com.qr.demo.activity.BaseActivity;
@@ -85,7 +84,7 @@ public class YjgzlkPreviewActivity extends BaseActivity {
                 public void run() {
                     isSending = true;
                     if (((MyApplication) getApplication()).isConnected()) {
-                        YjgzlkLabel pl = new YjgzlkLabel(printPP_cpcl);
+                        keYunRecordLabel pl = new keYunRecordLabel(printPP_cpcl);
 
                         pl.Lable(recordThing.getText().toString(), connectStation.getText().toString(),
                                 description.getText().toString());

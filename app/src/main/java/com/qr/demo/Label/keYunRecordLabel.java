@@ -2,14 +2,14 @@ package com.qr.demo.Label;
 
 import com.qr.print.PrintPP_CPCL;
 
-public class YjgzlkLabel extends BaseLabel {
+public class keYunRecordLabel extends BaseLabel {
 
     String recordThing;
     String connectStation;
     String description;
 
 
-    public YjgzlkLabel(PrintPP_CPCL iPrinter) {
+    public keYunRecordLabel(PrintPP_CPCL iPrinter) {
         super(iPrinter);
     }
 
