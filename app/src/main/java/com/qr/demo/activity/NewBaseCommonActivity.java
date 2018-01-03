@@ -7,6 +7,7 @@ import android.widget.TextView;
 import com.qr.demo.R;
 import com.qr.demo.adapter.CommonModel;
 import com.qr.demo.adapter.ContractNewCommonAdapter;
+import com.qr.demo.model.PrintModel;
 import com.qr.demo.view.NoScrollListViewForScrollView;
 
 import java.util.ArrayList;
@@ -26,19 +27,24 @@ public class NewBaseCommonActivity extends BaseActivity {
     @BindView(R.id.tv_main_title)
     protected TextView title;
 
+    public boolean isEditStatus = false;
 
     protected String carriageNum = "";
     protected String seatNum = "";
     protected String zhongzhuanCarriageNum = "";  //中转车厢号
     protected String zhongzhuanSeatNum = "";  //中转座位号
-    protected String otherCarriageNum ="";  //other发站车厢号
-    protected String otherSeatNum ="";  //other发站座位号
+    protected String otherCarriageNum = "";  //other发站车厢号
+    protected String otherSeatNum = "";  //other发站座位号
+
+    PrintModel printModel = new PrintModel();
 
     @Override
     protected void setContentView() {
         setContentView(R.layout.activity_new_common);
 
-
+        if (getIntent() != null) {
+            isEditStatus = getIntent().getBooleanExtra("isEditStatus", false);
+        }
         bottomFramelayout = findViewById(R.id.bottom_framelayout);
         listview = findViewById(R.id.ll);
         adapter = new ContractNewCommonAdapter(this);

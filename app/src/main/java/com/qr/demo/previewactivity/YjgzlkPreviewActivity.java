@@ -27,7 +27,6 @@ public class YjgzlkPreviewActivity extends BaseActivity {
 
     CustomFontsTextView description;
 
-
     @Override
     protected void setContentView() {
         setContentView(R.layout.activity_preview_replace0);

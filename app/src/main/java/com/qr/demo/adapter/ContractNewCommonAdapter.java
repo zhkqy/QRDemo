@@ -22,6 +22,8 @@ public class ContractNewCommonAdapter extends BaseAdapter {
 
     private List<CommonModel> models;
 
+    private boolean editStatus = true;
+
     public ContractNewCommonAdapter(Context context) {
         this.context = context;
     }
@@ -123,7 +125,7 @@ public class ContractNewCommonAdapter extends BaseAdapter {
         holder.titleView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (listener != null) {
+                if (listener != null && editStatus) {
                     listener.onclick(position, m);
                 }
             }
@@ -169,6 +171,12 @@ public class ContractNewCommonAdapter extends BaseAdapter {
 //                    }
                 }
             });
+        }
+
+        if (editStatus) {
+            holder.textEdit.setMyEnabled(true);
+        } else {
+            holder.textEdit.setMyEnabled(false);
         }
 
         holder.textEdit
@@ -219,5 +227,9 @@ public class ContractNewCommonAdapter extends BaseAdapter {
 
     public interface CommonListener {
         public void onclick(int position, CommonModel model);
+    }
+
+    public void setEditStatus(boolean editStatus) {
+        this.editStatus = editStatus;
     }
 }

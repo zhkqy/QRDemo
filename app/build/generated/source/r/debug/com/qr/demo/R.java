@@ -10,11 +10,18 @@ package com.qr.demo;
 public final class R {
   public static final class attr {
     /**
+     * <p>May be a reference to another resource, in the form
+     * "<code>@[+][<i>package</i>:]<i>type</i>/<i>name</i></code>" or a theme
+     * attribute in the form
+     * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
+     */
+    public static final int arrow=0x7f010000;
+    /**
      * <p>May be a color value, in the form of "<code>#<i>rgb</i></code>",
      * "<code>#<i>argb</i></code>", "<code>#<i>rrggbb</i></code>", or
      * "<code>#<i>aarrggbb</i></code>".
      */
-    public static final int cardBackgroundColor=0x7f010000;
+    public static final int cardBackgroundColor=0x7f010001;
     /**
      * <p>May be a dimension value, which is a floating point number appended with a
      * unit such as "<code>14.5sp</code>".
@@ -22,7 +29,7 @@ public final class R {
      * sp (scaled pixels based on preferred font size), in (inches), and
      * mm (millimeters).
      */
-    public static final int cardCornerRadius=0x7f010001;
+    public static final int cardCornerRadius=0x7f010002;
     /**
      * <p>May be a dimension value, which is a floating point number appended with a
      * unit such as "<code>14.5sp</code>".
@@ -30,7 +37,7 @@ public final class R {
      * sp (scaled pixels based on preferred font size), in (inches), and
      * mm (millimeters).
      */
-    public static final int cardElevation=0x7f010002;
+    public static final int cardElevation=0x7f010003;
     /**
      * <p>May be a dimension value, which is a floating point number appended with a
      * unit such as "<code>14.5sp</code>".
@@ -38,17 +45,17 @@ public final class R {
      * sp (scaled pixels based on preferred font size), in (inches), and
      * mm (millimeters).
      */
-    public static final int cardMaxElevation=0x7f010003;
+    public static final int cardMaxElevation=0x7f010004;
     /**
      * <p>May be a boolean value, such as "<code>true</code>" or
      * "<code>false</code>".
      */
-    public static final int cardPreventCornerOverlap=0x7f010004;
+    public static final int cardPreventCornerOverlap=0x7f010005;
     /**
      * <p>May be a boolean value, such as "<code>true</code>" or
      * "<code>false</code>".
      */
-    public static final int cardUseCompatPadding=0x7f010005;
+    public static final int cardUseCompatPadding=0x7f010006;
     /**
      * <p>May be a dimension value, which is a floating point number appended with a
      * unit such as "<code>14.5sp</code>".
@@ -56,7 +63,7 @@ public final class R {
      * sp (scaled pixels based on preferred font size), in (inches), and
      * mm (millimeters).
      */
-    public static final int contentPadding=0x7f010006;
+    public static final int contentPadding=0x7f010007;
     /**
      * <p>May be a dimension value, which is a floating point number appended with a
      * unit such as "<code>14.5sp</code>".
@@ -64,7 +71,7 @@ public final class R {
      * sp (scaled pixels based on preferred font size), in (inches), and
      * mm (millimeters).
      */
-    public static final int contentPaddingBottom=0x7f010007;
+    public static final int contentPaddingBottom=0x7f010008;
     /**
      * <p>May be a dimension value, which is a floating point number appended with a
      * unit such as "<code>14.5sp</code>".
@@ -72,7 +79,7 @@ public final class R {
      * sp (scaled pixels based on preferred font size), in (inches), and
      * mm (millimeters).
      */
-    public static final int contentPaddingLeft=0x7f010008;
+    public static final int contentPaddingLeft=0x7f010009;
     /**
      * <p>May be a dimension value, which is a floating point number appended with a
      * unit such as "<code>14.5sp</code>".
@@ -80,7 +87,7 @@ public final class R {
      * sp (scaled pixels based on preferred font size), in (inches), and
      * mm (millimeters).
      */
-    public static final int contentPaddingRight=0x7f010009;
+    public static final int contentPaddingRight=0x7f01000a;
     /**
      * <p>May be a dimension value, which is a floating point number appended with a
      * unit such as "<code>14.5sp</code>".
@@ -88,46 +95,192 @@ public final class R {
      * sp (scaled pixels based on preferred font size), in (inches), and
      * mm (millimeters).
      */
-    public static final int contentPaddingTop=0x7f01000a;
+    public static final int contentPaddingTop=0x7f01000b;
+    /**
+     * <p>May be a string value, using '\\;' to escape characters such as
+     * '\\n' or '\\uxxxx' for a unicode character;
+     */
+    public static final int hide_discreption=0x7f01000c;
+    /**
+     * <p>May be a string value, using '\\;' to escape characters such as
+     * '\\n' or '\\uxxxx' for a unicode character;
+     */
+    public static final int hint=0x7f01000d;
+    /**
+     * <p>May be a reference to another resource, in the form
+     * "<code>@[+][<i>package</i>:]<i>type</i>/<i>name</i></code>" or a theme
+     * attribute in the form
+     * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
+     */
+    public static final int left_icon=0x7f01000e;
+    /**
+     * <p>May be a string value, using '\\;' to escape characters such as
+     * '\\n' or '\\uxxxx' for a unicode character;
+     */
+    public static final int text=0x7f01000f;
+    /**
+     * <p>May be a color value, in the form of "<code>#<i>rgb</i></code>",
+     * "<code>#<i>argb</i></code>", "<code>#<i>rrggbb</i></code>", or
+     * "<code>#<i>aarrggbb</i></code>".
+     */
+    public static final int text_color=0x7f010010;
+    /**
+     * <p>May be a string value, using '\\;' to escape characters such as
+     * '\\n' or '\\uxxxx' for a unicode character;
+     */
+    public static final int title=0x7f010011;
+    /**
+     * <p>May be a color value, in the form of "<code>#<i>rgb</i></code>",
+     * "<code>#<i>argb</i></code>", "<code>#<i>rrggbb</i></code>", or
+     * "<code>#<i>aarrggbb</i></code>".
+     */
+    public static final int title_color=0x7f010012;
   }
   public static final class color {
-    public static final int cardview_dark_background=0x7f020000;
-    public static final int cardview_light_background=0x7f020001;
-    public static final int cardview_shadow_end_color=0x7f020002;
-    public static final int cardview_shadow_start_color=0x7f020003;
-    public static final int colorAccent=0x7f020004;
-    public static final int colorPrimary=0x7f020005;
-    public static final int colorPrimaryDark=0x7f020006;
+    public static final int black_4c=0x7f020000;
+    public static final int black_84=0x7f020001;
+    public static final int cardview_dark_background=0x7f020002;
+    public static final int cardview_light_background=0x7f020003;
+    public static final int cardview_shadow_end_color=0x7f020004;
+    public static final int cardview_shadow_start_color=0x7f020005;
+    public static final int colorLine=0x7f020006;
+    public static final int colorPrimary=0x7f020007;
+    public static final int colorText=0x7f020008;
+    public static final int colorTextGray=0x7f020009;
+    public static final int common_text_black=0x7f02000a;
+    public static final int common_text_gray=0x7f02000b;
+    public static final int contract_fee_type=0x7f02000c;
+    public static final int contract_task_type_cuikuan=0x7f02000d;
+    public static final int crm_blue=0x7f02000e;
+    public static final int crm_green=0x7f02000f;
+    public static final int daka_orange=0x7f020010;
+    public static final int gray_99=0x7f020011;
+    public static final int gray_bb=0x7f020012;
+    public static final int gray_dd=0x7f020013;
+    public static final int gray_f2=0x7f020014;
+    public static final int gray_f5=0x7f020015;
+    public static final int gray_fa=0x7f020016;
+    public static final int invitation_agree_bg=0x7f020017;
+    public static final int kaoqin_blue=0x7f020018;
+    public static final int kaoqin_green=0x7f020019;
+    public static final int product_name=0x7f02001a;
+    public static final int product_unit=0x7f02001b;
+    public static final int red=0x7f02001c;
+    public static final int shadow=0x7f02001d;
+    public static final int text_gray=0x7f02001e;
+    public static final int white=0x7f02001f;
+    public static final int write=0x7f020020;
+    public static final int yellow_ff=0x7f020021;
   }
   public static final class dimen {
     public static final int cardview_compat_inset_shadow=0x7f030000;
     public static final int cardview_default_elevation=0x7f030001;
     public static final int cardview_default_radius=0x7f030002;
+    public static final int normalLarge=0x7f030003;
+    public static final int normalMiddle=0x7f030004;
+    public static final int normalSmall=0x7f030005;
   }
   public static final class drawable {
-    public static final int logo=0x7f040000;
+    public static final int arrow_right=0x7f040000;
+    public static final int bg_blue_corner=0x7f040001;
+    public static final int bg_gray_corner=0x7f040002;
+    public static final int bg_login_header=0x7f040003;
+    public static final int bg_white_corner=0x7f040004;
+    public static final int bg_white_stroke=0x7f040005;
+    public static final int ic_login_password=0x7f040006;
+    public static final int ic_login_policing_number=0x7f040007;
+    public static final int icon_title_back_blue=0x7f040008;
+    public static final int logo=0x7f040009;
   }
   public static final class id {
-    public static final int button_scan=0x7f050000;
-    public static final int button_send=0x7f050001;
-    public static final int discoverable=0x7f050002;
-    public static final int layout1=0x7f050003;
-    public static final int new_devices=0x7f050004;
-    public static final int paired_devices=0x7f050005;
-    public static final int scan=0x7f050006;
-    public static final int search=0x7f050007;
-    public static final int table1=0x7f050008;
-    public static final int title_left_text=0x7f050009;
-    public static final int title_new_devices=0x7f05000a;
-    public static final int title_paired_devices=0x7f05000b;
-    public static final int title_right_text=0x7f05000c;
+    public static final int account=0x7f050000;
+    public static final int arrow=0x7f050001;
+    public static final int bottom_framelayout=0x7f050002;
+    public static final int btn_login=0x7f050003;
+    public static final int button=0x7f050004;
+    public static final int button_scan=0x7f050005;
+    public static final int chasong=0x7f050006;
+    public static final int connectStation=0x7f050007;
+    public static final int connentprint=0x7f050008;
+    public static final int description=0x7f050009;
+    public static final int discoverable=0x7f05000a;
+    public static final int discrption=0x7f05000b;
+    public static final int edit=0x7f05000c;
+    public static final int ivCommonTitleBarDivider=0x7f05000d;
+    public static final int iv_title_bar_left=0x7f05000e;
+    public static final int leftList=0x7f05000f;
+    public static final int lineText=0x7f050010;
+    public static final int listview=0x7f050011;
+    public static final int ll=0x7f050012;
+    public static final int logout=0x7f050013;
+    public static final int lv=0x7f050014;
+    public static final int new_devices=0x7f050015;
+    public static final int np_day=0x7f050016;
+    public static final int np_month=0x7f050017;
+    public static final int np_year=0x7f050018;
+    public static final int paired_devices=0x7f050019;
+    public static final int passengerrecord=0x7f05001a;
+    public static final int pwd=0x7f05001b;
+    public static final int recordThing=0x7f05001c;
+    public static final int replace1=0x7f05001d;
+    public static final int replace2=0x7f05001e;
+    public static final int replace3=0x7f05001f;
+    public static final int rightList=0x7f050020;
+    public static final int rl_common_titlebar=0x7f050021;
+    public static final int rl_title_bar_left=0x7f050022;
+    public static final int save=0x7f050023;
+    public static final int saveList=0x7f050024;
+    public static final int scan=0x7f050025;
+    public static final int search=0x7f050026;
+    public static final int text=0x7f050027;
+    public static final int text_edit=0x7f050028;
+    public static final int title=0x7f050029;
+    public static final int title_left_text=0x7f05002a;
+    public static final int title_name=0x7f05002b;
+    public static final int title_new_devices=0x7f05002c;
+    public static final int title_paired_devices=0x7f05002d;
+    public static final int title_right_text=0x7f05002e;
+    public static final int topLayer=0x7f05002f;
+    public static final int traintelegram=0x7f050030;
+    public static final int tv_main_title=0x7f050031;
+    public static final int tv_title_bar_left=0x7f050032;
+    public static final int type=0x7f050033;
+    public static final int zhusong=0x7f050034;
   }
   public static final class layout {
-    public static final int custom_title=0x7f060000;
-    public static final int device_list=0x7f060001;
-    public static final int device_name=0x7f060002;
-    public static final int main1=0x7f060003;
-    public static final int option_menu=0x7f060004;
+    public static final int activity_label_list=0x7f060000;
+    public static final int activity_login=0x7f060001;
+    public static final int activity_main=0x7f060002;
+    public static final int activity_new_common=0x7f060003;
+    public static final int activity_preview_cy_msg=0x7f060004;
+    public static final int activity_preview_lkyws_msg=0x7f060005;
+    public static final int activity_preview_replace0=0x7f060006;
+    public static final int activity_preview_replace1=0x7f060007;
+    public static final int activity_preview_replace2=0x7f060008;
+    public static final int activity_preview_replace3=0x7f060009;
+    public static final int activity_preview_sjlc_msg=0x7f06000a;
+    public static final int activity_print=0x7f06000b;
+    public static final int activity_save_list=0x7f06000c;
+    public static final int carriage_and_seat_dialog=0x7f06000d;
+    public static final int carriage_dialog=0x7f06000e;
+    public static final int content_dialog=0x7f06000f;
+    public static final int custom_title=0x7f060010;
+    public static final int device_list=0x7f060011;
+    public static final int device_name=0x7f060012;
+    public static final int dialog_date=0x7f060013;
+    public static final int item_dialog_left=0x7f060014;
+    public static final int item_dialog_list_one=0x7f060015;
+    public static final int item_dialog_right=0x7f060016;
+    public static final int item_label=0x7f060017;
+    public static final int item_new_common_button=0x7f060018;
+    public static final int item_new_common_line=0x7f060019;
+    public static final int item_new_common_text_arrow=0x7f06001a;
+    public static final int item_new_common_text_edittext=0x7f06001b;
+    public static final int layout_common_title_bar_left=0x7f06001c;
+    public static final int new_view_title=0x7f06001d;
+    public static final int null_layout=0x7f06001e;
+    public static final int option_menu=0x7f06001f;
+    public static final int view_title_edit_align_left=0x7f060020;
   }
   public static final class mipmap {
     public static final int ic_launcher=0x7f070000;
@@ -160,9 +313,12 @@ public final class R {
     public static final int title_paired_devices=0x7f080017;
   }
   public static final class style {
-    public static final int CardView=0x7f090000;
-    public static final int CardView_Dark=0x7f090001;
-    public static final int CardView_Light=0x7f090002;
+    public static final int AppBaseTheme=0x7f090000;
+    public static final int AppTheme=0x7f090001;
+    public static final int CardView=0x7f090002;
+    public static final int CardView_Dark=0x7f090003;
+    public static final int CardView_Light=0x7f090004;
+    public static final int listDialog=0x7f090005;
   }
   public static final class styleable {
     /**
@@ -172,17 +328,17 @@ public final class R {
      * <colgroup align="left" />
      * <colgroup align="left" />
      * <tr><th>Attribute</th><th>Description</th></tr>
-     * <tr><td><code>{@link #CardView_cardBackgroundColor com.qr.demo:cardBackgroundColor}</code></td><td></td></tr>
-     * <tr><td><code>{@link #CardView_cardCornerRadius com.qr.demo:cardCornerRadius}</code></td><td></td></tr>
-     * <tr><td><code>{@link #CardView_cardElevation com.qr.demo:cardElevation}</code></td><td></td></tr>
-     * <tr><td><code>{@link #CardView_cardMaxElevation com.qr.demo:cardMaxElevation}</code></td><td></td></tr>
-     * <tr><td><code>{@link #CardView_cardPreventCornerOverlap com.qr.demo:cardPreventCornerOverlap}</code></td><td></td></tr>
-     * <tr><td><code>{@link #CardView_cardUseCompatPadding com.qr.demo:cardUseCompatPadding}</code></td><td></td></tr>
-     * <tr><td><code>{@link #CardView_contentPadding com.qr.demo:contentPadding}</code></td><td></td></tr>
-     * <tr><td><code>{@link #CardView_contentPaddingBottom com.qr.demo:contentPaddingBottom}</code></td><td></td></tr>
-     * <tr><td><code>{@link #CardView_contentPaddingLeft com.qr.demo:contentPaddingLeft}</code></td><td></td></tr>
-     * <tr><td><code>{@link #CardView_contentPaddingRight com.qr.demo:contentPaddingRight}</code></td><td></td></tr>
-     * <tr><td><code>{@link #CardView_contentPaddingTop com.qr.demo:contentPaddingTop}</code></td><td></td></tr>
+     * <tr><td><code>{@link #CardView_cardBackgroundColor com.yilong.qrlabel:cardBackgroundColor}</code></td><td></td></tr>
+     * <tr><td><code>{@link #CardView_cardCornerRadius com.yilong.qrlabel:cardCornerRadius}</code></td><td></td></tr>
+     * <tr><td><code>{@link #CardView_cardElevation com.yilong.qrlabel:cardElevation}</code></td><td></td></tr>
+     * <tr><td><code>{@link #CardView_cardMaxElevation com.yilong.qrlabel:cardMaxElevation}</code></td><td></td></tr>
+     * <tr><td><code>{@link #CardView_cardPreventCornerOverlap com.yilong.qrlabel:cardPreventCornerOverlap}</code></td><td></td></tr>
+     * <tr><td><code>{@link #CardView_cardUseCompatPadding com.yilong.qrlabel:cardUseCompatPadding}</code></td><td></td></tr>
+     * <tr><td><code>{@link #CardView_contentPadding com.yilong.qrlabel:contentPadding}</code></td><td></td></tr>
+     * <tr><td><code>{@link #CardView_contentPaddingBottom com.yilong.qrlabel:contentPaddingBottom}</code></td><td></td></tr>
+     * <tr><td><code>{@link #CardView_contentPaddingLeft com.yilong.qrlabel:contentPaddingLeft}</code></td><td></td></tr>
+     * <tr><td><code>{@link #CardView_contentPaddingRight com.yilong.qrlabel:contentPaddingRight}</code></td><td></td></tr>
+     * <tr><td><code>{@link #CardView_contentPaddingTop com.yilong.qrlabel:contentPaddingTop}</code></td><td></td></tr>
      * </table>
      * @see #CardView_cardBackgroundColor
      * @see #CardView_cardCornerRadius
@@ -197,23 +353,23 @@ public final class R {
      * @see #CardView_contentPaddingTop
      */
     public static final int[] CardView={
-        0x7f010000, 0x7f010001, 0x7f010002, 0x7f010003, 
-        0x7f010004, 0x7f010005, 0x7f010006, 0x7f010007, 
-        0x7f010008, 0x7f010009, 0x7f01000a
+        0x7f010001, 0x7f010002, 0x7f010003, 0x7f010004, 
+        0x7f010005, 0x7f010006, 0x7f010007, 0x7f010008, 
+        0x7f010009, 0x7f01000a, 0x7f01000b
       };
     /**
-     * <p>This symbol is the offset where the {@link com.qr.demo.R.attr#cardBackgroundColor}
+     * <p>This symbol is the offset where the {@link com.yilong.qrlabel.R.attr#cardBackgroundColor}
      * attribute's value can be found in the {@link #CardView} array.
      *
      * <p>May be a color value, in the form of "<code>#<i>rgb</i></code>",
      * "<code>#<i>argb</i></code>", "<code>#<i>rrggbb</i></code>", or
      * "<code>#<i>aarrggbb</i></code>".
      *
-     * @attr name com.qr.demo:cardBackgroundColor
+     * @attr name com.yilong.qrlabel:cardBackgroundColor
      */
     public static final int CardView_cardBackgroundColor=0;
     /**
-     * <p>This symbol is the offset where the {@link com.qr.demo.R.attr#cardCornerRadius}
+     * <p>This symbol is the offset where the {@link com.yilong.qrlabel.R.attr#cardCornerRadius}
      * attribute's value can be found in the {@link #CardView} array.
      *
      * <p>May be a dimension value, which is a floating point number appended with a
@@ -222,11 +378,11 @@ public final class R {
      * sp (scaled pixels based on preferred font size), in (inches), and
      * mm (millimeters).
      *
-     * @attr name com.qr.demo:cardCornerRadius
+     * @attr name com.yilong.qrlabel:cardCornerRadius
      */
     public static final int CardView_cardCornerRadius=1;
     /**
-     * <p>This symbol is the offset where the {@link com.qr.demo.R.attr#cardElevation}
+     * <p>This symbol is the offset where the {@link com.yilong.qrlabel.R.attr#cardElevation}
      * attribute's value can be found in the {@link #CardView} array.
      *
      * <p>May be a dimension value, which is a floating point number appended with a
@@ -235,11 +391,11 @@ public final class R {
      * sp (scaled pixels based on preferred font size), in (inches), and
      * mm (millimeters).
      *
-     * @attr name com.qr.demo:cardElevation
+     * @attr name com.yilong.qrlabel:cardElevation
      */
     public static final int CardView_cardElevation=2;
     /**
-     * <p>This symbol is the offset where the {@link com.qr.demo.R.attr#cardMaxElevation}
+     * <p>This symbol is the offset where the {@link com.yilong.qrlabel.R.attr#cardMaxElevation}
      * attribute's value can be found in the {@link #CardView} array.
      *
      * <p>May be a dimension value, which is a floating point number appended with a
@@ -248,31 +404,31 @@ public final class R {
      * sp (scaled pixels based on preferred font size), in (inches), and
      * mm (millimeters).
      *
-     * @attr name com.qr.demo:cardMaxElevation
+     * @attr name com.yilong.qrlabel:cardMaxElevation
      */
     public static final int CardView_cardMaxElevation=3;
     /**
-     * <p>This symbol is the offset where the {@link com.qr.demo.R.attr#cardPreventCornerOverlap}
+     * <p>This symbol is the offset where the {@link com.yilong.qrlabel.R.attr#cardPreventCornerOverlap}
      * attribute's value can be found in the {@link #CardView} array.
      *
      * <p>May be a boolean value, such as "<code>true</code>" or
      * "<code>false</code>".
      *
-     * @attr name com.qr.demo:cardPreventCornerOverlap
+     * @attr name com.yilong.qrlabel:cardPreventCornerOverlap
      */
     public static final int CardView_cardPreventCornerOverlap=4;
     /**
-     * <p>This symbol is the offset where the {@link com.qr.demo.R.attr#cardUseCompatPadding}
+     * <p>This symbol is the offset where the {@link com.yilong.qrlabel.R.attr#cardUseCompatPadding}
      * attribute's value can be found in the {@link #CardView} array.
      *
      * <p>May be a boolean value, such as "<code>true</code>" or
      * "<code>false</code>".
      *
-     * @attr name com.qr.demo:cardUseCompatPadding
+     * @attr name com.yilong.qrlabel:cardUseCompatPadding
      */
     public static final int CardView_cardUseCompatPadding=5;
     /**
-     * <p>This symbol is the offset where the {@link com.qr.demo.R.attr#contentPadding}
+     * <p>This symbol is the offset where the {@link com.yilong.qrlabel.R.attr#contentPadding}
      * attribute's value can be found in the {@link #CardView} array.
      *
      * <p>May be a dimension value, which is a floating point number appended with a
@@ -281,11 +437,11 @@ public final class R {
      * sp (scaled pixels based on preferred font size), in (inches), and
      * mm (millimeters).
      *
-     * @attr name com.qr.demo:contentPadding
+     * @attr name com.yilong.qrlabel:contentPadding
      */
     public static final int CardView_contentPadding=6;
     /**
-     * <p>This symbol is the offset where the {@link com.qr.demo.R.attr#contentPaddingBottom}
+     * <p>This symbol is the offset where the {@link com.yilong.qrlabel.R.attr#contentPaddingBottom}
      * attribute's value can be found in the {@link #CardView} array.
      *
      * <p>May be a dimension value, which is a floating point number appended with a
@@ -294,11 +450,11 @@ public final class R {
      * sp (scaled pixels based on preferred font size), in (inches), and
      * mm (millimeters).
      *
-     * @attr name com.qr.demo:contentPaddingBottom
+     * @attr name com.yilong.qrlabel:contentPaddingBottom
      */
     public static final int CardView_contentPaddingBottom=7;
     /**
-     * <p>This symbol is the offset where the {@link com.qr.demo.R.attr#contentPaddingLeft}
+     * <p>This symbol is the offset where the {@link com.yilong.qrlabel.R.attr#contentPaddingLeft}
      * attribute's value can be found in the {@link #CardView} array.
      *
      * <p>May be a dimension value, which is a floating point number appended with a
@@ -307,11 +463,11 @@ public final class R {
      * sp (scaled pixels based on preferred font size), in (inches), and
      * mm (millimeters).
      *
-     * @attr name com.qr.demo:contentPaddingLeft
+     * @attr name com.yilong.qrlabel:contentPaddingLeft
      */
     public static final int CardView_contentPaddingLeft=8;
     /**
-     * <p>This symbol is the offset where the {@link com.qr.demo.R.attr#contentPaddingRight}
+     * <p>This symbol is the offset where the {@link com.yilong.qrlabel.R.attr#contentPaddingRight}
      * attribute's value can be found in the {@link #CardView} array.
      *
      * <p>May be a dimension value, which is a floating point number appended with a
@@ -320,11 +476,11 @@ public final class R {
      * sp (scaled pixels based on preferred font size), in (inches), and
      * mm (millimeters).
      *
-     * @attr name com.qr.demo:contentPaddingRight
+     * @attr name com.yilong.qrlabel:contentPaddingRight
      */
     public static final int CardView_contentPaddingRight=9;
     /**
-     * <p>This symbol is the offset where the {@link com.qr.demo.R.attr#contentPaddingTop}
+     * <p>This symbol is the offset where the {@link com.yilong.qrlabel.R.attr#contentPaddingTop}
      * attribute's value can be found in the {@link #CardView} array.
      *
      * <p>May be a dimension value, which is a floating point number appended with a
@@ -333,8 +489,135 @@ public final class R {
      * sp (scaled pixels based on preferred font size), in (inches), and
      * mm (millimeters).
      *
-     * @attr name com.qr.demo:contentPaddingTop
+     * @attr name com.yilong.qrlabel:contentPaddingTop
      */
     public static final int CardView_contentPaddingTop=10;
+    /**
+     * Attributes that can be used with a title_view.
+     * <p>Includes the following attributes:</p>
+     * <table>
+     * <colgroup align="left" />
+     * <colgroup align="left" />
+     * <tr><th>Attribute</th><th>Description</th></tr>
+     * <tr><td><code>{@link #title_view_arrow com.yilong.qrlabel:arrow}</code></td><td></td></tr>
+     * <tr><td><code>{@link #title_view_hide_discreption com.yilong.qrlabel:hide_discreption}</code></td><td></td></tr>
+     * <tr><td><code>{@link #title_view_left_icon com.yilong.qrlabel:left_icon}</code></td><td></td></tr>
+     * <tr><td><code>{@link #title_view_title com.yilong.qrlabel:title}</code></td><td></td></tr>
+     * <tr><td><code>{@link #title_view_title_color com.yilong.qrlabel:title_color}</code></td><td></td></tr>
+     * </table>
+     * @see #title_view_arrow
+     * @see #title_view_hide_discreption
+     * @see #title_view_left_icon
+     * @see #title_view_title
+     * @see #title_view_title_color
+     */
+    public static final int[] title_view={
+        0x7f010000, 0x7f01000c, 0x7f01000e, 0x7f010011, 
+        0x7f010012
+      };
+    /**
+     * <p>This symbol is the offset where the {@link com.yilong.qrlabel.R.attr#arrow}
+     * attribute's value can be found in the {@link #title_view} array.
+     *
+     * <p>May be a reference to another resource, in the form
+     * "<code>@[+][<i>package</i>:]<i>type</i>/<i>name</i></code>" or a theme
+     * attribute in the form
+     * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
+     *
+     * @attr name com.yilong.qrlabel:arrow
+     */
+    public static final int title_view_arrow=0;
+    /**
+     * Attributes that can be used with a title_view_edit.
+     * <p>Includes the following attributes:</p>
+     * <table>
+     * <colgroup align="left" />
+     * <colgroup align="left" />
+     * <tr><th>Attribute</th><th>Description</th></tr>
+     * <tr><td><code>{@link #title_view_edit_hint com.yilong.qrlabel:hint}</code></td><td></td></tr>
+     * <tr><td><code>{@link #title_view_edit_text com.yilong.qrlabel:text}</code></td><td></td></tr>
+     * <tr><td><code>{@link #title_view_edit_text_color com.yilong.qrlabel:text_color}</code></td><td></td></tr>
+     * </table>
+     * @see #title_view_edit_hint
+     * @see #title_view_edit_text
+     * @see #title_view_edit_text_color
+     */
+    public static final int[] title_view_edit={
+        0x7f01000d, 0x7f01000f, 0x7f010010
+      };
+    /**
+     * <p>This symbol is the offset where the {@link com.yilong.qrlabel.R.attr#hint}
+     * attribute's value can be found in the {@link #title_view_edit} array.
+     *
+     * <p>May be a string value, using '\\;' to escape characters such as
+     * '\\n' or '\\uxxxx' for a unicode character;
+     *
+     * @attr name com.yilong.qrlabel:hint
+     */
+    public static final int title_view_edit_hint=0;
+    /**
+     * <p>This symbol is the offset where the {@link com.yilong.qrlabel.R.attr#text}
+     * attribute's value can be found in the {@link #title_view_edit} array.
+     *
+     * <p>May be a string value, using '\\;' to escape characters such as
+     * '\\n' or '\\uxxxx' for a unicode character;
+     *
+     * @attr name com.yilong.qrlabel:text
+     */
+    public static final int title_view_edit_text=1;
+    /**
+     * <p>This symbol is the offset where the {@link com.yilong.qrlabel.R.attr#text_color}
+     * attribute's value can be found in the {@link #title_view_edit} array.
+     *
+     * <p>May be a color value, in the form of "<code>#<i>rgb</i></code>",
+     * "<code>#<i>argb</i></code>", "<code>#<i>rrggbb</i></code>", or
+     * "<code>#<i>aarrggbb</i></code>".
+     *
+     * @attr name com.yilong.qrlabel:text_color
+     */
+    public static final int title_view_edit_text_color=2;
+    /**
+     * <p>This symbol is the offset where the {@link com.yilong.qrlabel.R.attr#hide_discreption}
+     * attribute's value can be found in the {@link #title_view} array.
+     *
+     * <p>May be a string value, using '\\;' to escape characters such as
+     * '\\n' or '\\uxxxx' for a unicode character;
+     *
+     * @attr name com.yilong.qrlabel:hide_discreption
+     */
+    public static final int title_view_hide_discreption=1;
+    /**
+     * <p>This symbol is the offset where the {@link com.yilong.qrlabel.R.attr#left_icon}
+     * attribute's value can be found in the {@link #title_view} array.
+     *
+     * <p>May be a reference to another resource, in the form
+     * "<code>@[+][<i>package</i>:]<i>type</i>/<i>name</i></code>" or a theme
+     * attribute in the form
+     * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
+     *
+     * @attr name com.yilong.qrlabel:left_icon
+     */
+    public static final int title_view_left_icon=2;
+    /**
+     * <p>This symbol is the offset where the {@link com.yilong.qrlabel.R.attr#title}
+     * attribute's value can be found in the {@link #title_view} array.
+     *
+     * <p>May be a string value, using '\\;' to escape characters such as
+     * '\\n' or '\\uxxxx' for a unicode character;
+     *
+     * @attr name com.yilong.qrlabel:title
+     */
+    public static final int title_view_title=3;
+    /**
+     * <p>This symbol is the offset where the {@link com.yilong.qrlabel.R.attr#title_color}
+     * attribute's value can be found in the {@link #title_view} array.
+     *
+     * <p>May be a color value, in the form of "<code>#<i>rgb</i></code>",
+     * "<code>#<i>argb</i></code>", "<code>#<i>rrggbb</i></code>", or
+     * "<code>#<i>aarrggbb</i></code>".
+     *
+     * @attr name com.yilong.qrlabel:title_color
+     */
+    public static final int title_view_title_color=4;
   }
 }

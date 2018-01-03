@@ -11,7 +11,6 @@ import com.qr.demo.common.CommonTextEditTextModel;
 import com.qr.demo.db.DbHelper;
 import com.qr.demo.dialog.DateTimePickerDialog;
 import com.qr.demo.dialog.ListViewDialog;
-import com.qr.demo.model.PrintModel;
 import com.qr.demo.previewactivity.YjgzlkPreviewActivity;
 import com.qr.demo.utils.TimeUtils;
 
@@ -68,7 +67,6 @@ public class YjgzlkActivity extends NewBaseCommonActivity implements ContractNew
         adapter.setDatas(models);
 
         adapter.setListener(this);
-
     }
 
     @Override
@@ -94,9 +92,7 @@ public class YjgzlkActivity extends NewBaseCommonActivity implements ContractNew
 
         if (model.getRequestCode() == 1101) {
             showDialog();
-        } else if (model.getRequestCode() == 1102 ||
-                model.getRequestCode() == 1103 ||
-                model.getRequestCode() == 1104) {
+        } else if (model.getRequestCode() == 1102) {
             if (listViewDialog == null) {
                 listViewDialog = new ListViewDialog(this, R.style.listDialog);
             }
@@ -111,7 +107,7 @@ public class YjgzlkActivity extends NewBaseCommonActivity implements ContractNew
             listViewDialog.show();
         } else if (model.getRequestCode() == 1105) {
 
-            PrintModel printModel = new PrintModel();
+
 
             printModel.recordThing = strTitle;
             printModel.connectStation = adapter.getItem(2).getDescription();

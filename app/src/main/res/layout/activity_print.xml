@@ -31,7 +31,7 @@
                 android:ellipsize="end"
                 android:gravity="center"
                 android:singleLine="true"
-                android:text="预览"
+                android:text="打印"
                 android:textColor="@android:color/black"
                 android:textSize="20sp" />
         </RelativeLayout>
@@ -43,153 +43,35 @@
             android:layout_below="@id/rl_common_titlebar"
             android:background="@color/colorLine"
             android:contentDescription="@null" />
-
-        <TextView
-            android:layout_width="45dp"
-            android:layout_height="35dp"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:layout_marginRight="10dp"
-            android:background="@drawable/bg_blue_corner"
-            android:gravity="center"
-            android:text="保存"
-            android:textColor="@color/white"
-            android:textSize="16sp" />
     </RelativeLayout>
 
-    <ScrollView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1">
+        android:layout_height="30dp"
+        android:layout_alignParentBottom="true"
+        android:background="@color/red"
+        android:orientation="horizontal">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="10dp"
+            android:gravity="center_vertical"
+            android:singleLine="true"
+            android:text="连接状态："
+            android:textColor="@android:color/white"
+            android:textSize="18sp" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_margin="10dp"
-                android:background="@drawable/bg_white_corner"
-                android:orientation="vertical"
-                android:padding="8dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="2dp"
-                    android:text="列车电报"
-                    android:textSize="18sp" />
-
-                <TextView
-                    android:id="@+id/type"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="2dp"
-                    android:text="类型"
-                    android:textSize="16sp" />
-
-
-                <TextView
-                    android:id="@+id/zhusong"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="2dp"
-                    android:text="主送："
-                    android:textSize="16sp" />
-
-                <TextView
-                    android:id="@+id/chasong"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="2dp"
-                    android:text="抄送："
-                    android:textSize="16sp" />
-
-                <com.qr.demo.view.CustomFontsTextView
-                    android:id="@+id/description"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="2dp"
-                    android:text="内容："
-                    android:textSize="15sp" />
-
-            </LinearLayout>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="3dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="5dp"
-                android:text="替换内容1"
-                android:textSize="16sp" />
-
-
-            <EditText
-                android:id="@+id/replace1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginTop="5dp"
-                android:background="@drawable/bg_white_stroke"
-                android:padding="10dp"
-                android:text=""
-                android:textSize="15sp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="3dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="5dp"
-                android:text="替换内容2"
-                android:textSize="16sp" />
-
-
-            <EditText
-                android:id="@+id/replace2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginTop="5dp"
-                android:background="@drawable/bg_white_stroke"
-                android:padding="10dp"
-                android:text=""
-                android:textSize="15sp" />
-
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="3dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="5dp"
-                android:text="替换内容3"
-                android:textSize="16sp" />
-
-
-            <EditText
-                android:id="@+id/replace3"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginTop="5dp"
-                android:background="@drawable/bg_white_stroke"
-                android:padding="10dp"
-                android:text=""
-                android:textSize="15sp" />
-
-
-        </LinearLayout>
-
-    </ScrollView>
+        <TextView
+            android:id="@+id/title_right_text"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="10dp"
+            android:gravity="center_vertical"
+            android:singleLine="true"
+            android:textColor="@android:color/white"
+            android:textSize="18sp" />
+    </LinearLayout>
 
 
 </LinearLayout>

@@ -2,10 +2,12 @@ package com.qr.demo.previewactivity;
 
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.google.gson.Gson;
 import com.qr.demo.R;
 import com.qr.demo.activity.BaseActivity;
 import com.qr.demo.model.PrintModel;
@@ -77,8 +79,11 @@ public class LkywsPreMessageViewActivity extends BaseActivity {
 
         type.setText(printModel.recordThing);
 
-
         refreshDescription();
+
+        Gson gson = new Gson();
+        String jsonStr = gson.toJson(printModel);
+        Log.i("jsonStr:", jsonStr);
     }
 
     private void refreshDescription() {
@@ -104,7 +109,6 @@ public class LkywsPreMessageViewActivity extends BaseActivity {
     public void back(View v) {
         finish();
     }
-
 
 
     class MyTextWatcher implements TextWatcher {

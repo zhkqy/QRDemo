@@ -45,6 +45,7 @@
             android:contentDescription="@null" />
 
         <TextView
+            android:id="@+id/save"
             android:layout_width="45dp"
             android:layout_height="35dp"
             android:layout_alignParentRight="true"

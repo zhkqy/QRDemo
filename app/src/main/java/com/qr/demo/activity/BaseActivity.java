@@ -1,12 +1,16 @@
 package com.qr.demo.activity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
+import android.view.View;
+
+import com.qr.demo.R;
 
 import butterknife.ButterKnife;
 
-public  abstract class BaseActivity extends FragmentActivity {
+public abstract class BaseActivity extends FragmentActivity {
     private long mExitTime;
 
 
@@ -24,6 +28,23 @@ public  abstract class BaseActivity extends FragmentActivity {
         initUI();
         initListener();
         initData();
+
+        save();
+    }
+
+    private void save() {
+        View v = findViewById(R.id.save);
+
+        if (v != null) {
+            v.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    startActivity(new Intent(BaseActivity.this, PrintActivity.class));
+
+
+                }
+            });
+        }
     }
 
 
@@ -38,7 +59,6 @@ public  abstract class BaseActivity extends FragmentActivity {
     protected abstract void initData();
 
 
-//
 //    @Override
 //    public boolean onKeyDown(int keyCode, KeyEvent event) {
 //        if (keyCode == KeyEvent.KEYCODE_BACK) {
