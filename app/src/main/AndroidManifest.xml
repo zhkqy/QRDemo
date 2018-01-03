@@ -49,6 +49,10 @@
         <activity
             android:name=".activity.SaveListActivity"
             android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.PrintActivity"
+            android:screenOrientation="portrait" />
+
         <!--添加页面-->
         <activity
             android:name=".activity.YjgzlkActivity"

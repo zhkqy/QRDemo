@@ -6,13 +6,10 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.qr.demo.Label.DianBaoLabel;
-import com.qr.demo.MyApplication;
 import com.qr.demo.R;
 import com.qr.demo.activity.BaseActivity;
 import com.qr.demo.model.PrintModel;
 import com.qr.demo.view.CustomFontsTextView;
-import com.qr.print.PrintPP_CPCL;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -39,8 +36,6 @@ public class SjlcMessageViewActivity extends BaseActivity {
     EditText replace2;
 
     CustomFontsTextView description;
-    private boolean isSending = false;
-    private int interval;
 
     String replaceStr1 = "铁路总公司运输局，（相关局集团公司)客运处、安全监察室、车辆处、公安处，xx车务段（事故处理站所属单位）大连客运段";
     String replaceStr2 = "头部右前部受伤，伤口约x公分";
@@ -102,31 +97,6 @@ public class SjlcMessageViewActivity extends BaseActivity {
     @OnClick(R.id.rl_title_bar_left)
     public void back(View v) {
         finish();
-    }
-
-    @OnClick(R.id.printOne)
-    public void printOneOnclicked(View v) {
-        final PrintPP_CPCL printPP_cpcl = ((MyApplication) getApplication()).getPrintPP_cpcl();
-        if (!isSending) {
-            new Thread(new Runnable() {
-                @Override
-                public void run() {
-                    isSending = true;
-                    if (((MyApplication) getApplication()).isConnected()) {
-                        DianBaoLabel pl = new DianBaoLabel(printPP_cpcl);
-                        pl.Lable(type.getText().toString(), zhusong.getText().toString(),
-                                chasong.getText().toString(), description.getText().toString());
-                    }
-                    try {
-                        interval = 0;
-                        Thread.sleep(interval);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                    isSending = false;
-                }
-            }).start();
-        }
     }
 
 

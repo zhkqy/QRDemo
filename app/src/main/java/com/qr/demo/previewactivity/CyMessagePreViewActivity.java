@@ -6,13 +6,10 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.qr.demo.Label.DianBaoLabel;
-import com.qr.demo.MyApplication;
 import com.qr.demo.R;
 import com.qr.demo.activity.BaseActivity;
 import com.qr.demo.model.PrintModel;
 import com.qr.demo.view.CustomFontsTextView;
-import com.qr.print.PrintPP_CPCL;
 
 import java.text.DecimalFormat;
 
@@ -38,10 +35,7 @@ public class CyMessagePreViewActivity extends BaseActivity {
     @BindView(R.id.replace1)
     EditText replace1;
 
-
     CustomFontsTextView description;
-    private boolean isSending = false;
-    private int interval;
 
     String replaceStr1 = "（相关局集团公司)客运处，客调，大连客运段";
 
@@ -121,31 +115,5 @@ public class CyMessagePreViewActivity extends BaseActivity {
     public void back(View v) {
         finish();
     }
-
-    @OnClick(R.id.printOne)
-    public void printOneOnclicked(View v) {
-        final PrintPP_CPCL printPP_cpcl = ((MyApplication) getApplication()).getPrintPP_cpcl();
-        if (!isSending) {
-            new Thread(new Runnable() {
-                @Override
-                public void run() {
-                    isSending = true;
-                    if (((MyApplication) getApplication()).isConnected()) {
-                        DianBaoLabel pl = new DianBaoLabel(printPP_cpcl);
-                        pl.Lable(type.getText().toString(), zhusong.getText().toString(),
-                                chasong.getText().toString(), description.getText().toString());
-                    }
-                    try {
-                        interval = 0;
-                        Thread.sleep(interval);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                    isSending = false;
-                }
-            }).start();
-        }
-    }
-
 
 }

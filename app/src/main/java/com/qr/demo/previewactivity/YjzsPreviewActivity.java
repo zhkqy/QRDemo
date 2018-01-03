@@ -6,13 +6,10 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.qr.demo.Label.keYunRecordLabel;
-import com.qr.demo.MyApplication;
 import com.qr.demo.R;
 import com.qr.demo.activity.BaseActivity;
 import com.qr.demo.model.PrintModel;
 import com.qr.demo.view.CustomFontsTextView;
-import com.qr.print.PrintPP_CPCL;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -36,10 +33,7 @@ public class YjzsPreviewActivity extends BaseActivity {
     @BindView(R.id.replace2)
     EditText replace2;
 
-
     CustomFontsTextView description;
-    private boolean isSending = false;
-    private int interval;
 
     String replaceStr1 = "在拿取行李时不慎将行李从行李架上滑落，砸中";
     private String replaceStr2 = "头部左后部，外观无伤痕，被砸旅客自称头痛、恶心";
@@ -130,32 +124,6 @@ public class YjzsPreviewActivity extends BaseActivity {
     @OnClick(R.id.rl_title_bar_left)
     public void back(View v) {
         finish();
-    }
-
-    @OnClick(R.id.printOne)
-    public void printOneOnclicked(View v) {
-        final PrintPP_CPCL printPP_cpcl = ((MyApplication) getApplication()).getPrintPP_cpcl();
-        if (!isSending) {
-            new Thread(new Runnable() {
-                @Override
-                public void run() {
-                    isSending = true;
-                    if (((MyApplication) getApplication()).isConnected()) {
-                        keYunRecordLabel pl = new keYunRecordLabel(printPP_cpcl);
-
-                        pl.Lable(recordThing.getText().toString(), connectStation.getText().toString(),
-                                description.getText().toString());
-                    }
-                    try {
-                        interval = 0;
-                        Thread.sleep(interval);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                    isSending = false;
-                }
-            }).start();
-        }
     }
 
 
