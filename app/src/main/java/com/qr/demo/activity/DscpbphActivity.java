@@ -121,9 +121,6 @@ public class DscpbphActivity extends NewBaseCommonActivity implements ContractNe
             listViewDialog.show();
         } else if (model.getRequestCode() == 1105) {
 
-            PrintModel printModel = new PrintModel();
-
-
             printModel.recordThing = strTitle;
             printModel.connectStation = adapter.getItem(2).getDescription();
 

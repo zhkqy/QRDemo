@@ -117,8 +117,6 @@ public class YjwhzzcplkActivity extends NewBaseCommonActivity implements Contrac
             listViewDialog.show();
         } else if (model.getRequestCode() == 1105) {
 
-            PrintModel printModel = new PrintModel();
-
             printModel.recordThing = strTitle;
             String time = adapter.getItem(1).getDescription();
             String[] str = time.split("-");

@@ -136,10 +136,8 @@ public class YjgzlkActivity extends NewBaseCommonActivity implements ContractNew
             listViewDialog.show();
         } else if (model.getRequestCode() == 1105) {
 
-
             printModel.recordThing = strTitle;
             printModel.connectStation = adapter.getItem(2).getDescription();
-
 
             String time = adapter.getItem(1).getDescription();
 
