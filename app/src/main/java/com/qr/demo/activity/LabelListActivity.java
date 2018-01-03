@@ -161,16 +161,18 @@ public class LabelListActivity extends BaseActivity {
             startActivity(new Intent(mContext, ClgzdztkActivity.class).putExtra("title", "车辆故障到站退款"));
         } else if ("移交烫伤旅客".equals(str)) {
             startActivity(new Intent(mContext, YjtslkActivity.class).putExtra("title", "移交烫伤旅客"));
-        }else if ("移交不明物体击伤旅客".equals(str)) {
+        } else if ("移交不明物体击伤旅客".equals(str)) {
             startActivity(new Intent(mContext, YjbmwtjsActivity.class).putExtra("title", "移交不明物体击伤旅客"));
-        }else if ("移交砸伤旅客".equals(str)) {
+        } else if ("移交砸伤旅客".equals(str)) {
             startActivity(new Intent(mContext, YjzsActivity.class).putExtra("title", "移交砸伤旅客"));
-        }else if ("移交挤手旅客".equals(str)) {
+        } else if ("移交挤手旅客".equals(str)) {
             startActivity(new Intent(mContext, YjjsActivity.class).putExtra("title", "移交挤手旅客"));
-        }else if ("超员电报".equals(str)) {
+        } else if ("超员电报".equals(str)) {
             startActivity(new Intent(mContext, CyMessageActivity.class).putExtra("title", "超员电报"));
-        }else if ("旅客意外伤电报".equals(str)) {
+        } else if ("旅客意外伤电报".equals(str)) {
             startActivity(new Intent(mContext, LkywsMessageActivity.class).putExtra("title", "旅客意外伤电报"));
+        } else if ("石击列车电报".equals(str)) {
+            startActivity(new Intent(mContext, SjlcMessageActivity.class).putExtra("title", "石击列车电报"));
         }
 
     }

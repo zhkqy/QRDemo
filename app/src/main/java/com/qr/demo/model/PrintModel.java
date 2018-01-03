@@ -88,5 +88,12 @@ public class PrintModel implements Serializable {
     public String troubleStation = "";  //事故车站
     public String troubleRecord = "";//事故记录
 
+    public String troubleMinute = "";  //事故时间
+
+    public String jicheOne = "";  //机车顺位1
+    public String jicheTwo= "";  //机车顺位2
+    public String jicheThree = "";  //机车顺位3
+
+    public String glassNum = "";  //玻璃破损块数
 
 }
