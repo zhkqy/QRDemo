@@ -8,6 +8,7 @@ import android.widget.TextView;
 
 import com.qr.demo.R;
 import com.qr.demo.db.SaveHelper;
+import com.qr.demo.dialog.EditDialog;
 import com.qr.demo.model.PrintModel;
 
 import java.util.List;
@@ -27,6 +28,8 @@ public class SaveListActivity extends BaseActivity {
 
     List<PrintModel> printModels;
     Adapter adapter;
+
+    EditDialog editDialog = null;
 
     @Override
     protected void setContentView() {
@@ -111,7 +114,7 @@ public class SaveListActivity extends BaseActivity {
 
             holder.three.setVisibility(View.GONE);
 
-            PrintModel printModel = printModels.get(position);
+            final PrintModel printModel = printModels.get(position);
 
             if (printModel.saveRecordThing.contains("电报")) {
                 holder.three.setVisibility(View.VISIBLE);
@@ -127,6 +130,17 @@ public class SaveListActivity extends BaseActivity {
                 holder.one.setText(printModel.saveConnectStation);
                 holder.two.setText(printModel.savedescription);
             }
+
+            convertView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (editDialog == null) {
+                        editDialog = new EditDialog(mContext, R.style.listDialog);
+                    }
+                    editDialog.setDatas(printModel);
+                    editDialog.show();
+                }
+            });
 
             return convertView;
         }

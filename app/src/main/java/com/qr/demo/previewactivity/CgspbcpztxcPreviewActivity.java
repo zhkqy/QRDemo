@@ -104,6 +104,7 @@ public class CgspbcpztxcPreviewActivity extends BaseActivity {
                     Bundle mBundle = new Bundle();
                     mBundle.putSerializable("data", printModel);
                     mIntent.putExtras(mBundle);
+                    startActivity(mIntent);
                     finish();
                 }
             });

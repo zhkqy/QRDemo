@@ -154,6 +154,7 @@ public class CyMessagePreViewActivity extends BaseActivity {
                     Bundle mBundle = new Bundle();
                     mBundle.putSerializable("data", printModel);
                     mIntent.putExtras(mBundle);
+                    startActivity(mIntent);
                     finish();
                 }
             });
