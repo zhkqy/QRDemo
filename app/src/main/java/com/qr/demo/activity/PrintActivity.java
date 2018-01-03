@@ -46,6 +46,7 @@ public class PrintActivity extends BaseActivity {
         printModel = (PrintModel) getIntent().getSerializableExtra("data");
     }
 
+    @OnClick(R.id.printOne)
     public void printOneOnclicked(View v) {
         final PrintPP_CPCL printPP_cpcl = ((MyApplication) getApplication()).getPrintPP_cpcl();
         if (!isSending) {
@@ -54,14 +55,18 @@ public class PrintActivity extends BaseActivity {
                 public void run() {
                     isSending = true;
                     if (((MyApplication) getApplication()).isConnected()) {
-                        keYunRecordLabel pl = new keYunRecordLabel(printPP_cpcl);
 
-//                        pl.Lable(recordThing.getText().toString(), connectStation.getText().toString(),
-//                                description.getText().toString());
-
-//                        DianBaoLabel pl = new DianBaoLabel(printPP_cpcl);
-//                        pl.Lable(type.getText().toString(), zhusong.getText().toString(),
-//                                chasong.getText().toString(), description.getText().toString());
+                        if (printModel != null) {
+                            if (printModel.recordThing.contains("电报")) {
+                                DianBaoLabel pl = new DianBaoLabel(printPP_cpcl);
+                                pl.Lable(printModel.saveRecordThing, printModel.saveZhusongDianBao,
+                                        printModel.saveChaosongDianBao, printModel.savedescription);
+                            } else {
+                                keYunRecordLabel pl = new keYunRecordLabel(printPP_cpcl);
+                                pl.Lable(printModel.saveRecordThing, printModel.saveConnectStation,
+                                        printModel.savedescription);
+                            }
+                        }
                     }
                     try {
                         interval = 0;

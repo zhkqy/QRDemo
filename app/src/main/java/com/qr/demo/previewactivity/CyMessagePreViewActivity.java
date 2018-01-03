@@ -1,26 +1,14 @@
 package com.qr.demo.previewactivity;
 
-import android.content.Intent;
-import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
-import android.widget.EditText;
-import android.widget.TextView;
 
-import com.google.gson.Gson;
 import com.qr.demo.R;
-import com.qr.demo.activity.BaseActivity;
-import com.qr.demo.activity.PrintActivity;
-import com.qr.demo.db.SaveHelper;
 import com.qr.demo.model.PrintModel;
-import com.qr.demo.utils.ToastUtils;
-import com.qr.demo.utils.Utils;
-import com.qr.demo.view.CustomFontsTextView;
 
 import java.text.DecimalFormat;
 
-import butterknife.BindView;
 import butterknife.OnClick;
 
 /**
