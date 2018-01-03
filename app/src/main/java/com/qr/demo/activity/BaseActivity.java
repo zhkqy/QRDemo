@@ -11,9 +11,6 @@ import com.qr.demo.R;
 import butterknife.ButterKnife;
 
 public abstract class BaseActivity extends FragmentActivity {
-    private long mExitTime;
-
-
     protected Context mContext;
 
     @Override
@@ -29,24 +26,7 @@ public abstract class BaseActivity extends FragmentActivity {
         initListener();
         initData();
 
-        save();
     }
-
-    private void save() {
-        View v = findViewById(R.id.save);
-
-        if (v != null) {
-            v.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    startActivity(new Intent(BaseActivity.this, PrintActivity.class));
-
-
-                }
-            });
-        }
-    }
-
 
     protected abstract void setContentView();
 
@@ -57,23 +37,5 @@ public abstract class BaseActivity extends FragmentActivity {
     protected abstract void initListener();
 
     protected abstract void initData();
-
-
-//    @Override
-//    public boolean onKeyDown(int keyCode, KeyEvent event) {
-//        if (keyCode == KeyEvent.KEYCODE_BACK) {
-//
-//            if ((System.currentTimeMillis() - mExitTime) > 2000) {
-//                Toast.makeText(this, "再按一次退出程序", Toast.LENGTH_SHORT).show();
-//                mExitTime = System.currentTimeMillis();
-//
-//            } else {
-//                finish();
-//            }
-//            return true;
-//        }
-//        return super.onKeyDown(keyCode, event);
-//    }
-
 
 }

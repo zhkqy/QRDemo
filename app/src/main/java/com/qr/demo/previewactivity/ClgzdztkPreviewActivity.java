@@ -1,14 +1,21 @@
 package com.qr.demo.previewactivity;
 
+import android.content.Intent;
+import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.google.gson.Gson;
 import com.qr.demo.R;
 import com.qr.demo.activity.BaseActivity;
+import com.qr.demo.activity.PrintActivity;
+import com.qr.demo.db.SaveHelper;
 import com.qr.demo.model.PrintModel;
+import com.qr.demo.utils.ToastUtils;
+import com.qr.demo.utils.Utils;
 import com.qr.demo.view.CustomFontsTextView;
 
 import butterknife.BindView;
@@ -51,44 +58,14 @@ public class ClgzdztkPreviewActivity extends BaseActivity {
 
     @Override
     protected void initUI() {
-
     }
 
     @Override
     protected void initListener() {
 
-        replace1.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-                refreshDescription();
-            }
-        });
-        replace2.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-                refreshDescription();
-            }
-        });
+        save();
+        replace1.addTextChangedListener(new MyTextWatcher());
+        replace2.addTextChangedListener(new MyTextWatcher());
     }
 
     @Override
@@ -121,4 +98,54 @@ public class ClgzdztkPreviewActivity extends BaseActivity {
         finish();
     }
 
+    public void save() {
+        View v = findViewById(R.id.save);
+        if (v != null) {
+            v.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    printModel.saveRecordThing = recordThing.getText().toString();
+                    printModel.saveConnectStation = connectStation.getText().toString();
+                    printModel.savedescription = description.getText().toString();
+
+                    printModel.repalce1 = replace1.getText().toString();
+                    printModel.repalce2 = replace2.getText().toString();
+                    printModel.uuid = Utils.getMyUUID();
+
+                    try {
+                        Gson gson = new Gson();
+                        String jsonStr = gson.toJson(printModel);
+                        SaveHelper.insert(mContext, jsonStr, printModel.uuid);
+                        ToastUtils.show(mContext, "数据保存成功");
+                    } catch (Exception e) {
+                        ToastUtils.show(mContext, "数据保存失败");
+                    }
+
+                    Intent mIntent = new Intent(mContext, PrintActivity.class);
+                    Bundle mBundle = new Bundle();
+                    mBundle.putSerializable("data", printModel);
+                    mIntent.putExtras(mBundle);
+                    finish();
+                }
+            });
+        }
+    }
+
+    class MyTextWatcher implements TextWatcher {
+        @Override
+        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+        }
+
+        @Override
+        public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+        }
+
+        @Override
+        public void afterTextChanged(Editable s) {
+            refreshDescription();
+        }
+    }
 }

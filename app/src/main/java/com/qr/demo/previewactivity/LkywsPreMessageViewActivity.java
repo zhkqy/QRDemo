@@ -81,9 +81,7 @@ public class LkywsPreMessageViewActivity extends BaseActivity {
 
         refreshDescription();
 
-        Gson gson = new Gson();
-        String jsonStr = gson.toJson(printModel);
-        Log.i("jsonStr:", jsonStr);
+
     }
 
     private void refreshDescription() {

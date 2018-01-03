@@ -8,6 +8,9 @@ import java.io.Serializable;
 
 public class PrintModel implements Serializable {
 
+
+    public String uuid = "";//  uuid
+
     public String recordThing = "";//  记录事由
     public String connectStation = "";//交接站
     public String year = "";
@@ -91,9 +94,22 @@ public class PrintModel implements Serializable {
     public String troubleMinute = "";  //事故时间
 
     public String jicheOne = "";  //机车顺位1
-    public String jicheTwo= "";  //机车顺位2
+    public String jicheTwo = "";  //机车顺位2
     public String jicheThree = "";  //机车顺位3
 
     public String glassNum = "";  //玻璃破损块数
+
+    public String repalce1 = "";  //repalce1
+    public String repalce2 = "";  //repalce2
+    public String repalce3 = "";  //repalce3
+
+    //客户记录 3条
+    public String saveRecordThing = "";//  记录事由
+    public String saveConnectStation = "";//  记录交接站
+    public String savedescription = "";//  描述
+
+    //电报4条
+    public String saveZhusongDianBao = "";//  记录事由
+    public String saveChaosongDianBao = "";//  记录交接站
 
 }

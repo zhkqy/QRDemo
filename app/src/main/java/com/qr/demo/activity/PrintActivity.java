@@ -6,6 +6,7 @@ import com.qr.demo.Label.DianBaoLabel;
 import com.qr.demo.Label.keYunRecordLabel;
 import com.qr.demo.MyApplication;
 import com.qr.demo.R;
+import com.qr.demo.model.PrintModel;
 import com.qr.print.PrintPP_CPCL;
 
 import butterknife.OnClick;
@@ -18,7 +19,7 @@ public class PrintActivity extends BaseActivity {
 
     private boolean isSending = false;
     private int interval;
-
+    private PrintModel printModel;
 
     @Override
     protected void setContentView() {
@@ -42,7 +43,7 @@ public class PrintActivity extends BaseActivity {
 
     @Override
     protected void initData() {
-
+        printModel = (PrintModel) getIntent().getSerializableExtra("data");
     }
 
     public void printOneOnclicked(View v) {

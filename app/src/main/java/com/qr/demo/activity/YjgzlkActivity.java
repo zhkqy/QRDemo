@@ -58,9 +58,9 @@ public class YjgzlkActivity extends NewBaseCommonActivity implements ContractNew
         models.add(new CommonModel(
                 new CommonTextEditTextModel("原票票号", "", "请输入原票票号")));
 
-        models.add(new CommonModel("原票发站", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1103));
+        models.add(new CommonModel("原票发站", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1102));
 
-        models.add(new CommonModel("原票到站", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1104));
+        models.add(new CommonModel("原票到站", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1102));
 
         models.add(new CommonModel("预览", CommonModel.TYPE_BUTTON).setRequestCode(1105));
 
@@ -106,7 +106,6 @@ public class YjgzlkActivity extends NewBaseCommonActivity implements ContractNew
             });
             listViewDialog.show();
         } else if (model.getRequestCode() == 1105) {
-
 
 
             printModel.recordThing = strTitle;

@@ -1,11 +1,19 @@
 package com.qr.demo.previewactivity;
 
+import android.content.Intent;
+import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
+import com.google.gson.Gson;
 import com.qr.demo.R;
 import com.qr.demo.activity.BaseActivity;
+import com.qr.demo.activity.PrintActivity;
+import com.qr.demo.db.SaveHelper;
 import com.qr.demo.model.PrintModel;
+import com.qr.demo.utils.ToastUtils;
+import com.qr.demo.utils.Utils;
 import com.qr.demo.view.CustomFontsTextView;
 
 import butterknife.BindView;
@@ -46,7 +54,7 @@ public class CgspbcpztxcPreviewActivity extends BaseActivity {
 
     @Override
     protected void initListener() {
-
+        save();
     }
 
     @Override
@@ -69,6 +77,37 @@ public class CgspbcpztxcPreviewActivity extends BaseActivity {
     @OnClick(R.id.rl_title_bar_left)
     public void back(View v) {
         finish();
+    }
+
+    public void save() {
+        View v = findViewById(R.id.save);
+        if (v != null) {
+            v.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    printModel.saveRecordThing = recordThing.getText().toString();
+                    printModel.saveConnectStation = connectStation.getText().toString();
+                    printModel.savedescription = description.getText().toString();
+                    printModel.uuid = Utils.getMyUUID();
+
+                    try {
+                        Gson gson = new Gson();
+                        String jsonStr = gson.toJson(printModel);
+                        SaveHelper.insert(mContext, jsonStr, printModel.uuid);
+                        ToastUtils.show(mContext, "数据保存成功");
+                    } catch (Exception e) {
+                        ToastUtils.show(mContext, "数据保存失败");
+                    }
+
+                    Intent mIntent = new Intent(mContext, PrintActivity.class);
+                    Bundle mBundle = new Bundle();
+                    mBundle.putSerializable("data", printModel);
+                    mIntent.putExtras(mBundle);
+                    finish();
+                }
+            });
+        }
     }
 
 
