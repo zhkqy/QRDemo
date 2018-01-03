@@ -11,6 +11,7 @@ import com.qr.demo.db.SaveHelper;
 import com.qr.demo.dialog.EditDialog;
 import com.qr.demo.model.PrintModel;
 
+import java.util.Collections;
 import java.util.List;
 
 import butterknife.BindView;
@@ -64,6 +65,8 @@ public class SaveListActivity extends BaseActivity {
         super.onResume();
         try {
             printModels = SaveHelper.getPrintModelData(this);
+            Collections.reverse(printModels);
+
             adapter.notifyDataSetChanged();
         } catch (Exception e) {
 

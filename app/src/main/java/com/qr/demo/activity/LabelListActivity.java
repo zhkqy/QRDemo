@@ -131,7 +131,7 @@ public class LabelListActivity extends BaseActivity {
 
     public void skip(String str) {
 
-        if (str.equals("移交过站旅客")) {
+        if ("移交过站旅客".equals(str)) {
             startActivity(new Intent(mContext, YjgzlkActivity.class).putExtra("title", "移交过站旅客"));
         } else if ("移交患病旅客".equals(str)) {
             startActivity(new Intent(mContext, YjhblkActivity.class).putExtra("title", "移交患病旅客"));
@@ -174,8 +174,6 @@ public class LabelListActivity extends BaseActivity {
         } else if ("石击列车电报".equals(str)) {
             startActivity(new Intent(mContext, SjlcMessageActivity.class).putExtra("title", "石击列车电报"));
         }
-
     }
-
 
 }
