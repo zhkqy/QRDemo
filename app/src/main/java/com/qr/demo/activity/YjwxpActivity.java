@@ -139,6 +139,7 @@ public class YjwxpActivity extends NewBaseCommonActivity implements ContractNewC
             Intent mIntent = new Intent(this, YjwxpPreviewActivity.class);
             Bundle mBundle = new Bundle();
             mBundle.putSerializable("data", printModel);
+            mBundle.putBoolean("isEditStatus", isEditStatus);
             mIntent.putExtras(mBundle);
 
             startActivity(mIntent);

@@ -141,6 +141,7 @@ public class GsbcpdztkActivity extends NewBaseCommonActivity implements Contract
             Intent mIntent = new Intent(this, GsbcpdztkPreviewActivity.class);
             Bundle mBundle = new Bundle();
             mBundle.putSerializable("data", printModel);
+            mBundle.putBoolean("isEditStatus", isEditStatus);
             mIntent.putExtras(mBundle);
 
             startActivity(mIntent);

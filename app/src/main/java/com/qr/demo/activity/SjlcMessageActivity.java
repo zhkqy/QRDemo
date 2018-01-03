@@ -168,6 +168,7 @@ public class SjlcMessageActivity extends NewBaseCommonActivity implements Contra
 
             Intent mIntent = new Intent(this, SjlcMessageViewActivity.class);
             Bundle mBundle = new Bundle();
+            mBundle.putBoolean("isEditStatus", isEditStatus);
             mBundle.putSerializable("data", printModel);
             mIntent.putExtras(mBundle);
 

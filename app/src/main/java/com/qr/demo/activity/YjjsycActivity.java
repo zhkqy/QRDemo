@@ -143,6 +143,7 @@ public class YjjsycActivity extends NewBaseCommonActivity implements ContractNew
 
             Intent mIntent = new Intent(this, YjjsycPreviewActivity.class);
             Bundle mBundle = new Bundle();
+            mBundle.putBoolean("isEditStatus", isEditStatus);
             mBundle.putSerializable("data", printModel);
             mIntent.putExtras(mBundle);
 

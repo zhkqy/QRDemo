@@ -160,6 +160,7 @@ public class YjlcwdzzActivity extends NewBaseCommonActivity implements ContractN
 
             Intent mIntent = new Intent(this, YjlcwdzzPreviewActivity.class);
             Bundle mBundle = new Bundle();
+            mBundle.putBoolean("isEditStatus", isEditStatus);
             mBundle.putSerializable("data", printModel);
             mIntent.putExtras(mBundle);
 

@@ -142,6 +142,7 @@ public class CgspbcpztxcActivity extends NewBaseCommonActivity implements Contra
             Intent mIntent = new Intent(this, CgspbcpztxcPreviewActivity.class);
             Bundle mBundle = new Bundle();
             mBundle.putSerializable("data", printModel);
+            mBundle.putBoolean("isEditStatus", isEditStatus);
             mIntent.putExtras(mBundle);
 
             startActivity(mIntent);

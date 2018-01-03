@@ -165,6 +165,7 @@ public class LkywsMessageActivity extends NewBaseCommonActivity implements Contr
             Intent mIntent = new Intent(this, LkywsPreMessageViewActivity.class);
             Bundle mBundle = new Bundle();
             mBundle.putSerializable("data", printModel);
+            mBundle.putBoolean("isEditStatus", isEditStatus);
             mIntent.putExtras(mBundle);
 
             startActivity(mIntent);

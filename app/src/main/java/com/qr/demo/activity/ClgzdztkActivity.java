@@ -145,6 +145,7 @@ public class ClgzdztkActivity extends NewBaseCommonActivity implements ContractN
             Intent mIntent = new Intent(this, ClgzdztkPreviewActivity.class);
             Bundle mBundle = new Bundle();
             mBundle.putSerializable("data", printModel);
+            mBundle.putBoolean("isEditStatus", isEditStatus);
             mIntent.putExtras(mBundle);
 
             startActivity(mIntent);

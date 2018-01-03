@@ -49,6 +49,11 @@ public class NewBaseCommonActivity extends BaseActivity {
                 printModel = p;
             }
         }
+        if (isEditStatus) {
+            editData();
+        } else {
+            normalNoEditData();
+        }
 
         bottomFramelayout = findViewById(R.id.bottom_framelayout);
         listview = findViewById(R.id.ll);
@@ -56,6 +61,17 @@ public class NewBaseCommonActivity extends BaseActivity {
         listview.setAdapter(adapter);
 
     }
+
+    protected void normalNoEditData() {
+    }
+
+    ;
+
+    protected void editData() {
+    }
+
+    ;
+
 
     @Override
     protected void initPresenter() {

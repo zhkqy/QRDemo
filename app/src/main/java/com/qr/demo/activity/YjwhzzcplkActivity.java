@@ -143,6 +143,7 @@ public class YjwhzzcplkActivity extends NewBaseCommonActivity implements Contrac
             Intent mIntent = new Intent(this, YjwhzzcplkPreviewActivity.class);
             Bundle mBundle = new Bundle();
             mBundle.putSerializable("data", printModel);
+            mBundle.putBoolean("isEditStatus", isEditStatus);
             mIntent.putExtras(mBundle);
 
             startActivity(mIntent);

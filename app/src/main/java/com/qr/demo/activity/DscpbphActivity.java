@@ -156,6 +156,7 @@ public class DscpbphActivity extends NewBaseCommonActivity implements ContractNe
             Intent mIntent = new Intent(this, DscpbphPreviewActivity.class);
             Bundle mBundle = new Bundle();
             mBundle.putSerializable("data", printModel);
+            mBundle.putBoolean("isEditStatus", isEditStatus);
             mIntent.putExtras(mBundle);
 
             startActivity(mIntent);

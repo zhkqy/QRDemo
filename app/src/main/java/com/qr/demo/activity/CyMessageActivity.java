@@ -30,45 +30,50 @@ public class CyMessageActivity extends NewBaseCommonActivity implements Contract
     String strTitle;
 
     @Override
+    protected void normalNoEditData() {
+        models.clear();
+        String trainCode = DbHelper.getTrainNum(this);
+        models.add(new CommonModel("列车车次", CommonModel.TYPE_TEXT_ARROW, false).
+                setDescription(trainCode));
+        String currentTime = TimeUtils.getCurrentTime();
+        timeCommonModel = new CommonModel("当前日期", CommonModel.TYPE_TEXT_ARROW).
+                setDescription(currentTime).setRequestCode(1101);
+        models.add(timeCommonModel);
+        models.add(new CommonModel(
+                new CommonTextEditTextModel("定员人数", "", "定员人数")));
+        models.add(new CommonModel(
+                new CommonTextEditTextModel("现有人数", "", "现有人数")));
+        models.add(new CommonModel("主送发站", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1102));
+        models.add(new CommonModel("主送到站", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1102));
+        models.add(new CommonModel("超员车站", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1102));
+        models.add(new CommonModel("预览", CommonModel.TYPE_BUTTON).setRequestCode(1105));
+
+    }
+
+    @Override
+    protected void editData() {
+        models.clear();
+        models.add(new CommonModel("列车车次", CommonModel.TYPE_TEXT_ARROW, false).
+                setDescription(printModel.trainNum));
+        timeCommonModel = new CommonModel("当前日期", CommonModel.TYPE_TEXT_ARROW).
+                setDescription(printModel.year + "-" + printModel.month + "-" + printModel.day).setRequestCode(1101);
+        models.add(timeCommonModel);
+        models.add(new CommonModel(
+                new CommonTextEditTextModel("定员人数", printModel.limitNum, "定员人数")));
+        models.add(new CommonModel(
+                new CommonTextEditTextModel("现有人数", printModel.haveNum, "现有人数")));
+        models.add(new CommonModel("主送发站", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1102).setDescription(printModel.zhusongBeginStation));
+        models.add(new CommonModel("主送到站", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1102).setDescription(printModel.zhusongStopStation));
+        models.add(new CommonModel("超员车站", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1102).setDescription(printModel.chaoyuanStation));
+        models.add(new CommonModel("预览", CommonModel.TYPE_BUTTON).setRequestCode(1105));
+    }
+
+    @Override
     protected void initData() {
         super.initData();
         strTitle = getIntent().getStringExtra("title");
         currentCalendar = Calendar.getInstance();
         title.setText(strTitle);
-        models.clear();
-
-        if (isEditStatus) {
-            models.add(new CommonModel("列车车次", CommonModel.TYPE_TEXT_ARROW, false).
-                    setDescription(printModel.trainNum));
-            timeCommonModel = new CommonModel("当前日期", CommonModel.TYPE_TEXT_ARROW).
-                    setDescription(printModel.year + "-" + printModel.month + "-" + printModel.day).setRequestCode(1101);
-            models.add(timeCommonModel);
-            models.add(new CommonModel(
-                    new CommonTextEditTextModel("定员人数", printModel.limitNum, "定员人数")));
-            models.add(new CommonModel(
-                    new CommonTextEditTextModel("现有人数", printModel.haveNum, "现有人数")));
-            models.add(new CommonModel("主送发站", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1102).setDescription(printModel.zhusongBeginStation));
-            models.add(new CommonModel("主送到站", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1102).setDescription(printModel.zhusongStopStation));
-            models.add(new CommonModel("超员车站", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1102).setDescription(printModel.chaoyuanStation));
-            models.add(new CommonModel("预览", CommonModel.TYPE_BUTTON).setRequestCode(1105));
-
-        } else {
-            String trainCode = DbHelper.getTrainNum(this);
-            models.add(new CommonModel("列车车次", CommonModel.TYPE_TEXT_ARROW, false).
-                    setDescription(trainCode));
-            String currentTime = TimeUtils.getCurrentTime();
-            timeCommonModel = new CommonModel("当前日期", CommonModel.TYPE_TEXT_ARROW).
-                    setDescription(currentTime).setRequestCode(1101);
-            models.add(timeCommonModel);
-            models.add(new CommonModel(
-                    new CommonTextEditTextModel("定员人数", "", "定员人数")));
-            models.add(new CommonModel(
-                    new CommonTextEditTextModel("现有人数", "", "现有人数")));
-            models.add(new CommonModel("主送发站", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1102));
-            models.add(new CommonModel("主送到站", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1102));
-            models.add(new CommonModel("超员车站", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1102));
-            models.add(new CommonModel("预览", CommonModel.TYPE_BUTTON).setRequestCode(1105));
-        }
 
         adapter.setDatas(models);
         adapter.setListener(this);

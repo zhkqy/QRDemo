@@ -135,6 +135,7 @@ public class WswgdzActivity extends NewBaseCommonActivity implements ContractNew
 
             Intent mIntent = new Intent(this, WswgdzPreviewActivity.class);
             Bundle mBundle = new Bundle();
+            mBundle.putBoolean("isEditStatus", isEditStatus);
             mBundle.putSerializable("data", printModel);
             mIntent.putExtras(mBundle);
 

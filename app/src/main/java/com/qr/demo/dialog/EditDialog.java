@@ -129,55 +129,48 @@ public class EditDialog extends Dialog implements View.OnClickListener {
             case R.id.edit:
 
                 if ("移交过站旅客".equals(datas.recordThing)) {
-                    mContext.startActivity(new Intent(mContext, YjgzlkActivity.class).putExtra("title", "移交过站旅客"));
+                    skip(YjgzlkActivity.class, datas.recordThing);
                 } else if ("移交患病旅客".equals(datas.recordThing)) {
-                    mContext.startActivity(new Intent(mContext, YjhblkActivity.class).putExtra("title", "移交患病旅客"));
+                    skip(YjhblkActivity.class, datas.recordThing);
                 } else if ("持挂失补车票中途下车到站退款".equals(datas.recordThing)) {
-                    mContext.startActivity(new Intent(mContext, CgspbcpztxcActivity.class).putExtra("title", "持挂失补车票中途下车到站退款"));
+                    skip(CgspbcpztxcActivity.class, datas.recordThing);
                 } else if ("挂失补车票到站退款".equals(datas.recordThing)) {
-                    mContext.startActivity(new Intent(mContext, GsbcpdztkActivity.class).putExtra("title", "挂失补车票到站退款"));
+                    skip(GsbcpdztkActivity.class, datas.recordThing);
                 } else if ("移交未换纸质车票旅客".equals(datas.recordThing)) {
-                    mContext.startActivity(new Intent(mContext, YjwhzzcplkActivity.class).putExtra("title", "移交未换纸质车票旅客"));
+                    skip(YjwhzzcplkActivity.class, datas.recordThing);
                 } else if ("移交无票人员".equals(datas.recordThing)) {
-                    mContext.startActivity(new Intent(mContext, YjwpryActivity.class).putExtra("title", "移交无票人员"));
+                    skip(YjwpryActivity.class, datas.recordThing);
                 } else if ("移交列车晚点中转旅客".equals(datas.recordThing)) {
-                    mContext.startActivity(new Intent(mContext, YjlcwdzzActivity.class).putExtra("title", "移交列车晚点中转旅客"));
+                    skip(YjlcwdzzActivity.class, datas.recordThing);
                 } else if ("移交误乘旅客".equals(datas.recordThing)) {
-                    mContext.startActivity(new Intent(mContext, YjwcActivity.class).putExtra("title", "移交误乘旅客"));
+                    skip(YjwcActivity.class, datas.recordThing);
                 } else if ("丢失车票补票后又找到原票到站退票".equals(datas.recordThing)) {
-                    mContext.startActivity(new Intent(mContext, DscpbphActivity.class).putExtra("title", "丢失车票补票后又找到原票到站退票"));
+                    skip(DscpbphActivity.class, datas.recordThing);
                 } else if ("移交精神异常旅客".equals(datas.recordThing)) {
-                    mContext.startActivity(new Intent(mContext, YjjsycActivity.class).putExtra("title", "移交精神异常旅客"));
+                    skip(YjjsycActivity.class, datas.recordThing);
                 } else if ("移交遗失物品".equals(datas.recordThing)) {
-                    mContext.startActivity(new Intent(mContext, YjyswpActivity.class).putExtra("title", "移交遗失物品"));
+                    skip(YjyswpActivity.class, datas.recordThing);
                 } else if ("移交危险品".equals(datas.recordThing)) {
-                    mContext.startActivity(new Intent(mContext, YjwxpActivity.class).putExtra("title", "移交危险品"));
+                    skip(YjwxpActivity.class, datas.recordThing);
                 } else if ("误售、误购到站退票".equals(datas.recordThing)) {
-                    mContext.startActivity(new Intent(mContext, WswgdzActivity.class).putExtra("title", "误售、误购到站退票"));
+                    skip(WswgdzActivity.class, datas.recordThing);
                 } else if ("车辆故障到站退款".equals(datas.recordThing)) {
-                    mContext.startActivity(new Intent(mContext, ClgzdztkActivity.class).putExtra("title", "车辆故障到站退款"));
+                    skip(ClgzdztkActivity.class, datas.recordThing);
                 } else if ("移交烫伤旅客".equals(datas.recordThing)) {
-                    mContext.startActivity(new Intent(mContext, YjtslkActivity.class).putExtra("title", "移交烫伤旅客"));
+                    skip(YjtslkActivity.class, datas.recordThing);
                 } else if ("移交不明物体击伤旅客".equals(datas.recordThing)) {
-                    mContext.startActivity(new Intent(mContext, YjbmwtjsActivity.class).putExtra("title", "移交不明物体击伤旅客"));
+                    skip(YjbmwtjsActivity.class, datas.recordThing);
                 } else if ("移交砸伤旅客".equals(datas.recordThing)) {
-                    mContext.startActivity(new Intent(mContext, YjzsActivity.class).putExtra("title", "移交砸伤旅客"));
+                    skip(YjzsActivity.class, datas.recordThing);
                 } else if ("移交挤手旅客".equals(datas.recordThing)) {
-                    mContext.startActivity(new Intent(mContext, YjjsActivity.class).putExtra("title", "移交挤手旅客"));
+                    skip(YjjsActivity.class, datas.recordThing);
                 } else if ("超员电报".equals(datas.recordThing)) {
-                    Intent mIntent = new Intent(mContext, CyMessageActivity.class);
-                    Bundle mBundle = new Bundle();
-                    mBundle.putSerializable("data", datas);
-                    mBundle.putString("title", "超员电报");
-                    mBundle.putBoolean("isEditStatus", true);
-                    mIntent.putExtras(mBundle);
-                    mContext.startActivity(mIntent);
+                    skip(CyMessageActivity.class, datas.recordThing);
                 } else if ("旅客意外伤电报".equals(datas.recordThing)) {
-                    mContext.startActivity(new Intent(mContext, LkywsMessageActivity.class).putExtra("title", "旅客意外伤电报"));
+                    skip(LkywsMessageActivity.class, datas.recordThing);
                 } else if ("石击列车电报".equals(datas.recordThing)) {
-                    mContext.startActivity(new Intent(mContext, SjlcMessageActivity.class).putExtra("title", "石击列车电报"));
+                    skip(SjlcMessageActivity.class, datas.recordThing);
                 }
-
                 dismiss();
                 break;
             case R.id.delete:
@@ -197,6 +190,16 @@ public class EditDialog extends Dialog implements View.OnClickListener {
                 dismiss();
                 break;
         }
+    }
+
+    public void skip(Class c, String title) {
+        Intent mIntent = new Intent(mContext, c);
+        Bundle mBundle = new Bundle();
+        mBundle.putSerializable("data", datas);
+        mBundle.putString("title", title);
+        mBundle.putBoolean("isEditStatus", true);
+        mIntent.putExtras(mBundle);
+        mContext.startActivity(mIntent);
     }
 
 

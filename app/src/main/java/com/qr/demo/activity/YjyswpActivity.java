@@ -127,6 +127,7 @@ public class YjyswpActivity extends NewBaseCommonActivity implements ContractNew
             Intent mIntent = new Intent(this, YjyswpPreviewActivity.class);
             Bundle mBundle = new Bundle();
             mBundle.putSerializable("data", printModel);
+            mBundle.putBoolean("isEditStatus", isEditStatus);
             mIntent.putExtras(mBundle);
 
             startActivity(mIntent);

@@ -170,6 +170,7 @@ public class YjtslkActivity extends NewBaseCommonActivity implements ContractNew
             Intent mIntent = new Intent(this, YjtslkPreviewActivity.class);
             Bundle mBundle = new Bundle();
             mBundle.putSerializable("data", printModel);
+            mBundle.putBoolean("isEditStatus", isEditStatus);
             mIntent.putExtras(mBundle);
 
             startActivity(mIntent);
