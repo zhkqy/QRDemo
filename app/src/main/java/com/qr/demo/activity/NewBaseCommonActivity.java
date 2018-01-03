@@ -16,7 +16,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.OnClick;
 
-public   class NewBaseCommonActivity extends BaseActivity {
+public abstract class NewBaseCommonActivity extends BaseActivity {
 
     protected List<CommonModel> models = new ArrayList<>();
 
@@ -62,13 +62,13 @@ public   class NewBaseCommonActivity extends BaseActivity {
 
     }
 
-//    protected abstract void normalNoEditData();
+    protected abstract void normalNoEditData();
+
+    protected abstract void editData();
+
+//    protected   void normalNoEditData(){}
 //
-//    protected abstract void editData();
-
-    protected   void normalNoEditData(){}
-
-    protected   void editData(){}
+//    protected   void editData(){}
 
 
     @Override
