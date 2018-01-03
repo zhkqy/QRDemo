@@ -33,12 +33,7 @@ public class YjyswpActivity extends NewBaseCommonActivity implements ContractNew
     private CarriageAndSeatDialog carriageAndSeatDialog;
 
     @Override
-    protected void initData() {
-        super.initData();
-
-        strTitle = getIntent().getStringExtra("title");
-        currentCalendar = Calendar.getInstance();
-        title.setText(strTitle);
+    protected void normalNoEditData() {
         models.clear();
 
         String trainCode = DbHelper.getTrainNum(this);
@@ -58,6 +53,35 @@ public class YjyswpActivity extends NewBaseCommonActivity implements ContractNew
                 new CommonTextEditTextModel("现　金　", "", "请输入现金")));
 
         models.add(new CommonModel("预览", CommonModel.TYPE_BUTTON).setRequestCode(1105));
+    }
+
+    @Override
+    protected void editData() {
+        models.clear();
+        models.add(new CommonModel("列车车次", CommonModel.TYPE_TEXT_ARROW, false).
+                setDescription(printModel.trainNum));
+        timeCommonModel = new CommonModel("当前日期", CommonModel.TYPE_TEXT_ARROW).
+                setDescription(printModel.year + "-" + printModel.month + "-" + printModel.day).setRequestCode(1101);
+
+        models.add(timeCommonModel);
+
+        models.add(new CommonModel("交接车站", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1102)
+                .setDescription(printModel.connectStation));
+        models.add(new CommonModel("车厢号", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1106)
+                .setDescription(printModel.carriageNum + "车" + printModel.seatNum + "号"));
+        models.add(new CommonModel(
+                new CommonTextEditTextModel("现　金　", printModel.money, "请输入现金")));
+
+        models.add(new CommonModel("预览", CommonModel.TYPE_BUTTON).setRequestCode(1105));
+    }
+
+    @Override
+    protected void initData() {
+        super.initData();
+
+        strTitle = getIntent().getStringExtra("title");
+        currentCalendar = Calendar.getInstance();
+        title.setText(strTitle);
 
         adapter.setDatas(models);
 
