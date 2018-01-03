@@ -99,9 +99,9 @@ public class PrintModel implements Serializable {
 
     public String glassNum = "";  //玻璃破损块数
 
-    public String repalce1 = "";  //repalce1
-    public String repalce2 = "";  //repalce2
-    public String repalce3 = "";  //repalce3
+    public String replace1 = "";  //replace1
+    public String replace2 = "";  //replace2
+    public String replace3 = "";  //replace3
 
     //客户记录 3条
     public String saveRecordThing = "";//  记录事由

@@ -27,30 +27,20 @@ import butterknife.OnClick;
  * Created by sun on 2017/12/29.
  */
 
-public class CyMessagePreViewActivity extends BaseActivity {
+public class CyMessagePreViewActivity extends BasePreviewActivity {
 
-    PrintModel printModel;
-
-    @BindView(R.id.type)
-    TextView type;
-
-    @BindView(R.id.zhusong)
-    TextView zhusong;
-    @BindView(R.id.chasong)
-    TextView chasong;
-
-    @BindView(R.id.replace1)
-    EditText replace1;
-
-    CustomFontsTextView description;
-
-    private boolean isEditStatus;
     String replaceStr1 = "（相关局集团公司)客运处，客调，大连客运段";
 
     @Override
     protected void setContentView() {
         setContentView(R.layout.activity_preview_cy_msg);
+        type = findViewById(R.id.type);
         description = findViewById(R.id.description);
+        zhusong = findViewById(R.id.zhusong);
+        chasong = findViewById(R.id.chasong);
+        replace1 = findViewById(R.id.replace1);
+
+        isEditStatus = getIntent().getBooleanExtra("isEditStatus", false);
     }
 
     @Override
@@ -61,12 +51,11 @@ public class CyMessagePreViewActivity extends BaseActivity {
     @Override
     protected void initUI() {
 
-        save();
     }
 
     @Override
     protected void initListener() {
-
+        save();
         replace1.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -88,10 +77,9 @@ public class CyMessagePreViewActivity extends BaseActivity {
     @Override
     protected void initData() {
         printModel = (PrintModel) getIntent().getSerializableExtra("data");
-        isEditStatus = getIntent().getBooleanExtra("isEditStatus", false);
 
         if (isEditStatus) {
-            replaceStr1 = printModel.repalce1;
+            replaceStr1 = printModel.replace1;
         }
         replace1.setText(replaceStr1);
         type.setText(printModel.recordThing);
@@ -129,55 +117,4 @@ public class CyMessagePreViewActivity extends BaseActivity {
         finish();
     }
 
-
-    public void save() {
-        View v = findViewById(R.id.save);
-        if (v != null) {
-            v.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    printModel.saveRecordThing = type.getText().toString();
-                    printModel.saveZhusongDianBao = zhusong.getText().toString();
-                    printModel.saveChaosongDianBao = chasong.getText().toString();
-                    printModel.savedescription = description.getText().toString();
-                    printModel.repalce1 = replace1.getText().toString();
-
-                    if (isEditStatus) {
-                        //这里处理更新操作
-
-                        try {
-                            Gson gson = new Gson();
-                            String jsonStr = gson.toJson(printModel);
-                            SaveHelper.update(mContext, jsonStr, printModel.uuid);
-                            ToastUtils.show(mContext, "数据更新成功");
-                        } catch (Exception e) {
-                            ToastUtils.show(mContext, "数据更新失败");
-                            return;
-                        }
-                    } else {
-                        //增加操作
-                        printModel.uuid = Utils.getMyUUID();
-                        printModel.saveCreateTime = System.currentTimeMillis();
-                        try {
-                            Gson gson = new Gson();
-                            String jsonStr = gson.toJson(printModel);
-                            SaveHelper.insert(mContext, jsonStr, printModel.uuid);
-                            ToastUtils.show(mContext, "数据保存成功");
-                        } catch (Exception e) {
-                            ToastUtils.show(mContext, "数据保存失败");
-                            return;
-                        }
-                    }
-
-                    Intent mIntent = new Intent(mContext, PrintActivity.class);
-                    Bundle mBundle = new Bundle();
-                    mBundle.putSerializable("data", printModel);
-                    mIntent.putExtras(mBundle);
-                    startActivity(mIntent);
-
-                    finish();
-                }
-            });
-        }
-    }
 }

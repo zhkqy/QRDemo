@@ -24,22 +24,15 @@ import butterknife.OnClick;
  * 持挂失补车票中途下车到站退款
  */
 
-public class CgspbcpztxcPreviewActivity extends BaseActivity {
-
-    PrintModel printModel;
-
-    @BindView(R.id.recordThing)
-    TextView recordThing;
-
-    @BindView(R.id.connectStation)
-    TextView connectStation;
-
-    CustomFontsTextView description;
+public class CgspbcpztxcPreviewActivity extends BasePreviewActivity {
 
     @Override
     protected void setContentView() {
         setContentView(R.layout.activity_preview_replace0);
         description = findViewById(R.id.description);
+        connectStation = findViewById(R.id.connectStation);
+        recordThing = findViewById(R.id.recordThing);
+        isEditStatus = getIntent().getBooleanExtra("isEditStatus", false);
     }
 
     @Override
@@ -78,38 +71,5 @@ public class CgspbcpztxcPreviewActivity extends BaseActivity {
     public void back(View v) {
         finish();
     }
-
-    public void save() {
-        View v = findViewById(R.id.save);
-        if (v != null) {
-            v.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-
-                    printModel.saveRecordThing = recordThing.getText().toString();
-                    printModel.saveConnectStation = connectStation.getText().toString();
-                    printModel.savedescription = description.getText().toString();
-                    printModel.uuid = Utils.getMyUUID();
-                    printModel.saveCreateTime = System.currentTimeMillis();
-                    try {
-                        Gson gson = new Gson();
-                        String jsonStr = gson.toJson(printModel);
-                        SaveHelper.insert(mContext, jsonStr, printModel.uuid);
-                        ToastUtils.show(mContext, "数据保存成功");
-                    } catch (Exception e) {
-                        ToastUtils.show(mContext, "数据保存失败");
-                    }
-
-                    Intent mIntent = new Intent(mContext, PrintActivity.class);
-                    Bundle mBundle = new Bundle();
-                    mBundle.putSerializable("data", printModel);
-                    mIntent.putExtras(mBundle);
-                    startActivity(mIntent);
-                    finish();
-                }
-            });
-        }
-    }
-
 
 }

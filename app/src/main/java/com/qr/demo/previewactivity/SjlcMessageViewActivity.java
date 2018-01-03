@@ -18,24 +18,7 @@ import butterknife.OnClick;
  * Created by sun on 2017/12/29.
  */
 
-public class SjlcMessageViewActivity extends BaseActivity {
-
-    PrintModel printModel;
-
-    @BindView(R.id.type)
-    TextView type;
-
-    @BindView(R.id.zhusong)
-    TextView zhusong;
-    @BindView(R.id.chasong)
-    TextView chasong;
-
-    @BindView(R.id.replace1)
-    EditText replace1;
-    @BindView(R.id.replace2)
-    EditText replace2;
-
-    CustomFontsTextView description;
+public class SjlcMessageViewActivity extends BasePreviewActivity {
 
     String replaceStr1 = "铁路总公司运输局，（相关局集团公司)客运处、安全监察室、车辆处、公安处，xx车务段（事故处理站所属单位）大连客运段";
     String replaceStr2 = "头部右前部受伤，伤口约x公分";
@@ -43,7 +26,13 @@ public class SjlcMessageViewActivity extends BaseActivity {
     @Override
     protected void setContentView() {
         setContentView(R.layout.activity_preview_sjlc_msg);
+        type = findViewById(R.id.type);
+        zhusong = findViewById(R.id.zhusong);
+        chasong = findViewById(R.id.chasong);
+        replace1 = findViewById(R.id.replace1);
+        replace2 = findViewById(R.id.replace2);
         description = findViewById(R.id.description);
+        isEditStatus = getIntent().getBooleanExtra("isEditStatus", false);
     }
 
     @Override
@@ -58,6 +47,7 @@ public class SjlcMessageViewActivity extends BaseActivity {
 
     @Override
     protected void initListener() {
+        save();
         replace1.addTextChangedListener(new MyTextWatcher());
         replace2.addTextChangedListener(new MyTextWatcher());
     }
@@ -66,6 +56,10 @@ public class SjlcMessageViewActivity extends BaseActivity {
     protected void initData() {
 
         printModel = (PrintModel) getIntent().getSerializableExtra("data");
+        if (isEditStatus) {
+            replaceStr1 = printModel.replace1;
+            replaceStr2 = printModel.replace2;
+        }
         replace1.setText(replaceStr1);
         replace2.setText(replaceStr2);
 

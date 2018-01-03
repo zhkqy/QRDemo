@@ -20,27 +20,7 @@ import butterknife.OnClick;
  * Created by sun on 2017/12/29.
  */
 
-public class LkywsPreMessageViewActivity extends BaseActivity {
-
-    PrintModel printModel;
-
-    @BindView(R.id.type)
-    TextView type;
-
-    @BindView(R.id.zhusong)
-    TextView zhusong;
-    @BindView(R.id.chasong)
-    TextView chasong;
-
-    @BindView(R.id.replace1)
-    EditText replace1;
-    @BindView(R.id.replace2)
-    EditText replace2;
-    @BindView(R.id.replace3)
-    EditText replace3;
-
-
-    CustomFontsTextView description;
+public class LkywsPreMessageViewActivity extends BasePreviewActivity {
 
     String replaceStr1 = "（相关局集团公司)客运处、xx车务段（事故处理站的所属单位），大连客运段";
     String replaceStr2 = "上厕所关门时不慎将";
@@ -49,7 +29,14 @@ public class LkywsPreMessageViewActivity extends BaseActivity {
     @Override
     protected void setContentView() {
         setContentView(R.layout.activity_preview_lkyws_msg);
+        type = findViewById(R.id.type);
+        zhusong = findViewById(R.id.zhusong);
+        chasong = findViewById(R.id.chasong);
+        replace1 = findViewById(R.id.replace1);
+        replace2 = findViewById(R.id.replace2);
+        replace3 = findViewById(R.id.replace3);
         description = findViewById(R.id.description);
+        isEditStatus = getIntent().getBooleanExtra("isEditStatus", false);
     }
 
     @Override
@@ -64,6 +51,7 @@ public class LkywsPreMessageViewActivity extends BaseActivity {
 
     @Override
     protected void initListener() {
+        save();
         replace1.addTextChangedListener(new MyTextWatcher());
         replace2.addTextChangedListener(new MyTextWatcher());
         replace3.addTextChangedListener(new MyTextWatcher());
@@ -73,6 +61,13 @@ public class LkywsPreMessageViewActivity extends BaseActivity {
     protected void initData() {
 
         printModel = (PrintModel) getIntent().getSerializableExtra("data");
+
+        if (isEditStatus) {
+            replaceStr1 = printModel.replace1;
+            replaceStr2 = printModel.replace2;
+            replaceStr3 = printModel.replace3;
+        }
+
         replace1.setText(replaceStr1);
         replace2.setText(replaceStr2);
         replace3.setText(replaceStr3);

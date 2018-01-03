@@ -18,22 +18,7 @@ import butterknife.OnClick;
  * Created by sun on 2017/12/29.
  */
 
-public class YjzsPreviewActivity extends BaseActivity {
-
-    PrintModel printModel;
-
-    @BindView(R.id.recordThing)
-    TextView recordThing;
-
-    @BindView(R.id.connectStation)
-    TextView connectStation;
-
-    @BindView(R.id.replace1)
-    EditText replace1;
-    @BindView(R.id.replace2)
-    EditText replace2;
-
-    CustomFontsTextView description;
+public class YjzsPreviewActivity extends BasePreviewActivity {
 
     String replaceStr1 = "在拿取行李时不慎将行李从行李架上滑落，砸中";
     private String replaceStr2 = "头部左后部，外观无伤痕，被砸旅客自称头痛、恶心";
@@ -41,7 +26,12 @@ public class YjzsPreviewActivity extends BaseActivity {
     @Override
     protected void setContentView() {
         setContentView(R.layout.activity_preview_replace2);
+        recordThing = findViewById(R.id.recordThing);
+        connectStation = findViewById(R.id.connectStation);
         description = findViewById(R.id.description);
+        replace1 = findViewById(R.id.replace1);
+        replace2 = findViewById(R.id.replace2);
+        isEditStatus = getIntent().getBooleanExtra("isEditStatus", false);
     }
 
     @Override
@@ -56,7 +46,7 @@ public class YjzsPreviewActivity extends BaseActivity {
 
     @Override
     protected void initListener() {
-
+        save();
         replace1.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -95,12 +85,13 @@ public class YjzsPreviewActivity extends BaseActivity {
     protected void initData() {
 
         printModel = (PrintModel) getIntent().getSerializableExtra("data");
-
+        if (isEditStatus) {
+            replaceStr1 = printModel.replace1;
+            replaceStr2 = printModel.replace2;
+        }
         replace1.setText(replaceStr1);
         replace2.setText(replaceStr2);
-
         recordThing.setText("记录事由:" + printModel.recordThing);
-
         connectStation.setText(printModel.connectStation + "站");
 
         refreshDescription();

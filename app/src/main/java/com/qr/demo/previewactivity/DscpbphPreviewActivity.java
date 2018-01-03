@@ -16,22 +16,15 @@ import butterknife.OnClick;
  * 持挂失补车票中途下车到站退款
  */
 
-public class DscpbphPreviewActivity extends BaseActivity {
-
-    PrintModel printModel;
-
-    @BindView(R.id.recordThing)
-    TextView recordThing;
-
-    @BindView(R.id.connectStation)
-    TextView connectStation;
-
-    CustomFontsTextView description;
+public class DscpbphPreviewActivity extends BasePreviewActivity {
 
     @Override
     protected void setContentView() {
         setContentView(R.layout.activity_preview_replace0);
+        recordThing = findViewById(R.id.recordThing);
+        connectStation = findViewById(R.id.connectStation);
         description = findViewById(R.id.description);
+        isEditStatus = getIntent().getBooleanExtra("isEditStatus", false);
     }
 
     @Override
@@ -46,7 +39,7 @@ public class DscpbphPreviewActivity extends BaseActivity {
 
     @Override
     protected void initListener() {
-
+        save();
     }
 
     @Override

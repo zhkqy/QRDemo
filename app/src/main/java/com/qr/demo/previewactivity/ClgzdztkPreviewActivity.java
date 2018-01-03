@@ -25,22 +25,7 @@ import butterknife.OnClick;
  * Created by sun on 2017/12/29.
  */
 
-public class ClgzdztkPreviewActivity extends BaseActivity {
-
-    PrintModel printModel;
-
-    @BindView(R.id.recordThing)
-    TextView recordThing;
-
-    @BindView(R.id.connectStation)
-    TextView connectStation;
-
-    @BindView(R.id.replace1)
-    EditText replace1;
-    @BindView(R.id.replace2)
-    EditText replace2;
-
-    CustomFontsTextView description;
+public class ClgzdztkPreviewActivity extends BasePreviewActivity {
 
     String replaceStr1 = "由于车轮严重擦伤已甩车";
     private String replaceStr2 = "列车无能力安排，该旅客乘硬座至到站";
@@ -49,6 +34,11 @@ public class ClgzdztkPreviewActivity extends BaseActivity {
     protected void setContentView() {
         setContentView(R.layout.activity_preview_replace2);
         description = findViewById(R.id.description);
+        connectStation = findViewById(R.id.connectStation);
+        recordThing = findViewById(R.id.recordThing);
+        replace1 = findViewById(R.id.replace1);
+        replace2 =  findViewById(R.id.replace2);
+        isEditStatus = getIntent().getBooleanExtra("isEditStatus", false);
     }
 
     @Override
@@ -62,7 +52,6 @@ public class ClgzdztkPreviewActivity extends BaseActivity {
 
     @Override
     protected void initListener() {
-
         save();
         replace1.addTextChangedListener(new MyTextWatcher());
         replace2.addTextChangedListener(new MyTextWatcher());
@@ -73,6 +62,10 @@ public class ClgzdztkPreviewActivity extends BaseActivity {
 
         printModel = (PrintModel) getIntent().getSerializableExtra("data");
 
+        if (isEditStatus) {
+            replaceStr1 = printModel.replace1;
+            replaceStr2 = printModel.replace2;
+        }
         replace1.setText(replaceStr1);
         replace2.setText(replaceStr2);
 
@@ -98,40 +91,6 @@ public class ClgzdztkPreviewActivity extends BaseActivity {
         finish();
     }
 
-    public void save() {
-        View v = findViewById(R.id.save);
-        if (v != null) {
-            v.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-
-                    printModel.saveRecordThing = recordThing.getText().toString();
-                    printModel.saveConnectStation = connectStation.getText().toString();
-                    printModel.savedescription = description.getText().toString();
-
-                    printModel.repalce1 = replace1.getText().toString();
-                    printModel.repalce2 = replace2.getText().toString();
-                    printModel.uuid = Utils.getMyUUID();
-                    printModel.saveCreateTime = System.currentTimeMillis();
-                    try {
-                        Gson gson = new Gson();
-                        String jsonStr = gson.toJson(printModel);
-                        SaveHelper.insert(mContext, jsonStr, printModel.uuid);
-                        ToastUtils.show(mContext, "数据保存成功");
-                    } catch (Exception e) {
-                        ToastUtils.show(mContext, "数据保存失败");
-                    }
-
-                    Intent mIntent = new Intent(mContext, PrintActivity.class);
-                    Bundle mBundle = new Bundle();
-                    mBundle.putSerializable("data", printModel);
-                    mIntent.putExtras(mBundle);
-                    startActivity(mIntent);
-                    finish();
-                }
-            });
-        }
-    }
 
     class MyTextWatcher implements TextWatcher {
         @Override

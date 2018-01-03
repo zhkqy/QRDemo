@@ -15,22 +15,16 @@ import butterknife.OnClick;
  * Created by sun on 2017/12/29.
  */
 
-public class YjwcPreviewActivity extends BaseActivity {
+public class YjwcPreviewActivity extends BasePreviewActivity {
 
-    PrintModel printModel;
-
-    @BindView(R.id.recordThing)
-    TextView recordThing;
-
-    @BindView(R.id.connectStation)
-    TextView connectStation;
-
-    CustomFontsTextView description;
 
     @Override
     protected void setContentView() {
         setContentView(R.layout.activity_preview_replace0);
+        recordThing = findViewById(R.id.recordThing);
+        connectStation = findViewById(R.id.connectStation);
         description = findViewById(R.id.description);
+        isEditStatus = getIntent().getBooleanExtra("isEditStatus", false);
     }
 
     @Override
@@ -45,7 +39,7 @@ public class YjwcPreviewActivity extends BaseActivity {
 
     @Override
     protected void initListener() {
-
+        save();
     }
 
     @Override

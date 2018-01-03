@@ -18,28 +18,18 @@ import butterknife.OnClick;
  * Created by sun on 2017/12/29.
  */
 
-public class YjbmwtjsPreviewActivity extends BaseActivity {
-
-    PrintModel printModel;
-
-    @BindView(R.id.recordThing)
-    TextView recordThing;
-
-    @BindView(R.id.connectStation)
-    TextView connectStation;
-
-    @BindView(R.id.replace1)
-    EditText replace1;
-
-
-    CustomFontsTextView description;
+public class YjbmwtjsPreviewActivity extends BasePreviewActivity {
 
     String replaceStr1 = "头部击伤，大约x公分的伤口，血流不止，列车进行了简单包扎处理，该旅客要求下车治疗";
 
     @Override
     protected void setContentView() {
         setContentView(R.layout.activity_preview_replace1);
+        recordThing = findViewById(R.id.recordThing);
+        connectStation = findViewById(R.id.connectStation);
         description = findViewById(R.id.description);
+        replace1 = findViewById(R.id.replace1);
+        isEditStatus = getIntent().getBooleanExtra("isEditStatus", false);
     }
 
     @Override
@@ -54,7 +44,7 @@ public class YjbmwtjsPreviewActivity extends BaseActivity {
 
     @Override
     protected void initListener() {
-
+        save();
         replace1.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -77,7 +67,9 @@ public class YjbmwtjsPreviewActivity extends BaseActivity {
     protected void initData() {
 
         printModel = (PrintModel) getIntent().getSerializableExtra("data");
-
+        if (isEditStatus) {
+            replaceStr1 = printModel.replace1;
+        }
         replace1.setText(replaceStr1);
 
         recordThing.setText("记录事由:" + printModel.recordThing);
