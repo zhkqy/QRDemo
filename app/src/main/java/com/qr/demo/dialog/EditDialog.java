@@ -36,6 +36,7 @@ import com.qr.demo.activity.YjwxpActivity;
 import com.qr.demo.activity.YjyswpActivity;
 import com.qr.demo.activity.YjzsActivity;
 import com.qr.demo.model.PrintModel;
+import com.qr.demo.previewactivity.CyMessagePreViewActivity;
 import com.qr.demo.utils.DisplayUtil;
 import com.qr.demo.utils.SharedPreferencesUtil;
 
@@ -162,7 +163,14 @@ public class EditDialog extends Dialog implements View.OnClickListener {
                 } else if ("移交挤手旅客".equals(datas.recordThing)) {
                     mContext.startActivity(new Intent(mContext, YjjsActivity.class).putExtra("title", "移交挤手旅客"));
                 } else if ("超员电报".equals(datas.recordThing)) {
-                    mContext.startActivity(new Intent(mContext, CyMessageActivity.class).putExtra("title", "超员电报"));
+
+                    Intent mIntent = new Intent(mContext, CyMessageActivity.class);
+                    Bundle mBundle = new Bundle();
+                    mBundle.putSerializable("data", datas);
+                    mBundle.putString("title", "超员电报");
+                    mBundle.putBoolean("isEditStatus", true);
+                    mIntent.putExtras(mBundle);
+                    mContext.startActivity(mIntent);
                 } else if ("旅客意外伤电报".equals(datas.recordThing)) {
                     mContext.startActivity(new Intent(mContext, LkywsMessageActivity.class).putExtra("title", "旅客意外伤电报"));
                 } else if ("石击列车电报".equals(datas.recordThing)) {

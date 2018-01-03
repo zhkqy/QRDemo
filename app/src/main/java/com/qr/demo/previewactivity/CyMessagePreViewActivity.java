@@ -86,7 +86,6 @@ public class CyMessagePreViewActivity extends BaseActivity {
 
     @Override
     protected void initData() {
-
         printModel = (PrintModel) getIntent().getSerializableExtra("data");
         replace1.setText(replaceStr1);
         type.setText(printModel.recordThing);

@@ -44,7 +44,12 @@ public class NewBaseCommonActivity extends BaseActivity {
 
         if (getIntent() != null) {
             isEditStatus = getIntent().getBooleanExtra("isEditStatus", false);
+            PrintModel p = (PrintModel) getIntent().getSerializableExtra("data");
+            if (p != null) {
+                printModel = p;
+            }
         }
+
         bottomFramelayout = findViewById(R.id.bottom_framelayout);
         listview = findViewById(R.id.ll);
         adapter = new ContractNewCommonAdapter(this);
