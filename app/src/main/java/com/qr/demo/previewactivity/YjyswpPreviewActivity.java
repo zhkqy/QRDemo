@@ -34,19 +34,16 @@ public class YjyswpPreviewActivity extends BaseActivity {
 
     @BindView(R.id.replace1)
     EditText replace1;
-    @BindView(R.id.replace2)
-    EditText replace2;
 
     CustomFontsTextView description;
     private boolean isSending = false;
     private int interval;
 
     String replaceStr1 = "拾到黑色行李箱一个，经会同乘警共同清点";
-    String replaceStr2 = "物品清单一份，xx牌电脑壹台，未开封的xx牌普洱茶肆盒。";
 
     @Override
     protected void setContentView() {
-        setContentView(R.layout.activity_preview_yjyswp);
+        setContentView(R.layout.activity_preview_replace1);
         description = findViewById(R.id.description);
     }
 
@@ -79,22 +76,6 @@ public class YjyswpPreviewActivity extends BaseActivity {
                 refreshDescription();
             }
         });
-        replace2.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-                refreshDescription();
-            }
-        });
     }
 
     @Override
@@ -104,7 +85,6 @@ public class YjyswpPreviewActivity extends BaseActivity {
         recordThing.setText("记录事由:" + printModel.recordThing);
         connectStation.setText(printModel.connectStation + "站");
         replace1.setText(replaceStr1);
-        replace2.setText(replaceStr2);
         refreshDescription();
     }
 

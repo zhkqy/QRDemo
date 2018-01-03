@@ -38,7 +38,7 @@ public class YjwcPreviewActivity extends BaseActivity {
 
     @Override
     protected void setContentView() {
-        setContentView(R.layout.activity_preview_common);
+        setContentView(R.layout.activity_preview_replace0);
         description = findViewById(R.id.description);
     }
 

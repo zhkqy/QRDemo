@@ -46,7 +46,7 @@ public class ClgzdztkPreviewActivity extends BaseActivity {
 
     @Override
     protected void setContentView() {
-        setContentView(R.layout.activity_preview_clgzdztk);
+        setContentView(R.layout.activity_preview_replace2);
         description = findViewById(R.id.description);
     }
 

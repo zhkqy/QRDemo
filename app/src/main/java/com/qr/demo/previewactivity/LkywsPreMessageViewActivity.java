@@ -11,8 +11,6 @@ import com.qr.demo.activity.BaseActivity;
 import com.qr.demo.model.PrintModel;
 import com.qr.demo.view.CustomFontsTextView;
 
-import java.text.DecimalFormat;
-
 import butterknife.BindView;
 import butterknife.OnClick;
 
@@ -20,7 +18,7 @@ import butterknife.OnClick;
  * Created by sun on 2017/12/29.
  */
 
-public class LkywsPreViewActivity extends BaseActivity {
+public class LkywsPreMessageViewActivity extends BaseActivity {
 
     PrintModel printModel;
 

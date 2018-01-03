@@ -10,12 +10,10 @@ import com.qr.demo.adapter.ContractNewCommonAdapter;
 import com.qr.demo.common.CommonTextEditTextModel;
 import com.qr.demo.db.DbHelper;
 import com.qr.demo.dialog.CarriageAndSeatDialog;
-import com.qr.demo.dialog.CarriageDialog;
 import com.qr.demo.dialog.DateTimePickerDialog;
 import com.qr.demo.dialog.ListViewDialog;
 import com.qr.demo.model.PrintModel;
-import com.qr.demo.previewactivity.CyMessagePreViewActivity;
-import com.qr.demo.previewactivity.LkywsPreViewActivity;
+import com.qr.demo.previewactivity.LkywsPreMessageViewActivity;
 import com.qr.demo.utils.TimeUtils;
 
 import java.util.Calendar;
@@ -164,7 +162,7 @@ public class LkywsMessageActivity extends NewBaseCommonActivity implements Contr
             printModel.otherStopStation = adapter.getItem(17).getDescription();
 
 
-            Intent mIntent = new Intent(this, LkywsPreViewActivity.class);
+            Intent mIntent = new Intent(this, LkywsPreMessageViewActivity.class);
             Bundle mBundle = new Bundle();
             mBundle.putSerializable("data", printModel);
             mIntent.putExtras(mBundle);

@@ -36,7 +36,7 @@ public class GsbcpdztkPreviewActivity extends BaseActivity {
 
     @Override
     protected void setContentView() {
-        setContentView(R.layout.activity_preview_gsbcpdztk);
+        setContentView(R.layout.activity_preview_replace0);
         description = findViewById(R.id.description);
     }
 

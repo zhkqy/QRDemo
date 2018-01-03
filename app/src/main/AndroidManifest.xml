@@ -205,7 +205,7 @@
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden" />
         <activity
-            android:name=".previewactivity.LkywsPreViewActivity"
+            android:name=".previewactivity.LkywsPreMessageViewActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden" />
 
