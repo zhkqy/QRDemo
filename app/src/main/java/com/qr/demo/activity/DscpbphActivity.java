@@ -31,12 +31,7 @@ public class DscpbphActivity extends NewBaseCommonActivity implements ContractNe
     private String strTitle;
 
     @Override
-    protected void initData() {
-        super.initData();
-
-        strTitle = getIntent().getStringExtra("title");
-        currentCalendar = Calendar.getInstance();
-        title.setText(strTitle);
+    protected void normalNoEditData() {
         models.clear();
 
         String trainCode = DbHelper.getTrainNum(this);
@@ -76,6 +71,63 @@ public class DscpbphActivity extends NewBaseCommonActivity implements ContractNe
                 new CommonTextEditTextModel("原票票号", "", "请输入原票票号")));
 
         models.add(new CommonModel("预览", CommonModel.TYPE_BUTTON).setRequestCode(1105));
+    }
+
+    @Override
+    protected void editData() {
+        models.clear();
+
+        models.add(new CommonModel("列车车次", CommonModel.TYPE_TEXT_ARROW, false).
+                setDescription(printModel.trainNum));
+
+        timeCommonModel = new CommonModel("当前日期", CommonModel.TYPE_TEXT_ARROW).
+                setDescription(printModel.year + "-" + printModel.month + "-" + printModel.day).setRequestCode(1101);
+
+        models.add(timeCommonModel);
+
+        models.add(new CommonModel("交接车站", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1102)
+                .setDescription(printModel.connectStation));
+
+        models.add(new CommonModel(
+                new CommonTextEditTextModel("旅客姓名", printModel.name, "请输入旅客姓名")));
+        models.add(new CommonModel(
+                new CommonTextEditTextModel("身份证号", printModel.cardNum, "请输入身份证号")));
+
+
+        models.add(new CommonModel("丢票车站", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1102)
+                .setDescription(printModel.diupiaoStation));
+        models.add(new CommonModel("找到车站", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1102)
+                .setDescription(printModel.foundStation));
+
+
+        models.add(new CommonModel("补票数据", CommonModel.TYPE_LINE));
+        models.add(new CommonModel("补票发站", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1102)
+                .setDescription(printModel.bupiaoBeginStation));
+        models.add(new CommonModel("补票到站", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1102)
+                .setDescription(printModel.bupiaoStopStation));
+        models.add(new CommonModel(
+                new CommonTextEditTextModel("补票票号", printModel.bupiaoTicketNum, "请输入补票票号")));
+
+        models.add(new CommonModel("原票数据", CommonModel.TYPE_LINE));
+
+        models.add(new CommonModel("原票发站", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1102)
+                .setDescription(printModel.beginStation));
+        models.add(new CommonModel("原票到站", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1102)
+                .setDescription(printModel.stopStation));
+        models.add(new CommonModel(
+                new CommonTextEditTextModel("原票票号", "", "请输入原票票号"))
+                .setDescription(printModel.ticketNum));
+
+        models.add(new CommonModel("预览", CommonModel.TYPE_BUTTON).setRequestCode(1105));
+    }
+
+    @Override
+    protected void initData() {
+        super.initData();
+
+        strTitle = getIntent().getStringExtra("title");
+        currentCalendar = Calendar.getInstance();
+        title.setText(strTitle);
 
         adapter.setDatas(models);
 

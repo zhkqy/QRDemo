@@ -31,12 +31,7 @@ public class YjwcActivity extends NewBaseCommonActivity implements ContractNewCo
     private String strTitle;
 
     @Override
-    protected void initData() {
-        super.initData();
-
-        strTitle = getIntent().getStringExtra("title");
-        currentCalendar = Calendar.getInstance();
-        title.setText(strTitle);
+    protected void normalNoEditData() {
         models.clear();
 
         String trainCode = DbHelper.getTrainNum(this);
@@ -68,6 +63,48 @@ public class YjwcActivity extends NewBaseCommonActivity implements ContractNewCo
                 new CommonTextEditTextModel("原票票号", "", "请输入原票票号")));
 
         models.add(new CommonModel("预览", CommonModel.TYPE_BUTTON).setRequestCode(1105));
+    }
+
+    @Override
+    protected void editData() {
+        models.clear();
+
+        models.add(new CommonModel("列车车次", CommonModel.TYPE_TEXT_ARROW, false).
+                setDescription(printModel.trainNum));
+
+        timeCommonModel = new CommonModel("当前日期", CommonModel.TYPE_TEXT_ARROW).
+                setDescription(printModel.year + "-" + printModel.month + "-" + printModel.day).setRequestCode(1101);
+
+        models.add(timeCommonModel);
+
+        models.add(new CommonModel("交接车站", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1102)
+        .setDescription(printModel.connectStation));
+
+        models.add(new CommonModel(
+                new CommonTextEditTextModel("旅客姓名", printModel.name, "请输入旅客姓名")));
+        models.add(new CommonModel(
+                new CommonTextEditTextModel("身份证号", printModel.cardNum, "请输入身份证号")));
+
+        models.add(new CommonModel(
+                new CommonTextEditTextModel("原票车次", printModel.ticketNum, "请输入原票车次")));
+
+        models.add(new CommonModel(
+                new CommonTextEditTextModel("原票发站", printModel.beginStation, "请输入原票发站")));
+        models.add(new CommonModel(
+                new CommonTextEditTextModel("原票到站", printModel.stopStation, "请输入原票到站")));
+        models.add(new CommonModel(
+                new CommonTextEditTextModel("原票票号", printModel.ticketNum, "请输入原票票号")));
+
+        models.add(new CommonModel("预览", CommonModel.TYPE_BUTTON).setRequestCode(1105));
+    }
+
+    @Override
+    protected void initData() {
+        super.initData();
+
+        strTitle = getIntent().getStringExtra("title");
+        currentCalendar = Calendar.getInstance();
+        title.setText(strTitle);
 
         adapter.setDatas(models);
 
