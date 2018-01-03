@@ -43,7 +43,7 @@ public abstract class BaseLabel {
         int bottomY5 = bottomY4 - bottomfontPoint / 2;
 
 
-        iPrinter.drawText(0, bottomY5 - bottomfontPoint * 3, pageWidth, bottomfontPoint,
+        iPrinter.drawText(0, bottomY5 - bottomfontPoint * 3 - 8, pageWidth, bottomfontPoint,
                 "注：1.站、车需要编织记录时适用。", bottomfont, 0, 0, false, false);
 
         iPrinter.drawText(0, bottomY5 - bottomfontPoint * 2, pageWidth, bottomfontPoint,

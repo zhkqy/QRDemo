@@ -9,16 +9,19 @@ import com.qr.demo.adapter.CommonModel;
 import com.qr.demo.adapter.ContractNewCommonAdapter;
 import com.qr.demo.common.CommonTextEditTextModel;
 import com.qr.demo.db.DbHelper;
+import com.qr.demo.dialog.CarriageAndSeatDialog;
+import com.qr.demo.dialog.CarriageDialog;
 import com.qr.demo.dialog.DateTimePickerDialog;
 import com.qr.demo.dialog.ListViewDialog;
 import com.qr.demo.model.PrintModel;
 import com.qr.demo.previewactivity.CyMessagePreViewActivity;
+import com.qr.demo.previewactivity.LkywsPreViewActivity;
 import com.qr.demo.utils.TimeUtils;
 
 import java.util.Calendar;
 
 /**
- * CyMessageActivity
+ * 旅客意外伤电报
  */
 public class LkywsMessageActivity extends NewBaseCommonActivity implements ContractNewCommonAdapter.CommonListener {
 
@@ -29,6 +32,7 @@ public class LkywsMessageActivity extends NewBaseCommonActivity implements Contr
 
     ListViewDialog listViewDialog;
     String strTitle;
+    private CarriageAndSeatDialog carriageAndSeatDialog;
 
     @Override
     protected void initData() {
@@ -50,9 +54,10 @@ public class LkywsMessageActivity extends NewBaseCommonActivity implements Contr
 
         models.add(timeCommonModel);
 
-
-        models.add(new CommonModel("交接车站", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1102));
-        models.add(new CommonModel("事故站点", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1102));
+        models.add(new CommonModel("主送车站", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1102));
+        models.add(new CommonModel("事故车站", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1102));
+        models.add(new CommonModel(
+                new CommonTextEditTextModel("事故记录", "", "请输入事故记录")));
 
         models.add(new CommonModel("旅客A", CommonModel.TYPE_LINE));
         models.add(new CommonModel(
@@ -77,9 +82,7 @@ public class LkywsMessageActivity extends NewBaseCommonActivity implements Contr
 
         models.add(new CommonModel("原票到站", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1102));
 
-
-
-
+        models.add(new CommonModel("预览", CommonModel.TYPE_BUTTON).setRequestCode(1105));
         adapter.setDatas(models);
 
         adapter.setListener(this);
@@ -139,19 +142,51 @@ public class LkywsMessageActivity extends NewBaseCommonActivity implements Contr
             }
 
             printModel.trainNum = adapter.getItem(0).getDescription();
-            printModel.limitNum = adapter.getItem(2).getEditTextModel().getEditTextStr();
-            printModel.haveNum = adapter.getItem(3).getEditTextModel().getEditTextStr();
 
-            printModel.zhusongBeginStation = adapter.getItem(4).getDescription();
-            printModel.zhusongStopStation = adapter.getItem(5).getDescription();
-            printModel.chaoyuanStation = adapter.getItem(6).getDescription();
+            printModel.connectStation = adapter.getItem(2).getDescription();
+            printModel.troubleStation = adapter.getItem(3).getDescription();
 
-            Intent mIntent = new Intent(this, CyMessagePreViewActivity.class);
+            printModel.troubleRecord = adapter.getItem(4).getEditTextModel().getEditTextStr();
+
+            printModel.name = adapter.getItem(6).getEditTextModel().getEditTextStr();
+            printModel.cardNum = adapter.getItem(7).getEditTextModel().getEditTextStr();
+            printModel.ticketNum = adapter.getItem(8).getEditTextModel().getEditTextStr();
+            printModel.beginStation = adapter.getItem(9).getDescription();
+            printModel.stopStation = adapter.getItem(10).getDescription();
+
+            printModel.carriageNum = carriageNum;
+            printModel.seatNum = seatNum;
+
+            printModel.otherName = adapter.getItem(13).getEditTextModel().getEditTextStr();
+            printModel.otherCardNum = adapter.getItem(14).getEditTextModel().getEditTextStr();
+            printModel.otherTicketNum = adapter.getItem(15).getEditTextModel().getEditTextStr();
+            printModel.otherBeginStation = adapter.getItem(16).getDescription();
+            printModel.otherStopStation = adapter.getItem(17).getDescription();
+
+
+            Intent mIntent = new Intent(this, LkywsPreViewActivity.class);
             Bundle mBundle = new Bundle();
             mBundle.putSerializable("data", printModel);
             mIntent.putExtras(mBundle);
 
             startActivity(mIntent);
+        } else if (model.getRequestCode() == 1106) {
+            if (carriageAndSeatDialog == null) {
+                carriageAndSeatDialog = new CarriageAndSeatDialog(this, R.style.listDialog);
+            }
+            carriageAndSeatDialog.setListener(null);
+            carriageAndSeatDialog.setListener(new CarriageAndSeatDialog.Listener() {
+                @Override
+                public void onItemClicked(String carriageNum, String seatNum) {
+
+                    LkywsMessageActivity.this.carriageNum = carriageNum;
+                    LkywsMessageActivity.this.seatNum = seatNum;
+
+                    adapter.getItem(position).setDescription(carriageNum + "车" + seatNum + "号");
+                    adapter.notifyDataSetChanged();
+                }
+            });
+            carriageAndSeatDialog.show();
         }
 
     }
