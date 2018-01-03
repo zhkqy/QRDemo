@@ -112,4 +112,6 @@ public class PrintModel implements Serializable {
     public String saveZhusongDianBao = "";//  记录事由
     public String saveChaosongDianBao = "";//  记录交接站
 
+    public long saveCreateTime = 0;  //保存创建时间
+
 }

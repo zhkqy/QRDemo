@@ -90,7 +90,7 @@ public class CgspbcpztxcPreviewActivity extends BaseActivity {
                     printModel.saveConnectStation = connectStation.getText().toString();
                     printModel.savedescription = description.getText().toString();
                     printModel.uuid = Utils.getMyUUID();
-
+                    printModel.saveCreateTime = System.currentTimeMillis();
                     try {
                         Gson gson = new Gson();
                         String jsonStr = gson.toJson(printModel);

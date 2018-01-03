@@ -112,7 +112,7 @@ public class ClgzdztkPreviewActivity extends BaseActivity {
                     printModel.repalce1 = replace1.getText().toString();
                     printModel.repalce2 = replace2.getText().toString();
                     printModel.uuid = Utils.getMyUUID();
-
+                    printModel.saveCreateTime = System.currentTimeMillis();
                     try {
                         Gson gson = new Gson();
                         String jsonStr = gson.toJson(printModel);
