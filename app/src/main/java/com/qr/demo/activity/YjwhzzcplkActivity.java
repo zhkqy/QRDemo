@@ -33,12 +33,7 @@ public class YjwhzzcplkActivity extends NewBaseCommonActivity implements Contrac
 
 
     @Override
-    protected void initData() {
-        super.initData();
-
-        strTitle = getIntent().getStringExtra("title");
-        currentCalendar = Calendar.getInstance();
-        title.setText(strTitle);
+    protected void normalNoEditData() {
         models.clear();
 
         String trainCode = DbHelper.getTrainNum(this);
@@ -70,6 +65,51 @@ public class YjwhzzcplkActivity extends NewBaseCommonActivity implements Contrac
         models.add(new CommonModel("车厢号　", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1106));
 
         models.add(new CommonModel("预览", CommonModel.TYPE_BUTTON).setRequestCode(1105));
+    }
+
+    @Override
+    protected void editData() {
+        models.clear();
+
+        models.add(new CommonModel("列车车次", CommonModel.TYPE_TEXT_ARROW, false).
+                setDescription(printModel.trainNum));
+
+        timeCommonModel = new CommonModel("当前日期", CommonModel.TYPE_TEXT_ARROW).
+                setDescription(printModel.year + "-" + printModel.month + "-" + printModel.day).setRequestCode(1101);
+
+        models.add(timeCommonModel);
+
+        models.add(new CommonModel("交接车站", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1102)
+                .setDescription(printModel.connectStation));
+
+        models.add(new CommonModel(
+                new CommonTextEditTextModel("旅客姓名", printModel.name, "请输入旅客姓名")));
+        models.add(new CommonModel(
+                new CommonTextEditTextModel("身份证号", printModel.cardNum, "请输入身份证号")));
+
+        models.add(new CommonModel(
+                new CommonTextEditTextModel("订单号码", printModel.netOrderNum, "请输入订单号码")));
+        models.add(new CommonModel(
+                new CommonTextEditTextModel("自述因　", printModel.netErrorReason, "请输入自述因")));
+
+        models.add(new CommonModel("网购发站", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1103)
+                .setDescription(printModel.netBeginStation));
+
+        models.add(new CommonModel("网购到站", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1104)
+                .setDescription(printModel.netStopStation));
+        models.add(new CommonModel("车厢号　", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1106)
+                .setDescription(printModel.carriageNum + "车" + printModel.seatNum + "号"));
+
+        models.add(new CommonModel("预览", CommonModel.TYPE_BUTTON).setRequestCode(1105));
+    }
+
+    @Override
+    protected void initData() {
+        super.initData();
+
+        strTitle = getIntent().getStringExtra("title");
+        currentCalendar = Calendar.getInstance();
+        title.setText(strTitle);
 
         adapter.setDatas(models);
 
