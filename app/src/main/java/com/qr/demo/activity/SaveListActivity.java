@@ -21,7 +21,7 @@ import butterknife.OnClick;
  * Created by sun on 2017/12/28.
  */
 
-public class SaveListActivity extends BaseActivity {
+public class SaveListActivity extends BaseActivity implements EditDialog.Listener {
 
 
     @BindView(R.id.listview)
@@ -63,20 +63,28 @@ public class SaveListActivity extends BaseActivity {
     @Override
     protected void onResume() {
         super.onResume();
+        refreshList();
+    }
+
+    @OnClick(R.id.rl_title_bar_left)
+    public void back(View v) {
+        finish();
+    }
+
+
+    public void refreshList() {
         try {
             printModels = SaveHelper.getPrintModelData(this);
             Collections.reverse(printModels);
-
             adapter.notifyDataSetChanged();
         } catch (Exception e) {
 
         }
     }
 
-
-    @OnClick(R.id.rl_title_bar_left)
-    public void back(View v) {
-        finish();
+    @Override
+    public void onRefreshList() {
+        refreshList();
     }
 
 
@@ -139,6 +147,7 @@ public class SaveListActivity extends BaseActivity {
                 public void onClick(View v) {
                     if (editDialog == null) {
                         editDialog = new EditDialog(mContext, R.style.listDialog);
+                        editDialog.setListener(SaveListActivity.this);
                     }
                     editDialog.setDatas(printModel);
                     editDialog.show();

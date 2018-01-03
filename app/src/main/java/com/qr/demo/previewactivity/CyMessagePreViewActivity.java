@@ -44,6 +44,7 @@ public class CyMessagePreViewActivity extends BaseActivity {
 
     CustomFontsTextView description;
 
+    private boolean isEditStatus;
     String replaceStr1 = "（相关局集团公司)客运处，客调，大连客运段";
 
     @Override
@@ -87,6 +88,11 @@ public class CyMessagePreViewActivity extends BaseActivity {
     @Override
     protected void initData() {
         printModel = (PrintModel) getIntent().getSerializableExtra("data");
+        isEditStatus = getIntent().getBooleanExtra("isEditStatus", false);
+
+        if (isEditStatus) {
+            replaceStr1 = printModel.repalce1;
+        }
         replace1.setText(replaceStr1);
         type.setText(printModel.recordThing);
 
@@ -130,23 +136,37 @@ public class CyMessagePreViewActivity extends BaseActivity {
             v.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-
                     printModel.saveRecordThing = type.getText().toString();
                     printModel.saveZhusongDianBao = zhusong.getText().toString();
                     printModel.saveChaosongDianBao = chasong.getText().toString();
                     printModel.savedescription = description.getText().toString();
-
                     printModel.repalce1 = replace1.getText().toString();
-                    printModel.uuid = Utils.getMyUUID();
-                    printModel.saveCreateTime = System.currentTimeMillis();
 
-                    try {
-                        Gson gson = new Gson();
-                        String jsonStr = gson.toJson(printModel);
-                        SaveHelper.insert(mContext, jsonStr, printModel.uuid);
-                        ToastUtils.show(mContext, "数据保存成功");
-                    } catch (Exception e) {
-                        ToastUtils.show(mContext, "数据保存失败");
+                    if (isEditStatus) {
+                        //这里处理更新操作
+
+                        try {
+                            Gson gson = new Gson();
+                            String jsonStr = gson.toJson(printModel);
+                            SaveHelper.update(mContext, jsonStr, printModel.uuid);
+                            ToastUtils.show(mContext, "数据更新成功");
+                        } catch (Exception e) {
+                            ToastUtils.show(mContext, "数据更新失败");
+                            return;
+                        }
+                    } else {
+                        //增加操作
+                        printModel.uuid = Utils.getMyUUID();
+                        printModel.saveCreateTime = System.currentTimeMillis();
+                        try {
+                            Gson gson = new Gson();
+                            String jsonStr = gson.toJson(printModel);
+                            SaveHelper.insert(mContext, jsonStr, printModel.uuid);
+                            ToastUtils.show(mContext, "数据保存成功");
+                        } catch (Exception e) {
+                            ToastUtils.show(mContext, "数据保存失败");
+                            return;
+                        }
                     }
 
                     Intent mIntent = new Intent(mContext, PrintActivity.class);
@@ -154,6 +174,7 @@ public class CyMessagePreViewActivity extends BaseActivity {
                     mBundle.putSerializable("data", printModel);
                     mIntent.putExtras(mBundle);
                     startActivity(mIntent);
+
                     finish();
                 }
             });

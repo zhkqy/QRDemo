@@ -35,6 +35,7 @@ import com.qr.demo.activity.YjwpryActivity;
 import com.qr.demo.activity.YjwxpActivity;
 import com.qr.demo.activity.YjyswpActivity;
 import com.qr.demo.activity.YjzsActivity;
+import com.qr.demo.db.SaveHelper;
 import com.qr.demo.model.PrintModel;
 import com.qr.demo.previewactivity.CyMessagePreViewActivity;
 import com.qr.demo.utils.DisplayUtil;
@@ -47,6 +48,7 @@ public class EditDialog extends Dialog implements View.OnClickListener {
 
     private View delete;
     private View edit;
+    Listener listener;
 
 
     public EditDialog(@NonNull Context context, int themeResId) {
@@ -163,7 +165,6 @@ public class EditDialog extends Dialog implements View.OnClickListener {
                 } else if ("移交挤手旅客".equals(datas.recordThing)) {
                     mContext.startActivity(new Intent(mContext, YjjsActivity.class).putExtra("title", "移交挤手旅客"));
                 } else if ("超员电报".equals(datas.recordThing)) {
-
                     Intent mIntent = new Intent(mContext, CyMessageActivity.class);
                     Bundle mBundle = new Bundle();
                     mBundle.putSerializable("data", datas);
@@ -180,7 +181,11 @@ public class EditDialog extends Dialog implements View.OnClickListener {
                 dismiss();
                 break;
             case R.id.delete:
-
+                SaveHelper.delete(mContext, datas.uuid);
+                if (listener != null) {
+                    listener.onRefreshList();
+                }
+                dismiss();
                 break;
             case R.id.print:
 
@@ -193,4 +198,18 @@ public class EditDialog extends Dialog implements View.OnClickListener {
                 break;
         }
     }
+
+
+    public Listener getListener() {
+        return listener;
+    }
+
+    public void setListener(Listener listener) {
+        this.listener = listener;
+    }
+
+    public interface Listener {
+        void onRefreshList();
+    }
+
 }

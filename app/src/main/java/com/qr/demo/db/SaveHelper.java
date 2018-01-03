@@ -63,5 +63,23 @@ public class SaveHelper {
         return list;
     }
 
+    public static void update(Context mContext, String content, String uuid) {
+        ContentValues values = new ContentValues();
+
+        values.put(SqlLiteHelper.CONTENT, content);
+        String where = SqlLiteHelper.UUID + "=?";
+        String wherearg[] = new String[]{uuid};
+
+        SqlLiteHelper.getInstance(mContext).update(SqlLiteHelper.DATABASE_NAME, values, where, wherearg);
+    }
+
+
+    public synchronized static void delete(Context context, String uuid) {
+        SqlLiteHelper dbHelper = SqlLiteHelper.getInstance(context);
+        String delete = SqlLiteHelper.UUID + "=?";
+        String wherearg[] = new String[]{uuid};
+        dbHelper.delete(SqlLiteHelper.DATABASE_NAME, delete, wherearg);
+    }
+
 
 }

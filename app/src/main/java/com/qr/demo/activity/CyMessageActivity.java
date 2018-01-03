@@ -11,7 +11,6 @@ import com.qr.demo.common.CommonTextEditTextModel;
 import com.qr.demo.db.DbHelper;
 import com.qr.demo.dialog.DateTimePickerDialog;
 import com.qr.demo.dialog.ListViewDialog;
-import com.qr.demo.model.PrintModel;
 import com.qr.demo.previewactivity.CyMessagePreViewActivity;
 import com.qr.demo.utils.TimeUtils;
 
@@ -136,6 +135,7 @@ public class CyMessageActivity extends NewBaseCommonActivity implements Contract
 
             Intent mIntent = new Intent(this, CyMessagePreViewActivity.class);
             Bundle mBundle = new Bundle();
+            mBundle.putBoolean("isEditStatus", isEditStatus);
             mBundle.putSerializable("data", printModel);
             mIntent.putExtras(mBundle);
 
