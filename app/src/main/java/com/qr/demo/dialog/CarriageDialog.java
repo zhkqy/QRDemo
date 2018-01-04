@@ -17,6 +17,7 @@ import com.qr.demo.R;
 import com.qr.demo.db.DbHelper;
 import com.qr.demo.model.CarriageNumModel;
 import com.qr.demo.utils.DisplayUtil;
+import com.qr.demo.utils.ToastUtils;
 
 import java.util.ArrayList;
 import java.util.Map;
@@ -75,6 +76,15 @@ public class CarriageDialog extends Dialog {
         leftListView.setOnItemClickListener(new LeftItemClicked());
     }
 
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        if (adapterLeft.getCount() == 0) {
+            ToastUtils.show(getContext(), "本地数据库关联不正确");
+            dismiss();
+        }
+    }
 
     @Override
     public void onWindowFocusChanged(boolean hasFocus) {

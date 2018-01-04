@@ -16,6 +16,7 @@ import android.widget.TextView;
 import com.qr.demo.R;
 import com.qr.demo.db.DbHelper;
 import com.qr.demo.model.ZcStopTimeModel;
+import com.qr.demo.utils.ToastUtils;
 
 import java.util.ArrayList;
 
@@ -79,6 +80,14 @@ public class ListViewDialog extends Dialog implements AdapterView.OnItemClickLis
         window.setAttributes(attributes);
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        if (adapter.getCount() == 0) {
+            ToastUtils.show(getContext(), "本地数据库关联不正确");
+            dismiss();
+        }
+    }
 
     public void setListener(Listener listener) {
         this.listener = listener;

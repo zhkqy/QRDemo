@@ -27,6 +27,10 @@ public class DbHelper {
 
         SQLiteDatabase sqLiteDatabase = manager.openDatabase();
 
+        if (sqLiteDatabase == null) {
+            return "";
+        }
+
         Cursor cursor = sqLiteDatabase.rawQuery("select train_code from ZC_train_dir_1307", null);
 
         if (cursor != null && cursor.getCount() > 0) {
@@ -46,15 +50,18 @@ public class DbHelper {
 
     public static ArrayList<ZcStopTimeModel> getTrainList(Context context) {
 
+        ArrayList<ZcStopTimeModel> zcStopTimeModels = new ArrayList<>();
+        zcStopTimeModels.clear();
+
         DBManager manager = DBManager.getInstance(context);
 
         SQLiteDatabase sqLiteDatabase = manager.openDatabase();
 
+        if (sqLiteDatabase == null) {
+            return zcStopTimeModels;
+        }
+
         Cursor cursor = sqLiteDatabase.rawQuery("select * from ZC_stop_time_1307", null);
-
-
-        ArrayList<ZcStopTimeModel> zcStopTimeModels = new ArrayList<>();
-        zcStopTimeModels.clear();
 
         if (cursor != null && cursor.getCount() > 0) {
             cursor.moveToFirst();
@@ -83,15 +90,17 @@ public class DbHelper {
      */
 
     public static ArrayList<CarriageNumModel> getTrainCarriageNum(Context context) {
-
+        ArrayList<CarriageNumModel> carriageNumModels = new ArrayList<>();
+        carriageNumModels.clear();
         DBManager manager = DBManager.getInstance(context);
 
         SQLiteDatabase sqLiteDatabase = manager.openDatabase();
 
-        Cursor cursor = sqLiteDatabase.rawQuery("select * from ZC_train_seat_1307", null);
+        if (sqLiteDatabase == null) {
+            return carriageNumModels;
+        }
 
-        ArrayList<CarriageNumModel> carriageNumModels = new ArrayList<>();
-        carriageNumModels.clear();
+        Cursor cursor = sqLiteDatabase.rawQuery("select * from ZC_train_seat_1307", null);
 
         if (cursor != null && cursor.getCount() > 0) {
             cursor.moveToFirst();
