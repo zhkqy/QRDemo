@@ -8,7 +8,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.qr.demo.Label.DianBaoLabel;
+import com.qr.demo.Label.DianBaoLabel2;
 import com.qr.demo.Label.keYunRecordLabel;
+import com.qr.demo.Label.keYunRecordLabel2;
 import com.qr.demo.MainActivity;
 import com.qr.demo.MyApplication;
 import com.qr.demo.R;
@@ -108,6 +110,40 @@ public class PrintActivity extends BaseActivity {
                                         printModel.saveChaosongDianBao, printModel.savedescription);
                             } else {
                                 keYunRecordLabel pl = new keYunRecordLabel(printPP_cpcl);
+                                pl.Lable(printModel.saveRecordThing, printModel.saveConnectStation,
+                                        printModel.savedescription);
+                            }
+                        }
+                    }
+                    try {
+                        interval = 0;
+                        Thread.sleep(interval);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                    isSending = false;
+                }
+            }).start();
+        }
+    }
+
+    @OnClick(R.id.printTwo)
+    public void printTwoOnclicked(View v) {
+        final PrintPP_CPCL printPP_cpcl = ((MyApplication) getApplication()).getPrintPP_cpcl();
+        if (!isSending) {
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    isSending = true;
+                    if (((MyApplication) getApplication()).isConnected()) {
+
+                        if (printModel != null) {
+                            if (printModel.recordThing.contains("电报")) {
+                                DianBaoLabel2 pl = new DianBaoLabel2(printPP_cpcl);
+                                pl.Lable(printModel.saveRecordThing, printModel.saveZhusongDianBao,
+                                        printModel.saveChaosongDianBao, printModel.savedescription);
+                            } else {
+                                keYunRecordLabel2 pl = new keYunRecordLabel2(printPP_cpcl);
                                 pl.Lable(printModel.saveRecordThing, printModel.saveConnectStation,
                                         printModel.savedescription);
                             }
