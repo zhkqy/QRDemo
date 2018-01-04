@@ -11,6 +11,8 @@ import com.qr.print.PrintPP_CPCL;
 public class MyApplication extends Application {
     private boolean isConnected = false;
     private PrintPP_CPCL printPP_cpcl = null;
+    private String connetName="";
+
     @Override
     public void onCreate() {
         super.onCreate();
@@ -31,5 +33,13 @@ public class MyApplication extends Application {
 
     public void setConnected(boolean connected) {
         isConnected = connected;
+    }
+
+    public void setConnetName(String connetName) {
+        this.connetName = connetName;
+    }
+
+    public String getConnetName() {
+        return connetName;
     }
 }

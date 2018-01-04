@@ -4,23 +4,16 @@ package com.qr.demo;
 import android.app.Activity;
 import android.bluetooth.BluetoothAdapter;
 import android.content.Intent;
-import android.util.Log;
-import android.view.MenuItem;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.qr.demo.Label.PrintLabel;
 import com.qr.demo.activity.BaseActivity;
 import com.qr.demo.activity.DeviceListActivity;
 import com.qr.demo.activity.LabelListActivity;
 import com.qr.demo.activity.SaveListActivity;
-import com.qr.demo.db.DBManager;
 import com.qr.demo.utils.SharedPreferencesUtil;
-import com.qr.print.*;
+import com.qr.print.PrintPP_CPCL;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -55,7 +48,6 @@ public class MainActivity extends BaseActivity {
         }
 
         myApplication = (MyApplication) getApplication();
-
         printPP_cpcl = new PrintPP_CPCL();
         myApplication.setPrintPP_cpcl(printPP_cpcl);
     }
@@ -119,29 +111,43 @@ public class MainActivity extends BaseActivity {
     }
 
     @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+    public void onActivityResult(int requestCode, int resultCode, final Intent data) {
 
         switch (requestCode) {
             case REQUEST_CONNECT_DEVICE:
                 if (resultCode == Activity.RESULT_OK) {
-                    if (myApplication.isConnected() & (printPP_cpcl != null)) {
-                        printPP_cpcl.disconnect();
-                        myApplication.setConnected(false);
-                    }
-                    String sdata = data.getExtras()
-                            .getString(DeviceListActivity.EXTRA_DEVICE_ADDRESS);
-                    address = sdata.substring(sdata.length() - 17);
-                    name = sdata.substring(0, (sdata.length() - 17));
-                    if (!myApplication.isConnected()) {
-                        if (printPP_cpcl.connect(name, address)) {
-                            myApplication.setConnected(true);
-                            title_right_text.setText(R.string.title_connected_to);
-                            title_right_text.append(name);
 
-                        } else {
-                            myApplication.setConnected(false);
+                    new Thread(new Runnable() {
+                        @Override
+                        public void run() {
+                            if (myApplication.isConnected() & (printPP_cpcl != null)) {
+                                printPP_cpcl.disconnect();
+                                myApplication.setConnected(false);
+                            }
+                            String sdata = data.getExtras()
+                                    .getString(DeviceListActivity.EXTRA_DEVICE_ADDRESS);
+                            address = sdata.substring(sdata.length() - 17);
+                            name = sdata.substring(0, (sdata.length() - 17));
+                            if (!myApplication.isConnected()) {
+                                if (printPP_cpcl.connect(name, address)) {
+                                    myApplication.setConnected(true);
+
+                                    MainActivity.this.runOnUiThread(new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            if (title_right_text != null) {
+                                                title_right_text.setText(name);
+                                                myApplication.setConnetName(name);
+                                            }
+                                        }
+                                    });
+
+                                } else {
+                                    myApplication.setConnected(false);
+                                }
+                            }
                         }
-                    }
+                    }).start();
 
                 }
                 break;
