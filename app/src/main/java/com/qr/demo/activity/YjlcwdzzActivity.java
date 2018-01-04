@@ -106,9 +106,6 @@ public class YjlcwdzzActivity extends NewBaseCommonActivity implements ContractN
         models.add(new CommonModel("车厢号　", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1106)
                 .setDescription(printModel.carriageNum + "车" + printModel.seatNum + "号"));
 
-        carriageNum = printModel.carriageNum;
-        seatNum = printModel.seatNum;
-
         models.add(new CommonModel("中转数据", CommonModel.TYPE_LINE));
         models.add(new CommonModel(new CommonTextEditTextModel("中转车次", printModel.zhongzhuanTrainNum, "请输入中转车次")));
         models.add(new CommonModel(new CommonTextEditTextModel("中转发站", printModel.zhongzhuanBeginStation, "请输入中转发站")));
@@ -237,9 +234,6 @@ public class YjlcwdzzActivity extends NewBaseCommonActivity implements ContractN
             carriageAndSeatDialog.setListener(new CarriageAndSeatDialog.Listener() {
                 @Override
                 public void onItemClicked(String carriageNum, String seatNum) {
-
-                    YjlcwdzzActivity.this.zhongzhuanCarriageNum = carriageNum;
-                    YjlcwdzzActivity.this.zhongzhuanSeatNum = seatNum;
 
                     adapter.getItem(position).setDescription(carriageNum + "车" + seatNum + "号");
                     adapter.notifyDataSetChanged();

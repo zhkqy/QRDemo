@@ -115,7 +115,6 @@ public class YjtslkActivity extends NewBaseCommonActivity implements ContractNew
         models.add(new CommonModel("车厢号　", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1106)
                 .setDescription(printModel.carriageNum + "车" + printModel.seatNum + "号"));
 
-
         models.add(new CommonModel("旅客B", CommonModel.TYPE_LINE));
 
         models.add(new CommonModel(

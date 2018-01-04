@@ -74,9 +74,6 @@ public class YjwpryActivity extends NewBaseCommonActivity implements ContractNew
         models.add(new CommonModel("自述上站", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1104)
                 .setDescription(printModel.zishuStartStation));
 
-        carriageNum = printModel.carriageNum;
-        seatNum = printModel.seatNum;
-
         models.add(new CommonModel("预览", CommonModel.TYPE_BUTTON).setRequestCode(1105));
     }
 

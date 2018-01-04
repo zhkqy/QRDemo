@@ -62,9 +62,12 @@ public class CyMessageActivity extends NewBaseCommonActivity implements Contract
                 new CommonTextEditTextModel("定员人数", printModel.limitNum, "定员人数")));
         models.add(new CommonModel(
                 new CommonTextEditTextModel("现有人数", printModel.haveNum, "现有人数")));
-        models.add(new CommonModel("主送发站", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1102).setDescription(printModel.zhusongBeginStation));
-        models.add(new CommonModel("主送到站", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1102).setDescription(printModel.zhusongStopStation));
-        models.add(new CommonModel("超员车站", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1102).setDescription(printModel.chaoyuanStation));
+        models.add(new CommonModel("主送发站", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1102).
+                setDescription(printModel.zhusongBeginStation));
+        models.add(new CommonModel("主送到站", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1102).
+                setDescription(printModel.zhusongStopStation));
+        models.add(new CommonModel("超员车站", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1102).
+                setDescription(printModel.chaoyuanStation));
         models.add(new CommonModel("预览", CommonModel.TYPE_BUTTON).setRequestCode(1105));
     }
 

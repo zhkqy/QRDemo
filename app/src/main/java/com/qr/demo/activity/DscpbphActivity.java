@@ -115,8 +115,7 @@ public class DscpbphActivity extends NewBaseCommonActivity implements ContractNe
         models.add(new CommonModel("原票到站", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1102)
                 .setDescription(printModel.stopStation));
         models.add(new CommonModel(
-                new CommonTextEditTextModel("原票票号", "", "请输入原票票号"))
-                .setDescription(printModel.ticketNum));
+                new CommonTextEditTextModel("原票票号", printModel.ticketNum, "请输入原票票号")));
 
         models.add(new CommonModel("预览", CommonModel.TYPE_BUTTON).setRequestCode(1105));
     }

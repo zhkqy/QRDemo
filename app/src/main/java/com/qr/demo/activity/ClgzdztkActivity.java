@@ -84,6 +84,7 @@ public class ClgzdztkActivity extends NewBaseCommonActivity implements ContractN
 
         models.add(new CommonModel("车厢号　", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1106)
                 .setDescription(printModel.carriageNum + "车"));
+
         models.add(new CommonModel(
                 new CommonTextEditTextModel("定员人数", printModel.limitNum, "请输入定员人数")));
         models.add(new CommonModel(
@@ -98,8 +99,7 @@ public class ClgzdztkActivity extends NewBaseCommonActivity implements ContractN
                 .setDescription(printModel.stopStation));
 
         models.add(new CommonModel(
-                new CommonTextEditTextModel("原票票号", "", "请输入原票票号"))
-                .setDescription(printModel.ticketNum));
+                new CommonTextEditTextModel("原票票号", printModel.ticketNum, "请输入原票票号")));
 
         models.add(new CommonModel("预览", CommonModel.TYPE_BUTTON).setRequestCode(1105));
     }

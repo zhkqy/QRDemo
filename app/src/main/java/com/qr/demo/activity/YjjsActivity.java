@@ -119,7 +119,7 @@ public class YjjsActivity extends NewBaseCommonActivity implements ContractNewCo
                 .setDescription(printModel.otherBeginStation));
 
         models.add(new CommonModel("原票到站", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1102)
-                .setDescription(printModel.stopStation));
+                .setDescription(printModel.otherStopStation));
 
         models.add(new CommonModel("预览", CommonModel.TYPE_BUTTON).setRequestCode(1105));
     }

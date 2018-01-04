@@ -93,7 +93,6 @@ public class YjbmwtjsActivity extends NewBaseCommonActivity implements ContractN
 
         models.add(new CommonModel("车厢号　", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1106)
                 .setDescription(printModel.carriageNum + "车" + printModel.seatNum + "号"));
-
         models.add(new CommonModel("预览", CommonModel.TYPE_BUTTON).setRequestCode(1105));
 
     }

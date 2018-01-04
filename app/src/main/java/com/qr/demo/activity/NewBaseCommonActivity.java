@@ -37,8 +37,6 @@ public abstract class NewBaseCommonActivity extends BaseActivity {
 
     protected String carriageNum = "";
     protected String seatNum = "";
-    protected String zhongzhuanCarriageNum = "";  //中转车厢号
-    protected String zhongzhuanSeatNum = "";  //中转座位号
     protected String otherCarriageNum = "";  //other发站车厢号
     protected String otherSeatNum = "";  //other发站座位号
 
@@ -53,6 +51,10 @@ public abstract class NewBaseCommonActivity extends BaseActivity {
             PrintModel p = (PrintModel) getIntent().getSerializableExtra("data");
             if (p != null) {
                 printModel = p;
+                carriageNum = printModel.carriageNum;
+                seatNum = printModel.seatNum;
+                otherCarriageNum = printModel.otherCarriageNum;
+                otherSeatNum = printModel.otherSeatNum;
             }
         }
         if (isEditStatus) {

@@ -71,7 +71,6 @@ public class YjyswpActivity extends NewBaseCommonActivity implements ContractNew
                 .setDescription(printModel.carriageNum + "车" + printModel.seatNum + "号"));
         models.add(new CommonModel(
                 new CommonTextEditTextModel("现　金　", printModel.money, "请输入现金")));
-
         models.add(new CommonModel("预览", CommonModel.TYPE_BUTTON).setRequestCode(1105));
     }
 

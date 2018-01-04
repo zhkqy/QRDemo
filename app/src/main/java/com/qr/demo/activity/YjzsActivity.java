@@ -110,6 +110,7 @@ public class YjzsActivity extends NewBaseCommonActivity implements ContractNewCo
                 .setDescription(printModel.stopStation));
         models.add(new CommonModel("车厢号　", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1106).
                 setDescription(printModel.carriageNum + "车" + printModel.seatNum + "号"));
+
         models.add(new CommonModel("旅客B", CommonModel.TYPE_LINE));
         models.add(new CommonModel(
                 new CommonTextEditTextModel("旅客姓名", printModel.otherName, "请输入旅客姓名")));
