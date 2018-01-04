@@ -79,7 +79,7 @@ public class YjjsycPreviewActivity extends BasePreviewActivity {
 
     private void refreshDescription() {
 
-        String discrep = "　　" + printModel.year + "年" + printModel.month + "月" + printModel.day + "日，" + printModel.trainNum + "次列车运行至" + printModel.connectStation + "站间，" +
+        String discrep = "　　" + printModel.year + "年" + printModel.month + "月" + printModel.day + "日，" + printModel.trainNum + "次列车运行至" + printModel.troubleStation + "站间，" +
                 "旅客" + printModel.name + ",身份证号码" + printModel.cardNum + "家住" + printModel.address + ",持" + printModel.beginStation + "站至" + printModel.stopStation + "站的车票，" +
                 "票号" + printModel.ticketNum + "," + replace1.getText().toString() + "，现交你站，请按章办理。";
 
