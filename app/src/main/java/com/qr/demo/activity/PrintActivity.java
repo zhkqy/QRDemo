@@ -111,7 +111,7 @@ public class PrintActivity extends BaseActivity {
                             } else {
                                 keYunRecordLabel pl = new keYunRecordLabel(printPP_cpcl);
                                 pl.Lable(printModel.saveRecordThing, printModel.saveConnectStation,
-                                        printModel.savedescription);
+                                        printModel.savedescription, printModel.attachContent);
                             }
                         }
                     }

@@ -82,7 +82,7 @@ public class YjbmwtjsPreviewActivity extends BasePreviewActivity {
     private void refreshDescription() {
 
         String discrep = "　　" + printModel.year + "年" + printModel.month + "月" + printModel.day + "日，" +
-                printModel.trainNum + "次列车将要运行" + printModel.connectStation + "站时，" + "运行方向左侧机次第" + printModel.carriageNum + "位车厢" +
+                printModel.trainNum + "次列车将要运行" + printModel.connectStation + "站时，" + "运行方向左侧机后第" + printModel.carriageNum + "位车厢" +
                 "，" + printModel.seatNum + "号座位处车窗外层玻璃被不明物体击碎，将" +
                 "旅客" + printModel.name + ",身份证号码" + printModel.cardNum +
                 "," + replace1.getText().toString() + ",现交你站，请按章办理";

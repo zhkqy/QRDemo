@@ -114,4 +114,6 @@ public class PrintModel implements Serializable {
 
     public long saveCreateTime = 0;  //保存创建时间
 
+    public String attachContent = ""; //附加内容
+
 }
