@@ -68,8 +68,8 @@ public class YjjsPreviewActivity extends BasePreviewActivity {
         replace2.setText(replaceStr2);
         replace3.setText(replaceStr3);
 
-        recordThing.setText("记录事由:" + printModel.recordThing);
-        connectStation.setText(printModel.connectStation + "站");
+        recordThing.setText( printModel.recordThing);
+        connectStation.setText(printModel.connectStation + "站:");
 
         refreshDescription();
     }

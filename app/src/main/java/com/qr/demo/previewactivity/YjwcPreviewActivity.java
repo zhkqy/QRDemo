@@ -47,9 +47,9 @@ public class YjwcPreviewActivity extends BasePreviewActivity {
 
         printModel = (PrintModel) getIntent().getSerializableExtra("data");
 
-        recordThing.setText("记录事由:" + printModel.recordThing);
+        recordThing.setText(printModel.recordThing);
 
-        connectStation.setText(printModel.connectStation + "站");
+        connectStation.setText(printModel.connectStation + "站:");
 
         refreshDescription();
     }

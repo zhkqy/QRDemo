@@ -72,9 +72,9 @@ public class YjbmwtjsPreviewActivity extends BasePreviewActivity {
         }
         replace1.setText(replaceStr1);
 
-        recordThing.setText("记录事由:" + printModel.recordThing);
+        recordThing.setText(printModel.recordThing);
 
-        connectStation.setText(printModel.connectStation + "站");
+        connectStation.setText(printModel.connectStation + "站:");
 
         refreshDescription();
     }

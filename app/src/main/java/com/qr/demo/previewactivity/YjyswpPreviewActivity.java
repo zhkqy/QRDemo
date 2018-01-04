@@ -68,8 +68,8 @@ public class YjyswpPreviewActivity extends BasePreviewActivity {
     protected void initData() {
 
         printModel = (PrintModel) getIntent().getSerializableExtra("data");
-        recordThing.setText("记录事由:" + printModel.recordThing);
-        connectStation.setText(printModel.connectStation + "站");
+        recordThing.setText(printModel.recordThing);
+        connectStation.setText(printModel.connectStation + "站:");
         if (isEditStatus) {
             replaceStr1 = printModel.replace1;
         }

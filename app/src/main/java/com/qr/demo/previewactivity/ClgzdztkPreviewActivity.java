@@ -69,9 +69,9 @@ public class ClgzdztkPreviewActivity extends BasePreviewActivity {
         replace1.setText(replaceStr1);
         replace2.setText(replaceStr2);
 
-        recordThing.setText("记录事由:" + printModel.recordThing);
+        recordThing.setText(  printModel.recordThing);
 
-        connectStation.setText(printModel.connectStation + "站");
+        connectStation.setText(printModel.connectStation + "站:");
 
         refreshDescription();
     }

@@ -47,7 +47,7 @@ public class DscpbphPreviewActivity extends BasePreviewActivity {
 
         printModel = (PrintModel) getIntent().getSerializableExtra("data");
 
-        recordThing.setText("记录事由:" + printModel.recordThing);
+        recordThing.setText( printModel.recordThing);
 
         connectStation.setText(printModel.connectStation + "站:");
 

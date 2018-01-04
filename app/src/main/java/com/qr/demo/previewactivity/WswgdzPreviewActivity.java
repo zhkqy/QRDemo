@@ -46,9 +46,9 @@ public class WswgdzPreviewActivity extends BasePreviewActivity {
 
         printModel = (PrintModel) getIntent().getSerializableExtra("data");
 
-        recordThing.setText("记录事由:" + printModel.recordThing);
+        recordThing.setText( printModel.recordThing);
 
-        connectStation.setText(printModel.connectStation + "站");
+        connectStation.setText(printModel.connectStation + "站:");
 
         String discrep = "　　" + printModel.year + "年" + printModel.month + "月" + printModel.day + "日，" +
                 printModel.trainNum + "次列车," + printModel.connectStation + "站开车后，" +
