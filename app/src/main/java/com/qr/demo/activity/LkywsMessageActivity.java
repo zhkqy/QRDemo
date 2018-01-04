@@ -12,7 +12,6 @@ import com.qr.demo.db.DbHelper;
 import com.qr.demo.dialog.CarriageAndSeatDialog;
 import com.qr.demo.dialog.DateTimePickerDialog;
 import com.qr.demo.dialog.ListViewDialog;
-import com.qr.demo.model.PrintModel;
 import com.qr.demo.previewactivity.LkywsPreMessageViewActivity;
 import com.qr.demo.utils.TimeUtils;
 
@@ -33,12 +32,7 @@ public class LkywsMessageActivity extends NewBaseCommonActivity implements Contr
     private CarriageAndSeatDialog carriageAndSeatDialog;
 
     @Override
-    protected void initData() {
-        super.initData();
-
-        strTitle = getIntent().getStringExtra("title");
-        currentCalendar = Calendar.getInstance();
-        title.setText(strTitle);
+    protected void normalNoEditData() {
         models.clear();
 
         String trainCode = DbHelper.getTrainNum(this);
@@ -81,6 +75,65 @@ public class LkywsMessageActivity extends NewBaseCommonActivity implements Contr
         models.add(new CommonModel("原票到站", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1102));
 
         models.add(new CommonModel("预览", CommonModel.TYPE_BUTTON).setRequestCode(1105));
+    }
+
+    @Override
+    protected void editData() {
+        models.clear();
+
+        models.add(new CommonModel("列车车次", CommonModel.TYPE_TEXT_ARROW, false).
+                setDescription(printModel.trainNum));
+        timeCommonModel = new CommonModel("当前日期", CommonModel.TYPE_TEXT_ARROW).
+                setDescription(printModel.year + "-" + printModel.month + "-" + printModel.day).setRequestCode(1101);
+
+        models.add(timeCommonModel);
+
+        models.add(new CommonModel("主送车站", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1102)
+                .setDescription(printModel.connectStation));
+        models.add(new CommonModel("事故车站", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1102)
+                .setDescription(printModel.troubleStation));
+        models.add(new CommonModel(
+                new CommonTextEditTextModel("事故记录", printModel.troubleRecord, "请输入事故记录")));
+
+        models.add(new CommonModel("旅客A", CommonModel.TYPE_LINE));
+        models.add(new CommonModel(
+                new CommonTextEditTextModel("旅客姓名", printModel.name, "请输入旅客姓名")));
+        models.add(new CommonModel(
+                new CommonTextEditTextModel("身份证号", printModel.cardNum, "请输入身份证号")));
+        models.add(new CommonModel(
+                new CommonTextEditTextModel("原票票号", printModel.ticketNum, "请输入原票票号")));
+        models.add(new CommonModel("原票发站", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1102)
+                .setDescription(printModel.beginStation));
+        models.add(new CommonModel("原票到站", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1102)
+                .setDescription(printModel.stopStation));
+        models.add(new CommonModel("车厢号　", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1106)
+                .setDescription(printModel.carriageNum + "车" + printModel.seatNum + "号"));
+
+
+        models.add(new CommonModel("旅客B", CommonModel.TYPE_LINE));
+        models.add(new CommonModel(
+                new CommonTextEditTextModel("旅客姓名", printModel.otherName, "请输入旅客姓名")));
+        models.add(new CommonModel(
+                new CommonTextEditTextModel("身份证号", printModel.otherCardNum, "请输入身份证号")));
+        models.add(new CommonModel(
+                new CommonTextEditTextModel("原票票号", printModel.otherTicketNum, "请输入原票票号")));
+        models.add(new CommonModel("原票发站", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1102)
+                .setDescription(printModel.otherBeginStation));
+
+        models.add(new CommonModel("原票到站", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1102)
+                .setDescription(printModel.otherStopStation));
+
+        models.add(new CommonModel("预览", CommonModel.TYPE_BUTTON).setRequestCode(1105));
+    }
+
+    @Override
+    protected void initData() {
+        super.initData();
+
+        strTitle = getIntent().getStringExtra("title");
+        currentCalendar = Calendar.getInstance();
+        title.setText(strTitle);
+
         adapter.setDatas(models);
 
         adapter.setListener(this);

@@ -94,7 +94,7 @@ public class YjjsycActivity extends NewBaseCommonActivity implements ContractNew
                 .setDescription(printModel.stopStation));
 
         models.add(new CommonModel(
-                new CommonTextEditTextModel("原票票号", "", "原票票号"))
+                new CommonTextEditTextModel("原票票号", printModel.ticketNum, "原票票号"))
                 .setDescription(printModel.ticketNum));
 
         models.add(new CommonModel("预览", CommonModel.TYPE_BUTTON).setRequestCode(1105));
