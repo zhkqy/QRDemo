@@ -46,6 +46,11 @@ public class PrintActivity extends BaseActivity {
         printModel = (PrintModel) getIntent().getSerializableExtra("data");
     }
 
+    @OnClick(R.id.rl_title_bar_left)
+    public void back(View v) {
+        finish();
+    }
+
     @OnClick(R.id.printOne)
     public void printOneOnclicked(View v) {
         final PrintPP_CPCL printPP_cpcl = ((MyApplication) getApplication()).getPrintPP_cpcl();

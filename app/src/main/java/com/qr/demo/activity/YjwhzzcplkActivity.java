@@ -100,6 +100,8 @@ public class YjwhzzcplkActivity extends NewBaseCommonActivity implements Contrac
         models.add(new CommonModel("车厢号　", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1106)
                 .setDescription(printModel.carriageNum + "车" + printModel.seatNum + "号"));
 
+        carriageNum = printModel.carriageNum;
+        seatNum = printModel.seatNum;
         models.add(new CommonModel("预览", CommonModel.TYPE_BUTTON).setRequestCode(1105));
     }
 

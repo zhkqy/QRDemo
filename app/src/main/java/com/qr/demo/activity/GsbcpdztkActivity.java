@@ -75,25 +75,25 @@ public class GsbcpdztkActivity extends NewBaseCommonActivity implements Contract
         models.add(timeCommonModel);
 
         models.add(new CommonModel("交接车站", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1102)
-        .setDescription(printModel.connectStation));
+                .setDescription(printModel.connectStation));
 
         models.add(new CommonModel(
-                new CommonTextEditTextModel("旅客姓名", "", "请输入旅客姓名"))
-        .setDescription(printModel.name));
+                new CommonTextEditTextModel("旅客姓名", printModel.name, "请输入旅客姓名")));
         models.add(new CommonModel(
-                new CommonTextEditTextModel("身份证号", "", "请输入身份证号"))
-        .setDescription(printModel.cardNum));
+                new CommonTextEditTextModel("身份证号", printModel.cardNum, "请输入身份证号")));
         models.add(new CommonModel(
-                new CommonTextEditTextModel("原票票号", "", "请输入原票票号"))
-        .setDescription(printModel.ticketNum));
+                new CommonTextEditTextModel("原票票号", printModel.ticketNum, "请输入原票票号")));
 
         models.add(new CommonModel("原票发站", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1103)
-        .setDescription(printModel.beginStation));
+                .setDescription(printModel.beginStation));
 
         models.add(new CommonModel("原票到站", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1104)
-        .setDescription(printModel.stopStation));
+                .setDescription(printModel.stopStation));
         models.add(new CommonModel("车厢号　", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1106)
-        .setDescription(printModel.carriageNum + "车" + printModel.seatNum + "号"));
+                .setDescription(printModel.carriageNum + "车" + printModel.seatNum + "号"));
+
+        carriageNum = printModel.carriageNum;
+        seatNum = printModel.seatNum;
 
         models.add(new CommonModel("预览", CommonModel.TYPE_BUTTON).setRequestCode(1105));
     }

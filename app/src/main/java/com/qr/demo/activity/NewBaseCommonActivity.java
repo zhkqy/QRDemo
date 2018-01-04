@@ -3,12 +3,18 @@ package com.qr.demo.activity;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.qr.demo.R;
 import com.qr.demo.adapter.CommonModel;
 import com.qr.demo.adapter.ContractNewCommonAdapter;
+import com.qr.demo.event.KillBaseCommonList;
 import com.qr.demo.model.PrintModel;
 import com.qr.demo.view.NoScrollListViewForScrollView;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -41,7 +47,7 @@ public abstract class NewBaseCommonActivity extends BaseActivity {
     @Override
     protected void setContentView() {
         setContentView(R.layout.activity_new_common);
-
+        EventBus.getDefault().register(this);
         if (getIntent() != null) {
             isEditStatus = getIntent().getBooleanExtra("isEditStatus", false);
             PrintModel p = (PrintModel) getIntent().getSerializableExtra("data");
@@ -95,5 +101,19 @@ public abstract class NewBaseCommonActivity extends BaseActivity {
     public void back(View v) {
         finish();
     }
+
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void killSelf(KillBaseCommonList event) {
+        finish();
+    }
+
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        EventBus.getDefault().unregister(this);
+    }
+
 
 }

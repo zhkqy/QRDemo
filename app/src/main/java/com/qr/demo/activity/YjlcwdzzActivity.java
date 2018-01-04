@@ -87,7 +87,7 @@ public class YjlcwdzzActivity extends NewBaseCommonActivity implements ContractN
         models.add(timeCommonModel);
 
         models.add(new CommonModel("交接车站", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1102).
-        setDescription(printModel.connectStation));
+                setDescription(printModel.connectStation));
 
         models.add(new CommonModel(
                 new CommonTextEditTextModel("旅客姓名", printModel.name, "请输入旅客姓名")));
@@ -99,14 +99,15 @@ public class YjlcwdzzActivity extends NewBaseCommonActivity implements ContractN
 
         models.add(new CommonModel("原票数据", CommonModel.TYPE_LINE));
         models.add(new CommonModel("原票发站", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1103)
-        .setDescription(printModel.beginStation));
+                .setDescription(printModel.beginStation));
         models.add(new CommonModel("原票到站", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1104)
-        .setDescription(printModel.stopStation));
-        models.add(new CommonModel(new CommonTextEditTextModel("原票票号", "", "请输入原票票号"))
-        .setDescription(printModel.ticketNum));
+                .setDescription(printModel.stopStation));
+        models.add(new CommonModel(new CommonTextEditTextModel("原票票号", printModel.ticketNum, "请输入原票票号")));
         models.add(new CommonModel("车厢号　", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1106)
-        .setDescription(printModel.carriageNum+"车"+printModel.seatNum+"号"));
+                .setDescription(printModel.carriageNum + "车" + printModel.seatNum + "号"));
 
+        carriageNum = printModel.carriageNum;
+        seatNum = printModel.seatNum;
 
         models.add(new CommonModel("中转数据", CommonModel.TYPE_LINE));
         models.add(new CommonModel(new CommonTextEditTextModel("中转车次", printModel.zhongzhuanTrainNum, "请输入中转车次")));

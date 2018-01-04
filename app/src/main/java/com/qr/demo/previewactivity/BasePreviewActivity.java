@@ -11,10 +11,13 @@ import com.qr.demo.R;
 import com.qr.demo.activity.BaseActivity;
 import com.qr.demo.activity.PrintActivity;
 import com.qr.demo.db.SaveHelper;
+import com.qr.demo.event.KillBaseCommonList;
 import com.qr.demo.model.PrintModel;
 import com.qr.demo.utils.ToastUtils;
 import com.qr.demo.utils.Utils;
 import com.qr.demo.view.CustomFontsTextView;
+
+import org.greenrobot.eventbus.EventBus;
 
 /**
  * Created by sun on 2018/1/3.
@@ -132,7 +135,7 @@ public class BasePreviewActivity extends BaseActivity {
                         mBundle.putSerializable("data", printModel);
                         mIntent.putExtras(mBundle);
                         startActivity(mIntent);
-
+                        EventBus.getDefault().post(new KillBaseCommonList());
                         finish();
                     }
                 }
