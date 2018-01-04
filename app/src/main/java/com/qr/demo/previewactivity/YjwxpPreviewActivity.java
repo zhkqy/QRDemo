@@ -48,12 +48,12 @@ public class YjwxpPreviewActivity extends BasePreviewActivity {
 
         recordThing.setText(printModel.recordThing);
 
-        connectStation.setText(printModel.connectStation + "站（车站无派出所）:");
+        connectStation.setText(printModel.connectStation + "站:");
 
         String discrep = "　　" + printModel.year + "年" + printModel.month + "月" + printModel.day + "日，" + printModel.trainNum + "次列车," +
                 printModel.connectStation + "站开车后，发现车厢连接处有一名旅客" + printModel.name + ",身份证号码" + printModel.cardNum + ",持"
                 + printModel.beginStation + "站至" + printModel.stopStation + "站车票，" + "" +
-                "票号" + printModel.ticketNum + ",携带" + printModel.goods + ",找到列车长，自称坐过站。现交你站，请按章处理。";
+                "票号" + printModel.ticketNum + ",携带" + printModel.goods + ",列车已加倍补收四类包裹运费，现移交你站，请按章办理。";
 
         description.setText(discrep);
     }
