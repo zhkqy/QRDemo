@@ -1,16 +1,18 @@
 package com.qr.demo.Label;
 
+import android.content.Context;
+
 import com.qr.print.PrintPP_CPCL;
 
-public class keYunRecordLabel2 extends BaseLabel {
+public class keYunRecordLabel2 extends KeYunBaseLabel {
 
     String recordThing;
     String connectStation;
     String description;
 
 
-    public keYunRecordLabel2(PrintPP_CPCL iPrinter) {
-        super(iPrinter);
+    public keYunRecordLabel2(PrintPP_CPCL iPrinter, Context context) {
+        super(iPrinter, context);
     }
 
     public void Lable(String recordThing, String connectStation, String description) {
@@ -31,7 +33,7 @@ public class keYunRecordLabel2 extends BaseLabel {
     }
 
     @Override
-    protected void printUp() {
+    protected void printMiddle() {
 
         int fontHeight = 35;
         int titleHeight = 48;

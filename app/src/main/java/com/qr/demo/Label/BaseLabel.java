@@ -11,8 +11,8 @@ public abstract class BaseLabel {
     protected PrintPP_CPCL iPrinter;
 
     //第一联
-    int topPadding = 10;
-    int bottomPadding = 60;
+    public int topPadding = 10;
+    public int bottomPadding = 60;
     protected int pageWidth = 576;
     protected int pageHeight = 760;
 
@@ -21,7 +21,11 @@ public abstract class BaseLabel {
     protected static int fontPoint2 = 24;
     protected static int fontPoint3 = 32;
 
-    protected abstract void printUp();
+    public static String year;
+    public static String month;
+    public static String day;
+
+    protected abstract void printMiddle();
 
     protected abstract void pageSetup();
 
@@ -29,7 +33,10 @@ public abstract class BaseLabel {
         this.iPrinter = iPrinter;
     }
 
-    protected void printDown() {
+    protected abstract void printTop();
+
+
+    private void printBottom() {
 
         int bottomfontPoint = fontPoint1;
         int bottomfont = 1;
@@ -50,22 +57,16 @@ public abstract class BaseLabel {
                 "　　2.本记录不能作为乘车凭证。", bottomfont, 0, 0, false, false);
 
 
-        iPrinter.drawText(pageWidth - 12 * bottomfontPoint - bottomfontPoint, bottomY5, bottomfontPoint, bottomfontPoint * 2,
-                "站段", bottomfont, 0, 0, false, false);
+        iPrinter.drawText(pageWidth - 18 * bottomfontPoint, bottomY4, pageWidth, bottomfont,
+                "大连客运段编制人员　　　　　　（印）", bottomfont, 0, 0, false, false);
 
-        iPrinter.drawText(pageWidth - 12 * bottomfontPoint, bottomY4, pageWidth, bottomfont,
-                "编制人员　　　　　（印）", bottomfont, 0, 0, false, false);
+        iPrinter.drawText(pageWidth - 14 * bottomfontPoint, bottomY2, pageWidth, bottomfont,
+                "站签收人员　　　　　　（印）", bottomfont, 0, 0, false, false);
 
+        String time = year + "年" + month + "月" + day + "日编制";
 
-        iPrinter.drawText(pageWidth - 12 * bottomfontPoint - bottomfontPoint, bottomY3, bottomfontPoint, bottomfontPoint * 2,
-                "站段", bottomfont, 0, 0, false, false);
-
-        iPrinter.drawText(pageWidth - 12 * bottomfontPoint, bottomY2, pageWidth, bottomfont,
-                "签收人员　　　　　（印）", bottomfont, 0, 0, false, false);
-
-
-        iPrinter.drawText(pageWidth - 17 * bottomfontPoint, bottomY1, pageWidth, bottomfont,
-                "20　　　年　　　月　　　日编制　　", bottomfont, 0, 0, false, false);
+        iPrinter.drawText(pageWidth - 9 * bottomfontPoint, bottomY1, pageWidth, bottomfont,
+                time, bottomfont, 0, 0, false, false);
 
         iPrinter.print(0, 0);
 
@@ -92,8 +93,11 @@ public abstract class BaseLabel {
             return;
         }
         pageSetup();
-        printUp();
-        printDown();
+        printTop();
+//        printMiddle();
+//        printBottom();
+        iPrinter.print(0, 0);
     }
+
 
 }

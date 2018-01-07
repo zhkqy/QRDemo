@@ -2,7 +2,7 @@ package com.qr.demo.Label;
 
 import com.qr.print.PrintPP_CPCL;
 
-public class DianBaoLabel2 extends BaseLabel {
+public class DianBaoLabel2 extends DianBaoBaseLabel {
 
     String recordThing;
     String zhusong;
@@ -32,7 +32,7 @@ public class DianBaoLabel2 extends BaseLabel {
     }
 
     @Override
-    protected void printUp() {
+    protected void printMiddle() {
 
         int fontHeight = 35;
         int titleHeight = 48;

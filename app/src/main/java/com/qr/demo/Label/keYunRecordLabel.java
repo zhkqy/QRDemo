@@ -1,10 +1,12 @@
 package com.qr.demo.Label;
 
+import android.content.Context;
 import android.text.TextUtils;
 
+import com.qr.demo.model.PrintModel;
 import com.qr.print.PrintPP_CPCL;
 
-public class keYunRecordLabel extends BaseLabel {
+public class keYunRecordLabel extends KeYunBaseLabel {
 
     String recordThing;
     String connectStation;
@@ -12,16 +14,20 @@ public class keYunRecordLabel extends BaseLabel {
     String attachContent;
 
 
-    public keYunRecordLabel(PrintPP_CPCL iPrinter) {
-        super(iPrinter);
+    public keYunRecordLabel(PrintPP_CPCL iPrinter, Context context) {
+        super(iPrinter, context);
     }
 
-    public void Lable(String recordThing, String connectStation, String description, String attachContent) {
+    public void Lable(PrintModel printModel, String recordThing, String connectStation, String description, String attachContent) {
 
         this.recordThing = recordThing;
         this.connectStation = connectStation;
         this.description = description;
         this.attachContent = attachContent;
+
+        this.year = printModel.year;
+        this.month = printModel.month;
+        this.day = printModel.day;
 
         print();
     }
@@ -36,7 +42,7 @@ public class keYunRecordLabel extends BaseLabel {
     }
 
     @Override
-    protected void printUp() {
+    protected void printMiddle() {
 
         int fontHeight = 35;
         int titleHeight = 48;
