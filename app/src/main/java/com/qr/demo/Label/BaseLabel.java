@@ -14,7 +14,7 @@ public abstract class BaseLabel {
     public int topPadding = 10;
     public int printTopPading = 0;
     public int bottomPadding = 60;
-    protected int pageWidth = 576;
+    protected int pageWidth = 566;
     protected int pageHeight = 760;
 
 

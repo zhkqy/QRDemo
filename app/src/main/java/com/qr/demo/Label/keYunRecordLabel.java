@@ -35,7 +35,7 @@ public class keYunRecordLabel extends KeYunBaseLabel {
 
     @Override
     protected void pageSetup() {
-        int pageWidth = 576;
+        int pageWidth = 566;
         int pageHeight = 760;
 
         setPageWidthAndHeight(pageWidth, pageHeight);

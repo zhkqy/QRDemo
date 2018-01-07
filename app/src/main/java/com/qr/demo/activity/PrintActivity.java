@@ -105,12 +105,12 @@ public class PrintActivity extends BaseActivity {
 
                         if (printModel != null) {
                             if (printModel.recordThing.contains("电报")) {
-                                DianBaoLabel pl = new DianBaoLabel(printPP_cpcl);
-                                pl.Lable(printModel.saveRecordThing, printModel.saveZhusongDianBao,
+                                DianBaoLabel pl = new DianBaoLabel(printPP_cpcl, PrintActivity.this);
+                                pl.Lable(printModel, printModel.saveRecordThing, printModel.saveZhusongDianBao,
                                         printModel.saveChaosongDianBao, printModel.savedescription);
                             } else {
                                 keYunRecordLabel pl = new keYunRecordLabel(printPP_cpcl, PrintActivity.this);
-                                pl.Lable(printModel,printModel.saveRecordThing, printModel.saveConnectStation,
+                                pl.Lable(printModel, printModel.saveRecordThing, printModel.saveConnectStation,
                                         printModel.savedescription, printModel.attachContent);
                             }
                         }
@@ -138,15 +138,15 @@ public class PrintActivity extends BaseActivity {
                     if (((MyApplication) getApplication()).isConnected()) {
 
                         if (printModel != null) {
-                            if (printModel.recordThing.contains("电报")) {
-                                DianBaoLabel2 pl = new DianBaoLabel2(printPP_cpcl);
-                                pl.Lable(printModel.saveRecordThing, printModel.saveZhusongDianBao,
-                                        printModel.saveChaosongDianBao, printModel.savedescription);
-                            } else {
-                                keYunRecordLabel2 pl = new keYunRecordLabel2(printPP_cpcl, PrintActivity.this);
-                                pl.Lable(printModel.saveRecordThing, printModel.saveConnectStation,
-                                        printModel.savedescription);
-                            }
+//                            if (printModel.recordThing.contains("电报")) {
+//                                DianBaoLabel2 pl = new DianBaoLabel2(printPP_cpcl);
+//                                pl.Lable(printModel.saveRecordThing, printModel.saveZhusongDianBao,
+//                                        printModel.saveChaosongDianBao, printModel.savedescription);
+//                            } else {
+//                                keYunRecordLabel2 pl = new keYunRecordLabel2(printPP_cpcl, PrintActivity.this);
+//                                pl.Lable(printModel.saveRecordThing, printModel.saveConnectStation,
+//                                        printModel.savedescription);
+//                            }
                         }
                     }
                     try {

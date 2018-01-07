@@ -42,7 +42,7 @@ public class KeYunBaseLabel extends BaseLabel {
 
         iPrinter.drawGraphic2(0, topPadding, 80, 80, bitmap);
 
-        printTopPading = topPadding + fontPoint3 + fontPoint2 + 8 * 4;
+        printTopPading = topPadding + fontPoint3 + fontPoint2 + 8 * 4 - fontPoint2;
     }
 
     @Override

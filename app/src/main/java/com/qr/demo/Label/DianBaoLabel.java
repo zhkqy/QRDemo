@@ -1,5 +1,8 @@
 package com.qr.demo.Label;
 
+import android.content.Context;
+
+import com.qr.demo.model.PrintModel;
 import com.qr.print.PrintPP_CPCL;
 
 public class DianBaoLabel extends DianBaoBaseLabel {
@@ -9,23 +12,25 @@ public class DianBaoLabel extends DianBaoBaseLabel {
     String chaosong;
     String description;
 
-    public DianBaoLabel(PrintPP_CPCL iPrinter) {
-        super(iPrinter);
+    public DianBaoLabel(PrintPP_CPCL iPrinter, Context mContext) {
+        super(iPrinter, mContext);
     }
 
-    public void Lable(String recordThing, String zhusong, String chaosong, String description) {
+    public void Lable(PrintModel printModel, String recordThing, String zhusong, String chaosong, String description) {
 
         this.recordThing = recordThing;
         this.zhusong = zhusong;
         this.chaosong = chaosong;
         this.description = description;
-
+        this.year = printModel.year;
+        this.month = printModel.month;
+        this.day = printModel.day;
         print();
     }
 
     @Override
     protected void pageSetup() {
-        int pageWidth = 576;
+        int pageWidth = 566;
         int pageHeight = 760;
 
         setPageWidthAndHeight(pageWidth, pageHeight);
@@ -40,7 +45,6 @@ public class DianBaoLabel extends DianBaoBaseLabel {
         int topFontPoint = fontPoint2;
         int topFont = 2;
 
-        iPrinter.drawText(pageWidth / 2 - fontPoint3 * 2, printTopPading, pageWidth, fontPoint3, "列车电报", 3, 0, 0, false, false);
         iPrinter.drawText(0, printTopPading + titleHeight, pageWidth, topFontPoint, recordThing, topFont, 0, 0, false, false);
 
         int zhusongL = zhusong.length();

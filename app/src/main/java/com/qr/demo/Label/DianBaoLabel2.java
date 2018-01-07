@@ -1,5 +1,7 @@
 package com.qr.demo.Label;
 
+import android.content.Context;
+
 import com.qr.print.PrintPP_CPCL;
 
 public class DianBaoLabel2 extends DianBaoBaseLabel {
@@ -9,8 +11,8 @@ public class DianBaoLabel2 extends DianBaoBaseLabel {
     String chaosong;
     String description;
 
-    public DianBaoLabel2(PrintPP_CPCL iPrinter) {
-        super(iPrinter);
+    public DianBaoLabel2(PrintPP_CPCL iPrinter, Context mContext) {
+        super(iPrinter, mContext);
     }
 
     public void Lable(String recordThing, String zhusong, String chaosong, String description) {
