@@ -50,10 +50,10 @@ public class keYunRecordLabel extends KeYunBaseLabel {
         int topFontPoint = fontPoint2;
         int topFont = 2;
 
-        iPrinter.drawText(pageWidth / 2 - fontPoint3 * 2, topPadding, pageWidth, fontPoint3, "客运记录", 3, 0, 0, false, false);
-        iPrinter.drawText(0, topPadding + titleHeight, pageWidth, topFontPoint, recordThing, topFont, 0, 0, false, false);
-        iPrinter.drawText(0, topPadding + titleHeight + fontHeight, pageWidth, topFontPoint, connectStation, topFont, 0, 0, false, false);
-        iPrinter.drawText(0, topPadding + titleHeight + fontHeight * 2, pageWidth, pageHeight, description, topFont, 0, 0, false, false);
+        iPrinter.drawText(0, printTopPading + titleHeight, pageWidth, topFontPoint, "记录事由：", topFont, 0, 1, false, false);
+        iPrinter.drawText(fontPoint2 * 5, printTopPading + titleHeight, pageWidth, topFontPoint, recordThing, topFont, 0, 0, false, false);
+        iPrinter.drawText(0, printTopPading + titleHeight + fontHeight, pageWidth, topFontPoint, connectStation, topFont, 0, 0, false, false);
+        iPrinter.drawText(0, printTopPading + titleHeight + fontHeight * 2, pageWidth, pageHeight, description, topFont, 0, 0, false, false);
 
 
         int descriptionL = description.length();
@@ -63,7 +63,7 @@ public class keYunRecordLabel extends KeYunBaseLabel {
             descPadding = ((int) num) * topFontPoint + 8;
         }
         if (!TextUtils.isEmpty(attachContent)) {
-            iPrinter.drawText(0, topPadding + titleHeight + fontHeight * 3 + descPadding, pageWidth, pageHeight, attachContent, topFont, 0, 0, false, false);
+            iPrinter.drawText(0, printTopPading + titleHeight + fontHeight * 3 + descPadding, pageWidth, pageHeight, attachContent, topFont, 0, 0, false, false);
         }
     }
 

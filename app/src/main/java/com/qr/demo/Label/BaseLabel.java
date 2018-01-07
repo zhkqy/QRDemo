@@ -12,6 +12,7 @@ public abstract class BaseLabel {
 
     //第一联
     public int topPadding = 10;
+    public int printTopPading = 0;
     public int bottomPadding = 60;
     protected int pageWidth = 576;
     protected int pageHeight = 760;
@@ -63,9 +64,9 @@ public abstract class BaseLabel {
         iPrinter.drawText(pageWidth - 14 * bottomfontPoint, bottomY2, pageWidth, bottomfont,
                 "站签收人员　　　　　　（印）", bottomfont, 0, 0, false, false);
 
-        String time = year + "年" + month + "月" + day + "日编制";
+        String time = year + "年" + month + "月" + day + "日编制　";
 
-        iPrinter.drawText(pageWidth - 9 * bottomfontPoint, bottomY1, pageWidth, bottomfont,
+        iPrinter.drawText(pageWidth - 10 * bottomfontPoint, bottomY1, pageWidth, bottomfont,
                 time, bottomfont, 0, 0, false, false);
 
         iPrinter.print(0, 0);
@@ -94,9 +95,8 @@ public abstract class BaseLabel {
         }
         pageSetup();
         printTop();
-//        printMiddle();
-//        printBottom();
-        iPrinter.print(0, 0);
+        printMiddle();
+        printBottom();
     }
 
 

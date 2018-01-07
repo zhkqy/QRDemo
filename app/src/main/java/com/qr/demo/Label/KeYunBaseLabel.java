@@ -27,7 +27,7 @@ public class KeYunBaseLabel extends BaseLabel {
         iPrinter.drawText(topPadding + pageWidth / 2 - 11 * fontPoint2 / 2, 0, pageWidth, fontPoint2,
                 "中国铁路沈阳局集团公司", 2, 0, 0, false, false);
 
-        iPrinter.drawText(topPadding + pageWidth - 4 * fontPoint2, 0, pageWidth, fontPoint2,
+        iPrinter.drawText(topPadding + pageWidth - 4 * fontPoint2 - 8, 0, pageWidth, fontPoint2,
                 "客统一1", 2, 0, 0, false, false);
 
         int keyunLeft = pageWidth / 2 - 7 * fontPoint3 / 2;
@@ -38,8 +38,11 @@ public class KeYunBaseLabel extends BaseLabel {
         iPrinter.drawLine(2, keyunLeft, topPadding + fontPoint3 + fontPoint2 + 8 * 2, keyunLeft + 7 * fontPoint3, topPadding + fontPoint3 + fontPoint2 + 8 * 2, true);//第一联横线1
         iPrinter.drawLine(2, keyunLeft, topPadding + fontPoint3 + fontPoint2 + 8 * 3, keyunLeft + 7 * fontPoint3, topPadding + fontPoint3 + fontPoint2 + 8 * 3, true);//第一联横线1
 
-        Bitmap bitmap = BitmapFactory.decodeResource(mContext.getResources(), R.drawable.tielu1);
+        Bitmap bitmap = BitmapFactory.decodeResource(mContext.getResources(), R.drawable.tielu);
+
         iPrinter.drawGraphic2(0, topPadding, 80, 80, bitmap);
+
+        printTopPading = topPadding + fontPoint3 + fontPoint2 + 8 * 4;
     }
 
     @Override
