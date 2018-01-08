@@ -126,6 +126,13 @@ public class MainActivity extends BaseActivity {
         finish();
     }
 
+    @OnClick(R.id.upload)
+    public void uploadOnClicked(View v) {
+
+
+
+    }
+
     @Override
     public void onStart() {
         super.onStart();
