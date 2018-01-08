@@ -26,12 +26,12 @@ public class SjlcMessageViewActivity extends BasePreviewActivity {
     @Override
     protected void setContentView() {
         setContentView(R.layout.activity_preview_sjlc_msg);
-        type = findViewById(R.id.type);
-        zhusong = findViewById(R.id.zhusong);
-        chasong = findViewById(R.id.chasong);
-        replace1 = findViewById(R.id.replace1);
-        replace2 = findViewById(R.id.replace2);
-        description = findViewById(R.id.description);
+        type = (TextView) findViewById(R.id.type);
+        zhusong = (TextView) findViewById(R.id.zhusong);
+        chasong = (TextView) findViewById(R.id.chasong);
+        replace1 = (EditText) findViewById(R.id.replace1);
+        replace2 = (EditText) findViewById(R.id.replace2);
+        description = (CustomFontsTextView) findViewById(R.id.description);
         isEditStatus = getIntent().getBooleanExtra("isEditStatus", false);
     }
 

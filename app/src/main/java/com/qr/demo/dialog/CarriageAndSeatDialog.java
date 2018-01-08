@@ -53,8 +53,8 @@ public class CarriageAndSeatDialog extends Dialog {
 
     private void initView() {
         View contentView = View.inflate(mContext, R.layout.carriage_and_seat_dialog, null);
-        leftListView = contentView.findViewById(R.id.leftList);
-        rightListView = contentView.findViewById(R.id.rightList);
+        leftListView = (ListView) contentView.findViewById(R.id.leftList);
+        rightListView = (ListView) contentView.findViewById(R.id.rightList);
         setContentView(contentView);
 
         adapterLeft = new AdapterLeft(getContext());
@@ -212,7 +212,7 @@ public class CarriageAndSeatDialog extends Dialog {
         public View getView(final int position, View convertView, ViewGroup parent) {
 
             View v = View.inflate(mContext, R.layout.item_dialog_right, null);
-            TextView text = v.findViewById(R.id.text);
+            TextView text = (TextView) v.findViewById(R.id.text);
             text.setText(datas.get(position));
 
             if (rightPressPosition == position) {
@@ -260,7 +260,7 @@ public class CarriageAndSeatDialog extends Dialog {
 
             View v = View.inflate(mContext, R.layout.item_dialog_left, null);
 
-            TextView text = v.findViewById(R.id.text);
+            TextView text = (TextView) v.findViewById(R.id.text);
 
             if (leftPressPosition == position) {
                 text.setBackgroundResource(R.color.gray_dd);

@@ -63,8 +63,8 @@ public abstract class NewBaseCommonActivity extends BaseActivity {
             normalNoEditData();
         }
 
-        bottomFramelayout = findViewById(R.id.bottom_framelayout);
-        listview = findViewById(R.id.ll);
+        bottomFramelayout = (FrameLayout) findViewById(R.id.bottom_framelayout);
+        listview = (NoScrollListViewForScrollView) findViewById(R.id.ll);
         adapter = new ContractNewCommonAdapter(this);
         listview.setAdapter(adapter);
 

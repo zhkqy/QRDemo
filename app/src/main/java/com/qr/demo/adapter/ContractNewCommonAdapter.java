@@ -63,19 +63,19 @@ public class ContractNewCommonAdapter extends BaseAdapter {
 
         if (type.equals(CommonModel.TYPE_TEXT_ARROW)) {//带箭头的item
             contentView = View.inflate(context, R.layout.item_new_common_text_arrow, null);
-            holder.titleView = contentView.findViewById(R.id.title);
+            holder.titleView = (NewTitleView) contentView.findViewById(R.id.title);
             holder.type = type;
         } else if (type.equals(CommonModel.TYPE_TEXT_EDITTEXT)) {  //带输入框的item
             contentView = View.inflate(context, R.layout.item_new_common_text_edittext, null);
-            holder.textEdit = contentView.findViewById(R.id.text_edit);
+            holder.textEdit = (TitleEditAlignLeftView) contentView.findViewById(R.id.text_edit);
             holder.type = type;
         } else if (type.equals(CommonModel.TYPE_BUTTON)) {  //TYPE_BUTTON
             contentView = View.inflate(context, R.layout.item_new_common_button, null);
-            holder.button = contentView.findViewById(R.id.button);
+            holder.button = (TextView) contentView.findViewById(R.id.button);
             holder.type = type;
         } else if (type.equals(CommonModel.TYPE_LINE)) {  //TYPE_LINE
             contentView = View.inflate(context, R.layout.item_new_common_line, null);
-            holder.lineText = contentView.findViewById(R.id.lineText);
+            holder.lineText = (TextView) contentView.findViewById(R.id.lineText);
             holder.type = type;
         } else {
             contentView = View.inflate(context, R.layout.null_layout, null);

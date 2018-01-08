@@ -111,7 +111,7 @@ public class LabelListActivity extends BaseActivity {
         public View getView(final int position, View convertView, ViewGroup parent) {
 
             View v = View.inflate(mContext, R.layout.item_label, null);
-            TextView text = v.findViewById(R.id.text);
+            TextView text = (TextView) v.findViewById(R.id.text);
             text.setText(datas.get(position));
 
             v.setOnClickListener(new View.OnClickListener() {

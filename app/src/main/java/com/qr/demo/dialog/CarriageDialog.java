@@ -46,7 +46,7 @@ public class CarriageDialog extends Dialog {
 
     private void initView() {
         View contentView = View.inflate(mContext, R.layout.carriage_dialog, null);
-        leftListView = contentView.findViewById(R.id.leftList);
+        leftListView = (ListView) contentView.findViewById(R.id.leftList);
         setContentView(contentView);
         adapterLeft = new AdapterLeft(getContext());
     }
@@ -156,7 +156,7 @@ public class CarriageDialog extends Dialog {
 
             View v = View.inflate(mContext, R.layout.item_dialog_left, null);
 
-            TextView text = v.findViewById(R.id.text);
+            TextView text = (TextView) v.findViewById(R.id.text);
 
             text.setText(datas.get(position));
 

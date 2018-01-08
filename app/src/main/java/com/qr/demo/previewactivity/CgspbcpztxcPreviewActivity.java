@@ -29,9 +29,9 @@ public class CgspbcpztxcPreviewActivity extends BasePreviewActivity {
     @Override
     protected void setContentView() {
         setContentView(R.layout.activity_preview_replace0);
-        description = findViewById(R.id.description);
-        connectStation = findViewById(R.id.connectStation);
-        recordThing = findViewById(R.id.recordThing);
+        description = (CustomFontsTextView) findViewById(R.id.description);
+        connectStation = (TextView) findViewById(R.id.connectStation);
+        recordThing = (TextView) findViewById(R.id.recordThing);
         isEditStatus = getIntent().getBooleanExtra("isEditStatus", false);
     }
 

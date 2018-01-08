@@ -40,7 +40,7 @@ public class ListViewDialog extends Dialog implements AdapterView.OnItemClickLis
 
     private void initView() {
         View contentView = View.inflate(mContext, R.layout.content_dialog, null);
-        mListView = contentView.findViewById(R.id.lv);
+        mListView = (ListView) contentView.findViewById(R.id.lv);
         setContentView(contentView);
 
         adapter = new Adapter(getContext());
@@ -134,7 +134,7 @@ public class ListViewDialog extends Dialog implements AdapterView.OnItemClickLis
         public View getView(final int position, View convertView, ViewGroup parent) {
 
             View v = View.inflate(mContext, R.layout.item_dialog_list_one, null);
-            TextView text = v.findViewById(R.id.text);
+            TextView text = (TextView) v.findViewById(R.id.text);
             text.setText(datas.get(position));
 
             return v;

@@ -29,13 +29,13 @@ public class LkywsPreMessageViewActivity extends BasePreviewActivity {
     @Override
     protected void setContentView() {
         setContentView(R.layout.activity_preview_lkyws_msg);
-        type = findViewById(R.id.type);
-        zhusong = findViewById(R.id.zhusong);
-        chasong = findViewById(R.id.chasong);
-        replace1 = findViewById(R.id.replace1);
-        replace2 = findViewById(R.id.replace2);
-        replace3 = findViewById(R.id.replace3);
-        description = findViewById(R.id.description);
+        type = (TextView) findViewById(R.id.type);
+        zhusong = (TextView) findViewById(R.id.zhusong);
+        chasong = (TextView) findViewById(R.id.chasong);
+        replace1 = (EditText) findViewById(R.id.replace1);
+        replace2 = (EditText) findViewById(R.id.replace2);
+        replace3 = (EditText) findViewById(R.id.replace3);
+        description = (CustomFontsTextView) findViewById(R.id.description);
         isEditStatus = getIntent().getBooleanExtra("isEditStatus", false);
     }
 

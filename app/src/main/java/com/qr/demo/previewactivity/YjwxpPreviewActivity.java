@@ -20,9 +20,9 @@ public class YjwxpPreviewActivity extends BasePreviewActivity {
     @Override
     protected void setContentView() {
         setContentView(R.layout.activity_preview_replace0);
-        recordThing = findViewById(R.id.recordThing);
-        connectStation = findViewById(R.id.connectStation);
-        description = findViewById(R.id.description);
+        recordThing = (TextView) findViewById(R.id.recordThing);
+        connectStation = (TextView) findViewById(R.id.connectStation);
+        description = (CustomFontsTextView) findViewById(R.id.description);
         isEditStatus = getIntent().getBooleanExtra("isEditStatus", false);
     }
 

@@ -3,9 +3,12 @@ package com.qr.demo.previewactivity;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
+import android.widget.EditText;
+import android.widget.TextView;
 
 import com.qr.demo.R;
 import com.qr.demo.model.PrintModel;
+import com.qr.demo.view.CustomFontsTextView;
 
 import java.text.DecimalFormat;
 
@@ -22,11 +25,11 @@ public class CyMessagePreViewActivity extends BasePreviewActivity {
     @Override
     protected void setContentView() {
         setContentView(R.layout.activity_preview_cy_msg);
-        type = findViewById(R.id.type);
-        description = findViewById(R.id.description);
-        zhusong = findViewById(R.id.zhusong);
-        chasong = findViewById(R.id.chasong);
-        replace1 = findViewById(R.id.replace1);
+        type = (TextView) findViewById(R.id.type);
+        description = (CustomFontsTextView) findViewById(R.id.description);
+        zhusong = (TextView) findViewById(R.id.zhusong);
+        chasong = (TextView) findViewById(R.id.chasong);
+        replace1 = (EditText) findViewById(R.id.replace1);
 
         isEditStatus = getIntent().getBooleanExtra("isEditStatus", false);
     }

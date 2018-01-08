@@ -44,7 +44,7 @@ public class TitleEditAlignLeftView extends LinearLayout implements View.OnClick
 
         String hint = ta.getString(R.styleable.title_view_edit_hint);
 
-        title = findViewById(R.id.title_name);
+        title = (TextView) findViewById(R.id.title_name);
         topLayer = findViewById(R.id.topLayer);
         topLayer.setVisibility(View.GONE);
         topLayer.setOnClickListener(new OnClickListener() {
@@ -53,7 +53,7 @@ public class TitleEditAlignLeftView extends LinearLayout implements View.OnClick
 
             }
         });
-        editText = findViewById(R.id.edit);
+        editText = (ExtendedEditText) findViewById(R.id.edit);
         editText.setOnClickListener(this);
         editText.setCursorVisible(false);
         editText.setHint(hint);

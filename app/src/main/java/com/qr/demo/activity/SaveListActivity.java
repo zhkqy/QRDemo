@@ -113,11 +113,11 @@ public class SaveListActivity extends BaseActivity implements EditDialog.Listene
             if (convertView == null) {
                 convertView = View.inflate(SaveListActivity.this, R.layout.item_save_list, null);
                 holder = new ViewHolder();
-                holder.title = convertView.findViewById(R.id.title);
-                holder.recordThing = convertView.findViewById(R.id.recordThing);
-                holder.one = convertView.findViewById(R.id.one);
-                holder.two = convertView.findViewById(R.id.two);
-                holder.three = convertView.findViewById(R.id.three);
+                holder.title = (TextView) convertView.findViewById(R.id.title);
+                holder.recordThing = (TextView) convertView.findViewById(R.id.recordThing);
+                holder.one = (TextView) convertView.findViewById(R.id.one);
+                holder.two = (TextView) convertView.findViewById(R.id.two);
+                holder.three = (TextView) convertView.findViewById(R.id.three);
                 convertView.setTag(holder);
             } else {
                 holder = (ViewHolder) convertView.getTag();

@@ -9,6 +9,7 @@ import java.util.ArrayList;
 public class Constants {
 
     public static String FILE_ROOT_NAME = "qrlabel";
+    public static String bombApplicationID = "e786c576952b0a1930e3a39a6f0989b6";
 
     /**
      * 客运记录模板

@@ -26,11 +26,11 @@ public class YjzsPreviewActivity extends BasePreviewActivity {
     @Override
     protected void setContentView() {
         setContentView(R.layout.activity_preview_replace2);
-        recordThing = findViewById(R.id.recordThing);
-        connectStation = findViewById(R.id.connectStation);
-        description = findViewById(R.id.description);
-        replace1 = findViewById(R.id.replace1);
-        replace2 = findViewById(R.id.replace2);
+        recordThing = (TextView) findViewById(R.id.recordThing);
+        connectStation = (TextView) findViewById(R.id.connectStation);
+        description = (CustomFontsTextView) findViewById(R.id.description);
+        replace1 = (EditText) findViewById(R.id.replace1);
+        replace2 = (EditText) findViewById(R.id.replace2);
         isEditStatus = getIntent().getBooleanExtra("isEditStatus", false);
     }
 

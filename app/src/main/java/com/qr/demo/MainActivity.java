@@ -17,6 +17,11 @@ import com.qr.print.PrintPP_CPCL;
 
 import butterknife.BindView;
 import butterknife.OnClick;
+import cn.bmob.v3.Bmob;
+import cn.bmob.v3.listener.BmobUpdateListener;
+import cn.bmob.v3.update.BmobUpdateAgent;
+import cn.bmob.v3.update.UpdateResponse;
+import cn.bmob.v3.update.UpdateStatus;
 
 
 public class MainActivity extends BaseActivity {
@@ -37,6 +42,8 @@ public class MainActivity extends BaseActivity {
     @Override
     protected void setContentView() {
         setContentView(R.layout.activity_main);
+
+        Bmob.initialize(this, Constants.bombApplicationID);
 
         //obtain the local Bluetooth adapter
         mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
@@ -64,7 +71,28 @@ public class MainActivity extends BaseActivity {
 
     @Override
     protected void initListener() {
+        BmobUpdateAgent.setUpdateListener(new BmobUpdateListener() {
 
+            @Override
+            public void onUpdateReturned(int updateStatus, UpdateResponse updateInfo) {
+                // TODO Auto-generated method stub
+                if (updateStatus == UpdateStatus.Yes) {//版本有更新
+
+                } else if (updateStatus == UpdateStatus.No) {
+                    Toast.makeText(MainActivity.this, "版本无更新", Toast.LENGTH_SHORT).show();
+                } else if (updateStatus == UpdateStatus.EmptyField) {//此提示只是提醒开发者关注那些必填项，测试成功后，无需对用户提示
+                    Toast.makeText(MainActivity.this, "请检查你AppVersion表的必填项，1、target_size（文件大小）是否填写；2、path或者android_url两者必填其中一项。", Toast.LENGTH_SHORT).show();
+                } else if (updateStatus == UpdateStatus.IGNORED) {
+                    Toast.makeText(MainActivity.this, "该版本已被忽略更新", Toast.LENGTH_SHORT).show();
+                } else if (updateStatus == UpdateStatus.ErrorSizeFormat) {
+                    Toast.makeText(MainActivity.this, "请检查target_size填写的格式，请使用file.length()方法获取apk大小。", Toast.LENGTH_SHORT).show();
+                } else if (updateStatus == UpdateStatus.TimeOut) {
+                    Toast.makeText(MainActivity.this, "查询出错或查询超时", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+        BmobUpdateAgent.update(this);
     }
 
     @Override

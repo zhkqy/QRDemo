@@ -41,9 +41,9 @@ public class NewTitleView extends LinearLayout {
         String text = ta.getString(R.styleable.title_view_title);
         int arrowID = ta.getResourceId(R.styleable.title_view_arrow, 0);
 
-        title = findViewById(R.id.title_name);
-        arrow = findViewById(R.id.arrow);
-        discrption = findViewById(R.id.discrption);
+        title = (TextView) findViewById(R.id.title_name);
+        arrow = (ImageView) findViewById(R.id.arrow);
+        discrption = (TextView) findViewById(R.id.discrption);
         if (arrowID != 0) {
             arrow.setVisibility(View.VISIBLE);
             arrow.setImageResource(arrowID);
