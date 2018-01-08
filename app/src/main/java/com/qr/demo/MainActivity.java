@@ -12,6 +12,7 @@ import com.qr.demo.activity.BaseActivity;
 import com.qr.demo.activity.DeviceListActivity;
 import com.qr.demo.activity.LabelListActivity;
 import com.qr.demo.activity.SaveListActivity;
+import com.qr.demo.helper.BmobHelper;
 import com.qr.demo.utils.SharedPreferencesUtil;
 import com.qr.print.PrintPP_CPCL;
 
@@ -97,6 +98,7 @@ public class MainActivity extends BaseActivity {
 
     @Override
     protected void initData() {
+
     }
 
     @OnClick(R.id.connentprint)
@@ -128,9 +130,7 @@ public class MainActivity extends BaseActivity {
 
     @OnClick(R.id.upload)
     public void uploadOnClicked(View v) {
-
-
-
+        BmobHelper.add(this);
     }
 
     @Override

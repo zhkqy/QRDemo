@@ -12,7 +12,6 @@ import com.qr.demo.db.DbHelper;
 import com.qr.demo.dialog.CarriageAndSeatDialog;
 import com.qr.demo.dialog.DateTimePickerDialog;
 import com.qr.demo.dialog.ListViewDialog;
-import com.qr.demo.model.PrintModel;
 import com.qr.demo.previewactivity.YjlcwdzzPreviewActivity;
 import com.qr.demo.utils.TimeUtils;
 
@@ -107,12 +106,12 @@ public class YjlcwdzzActivity extends NewBaseCommonActivity implements ContractN
                 .setDescription(printModel.carriageNum + "车" + printModel.seatNum + "号"));
 
         models.add(new CommonModel("中转数据", CommonModel.TYPE_LINE));
-        models.add(new CommonModel(new CommonTextEditTextModel("中转车次", printModel.zhongzhuanTrainNum, "请输入中转车次")));
-        models.add(new CommonModel(new CommonTextEditTextModel("中转发站", printModel.zhongzhuanBeginStation, "请输入中转发站")));
-        models.add(new CommonModel(new CommonTextEditTextModel("中转到站", printModel.zhongzhuanStopStation, "请输入中转到站")));
-        models.add(new CommonModel(new CommonTextEditTextModel("中转票号", printModel.zhongzhuanTicketNum, "请输入中转票号")));
-        models.add(new CommonModel(new CommonTextEditTextModel("中转车厢号", printModel.zhongzhuanCarriageNum, "请输入中转车厢号")));
-        models.add(new CommonModel(new CommonTextEditTextModel("中转座位号", printModel.zhongzhuanSeatNum, "中转座位号")));
+        models.add(new CommonModel(new CommonTextEditTextModel("中转车次", printModel.zhongzTrainNum, "请输入中转车次")));
+        models.add(new CommonModel(new CommonTextEditTextModel("中转发站", printModel.zhongzBeginStation, "请输入中转发站")));
+        models.add(new CommonModel(new CommonTextEditTextModel("中转到站", printModel.zhongzStopStation, "请输入中转到站")));
+        models.add(new CommonModel(new CommonTextEditTextModel("中转票号", printModel.zhongzTicketNum, "请输入中转票号")));
+        models.add(new CommonModel(new CommonTextEditTextModel("中转车厢号", printModel.zhongzCarriageNum, "请输入中转车厢号")));
+        models.add(new CommonModel(new CommonTextEditTextModel("中转座位号", printModel.zhongzSeatNum, "中转座位号")));
 
         models.add(new CommonModel("预览", CommonModel.TYPE_BUTTON).setRequestCode(1105));
     }
@@ -194,12 +193,12 @@ public class YjlcwdzzActivity extends NewBaseCommonActivity implements ContractN
             printModel.seatNum = seatNum;
 
             printModel.lateMinute = adapter.getItem(5).getEditTextModel().getEditTextStr();  //晚点分钟
-            printModel.zhongzhuanTrainNum = adapter.getItem(12).getEditTextModel().getEditTextStr();  //中转车次
-            printModel.zhongzhuanBeginStation = adapter.getItem(13).getEditTextModel().getEditTextStr();  //中转发站
-            printModel.zhongzhuanStopStation = adapter.getItem(14).getEditTextModel().getEditTextStr();  //中转到站
-            printModel.zhongzhuanTicketNum = adapter.getItem(15).getEditTextModel().getEditTextStr();  //中转票号
-            printModel.zhongzhuanCarriageNum = adapter.getItem(16).getEditTextModel().getEditTextStr();  //中转车厢号
-            printModel.zhongzhuanSeatNum = adapter.getItem(17).getEditTextModel().getEditTextStr();  //中转座位号
+            printModel.zhongzTrainNum = adapter.getItem(12).getEditTextModel().getEditTextStr();  //中转车次
+            printModel.zhongzBeginStation = adapter.getItem(13).getEditTextModel().getEditTextStr();  //中转发站
+            printModel.zhongzStopStation = adapter.getItem(14).getEditTextModel().getEditTextStr();  //中转到站
+            printModel.zhongzTicketNum = adapter.getItem(15).getEditTextModel().getEditTextStr();  //中转票号
+            printModel.zhongzCarriageNum = adapter.getItem(16).getEditTextModel().getEditTextStr();  //中转车厢号
+            printModel.zhongzSeatNum = adapter.getItem(17).getEditTextModel().getEditTextStr();  //中转座位号
 
 
             Intent mIntent = new Intent(this, YjlcwdzzPreviewActivity.class);

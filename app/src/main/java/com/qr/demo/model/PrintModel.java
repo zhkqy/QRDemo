@@ -2,12 +2,13 @@ package com.qr.demo.model;
 
 import java.io.Serializable;
 
+import cn.bmob.v3.BmobObject;
+
 /**
  * Created by sun on 2017/12/29.
  */
 
-public class PrintModel implements Serializable {
-
+public class PrintModel extends BmobObject implements Serializable {
 
     public String uuid = "";//  uuid
 
@@ -36,12 +37,12 @@ public class PrintModel implements Serializable {
     public String zishuStartStation = "";  //自述上站
 
     public String lateMinute = "";  //晚点分钟
-    public String zhongzhuanTrainNum = "";  //中转车次
-    public String zhongzhuanBeginStation = "";  //中转发站
-    public String zhongzhuanStopStation = "";  //中转到站
-    public String zhongzhuanTicketNum = "";  //中转票号
-    public String zhongzhuanCarriageNum = "";  //中转车厢号
-    public String zhongzhuanSeatNum = "";  //中转座位号
+    public String zhongzTrainNum = "";  //中转车次
+    public String zhongzBeginStation = "";  //中转发站
+    public String zhongzStopStation = "";  //中转到站
+    public String zhongzTicketNum = "";  //中转票号
+    public String zhongzCarriageNum = "";  //中转车厢号
+    public String zhongzSeatNum = "";  //中转座位号
 
     public String wuchengTrainNum = "";  //误乘车次
     public String wuchengBeginStation = "";  //误乘发站
