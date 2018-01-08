@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 
 import com.google.gson.Gson;
+import com.qr.demo.bmob.SaveModel;
 import com.qr.demo.model.PrintModel;
 
 import java.util.ArrayList;
@@ -26,6 +27,7 @@ public class SaveHelper {
         ContentValues values = new ContentValues();
         values.put(SqlLiteHelper.CONTENT, content);
         values.put(SqlLiteHelper.UUID, uuid);
+        values.put(SqlLiteHelper.STATUS, SqlLiteHelper.STATUS_ADD);
 
         long rowid = SqlLiteHelper.getInstance(mContext).insert(SqlLiteHelper.DATABASE_NAME, SqlLiteHelper.ID, values);
         return rowid;
@@ -37,12 +39,12 @@ public class SaveHelper {
      * @param context 获取列表
      * @return
      */
-    public synchronized static List<PrintModel> getPrintModelData(Context context) throws Exception {
+    public static List<PrintModel> getPrintModelData(Context context) throws Exception {
         SqlLiteHelper dbHelper = SqlLiteHelper.getInstance(context);
         List<PrintModel> list = new ArrayList<PrintModel>();
-
+        String selection = SqlLiteHelper.STATUS + "!=-1";
         Cursor cursor = dbHelper.select(SqlLiteHelper.DATABASE_NAME, null,
-                null, null, null, null);
+                selection, null, null, null);
 
         if (cursor != null && cursor.getCount() > 0) {
             cursor.moveToFirst();
@@ -67,38 +69,91 @@ public class SaveHelper {
 
     public static void update(Context mContext, String content, String uuid) {
         ContentValues values = new ContentValues();
-
         values.put(SqlLiteHelper.CONTENT, content);
         String where = SqlLiteHelper.UUID + "=?";
         String wherearg[] = new String[]{uuid};
-
+        values.put(SqlLiteHelper.STATUS, SqlLiteHelper.STATUS_UPDATE);
         SqlLiteHelper.getInstance(mContext).update(SqlLiteHelper.DATABASE_NAME, values, where, wherearg);
     }
 
 
-    public synchronized static void delete(Context context, String uuid) {
-        SqlLiteHelper dbHelper = SqlLiteHelper.getInstance(context);
-        String delete = SqlLiteHelper.UUID + "=?";
+    public static void updateStatus(Context mContext, int status, String uuid) {
+        ContentValues values = new ContentValues();
+        values.put(SqlLiteHelper.STATUS, status);
+        String where = SqlLiteHelper.UUID + "=?";
         String wherearg[] = new String[]{uuid};
-        dbHelper.delete(SqlLiteHelper.DATABASE_NAME, delete, wherearg);
+        values.put(SqlLiteHelper.STATUS, SqlLiteHelper.STATUS_UPDATE);
+        SqlLiteHelper.getInstance(mContext).update(SqlLiteHelper.DATABASE_NAME, values, where, wherearg);
     }
 
+
+    //    假删除
+    public static void delete(Context context, String uuid) {
+//        SqlLiteHelper dbHelper = SqlLiteHelper.getInstance(context);
+//        String delete = SqlLiteHelper.UUID + "=?";
+//        String wherearg[] = new String[]{uuid};
+//        dbHelper.delete(SqlLiteHelper.DATABASE_NAME, delete, wherearg);
+
+        ContentValues values = new ContentValues();
+        values.put(SqlLiteHelper.STATUS, SqlLiteHelper.STATUS_DELETE);
+        String where = SqlLiteHelper.UUID + "=?";
+        String wherearg[] = new String[]{uuid};
+        SqlLiteHelper.getInstance(context).update(SqlLiteHelper.DATABASE_NAME, values, where, wherearg);
+    }
 
 
 //    bmob
 
-
-
-    /**
-     * @param context 获取列表
-     * @return
-     */
-    public synchronized static List<BmobObject> getBmobPrintModelData(Context context) throws Exception {
+    public static List<BmobObject> getBmobAddData(Context context) throws Exception {
         SqlLiteHelper dbHelper = SqlLiteHelper.getInstance(context);
         List<BmobObject> list = new ArrayList<BmobObject>();
-
+        String selection = SqlLiteHelper.STATUS + "==0";
         Cursor cursor = dbHelper.select(SqlLiteHelper.DATABASE_NAME, null,
-                null, null, null, null);
+                selection, null, null, null);
+
+        if (cursor != null && cursor.getCount() > 0) {
+            cursor.moveToFirst();
+            while (!cursor.isAfterLast()) {
+
+                String content = cursor.getString(cursor.getColumnIndex(SqlLiteHelper.CONTENT));
+                try {
+                    PrintModel printModel = new Gson().fromJson(content, PrintModel.class);
+
+                    SaveModel saveModel = new SaveModel();
+                    saveModel.recordThing = printModel.recordThing;//  记录事由
+                    saveModel.connectStation = printModel.connectStation;//交接站
+                    saveModel.year = printModel.year;
+                    saveModel.month = printModel.month;
+                    saveModel.day = printModel.day;
+                    saveModel.trainNum = printModel.trainNum;//车次
+                    saveModel.name = printModel.name;// 旅客名称
+                    saveModel.cardNum = printModel.cardNum;//  身份证号码
+                    saveModel.beginStation = printModel.beginStation;// 旅客买的票 的开始位置
+                    saveModel.stopStation = printModel.stopStation;// 旅客买的票 的结束位置
+                    saveModel.ticketNum = printModel.ticketNum;// 票号
+                    saveModel.uuid = printModel.uuid;
+
+                    list.add(saveModel);
+                } catch (Exception e) {
+
+                }
+                cursor.moveToNext();
+            }
+        }
+        if (cursor != null) {
+            cursor.close();
+        }
+        dbHelper.close();
+        return list;
+    }
+
+
+    public static List<BmobObject> getBmobUpdateData(Context context) throws Exception {
+        SqlLiteHelper dbHelper = SqlLiteHelper.getInstance(context);
+        List<BmobObject> list = new ArrayList<BmobObject>();
+        String selection = SqlLiteHelper.STATUS + "==1";
+        Cursor cursor = dbHelper.select(SqlLiteHelper.DATABASE_NAME, null,
+                selection, null, null, null);
 
         if (cursor != null && cursor.getCount() > 0) {
             cursor.moveToFirst();
@@ -122,4 +177,31 @@ public class SaveHelper {
     }
 
 
+    public static List<BmobObject> getBmobUpDeleteData(Context context) throws Exception {
+        SqlLiteHelper dbHelper = SqlLiteHelper.getInstance(context);
+        List<BmobObject> list = new ArrayList<BmobObject>();
+        String selection = SqlLiteHelper.STATUS + "==-1";
+        Cursor cursor = dbHelper.select(SqlLiteHelper.DATABASE_NAME, null,
+                selection, null, null, null);
+
+        if (cursor != null && cursor.getCount() > 0) {
+            cursor.moveToFirst();
+            while (!cursor.isAfterLast()) {
+
+                String content = cursor.getString(cursor.getColumnIndex(SqlLiteHelper.CONTENT));
+                try {
+                    PrintModel printModel = new Gson().fromJson(content, PrintModel.class);
+                    list.add(printModel);
+                } catch (Exception e) {
+
+                }
+                cursor.moveToNext();
+            }
+        }
+        if (cursor != null) {
+            cursor.close();
+        }
+        dbHelper.close();
+        return list;
+    }
 }

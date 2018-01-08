@@ -3,8 +3,11 @@ package com.qr.demo.helper;
 import android.content.Context;
 import android.util.Log;
 
+import com.qr.demo.bmob.SaveModel;
 import com.qr.demo.db.SaveHelper;
+import com.qr.demo.db.SqlLiteHelper;
 import com.qr.demo.model.PrintModel;
+import com.qr.demo.utils.ToastUtils;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -22,47 +25,55 @@ import cn.bmob.v3.listener.QueryListListener;
 
 public class BmobHelper {
 
-    public static void add(Context mContext) {
-
+    public static void synchAdd(final Context mContext) {
 
         List<BmobObject> printModels = null;
         try {
-            printModels = SaveHelper.getBmobPrintModelData(mContext);
-
+            printModels = SaveHelper.getBmobAddData(mContext);
             if (printModels == null) {
                 return;
             }
             Collections.reverse(printModels);
 
-            new BmobBatch().insertBatch(printModels).doBatch(new QueryListListener<BatchResult>() {
-
-                @Override
-                public void done(List<BatchResult> o, BmobException e) {
-                    if (e == null) {
-                        for (int i = 0; i < o.size(); i++) {
-                            BatchResult result = o.get(i);
-                            BmobException ex = result.getError();
-                            if (ex == null) {
-                                log("第" + i + "个数据批量添加成功：" + result.getCreatedAt() + "," + result.getObjectId() + "," + result.getUpdatedAt());
-                            } else {
-                                log("第" + i + "个数据批量添加失败：" + ex.getMessage() + "," + ex.getErrorCode());
-                            }
-                        }
-                    } else {
-                        Log.i("bmob", "失败：" + e.getMessage() + "," + e.getErrorCode());
+            boolean flag = true;
+            while (flag) {
+                List<BmobObject> tempList = new ArrayList<>();
+                if (printModels.size() > 50) {
+                    for (int x = 0; x < 50; x++) {
+                        tempList.add(printModels.remove(0));
                     }
+                } else {
+                    tempList = printModels;
+                    flag = false;
                 }
-            });
 
+                final List<BmobObject> finalPrintModels = tempList;
+                new BmobBatch().insertBatch(printModels).doBatch(new QueryListListener<BatchResult>() {
 
+                    @Override
+                    public void done(List<BatchResult> o, BmobException e) {
+                        if (e == null) {
+                            for (int i = 0; i < o.size(); i++) {
+                                BatchResult result = o.get(i);
+                                BmobException ex = result.getError();
+                                if (ex == null) {
+                                    SaveModel p = ((SaveModel) finalPrintModels.get(i));
+                                    SaveHelper.updateStatus(mContext, SqlLiteHelper.STATUS_SYNCH, p.uuid);
+                                    ToastUtils.show(mContext, "数据同步成功" + i);
+                                } else {
+                                    ToastUtils.show(mContext, "数据同步失败" + i);
+                                }
+                            }
+                        } else {
+                            Log.i("bmob", "失败：" + e.getMessage() + "," + e.getErrorCode());
+                        }
+                    }
+                });
+
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
-
-
     }
 
-    private static void log(String s) {
-        Log.i("bmob", s);
-    }
 }

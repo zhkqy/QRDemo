@@ -78,7 +78,7 @@ public class SaveListActivity extends BaseActivity implements EditDialog.Listene
             Collections.reverse(printModels);
             adapter.notifyDataSetChanged();
         } catch (Exception e) {
-
+            e.printStackTrace();
         }
     }
 

@@ -18,6 +18,21 @@ public class SqlLiteHelper extends SQLiteOpenHelper {
     public static String UUID = "uuid";
     public static String CONTENT = "content";
 
+
+    public static int STATUS_ADD = 0;
+    public static int STATUS_DELETE = -1;
+    public static int STATUS_UPDATE = 1;
+    public static int STATUS_SYNCH = 9;
+
+    /**
+     * 0	本地新增
+     * -1	标记删除
+     * 1	本地更新
+     * 9	已同步
+     */
+    public static final String STATUS = "status";   // 用来标识记录的状态
+
+
     public static synchronized SqlLiteHelper getInstance(Context context) {
         if (dbHelper == null) {
             if (context != null) {
@@ -37,7 +52,7 @@ public class SqlLiteHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("CREATE TABLE " + DATABASE_NAME + " (" + ID
-                + " INTEGER PRIMARY KEY AUTOINCREMENT" + ", " + CONTENT + " str, " + UUID + " string);");
+                + " INTEGER PRIMARY KEY AUTOINCREMENT" + ", " + CONTENT + " str, " + STATUS + " int, " + UUID + " str);");
     }
 
     @Override
