@@ -31,7 +31,7 @@ public class BmobHelper {
             printModels = SaveHelper.getBmobAddData(mContext);
             if (printModels == null || printModels.size() == 0) {
 
-                ToastUtils.show(mContext, "没有需要同步的数据");
+                ToastUtils.show(mContext, "没有需要同步的数据 ");
 
                 return;
             }
@@ -84,7 +84,7 @@ public class BmobHelper {
         try {
             printModels = SaveHelper.getBmobUpdateData(mContext);
             if (printModels == null || printModels.size() == 0) {
-                ToastUtils.show(mContext, "没有需要同步的数据");
+                ToastUtils.show(mContext, "没有需要同步的数据  ");
                 return;
             }
             Collections.reverse(printModels);
@@ -136,7 +136,7 @@ public class BmobHelper {
         try {
             printModels = SaveHelper.getBmobDeleteData(mContext);
             if (printModels == null || printModels.size() == 0) {
-                ToastUtils.show(mContext, "没有需要同步的数据");
+                ToastUtils.show(mContext, "没有需要同步的数据   ");
                 return;
             }
             Collections.reverse(printModels);
