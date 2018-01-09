@@ -30,6 +30,9 @@ public class BmobHelper {
         try {
             printModels = SaveHelper.getBmobAddData(mContext);
             if (printModels == null || printModels.size() == 0) {
+
+                ToastUtils.show(mContext, "没有需要同步的数据");
+
                 return;
             }
             Collections.reverse(printModels);
@@ -58,7 +61,7 @@ public class BmobHelper {
                                 if (ex == null) {
                                     SaveModel p = ((SaveModel) finalPrintModels.get(i));
                                     SaveHelper.updateStatusAndObj(mContext, SqlLiteHelper.STATUS_SYNCH, result.getObjectId(), p.uuid);
-                                    ToastUtils.show(mContext, "数据同步成功" + (i + 1));
+                                    ToastUtils.show(mContext, "数据同步成功" + (i + 1) + "条");
                                 } else {
                                     ToastUtils.show(mContext, "数据同步失败");
                                 }
@@ -81,6 +84,7 @@ public class BmobHelper {
         try {
             printModels = SaveHelper.getBmobUpdateData(mContext);
             if (printModels == null || printModels.size() == 0) {
+                ToastUtils.show(mContext, "没有需要同步的数据");
                 return;
             }
             Collections.reverse(printModels);
@@ -109,7 +113,7 @@ public class BmobHelper {
                                 if (ex == null) {
                                     SaveModel p = ((SaveModel) finalPrintModels.get(i));
                                     SaveHelper.updateStatus(mContext, SqlLiteHelper.STATUS_SYNCH, p.uuid);
-                                    ToastUtils.show(mContext, "数据更新成功" + (i + 1));
+                                    ToastUtils.show(mContext, "数据更新成功" + (i + 1) + "条");
                                 } else {
                                     ToastUtils.show(mContext, "数据更新失败");
                                 }
@@ -132,6 +136,7 @@ public class BmobHelper {
         try {
             printModels = SaveHelper.getBmobDeleteData(mContext);
             if (printModels == null || printModels.size() == 0) {
+                ToastUtils.show(mContext, "没有需要同步的数据");
                 return;
             }
             Collections.reverse(printModels);
@@ -160,7 +165,7 @@ public class BmobHelper {
                                 if (ex == null) {
                                     SaveModel p = ((SaveModel) finalPrintModels.get(i));
                                     SaveHelper.trueDelete(mContext, p.uuid);
-                                    ToastUtils.show(mContext, "数据删除成功" + (i + 1));
+                                    ToastUtils.show(mContext, "数据删除成功" + (i + 1) + "条");
                                 } else {
                                     ToastUtils.show(mContext, "数据删除失败");
                                 }

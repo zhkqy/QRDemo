@@ -35,6 +35,6 @@
 
     <color name="colorTextGray">#939393</color>
     <color name="colorText">#353535</color>
-
-
+    <color name="blackOpaque70">#B2000000</color>
+    <color name="colorBlackOpaque70">#B2000000</color>
 </resources>

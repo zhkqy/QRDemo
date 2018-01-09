@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animation-list xmlns:android="http://schemas.android.com/apk/res/android"
+    android:oneshot="false" >
+
+    <item
+        android:drawable="@drawable/gif_study_01"
+        android:duration="166"/>
+    <item
+        android:drawable="@drawable/gif_study_02"
+        android:duration="166"/>
+    <item
+        android:drawable="@drawable/gif_study_03"
+        android:duration="166"/>
+    <item
+        android:drawable="@drawable/gif_study_04"
+        android:duration="166"/>
+    <item
+        android:drawable="@drawable/gif_study_05"
+        android:duration="166"/>
+    <item
+        android:drawable="@drawable/gif_study_06"
+        android:duration="166"/>
+    <item
+        android:drawable="@drawable/gif_study_07"
+        android:duration="166"/>
+    <item
+        android:drawable="@drawable/gif_study_08"
+        android:duration="166"/>
+    <item
+        android:drawable="@drawable/gif_study_09"
+        android:duration="166"/>
+
+</animation-list>

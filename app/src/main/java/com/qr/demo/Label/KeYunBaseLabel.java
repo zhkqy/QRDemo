@@ -38,7 +38,7 @@ public class KeYunBaseLabel extends BaseLabel {
         iPrinter.drawLine(2, keyunLeft, topPadding + fontPoint3 + fontPoint2 + 8 * 2, keyunLeft + 7 * fontPoint3, topPadding + fontPoint3 + fontPoint2 + 8 * 2, true);//第一联横线1
         iPrinter.drawLine(2, keyunLeft, topPadding + fontPoint3 + fontPoint2 + 8 * 3, keyunLeft + 7 * fontPoint3, topPadding + fontPoint3 + fontPoint2 + 8 * 3, true);//第一联横线1
 
-        Bitmap bitmap = BitmapFactory.decodeResource(mContext.getResources(), R.drawable.tielu);
+        Bitmap bitmap = BitmapFactory.decodeResource(mContext.getResources(), R.drawable.teilu);
 
         iPrinter.drawGraphic2(0, topPadding, 80, 80, bitmap);
 
