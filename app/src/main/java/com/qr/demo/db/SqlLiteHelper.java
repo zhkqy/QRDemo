@@ -24,6 +24,10 @@ public class SqlLiteHelper extends SQLiteOpenHelper {
     public static int STATUS_UPDATE = 1;
     public static int STATUS_SYNCH = 9;
 
+    public static final String SYNCH_STATUS = "synch_status";
+
+    public static final String OBJECTID = "objectId";
+
     /**
      * 0	本地新增
      * -1	标记删除
@@ -52,7 +56,7 @@ public class SqlLiteHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("CREATE TABLE " + DATABASE_NAME + " (" + ID
-                + " INTEGER PRIMARY KEY AUTOINCREMENT" + ", " + CONTENT + " str, " + STATUS + " int, " + UUID + " str);");
+                + " INTEGER PRIMARY KEY AUTOINCREMENT" + ", " + CONTENT + " str, " + STATUS + " int, " + UUID + " str, " + SYNCH_STATUS + " int, " + OBJECTID + " str );");
     }
 
     @Override

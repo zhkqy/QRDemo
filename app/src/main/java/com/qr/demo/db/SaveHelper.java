@@ -28,6 +28,8 @@ public class SaveHelper {
         values.put(SqlLiteHelper.CONTENT, content);
         values.put(SqlLiteHelper.UUID, uuid);
         values.put(SqlLiteHelper.STATUS, SqlLiteHelper.STATUS_ADD);
+        values.put(SqlLiteHelper.SYNCH_STATUS, 0);
+        values.put(SqlLiteHelper.OBJECTID, 0);
 
         long rowid = SqlLiteHelper.getInstance(mContext).insert(SqlLiteHelper.DATABASE_NAME, SqlLiteHelper.ID, values);
         return rowid;
@@ -80,9 +82,20 @@ public class SaveHelper {
     public static void updateStatus(Context mContext, int status, String uuid) {
         ContentValues values = new ContentValues();
         values.put(SqlLiteHelper.STATUS, status);
+        values.put(SqlLiteHelper.SYNCH_STATUS, 1);
         String where = SqlLiteHelper.UUID + "=?";
         String wherearg[] = new String[]{uuid};
-        values.put(SqlLiteHelper.STATUS, SqlLiteHelper.STATUS_UPDATE);
+        SqlLiteHelper.getInstance(mContext).update(SqlLiteHelper.DATABASE_NAME, values, where, wherearg);
+    }
+
+
+    public static void updateStatusAndObj(Context mContext, int status, String objectId, String uuid) {
+        ContentValues values = new ContentValues();
+        values.put(SqlLiteHelper.STATUS, status);
+        values.put(SqlLiteHelper.SYNCH_STATUS, 1);
+        values.put(SqlLiteHelper.OBJECTID, objectId);
+        String where = SqlLiteHelper.UUID + "=?";
+        String wherearg[] = new String[]{uuid};
         SqlLiteHelper.getInstance(mContext).update(SqlLiteHelper.DATABASE_NAME, values, where, wherearg);
     }
 
@@ -101,13 +114,12 @@ public class SaveHelper {
         SqlLiteHelper.getInstance(context).update(SqlLiteHelper.DATABASE_NAME, values, where, wherearg);
     }
 
-
 //    bmob
 
     public static List<BmobObject> getBmobAddData(Context context) throws Exception {
         SqlLiteHelper dbHelper = SqlLiteHelper.getInstance(context);
         List<BmobObject> list = new ArrayList<BmobObject>();
-        String selection = SqlLiteHelper.STATUS + "==0";
+        String selection = "(" + SqlLiteHelper.STATUS + "==0 or " + SqlLiteHelper.STATUS + "==1) and " + SqlLiteHelper.SYNCH_STATUS + "==0";
         Cursor cursor = dbHelper.select(SqlLiteHelper.DATABASE_NAME, null,
                 selection, null, null, null);
 
@@ -121,17 +133,10 @@ public class SaveHelper {
 
                     SaveModel saveModel = new SaveModel();
                     saveModel.recordThing = printModel.recordThing;//  记录事由
-                    saveModel.connectStation = printModel.connectStation;//交接站
-                    saveModel.year = printModel.year;
-                    saveModel.month = printModel.month;
-                    saveModel.day = printModel.day;
+                    saveModel.recordtime = printModel.year + "-" + printModel.month + "-" + printModel.day;//记录时间
                     saveModel.trainNum = printModel.trainNum;//车次
-                    saveModel.name = printModel.name;// 旅客名称
-                    saveModel.cardNum = printModel.cardNum;//  身份证号码
-                    saveModel.beginStation = printModel.beginStation;// 旅客买的票 的开始位置
-                    saveModel.stopStation = printModel.stopStation;// 旅客买的票 的结束位置
-                    saveModel.ticketNum = printModel.ticketNum;// 票号
                     saveModel.uuid = printModel.uuid;
+                    saveModel.content = content;
 
                     list.add(saveModel);
                 } catch (Exception e) {
@@ -151,7 +156,8 @@ public class SaveHelper {
     public static List<BmobObject> getBmobUpdateData(Context context) throws Exception {
         SqlLiteHelper dbHelper = SqlLiteHelper.getInstance(context);
         List<BmobObject> list = new ArrayList<BmobObject>();
-        String selection = SqlLiteHelper.STATUS + "==1";
+        String selection = SqlLiteHelper.STATUS + "==1 and " + SqlLiteHelper.SYNCH_STATUS + "==1";
+
         Cursor cursor = dbHelper.select(SqlLiteHelper.DATABASE_NAME, null,
                 selection, null, null, null);
 
@@ -159,10 +165,20 @@ public class SaveHelper {
             cursor.moveToFirst();
             while (!cursor.isAfterLast()) {
 
+                String objectId = cursor.getString(cursor.getColumnIndex(SqlLiteHelper.OBJECTID));
                 String content = cursor.getString(cursor.getColumnIndex(SqlLiteHelper.CONTENT));
                 try {
                     PrintModel printModel = new Gson().fromJson(content, PrintModel.class);
-                    list.add(printModel);
+
+                    SaveModel saveModel = new SaveModel();
+                    saveModel.recordThing = printModel.recordThing;//  记录事由
+                    saveModel.recordtime = printModel.year + "-" + printModel.month + "-" + printModel.day;//记录时间
+                    saveModel.trainNum = printModel.trainNum;//车次
+                    saveModel.uuid = printModel.uuid;
+                    saveModel.content = content;
+                    saveModel.setObjectId(objectId);
+
+                    list.add(saveModel);
                 } catch (Exception e) {
 
                 }
@@ -177,7 +193,7 @@ public class SaveHelper {
     }
 
 
-    public static List<BmobObject> getBmobUpDeleteData(Context context) throws Exception {
+    public static List<BmobObject> getBmobDeleteData(Context context) throws Exception {
         SqlLiteHelper dbHelper = SqlLiteHelper.getInstance(context);
         List<BmobObject> list = new ArrayList<BmobObject>();
         String selection = SqlLiteHelper.STATUS + "==-1";

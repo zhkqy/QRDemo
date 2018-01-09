@@ -131,6 +131,7 @@ public class MainActivity extends BaseActivity {
     @OnClick(R.id.upload)
     public void uploadOnClicked(View v) {
         BmobHelper.synchAdd(this);
+        BmobHelper.synchUpdate(this);
     }
 
     @Override
