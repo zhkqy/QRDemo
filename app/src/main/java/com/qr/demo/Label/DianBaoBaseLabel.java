@@ -38,7 +38,7 @@ public class DianBaoBaseLabel extends BaseLabel {
                 "中国铁路沈阳局集团公司", 2, 0, 0, false, false);
 
         iPrinter.drawText(topPadding + pageWidth - 4 * fontPoint2 - 8, 0, pageWidth, fontPoint2,
-                "客统一1", 2, 0, 0, false, false);
+                "客统—1", 2, 0, 0, false, false);
 
         int keyunLeft = pageWidth / 2 - 7 * fontPoint3 / 2;
 
