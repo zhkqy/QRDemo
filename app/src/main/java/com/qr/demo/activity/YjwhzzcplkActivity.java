@@ -57,7 +57,7 @@ public class YjwhzzcplkActivity extends NewBaseCommonActivity implements Contrac
         models.add(new CommonModel(
                 new CommonTextEditTextModel("订单号码", "", "请输入订单号码")));
         models.add(new CommonModel(
-                new CommonTextEditTextModel("自述因　", "", "请输入自述因")));
+                new CommonTextEditTextModel("自述原因", "", "请输入自述原因")));
 
         models.add(new CommonModel("网购发站", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1103));
 
@@ -90,7 +90,7 @@ public class YjwhzzcplkActivity extends NewBaseCommonActivity implements Contrac
         models.add(new CommonModel(
                 new CommonTextEditTextModel("订单号码", printModel.netOrderNum, "请输入订单号码")));
         models.add(new CommonModel(
-                new CommonTextEditTextModel("自述因　", printModel.netErrorReason, "请输入自述因")));
+                new CommonTextEditTextModel("自述原因", printModel.netErrorReason, "请输入自述原因")));
 
         models.add(new CommonModel("网购发站", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1103)
                 .setDescription(printModel.netBeginStation));
@@ -171,7 +171,7 @@ public class YjwhzzcplkActivity extends NewBaseCommonActivity implements Contrac
             printModel.name = adapter.getItem(3).getEditTextModel().getEditTextStr();// 旅客名称
             printModel.cardNum = adapter.getItem(4).getEditTextModel().getEditTextStr();//  身份证号码
             printModel.netOrderNum = adapter.getItem(5).getEditTextModel().getEditTextStr();//网购订单号
-            printModel.netErrorReason = adapter.getItem(6).getEditTextModel().getEditTextStr();//自述因
+            printModel.netErrorReason = adapter.getItem(6).getEditTextModel().getEditTextStr();//自述原因
             printModel.netBeginStation = adapter.getItem(7).getDescription();// 旅客买的票 的开始位置
             printModel.netStopStation = adapter.getItem(8).getDescription();// 旅客买的票 的结束位置
             printModel.carriageNum = carriageNum;// 旅客买的票 的结束位置
