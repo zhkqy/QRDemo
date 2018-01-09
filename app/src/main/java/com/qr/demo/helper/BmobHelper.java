@@ -58,9 +58,9 @@ public class BmobHelper {
                                 if (ex == null) {
                                     SaveModel p = ((SaveModel) finalPrintModels.get(i));
                                     SaveHelper.updateStatusAndObj(mContext, SqlLiteHelper.STATUS_SYNCH, result.getObjectId(), p.uuid);
-                                    ToastUtils.show(mContext, "数据同步成功" + i);
+                                    ToastUtils.show(mContext, "数据同步成功" + (i + 1));
                                 } else {
-                                    ToastUtils.show(mContext, "数据同步失败" + i);
+                                    ToastUtils.show(mContext, "数据同步失败");
                                 }
                             }
                         } else {
@@ -109,9 +109,9 @@ public class BmobHelper {
                                 if (ex == null) {
                                     SaveModel p = ((SaveModel) finalPrintModels.get(i));
                                     SaveHelper.updateStatus(mContext, SqlLiteHelper.STATUS_SYNCH, p.uuid);
-                                    ToastUtils.show(mContext, "数据更新成功" + i);
+                                    ToastUtils.show(mContext, "数据更新成功" + (i + 1));
                                 } else {
-                                    ToastUtils.show(mContext, "数据更新失败" + i);
+                                    ToastUtils.show(mContext, "数据更新失败");
                                 }
                             }
                         } else {
@@ -160,9 +160,9 @@ public class BmobHelper {
                                 if (ex == null) {
                                     SaveModel p = ((SaveModel) finalPrintModels.get(i));
                                     SaveHelper.trueDelete(mContext, p.uuid);
-                                    ToastUtils.show(mContext, "数据更新成功" + i);
+                                    ToastUtils.show(mContext, "数据删除成功" + (i + 1));
                                 } else {
-                                    ToastUtils.show(mContext, "数据更新失败" + i);
+                                    ToastUtils.show(mContext, "数据删除失败");
                                 }
                             }
                         } else {
