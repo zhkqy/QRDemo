@@ -174,7 +174,7 @@ public class EditDialog extends Dialog implements View.OnClickListener {
                 dismiss();
                 break;
             case R.id.delete:
-                SaveHelper.delete(mContext, datas.uuid);
+                SaveHelper.falseDelete(mContext, datas.uuid);
                 if (listener != null) {
                     listener.onRefreshList();
                 }

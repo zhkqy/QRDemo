@@ -101,17 +101,27 @@ public class SaveHelper {
 
 
     //    假删除
-    public static void delete(Context context, String uuid) {
-//        SqlLiteHelper dbHelper = SqlLiteHelper.getInstance(context);
-//        String delete = SqlLiteHelper.UUID + "=?";
-//        String wherearg[] = new String[]{uuid};
-//        dbHelper.delete(SqlLiteHelper.DATABASE_NAME, delete, wherearg);
-
+    public static void falseDelete(Context context, String uuid) {
         ContentValues values = new ContentValues();
         values.put(SqlLiteHelper.STATUS, SqlLiteHelper.STATUS_DELETE);
         String where = SqlLiteHelper.UUID + "=?";
         String wherearg[] = new String[]{uuid};
         SqlLiteHelper.getInstance(context).update(SqlLiteHelper.DATABASE_NAME, values, where, wherearg);
+
+        boolean flag = getLocalDelteIsNotSynch(context, uuid);
+        if (flag) {
+            trueDelete(context, uuid);
+        }
+
+    }
+
+
+    //    真删除
+    public static void trueDelete(Context context, String uuid) {
+        SqlLiteHelper dbHelper = SqlLiteHelper.getInstance(context);
+        String delete = SqlLiteHelper.UUID + "=?";
+        String wherearg[] = new String[]{uuid};
+        dbHelper.delete(SqlLiteHelper.DATABASE_NAME, delete, wherearg);
     }
 
 //    bmob
@@ -196,18 +206,27 @@ public class SaveHelper {
     public static List<BmobObject> getBmobDeleteData(Context context) throws Exception {
         SqlLiteHelper dbHelper = SqlLiteHelper.getInstance(context);
         List<BmobObject> list = new ArrayList<BmobObject>();
-        String selection = SqlLiteHelper.STATUS + "==-1";
+        String selection = SqlLiteHelper.STATUS + "==-1 and " + SqlLiteHelper.SYNCH_STATUS + "==1";
         Cursor cursor = dbHelper.select(SqlLiteHelper.DATABASE_NAME, null,
                 selection, null, null, null);
 
         if (cursor != null && cursor.getCount() > 0) {
             cursor.moveToFirst();
             while (!cursor.isAfterLast()) {
-
+                String objectId = cursor.getString(cursor.getColumnIndex(SqlLiteHelper.OBJECTID));
                 String content = cursor.getString(cursor.getColumnIndex(SqlLiteHelper.CONTENT));
                 try {
                     PrintModel printModel = new Gson().fromJson(content, PrintModel.class);
-                    list.add(printModel);
+
+                    SaveModel saveModel = new SaveModel();
+                    saveModel.recordThing = printModel.recordThing;//  记录事由
+                    saveModel.recordtime = printModel.year + "-" + printModel.month + "-" + printModel.day;//记录时间
+                    saveModel.trainNum = printModel.trainNum;//车次
+                    saveModel.uuid = printModel.uuid;
+                    saveModel.content = content;
+                    saveModel.setObjectId(objectId);
+
+                    list.add(saveModel);
                 } catch (Exception e) {
 
                 }
@@ -219,5 +238,47 @@ public class SaveHelper {
         }
         dbHelper.close();
         return list;
+    }
+
+
+    public static boolean getLocalDelteIsNotSynch(Context context, String uuid) {
+        SqlLiteHelper dbHelper = SqlLiteHelper.getInstance(context);
+        List<BmobObject> list = new ArrayList<BmobObject>();
+        String selection = SqlLiteHelper.STATUS + "==-1 and " + SqlLiteHelper.SYNCH_STATUS + "==0 and " + SqlLiteHelper.UUID + "=?";
+        String wherearg[] = new String[]{uuid};
+        Cursor cursor = dbHelper.select(SqlLiteHelper.DATABASE_NAME, null,
+                selection, wherearg, null, null);
+
+        if (cursor != null && cursor.getCount() > 0) {
+            cursor.moveToFirst();
+            while (!cursor.isAfterLast()) {
+                String objectId = cursor.getString(cursor.getColumnIndex(SqlLiteHelper.OBJECTID));
+                String content = cursor.getString(cursor.getColumnIndex(SqlLiteHelper.CONTENT));
+                try {
+                    PrintModel printModel = new Gson().fromJson(content, PrintModel.class);
+                    SaveModel saveModel = new SaveModel();
+                    saveModel.recordThing = printModel.recordThing;//  记录事由
+                    saveModel.recordtime = printModel.year + "-" + printModel.month + "-" + printModel.day;//记录时间
+                    saveModel.trainNum = printModel.trainNum;//车次
+                    saveModel.uuid = printModel.uuid;
+                    saveModel.content = content;
+                    saveModel.setObjectId(objectId);
+
+                    list.add(saveModel);
+                } catch (Exception e) {
+
+                }
+                cursor.moveToNext();
+            }
+        }
+        if (cursor != null) {
+            cursor.close();
+        }
+        dbHelper.close();
+        if (list.size() > 0) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }

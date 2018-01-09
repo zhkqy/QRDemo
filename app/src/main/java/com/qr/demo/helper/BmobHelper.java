@@ -126,4 +126,56 @@ public class BmobHelper {
         }
     }
 
+    public static void synchDelete(final Context mContext) {
+
+        List<BmobObject> printModels = null;
+        try {
+            printModels = SaveHelper.getBmobDeleteData(mContext);
+            if (printModels == null || printModels.size() == 0) {
+                return;
+            }
+            Collections.reverse(printModels);
+
+            boolean flag = true;
+            while (flag) {
+                List<BmobObject> tempList = new ArrayList<>();
+                if (printModels.size() > 50) {
+                    for (int x = 0; x < 50; x++) {
+                        tempList.add(printModels.remove(0));
+                    }
+                } else {
+                    tempList = printModels;
+                    flag = false;
+                }
+
+                final List<BmobObject> finalPrintModels = tempList;
+                new BmobBatch().deleteBatch(finalPrintModels).doBatch(new QueryListListener<BatchResult>() {
+
+                    @Override
+                    public void done(List<BatchResult> o, BmobException e) {
+                        if (e == null) {
+                            for (int i = 0; i < o.size(); i++) {
+                                BatchResult result = o.get(i);
+                                BmobException ex = result.getError();
+                                if (ex == null) {
+                                    SaveModel p = ((SaveModel) finalPrintModels.get(i));
+                                    SaveHelper.trueDelete(mContext, p.uuid);
+                                    ToastUtils.show(mContext, "数据更新成功" + i);
+                                } else {
+                                    ToastUtils.show(mContext, "数据更新失败" + i);
+                                }
+                            }
+                        } else {
+                            Log.i("bmob", "失败：" + e.getMessage() + "," + e.getErrorCode());
+                        }
+                    }
+                });
+
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+
 }
