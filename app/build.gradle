@@ -12,8 +12,10 @@ android {
     }
     buildTypes {
         release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
+            // 不显示Log
+            buildConfigField "boolean", "LOG_DEBUG", "false"
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
 //执行lint检查，有任何的错误或者警告提示，都会终止构建，我们可以将其关掉。
