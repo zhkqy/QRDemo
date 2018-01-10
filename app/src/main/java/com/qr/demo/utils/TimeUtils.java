@@ -10,31 +10,6 @@ import java.util.Date;
  */
 public class TimeUtils {
 
-
-    public static String longConvertDate(Long time) {
-        //时间戳转化为Sting或Date
-        String d = "";
-        try {
-            SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-            d = format.format(time);
-            return d;
-        } catch (Exception e) {
-        }
-        return "";
-    }
-
-    public static String longConvertDateDetail(Long time) {
-        //时间戳转化为Sting或Date
-        String d = "";
-        try {
-            SimpleDateFormat format = new SimpleDateFormat("yyyy.MM.dd HH:mm");
-            d = format.format(time);
-            return d;
-        } catch (Exception e) {
-        }
-        return "";
-    }
-
     public static long calendarConvertLong(Calendar calendar) {
         Date d = calendar.getTime();
         long l = d.getTime();
@@ -43,7 +18,7 @@ public class TimeUtils {
 
     public static String getCurrentTime() {
 
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-M-d");
         Date curDate = new Date(System.currentTimeMillis());//获取当前时间
         String str = formatter.format(curDate);
 
