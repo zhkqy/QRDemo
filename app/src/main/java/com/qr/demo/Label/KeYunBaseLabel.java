@@ -45,7 +45,7 @@ public class KeYunBaseLabel extends BaseLabel {
         int width = bitmap.getWidth();
         int height = bitmap.getHeight();
         // 设置想要的大小
-        int newWidth = 80;
+        int newWidth = 100;
         int newHeight = 80;
         // 计算缩放比例
         float scaleWidth = ((float) newWidth) / width;
@@ -58,7 +58,7 @@ public class KeYunBaseLabel extends BaseLabel {
         Bitmap newbm = Bitmap.createBitmap(bitmap, 0, 0, width, height, matrix,
                 true);
 
-        iPrinter.drawGraphic(0, topPadding, newbm.getWidth(), newbm.getHeight(), newbm);
+        iPrinter.drawGraphic(24, topPadding, newbm.getWidth(), newbm.getHeight(), newbm);
 
         printTopPading = topPadding + fontPoint3 + fontPoint2 + 8 * 4 - fontPoint2;
     }
