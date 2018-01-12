@@ -11,7 +11,6 @@ import com.qr.demo.Label.DianBaoLabel;
 import com.qr.demo.Label.DianBaoLabel2;
 import com.qr.demo.Label.keYunRecordLabel;
 import com.qr.demo.Label.keYunRecordLabel2;
-import com.qr.demo.MainActivity;
 import com.qr.demo.MyApplication;
 import com.qr.demo.R;
 import com.qr.demo.model.PrintModel;
@@ -138,15 +137,15 @@ public class PrintActivity extends BaseActivity {
                     if (((MyApplication) getApplication()).isConnected()) {
 
                         if (printModel != null) {
-//                            if (printModel.recordThing.contains("电报")) {
-//                                DianBaoLabel2 pl = new DianBaoLabel2(printPP_cpcl);
-//                                pl.Lable(printModel.saveRecordThing, printModel.saveZhusongDianBao,
-//                                        printModel.saveChaosongDianBao, printModel.savedescription);
-//                            } else {
-//                                keYunRecordLabel2 pl = new keYunRecordLabel2(printPP_cpcl, PrintActivity.this);
-//                                pl.Lable(printModel.saveRecordThing, printModel.saveConnectStation,
-//                                        printModel.savedescription);
-//                            }
+                            if (printModel.recordThing.contains("电报")) {
+                                DianBaoLabel2 pl = new DianBaoLabel2(printPP_cpcl,PrintActivity.this);
+                                pl.Lable(printModel, printModel.saveRecordThing, printModel.saveZhusongDianBao,
+                                        printModel.saveChaosongDianBao, printModel.savedescription);
+                            } else {
+                                keYunRecordLabel2 pl = new keYunRecordLabel2(printPP_cpcl, PrintActivity.this);
+                                pl.Lable(printModel, printModel.saveRecordThing, printModel.saveConnectStation,
+                                        printModel.savedescription, printModel.attachContent);
+                            }
                         }
                     }
                     try {

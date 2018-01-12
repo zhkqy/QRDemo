@@ -2,6 +2,7 @@ package com.qr.demo.Label;
 
 import android.content.Context;
 
+import com.qr.demo.model.PrintModel;
 import com.qr.print.PrintPP_CPCL;
 
 public class DianBaoLabel2 extends DianBaoBaseLabel {
@@ -15,19 +16,21 @@ public class DianBaoLabel2 extends DianBaoBaseLabel {
         super(iPrinter, mContext);
     }
 
-    public void Lable(String recordThing, String zhusong, String chaosong, String description) {
+    public void Lable(PrintModel printModel, String recordThing, String zhusong, String chaosong, String description) {
 
         this.recordThing = recordThing;
         this.zhusong = zhusong;
         this.chaosong = chaosong;
         this.description = description;
-
+        this.year = printModel.year;
+        this.month = printModel.month;
+        this.day = printModel.day;
         print();
     }
 
     @Override
     protected void pageSetup() {
-        int pageWidth = 576;
+        int pageWidth = 566;
         int pageHeight = 760;
 
         setPageWidthAndHeight(pageWidth, pageHeight);
@@ -42,8 +45,7 @@ public class DianBaoLabel2 extends DianBaoBaseLabel {
         int topFontPoint = fontPoint2;
         int topFont = 2;
 
-        iPrinter.drawText(pageWidth / 2 - fontPoint3 * 2, topPadding, pageWidth, fontPoint3, "列车电报", 3, 0, 0, false, false);
-        iPrinter.drawText(0, topPadding + titleHeight, pageWidth, topFontPoint, recordThing, topFont, 0, 0, false, false);
+        iPrinter.drawText(0, printTopPading + titleHeight, pageWidth, topFontPoint, recordThing, topFont, 0, 0, false, false);
 
         int zhusongL = zhusong.length();
         int zhusongPadding = 0;
@@ -52,8 +54,8 @@ public class DianBaoLabel2 extends DianBaoBaseLabel {
             zhusongPadding = (int) num * topFontPoint + 8;
         }
 
-        iPrinter.drawText(0, topPadding + titleHeight + fontHeight, pageWidth, topFontPoint, zhusong, topFont, 0, 0, false, false);
-        iPrinter.drawText(0, topPadding + titleHeight + fontHeight * 2 + zhusongPadding, pageWidth, pageHeight, chaosong, topFont, 0, 0, false, false);
+        iPrinter.drawText(0, printTopPading + titleHeight + fontHeight, pageWidth, topFontPoint, zhusong, topFont, 0, 0, false, false);
+        iPrinter.drawText(0, printTopPading + titleHeight + fontHeight * 2 + zhusongPadding, pageWidth, pageHeight, chaosong, topFont, 0, 0, false, false);
 
         int chaosongL = chaosong.length();
         int chaosongPadding = 0;
@@ -62,7 +64,7 @@ public class DianBaoLabel2 extends DianBaoBaseLabel {
             chaosongPadding = ((int) chaosongNum) * topFontPoint + 8;
         }
 
-        iPrinter.drawText(0, topPadding + titleHeight + fontHeight * 3 + zhusongPadding + chaosongPadding, pageWidth, pageHeight, description, topFont, 0, 0, false, false);
+        iPrinter.drawText(0, printTopPading + titleHeight + fontHeight * 3 + zhusongPadding + chaosongPadding, pageWidth, pageHeight, description, topFont, 0, 0, false, false);
     }
 
 }
