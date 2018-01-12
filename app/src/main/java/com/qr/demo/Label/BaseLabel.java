@@ -34,17 +34,17 @@ public abstract class BaseLabel {
         this.iPrinter = iPrinter;
     }
 
-    protected abstract void printTop();
+    protected abstract void printTop(int position);
 
 
-    private void printBottom() {
+    private void printBottom(int position) {
 
         int bottomfontPoint = fontPoint1;
         int bottomfont = 1;
 
         //倒叙的顺序
 
-        int bottomY1 = pageHeight - bottomPadding - bottomfontPoint;
+        int bottomY1 = position + pageHeight - bottomPadding - bottomfontPoint;
         int bottomY2 = bottomY1 - bottomfontPoint * 2 - bottomfontPoint / 2;
         int bottomY3 = bottomY2 - bottomfontPoint / 2;
         int bottomY4 = bottomY3 - bottomfontPoint * 2 - bottomfontPoint / 2;
@@ -69,8 +69,6 @@ public abstract class BaseLabel {
         iPrinter.drawText(pageWidth - 10 * bottomfontPoint, bottomY1, pageWidth, bottomfont,
                 time, bottomfont, 0, 0, false, false);
 
-        iPrinter.print(0, 0);
-
     }
 
 
@@ -94,10 +92,29 @@ public abstract class BaseLabel {
             return;
         }
         pageSetup();
-        printTop();
+        printTop(0);
         printMiddle();
-        printBottom();
+        printBottom(0);
+        iPrinter.print(0, 0);
     }
 
+
+    /**
+     * 打印两份
+     */
+    protected void print2() {
+        if (iPrinter == null) {
+            return;
+        }
+        pageSetup();
+        printTop(0);
+        printMiddle();
+        printBottom(0);
+
+        printTop(pageHeight);
+        printMiddle();
+        printBottom(pageHeight);
+        iPrinter.print(0, 0);
+    }
 
 }

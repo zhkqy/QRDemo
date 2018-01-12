@@ -23,21 +23,21 @@ public class KeYunBaseLabel extends BaseLabel {
     }
 
     @Override
-    protected void printTop() {
+    protected void printTop(int position) {
 
-        iPrinter.drawText(topPadding + pageWidth / 2 - 11 * fontPoint2 / 2, 0, pageWidth, fontPoint2,
+        iPrinter.drawText(topPadding + pageWidth / 2 - 11 * fontPoint2 / 2, position + 0, pageWidth, fontPoint2,
                 "中国铁路沈阳局集团公司", 2, 0, 0, false, false);
 
-        iPrinter.drawText(topPadding + pageWidth - 4 * fontPoint2 - 8, 0, pageWidth, fontPoint2,
+        iPrinter.drawText(topPadding + pageWidth - 4 * fontPoint2 - 8, position + 0, pageWidth, fontPoint2,
                 "客统—1", 2, 0, 0, false, false);
 
         int keyunLeft = pageWidth / 2 - 7 * fontPoint3 / 2;
 
-        iPrinter.drawText(keyunLeft, topPadding + fontPoint2 + 8, pageWidth, fontPoint3,
+        iPrinter.drawText(keyunLeft, position + topPadding + fontPoint2 + 8, pageWidth, fontPoint3,
                 "客　运　记　录", 3, 0, 0, false, false);
 
-        iPrinter.drawLine(2, keyunLeft, topPadding + fontPoint3 + fontPoint2 + 8 * 2, keyunLeft + 7 * fontPoint3, topPadding + fontPoint3 + fontPoint2 + 8 * 2, true);//第一联横线1
-        iPrinter.drawLine(2, keyunLeft, topPadding + fontPoint3 + fontPoint2 + 8 * 3, keyunLeft + 7 * fontPoint3, topPadding + fontPoint3 + fontPoint2 + 8 * 3, true);//第一联横线1
+        iPrinter.drawLine(2, keyunLeft, position + topPadding + fontPoint3 + fontPoint2 + 8 * 2, keyunLeft + 7 * fontPoint3, topPadding + fontPoint3 + fontPoint2 + 8 * 2, true);//第一联横线1
+        iPrinter.drawLine(2, keyunLeft, position + topPadding + fontPoint3 + fontPoint2 + 8 * 3, keyunLeft + 7 * fontPoint3, topPadding + fontPoint3 + fontPoint2 + 8 * 3, true);//第一联横线1
 
         Bitmap bitmap = BitmapFactory.decodeResource(mContext.getResources(), R.drawable.teilu);
 
@@ -58,9 +58,9 @@ public class KeYunBaseLabel extends BaseLabel {
         Bitmap newbm = Bitmap.createBitmap(bitmap, 0, 0, width, height, matrix,
                 true);
 
-        iPrinter.drawGraphic(24, topPadding, newbm.getWidth(), newbm.getHeight(), newbm);
+        iPrinter.drawGraphic(24, position + topPadding, newbm.getWidth(), newbm.getHeight(), newbm);
 
-        printTopPading = topPadding + fontPoint3 + fontPoint2 + 8 * 4 - fontPoint2;
+        printTopPading = topPadding + fontPoint3 + fontPoint2 + 8 * 4 - fontPoint2 + position;
     }
 
     @Override

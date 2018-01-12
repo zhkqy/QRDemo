@@ -29,14 +29,14 @@ public class keYunRecordLabel2 extends KeYunBaseLabel {
         this.month = printModel.month;
         this.day = printModel.day;
 
-        print();
+        print2();
     }
 
 
     @Override
     protected void pageSetup() {
         int pageWidth = 566;
-        int pageHeight = 760;
+        int pageHeight = 800;
 
         setPageWidthAndHeight(pageWidth, pageHeight);
     }

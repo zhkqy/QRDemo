@@ -25,19 +25,19 @@ public class DianBaoLabel2 extends DianBaoBaseLabel {
         this.year = printModel.year;
         this.month = printModel.month;
         this.day = printModel.day;
-        print();
+        print2();
     }
 
     @Override
     protected void pageSetup() {
         int pageWidth = 566;
-        int pageHeight = 760;
+        int pageHeight = 800;
 
         setPageWidthAndHeight(pageWidth, pageHeight);
     }
 
     @Override
-    protected void printMiddle() {
+    protected void printMiddle( ) {
 
         int fontHeight = 35;
         int titleHeight = 48;
