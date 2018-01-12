@@ -31,13 +31,13 @@ public class DianBaoLabel2 extends DianBaoBaseLabel {
     @Override
     protected void pageSetup() {
         int pageWidth = 566;
-        int pageHeight = 800;
+        int pageHeight = 1680;
 
         setPageWidthAndHeight(pageWidth, pageHeight);
     }
 
     @Override
-    protected void printMiddle( ) {
+    protected void printMiddle() {
 
         int fontHeight = 35;
         int titleHeight = 48;

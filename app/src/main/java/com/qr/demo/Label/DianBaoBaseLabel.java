@@ -46,8 +46,8 @@ public class DianBaoBaseLabel extends BaseLabel {
         iPrinter.drawText(keyunLeft, position + topPadding + fontPoint2 + 8, pageWidth, fontPoint3,
                 "列　车　电　报", 3, 0, 0, false, false);
 
-        iPrinter.drawLine(2, keyunLeft, position + topPadding + fontPoint3 + fontPoint2 + 8 * 2, keyunLeft + 7 * fontPoint3, topPadding + fontPoint3 + fontPoint2 + 8 * 2, true);//第一联横线1
-        iPrinter.drawLine(2, keyunLeft, position + topPadding + fontPoint3 + fontPoint2 + 8 * 3, keyunLeft + 7 * fontPoint3, topPadding + fontPoint3 + fontPoint2 + 8 * 3, true);//第一联横线1
+        iPrinter.drawLine(2, keyunLeft, position + topPadding + fontPoint3 + fontPoint2 + 8 * 2, keyunLeft + 7 * fontPoint3, position + topPadding + fontPoint3 + fontPoint2 + 8 * 2, true);//第一联横线1
+        iPrinter.drawLine(2, keyunLeft, position + topPadding + fontPoint3 + fontPoint2 + 8 * 3, keyunLeft + 7 * fontPoint3, position + topPadding + fontPoint3 + fontPoint2 + 8 * 3, true);//第一联横线1
 
         Bitmap bitmap = BitmapFactory.decodeResource(mContext.getResources(), R.drawable.teilu);
 

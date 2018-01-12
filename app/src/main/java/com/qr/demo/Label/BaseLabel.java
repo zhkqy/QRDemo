@@ -44,7 +44,7 @@ public abstract class BaseLabel {
 
         //倒叙的顺序
 
-        int bottomY1 = position + pageHeight - bottomPadding - bottomfontPoint;
+        int bottomY1 = position - bottomPadding - bottomfontPoint;
         int bottomY2 = bottomY1 - bottomfontPoint * 2 - bottomfontPoint / 2;
         int bottomY3 = bottomY2 - bottomfontPoint / 2;
         int bottomY4 = bottomY3 - bottomfontPoint * 2 - bottomfontPoint / 2;
@@ -94,7 +94,7 @@ public abstract class BaseLabel {
         pageSetup();
         printTop(0);
         printMiddle();
-        printBottom(0);
+        printBottom(pageHeight);
         iPrinter.print(0, 0);
     }
 
@@ -109,11 +109,11 @@ public abstract class BaseLabel {
         pageSetup();
         printTop(0);
         printMiddle();
-        printBottom(0);
+        printBottom(800);
 
-        printTop(pageHeight);
+        printTop(800 + 80);
         printMiddle();
-        printBottom(pageHeight);
+        printBottom(800 * 2 + 80);
         iPrinter.print(0, 0);
     }
 
