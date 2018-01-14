@@ -126,39 +126,39 @@ public class PrintActivity extends BaseActivity {
         }
     }
 
-    @OnClick(R.id.printTwo)
-    public void printTwoOnclicked(View v) {
-        final PrintPP_CPCL printPP_cpcl = ((MyApplication) getApplication()).getPrintPP_cpcl();
-        if (!isSending) {
-            new Thread(new Runnable() {
-                @Override
-                public void run() {
-                    isSending = true;
-                    if (((MyApplication) getApplication()).isConnected()) {
-
-                        if (printModel != null) {
-                            if (printModel.recordThing.contains("电报")) {
-                                DianBaoLabel2 pl = new DianBaoLabel2(printPP_cpcl,PrintActivity.this);
-                                pl.Lable(printModel, printModel.saveRecordThing, printModel.saveZhusongDianBao,
-                                        printModel.saveChaosongDianBao, printModel.savedescription);
-                            } else {
-                                keYunRecordLabel2 pl = new keYunRecordLabel2(printPP_cpcl, PrintActivity.this);
-                                pl.Lable(printModel, printModel.saveRecordThing, printModel.saveConnectStation,
-                                        printModel.savedescription, printModel.attachContent);
-                            }
-                        }
-                    }
-                    try {
-                        interval = 0;
-                        Thread.sleep(interval);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                    isSending = false;
-                }
-            }).start();
-        }
-    }
+//    @OnClick(R.id.printTwo)
+//    public void printTwoOnclicked(View v) {
+//        final PrintPP_CPCL printPP_cpcl = ((MyApplication) getApplication()).getPrintPP_cpcl();
+//        if (!isSending) {
+//            new Thread(new Runnable() {
+//                @Override
+//                public void run() {
+//                    isSending = true;
+//                    if (((MyApplication) getApplication()).isConnected()) {
+//
+//                        if (printModel != null) {
+//                            if (printModel.recordThing.contains("电报")) {
+//                                DianBaoLabel2 pl = new DianBaoLabel2(printPP_cpcl,PrintActivity.this);
+//                                pl.Lable(printModel, printModel.saveRecordThing, printModel.saveZhusongDianBao,
+//                                        printModel.saveChaosongDianBao, printModel.savedescription);
+//                            } else {
+//                                keYunRecordLabel2 pl = new keYunRecordLabel2(printPP_cpcl, PrintActivity.this);
+//                                pl.Lable(printModel, printModel.saveRecordThing, printModel.saveConnectStation,
+//                                        printModel.savedescription, printModel.attachContent);
+//                            }
+//                        }
+//                    }
+//                    try {
+//                        interval = 0;
+//                        Thread.sleep(interval);
+//                    } catch (InterruptedException e) {
+//                        e.printStackTrace();
+//                    }
+//                    isSending = false;
+//                }
+//            }).start();
+//        }
+//    }
 
 
     @Override

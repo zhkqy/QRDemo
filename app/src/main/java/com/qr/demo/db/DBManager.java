@@ -5,6 +5,8 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.Environment;
 import android.util.Log;
 
+import com.qr.demo.utils.ToastUtils;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -70,7 +72,17 @@ public class DBManager {
     }
 
 
-    public String getInnerDataPath() {
+    public static void deleteLocalFIle(Context context) {
+        String str = DB_PATH + "/" + DB_NAME;
+        File file = new File(str);
+        if (file.exists()) {
+            file.delete();
+        }
+        ToastUtils.show(context, "更新成功");
+    }
+
+
+    public static String getInnerDataPath() {
         return Environment.getExternalStorageDirectory() + "/data/" + DB_NAME;
     }
 

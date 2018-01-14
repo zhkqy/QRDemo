@@ -70,7 +70,7 @@ public class LabelListActivity extends BaseActivity {
         mListView.setAdapter(labelListAdapter);
 
         if ("passengerrecord".equals(type)) {
-            mainTitle.setText("客户记录模板");
+            mainTitle.setText("客运记录模板");
             labelListAdapter.setDatas(Constants.getPassengerRecordList());
         } else if ("traintelegram".equals(type)) {
             mainTitle.setText("列车电报模板");

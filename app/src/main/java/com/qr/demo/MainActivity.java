@@ -12,6 +12,7 @@ import com.qr.demo.activity.BaseActivity;
 import com.qr.demo.activity.DeviceListActivity;
 import com.qr.demo.activity.LabelListActivity;
 import com.qr.demo.activity.SaveListActivity;
+import com.qr.demo.db.DBManager;
 import com.qr.demo.dialog.WikiLoadingDialog;
 import com.qr.demo.helper.BmobHelper;
 import com.qr.demo.utils.SharedPreferencesUtil;
@@ -38,7 +39,7 @@ public class MainActivity extends BaseActivity {
 
     @BindView(R.id.title_right_text)
     TextView title_right_text;
-    public static  WikiLoadingDialog wikiLoadingDialog;
+    public static WikiLoadingDialog wikiLoadingDialog;
     private MyApplication myApplication;
 
     @Override
@@ -136,17 +137,12 @@ public class MainActivity extends BaseActivity {
         BmobHelper.synchDelete(this);
     }
 
-    @Override
-    public void onStart() {
-        super.onStart();
-        // If BT is not on, request that it be enabled
-        // setupChat() will then be called during onActivityRe//sultsetupChat
-//        if (!mBluetoothAdapter.isEnabled()) {
-//            Intent enableIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
-//            startActivityForResult(enableIntent, REQUEST_ENABLE_BT);
-//        }
 
+    @OnClick(R.id.update_local)
+    public void uploadLocalOnClicked(View v) {
+        DBManager.deleteLocalFIle(this);
     }
+
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, final Intent data) {

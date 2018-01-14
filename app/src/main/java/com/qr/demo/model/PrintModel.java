@@ -104,7 +104,7 @@ public class PrintModel extends BmobObject implements Serializable {
     public String replace2 = "";  //replace2
     public String replace3 = "";  //replace3
 
-    //客户记录 3条
+    //客运记录 3条
     public String saveRecordThing = "";//  记录事由
     public String saveConnectStation = "";//  记录交接站
     public String savedescription = "";//  描述
