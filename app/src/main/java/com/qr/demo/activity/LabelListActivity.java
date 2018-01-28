@@ -173,7 +173,15 @@ public class LabelListActivity extends BaseActivity {
             startActivity(new Intent(mContext, LkywsMessageActivity.class).putExtra("title", "旅客意外伤电报"));
         } else if ("石击列车电报".equals(str)) {
             startActivity(new Intent(mContext, SjlcMessageActivity.class).putExtra("title", "石击列车电报"));
+        } else if ("移交砸伤旅客(无第三者责任)".equals(str)) {
+            startActivity(new Intent(mContext, YjzsNoThreeActivity.class).putExtra("title", str));
+        } else if ("移交挤手旅客(无第三者责任)".equals(str)) {
+            startActivity(new Intent(mContext, SjlcMessageActivity.class).putExtra("title", "石击列车电报"));
+        } else if ("移交烫伤旅客(无第三者责任)".equals(str)) {
+            startActivity(new Intent(mContext, SjlcMessageActivity.class).putExtra("title", "石击列车电报"));
         }
+
+
     }
 
 }

@@ -51,7 +51,7 @@ public class keYunRecordLabel extends KeYunBaseLabel {
         int topFont = 2;
 
         iPrinter.drawText(0, printTopPading + titleHeight, pageWidth, topFontPoint, "记录事由：", topFont, 0, 1, false, false);
-        iPrinter.drawText(fontPoint2 * 5, printTopPading + titleHeight, pageWidth, topFontPoint, recordThing, topFont, 0, 0, false, false);
+        iPrinter.drawText(fontPoint2 * 5, printTopPading + titleHeight, pageWidth, topFontPoint, recordThing.replace("(无第三者责任)",""), topFont, 0, 0, false, false);
         iPrinter.drawText(0, printTopPading + titleHeight + fontHeight, pageWidth, topFontPoint, connectStation, topFont, 0, 0, false, false);
         iPrinter.drawText(0, printTopPading + titleHeight + fontHeight * 2, pageWidth, pageHeight, description, topFont, 0, 0, false, false);
 
