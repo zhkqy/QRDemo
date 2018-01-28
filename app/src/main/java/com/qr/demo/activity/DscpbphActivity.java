@@ -46,6 +46,7 @@ public class DscpbphActivity extends NewBaseCommonActivity implements ContractNe
         models.add(timeCommonModel);
 
         models.add(new CommonModel("交接车站", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1102));
+        models.add(new CommonModel("发生车站", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1102));
 
         models.add(new CommonModel(
                 new CommonTextEditTextModel("旅客姓名", "", "请输入旅客姓名")));
@@ -87,6 +88,8 @@ public class DscpbphActivity extends NewBaseCommonActivity implements ContractNe
 
         models.add(new CommonModel("交接车站", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1102)
                 .setDescription(printModel.connectStation));
+        models.add(new CommonModel("发生车站", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1102)
+                .setDescription(printModel.troubleStation));
 
         models.add(new CommonModel(
                 new CommonTextEditTextModel("旅客姓名", printModel.name, "请输入旅客姓名")));
@@ -187,19 +190,20 @@ public class DscpbphActivity extends NewBaseCommonActivity implements ContractNe
             }
 
             printModel.trainNum = adapter.getItem(0).getDescription();
-            printModel.name = adapter.getItem(3).getEditTextModel().getEditTextStr();// 旅客名称
-            printModel.cardNum = adapter.getItem(4).getEditTextModel().getEditTextStr();//  身份证号码
+            printModel.troubleStation = adapter.getItem(3).getDescription();
+            printModel.name = adapter.getItem(4).getEditTextModel().getEditTextStr();// 旅客名称
+            printModel.cardNum = adapter.getItem(5).getEditTextModel().getEditTextStr();//  身份证号码
 
-            printModel.diupiaoStation = adapter.getItem(5).getDescription();
-            printModel.foundStation = adapter.getItem(6).getDescription();
+            printModel.diupiaoStation = adapter.getItem(6).getDescription();
+            printModel.foundStation = adapter.getItem(7).getDescription();
 
-            printModel.bupiaoBeginStation = adapter.getItem(8).getDescription();
-            printModel.bupiaoStopStation = adapter.getItem(9).getDescription();
-            printModel.bupiaoTicketNum = adapter.getItem(10).getEditTextModel().getEditTextStr();
+            printModel.bupiaoBeginStation = adapter.getItem(9).getDescription();
+            printModel.bupiaoStopStation = adapter.getItem(10).getDescription();
+            printModel.bupiaoTicketNum = adapter.getItem(11).getEditTextModel().getEditTextStr();
 
-            printModel.beginStation = adapter.getItem(12).getDescription();
-            printModel.stopStation = adapter.getItem(13).getDescription();
-            printModel.ticketNum = adapter.getItem(14).getEditTextModel().getEditTextStr();
+            printModel.beginStation = adapter.getItem(13).getDescription();
+            printModel.stopStation = adapter.getItem(14).getDescription();
+            printModel.ticketNum = adapter.getItem(15).getEditTextModel().getEditTextStr();
 
             Intent mIntent = new Intent(this, DscpbphPreviewActivity.class);
             Bundle mBundle = new Bundle();

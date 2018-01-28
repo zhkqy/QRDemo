@@ -47,6 +47,7 @@ public class YjlcwdzzActivity extends NewBaseCommonActivity implements ContractN
         models.add(timeCommonModel);
 
         models.add(new CommonModel("交接车站", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1102));
+        models.add(new CommonModel("发生车站", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1102));
 
         models.add(new CommonModel(
                 new CommonTextEditTextModel("旅客姓名", "", "请输入旅客姓名")));
@@ -87,6 +88,9 @@ public class YjlcwdzzActivity extends NewBaseCommonActivity implements ContractN
 
         models.add(new CommonModel("交接车站", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1102).
                 setDescription(printModel.connectStation));
+
+        models.add(new CommonModel("发生车站", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1102).
+                setDescription(printModel.troubleStation));
 
         models.add(new CommonModel(
                 new CommonTextEditTextModel("旅客姓名", printModel.name, "请输入旅客姓名")));
@@ -182,23 +186,24 @@ public class YjlcwdzzActivity extends NewBaseCommonActivity implements ContractN
 
             printModel.trainNum = adapter.getItem(0).getDescription();
             printModel.connectStation = adapter.getItem(2).getDescription();
-            printModel.name = adapter.getItem(3).getEditTextModel().getEditTextStr();// 旅客名称
-            printModel.cardNum = adapter.getItem(4).getEditTextModel().getEditTextStr();//  身份证号码
-
-            printModel.beginStation = adapter.getItem(7).getDescription();// 旅客买的票 的开始位置
-            printModel.stopStation = adapter.getItem(8).getDescription();// 旅客买的票 的结束位置
-            printModel.ticketNum = adapter.getItem(9).getEditTextModel().getEditTextStr();
+            printModel.troubleStation = adapter.getItem(3).getDescription();
+            printModel.name = adapter.getItem(4).getEditTextModel().getEditTextStr();// 旅客名称
+            printModel.cardNum = adapter.getItem(5).getEditTextModel().getEditTextStr();//  身份证号码
+            printModel.lateMinute = adapter.getItem(6).getEditTextModel().getEditTextStr();  //晚点分钟
+            printModel.beginStation = adapter.getItem(8).getDescription();// 旅客买的票 的开始位置
+            printModel.stopStation = adapter.getItem(9).getDescription();// 旅客买的票 的结束位置
+            printModel.ticketNum = adapter.getItem(10).getEditTextModel().getEditTextStr();
 
             printModel.carriageNum = carriageNum;// 旅客买的票 的结束位置
             printModel.seatNum = seatNum;
 
-            printModel.lateMinute = adapter.getItem(5).getEditTextModel().getEditTextStr();  //晚点分钟
-            printModel.zhongzTrainNum = adapter.getItem(12).getEditTextModel().getEditTextStr();  //中转车次
-            printModel.zhongzBeginStation = adapter.getItem(13).getEditTextModel().getEditTextStr();  //中转发站
-            printModel.zhongzStopStation = adapter.getItem(14).getEditTextModel().getEditTextStr();  //中转到站
-            printModel.zhongzTicketNum = adapter.getItem(15).getEditTextModel().getEditTextStr();  //中转票号
-            printModel.zhongzCarriageNum = adapter.getItem(16).getEditTextModel().getEditTextStr();  //中转车厢号
-            printModel.zhongzSeatNum = adapter.getItem(17).getEditTextModel().getEditTextStr();  //中转座位号
+
+            printModel.zhongzTrainNum = adapter.getItem(13).getEditTextModel().getEditTextStr();  //中转车次
+            printModel.zhongzBeginStation = adapter.getItem(14).getEditTextModel().getEditTextStr();  //中转发站
+            printModel.zhongzStopStation = adapter.getItem(15).getEditTextModel().getEditTextStr();  //中转到站
+            printModel.zhongzTicketNum = adapter.getItem(16).getEditTextModel().getEditTextStr();  //中转票号
+            printModel.zhongzCarriageNum = adapter.getItem(17).getEditTextModel().getEditTextStr();  //中转车厢号
+            printModel.zhongzSeatNum = adapter.getItem(18).getEditTextModel().getEditTextStr();  //中转座位号
 
 
             Intent mIntent = new Intent(this, YjlcwdzzPreviewActivity.class);

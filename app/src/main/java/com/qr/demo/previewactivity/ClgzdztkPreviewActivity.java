@@ -79,7 +79,7 @@ public class ClgzdztkPreviewActivity extends BasePreviewActivity {
     private void refreshDescription() {
 
         String discrep = "　　" + printModel.year + "年" + printModel.month + "月" + printModel.day + "日，" +
-                printModel.trainNum + "次列车运行至" + printModel.connectStation + "站，" + printModel.carriageNum + "车," + "定员" + printModel.limitNum + "人," + replace1.getText().toString() +
+                printModel.trainNum + "次列车运行至" + printModel.troubleStation + "站，" + printModel.carriageNum + "车," + "定员" + printModel.limitNum + "人," + replace1.getText().toString() +
                 ",旅客" + printModel.name + ",身份证号码" + printModel.cardNum + ",持" + printModel.beginStation + "站至" + printModel.stopStation + "站车票，" +
                 "票号" + printModel.ticketNum + "," + replace2.getText().toString() + ",现交你站，请按章办理。";
 

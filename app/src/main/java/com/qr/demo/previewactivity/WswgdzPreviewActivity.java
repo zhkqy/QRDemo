@@ -51,7 +51,7 @@ public class WswgdzPreviewActivity extends BasePreviewActivity {
         connectStation.setText(printModel.connectStation + "站:");
 
         String discrep = "　　" + printModel.year + "年" + printModel.month + "月" + printModel.day + "日，" +
-                printModel.trainNum + "次列车," + printModel.connectStation + "站开车后，" +
+                printModel.trainNum + "次列车," + printModel.troubleStation + "站开车后，" +
                 "旅客" + printModel.name + "持" + printModel.beginStation + "站至" + printModel.stopStation + "站车票，" + "" +
                 "票号" + printModel.ticketNum + ",声称自己在车站误购了车票，其实际到站是" + printModel.actualStation + "站，现移交你站，请按章办理。";
 

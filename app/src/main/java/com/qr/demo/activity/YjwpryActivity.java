@@ -47,6 +47,7 @@ public class YjwpryActivity extends NewBaseCommonActivity implements ContractNew
         models.add(timeCommonModel);
 
         models.add(new CommonModel("交接车站", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1102));
+        models.add(new CommonModel("发生车站", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1102));
 
         models.add(new CommonModel("车厢号　", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1103));
 
@@ -67,6 +68,8 @@ public class YjwpryActivity extends NewBaseCommonActivity implements ContractNew
 
         models.add(new CommonModel("交接车站", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1102)
                 .setDescription(printModel.connectStation));
+        models.add(new CommonModel("发生车站", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1102)
+                .setDescription(printModel.troubleStation));
 
         models.add(new CommonModel("车厢号　", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1103)
                 .setDescription(printModel.carriageNum + "车" + printModel.seatNum + "号"));
@@ -144,7 +147,8 @@ public class YjwpryActivity extends NewBaseCommonActivity implements ContractNew
             }
 
             printModel.trainNum = adapter.getItem(0).getDescription();
-            printModel.zishuStartStation = adapter.getItem(4).getDescription();
+            printModel.troubleStation = adapter.getItem(3).getDescription();
+            printModel.zishuStartStation = adapter.getItem(5).getDescription();
             printModel.carriageNum = carriageNum;
             printModel.seatNum = seatNum;
 

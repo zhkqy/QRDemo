@@ -49,6 +49,7 @@ public class YjbmwtjsActivity extends NewBaseCommonActivity implements ContractN
         models.add(timeCommonModel);
 
         models.add(new CommonModel("交接车站", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1102));
+        models.add(new CommonModel("发生车站", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1102));
 
         models.add(new CommonModel(
                 new CommonTextEditTextModel("旅客姓名", "", "请输入旅客姓名")));
@@ -79,6 +80,8 @@ public class YjbmwtjsActivity extends NewBaseCommonActivity implements ContractN
 
         models.add(new CommonModel("交接车站", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1102)
                 .setDescription(printModel.connectStation));
+        models.add(new CommonModel("发生车站", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1102)
+                .setDescription(printModel.troubleStation));
 
         models.add(new CommonModel(
                 new CommonTextEditTextModel("旅客姓名", printModel.name, "请输入旅客姓名")));
@@ -165,11 +168,12 @@ public class YjbmwtjsActivity extends NewBaseCommonActivity implements ContractN
             }
 
             printModel.trainNum = adapter.getItem(0).getDescription();
-            printModel.name = adapter.getItem(3).getEditTextModel().getEditTextStr();// 旅客名称
-            printModel.cardNum = adapter.getItem(4).getEditTextModel().getEditTextStr();//  身份证号码
-            printModel.ticketNum = adapter.getItem(5).getEditTextModel().getEditTextStr();// 票号
-            printModel.beginStation = adapter.getItem(6).getDescription();// 旅客买的票 的开始位置
-            printModel.stopStation = adapter.getItem(7).getDescription();// 旅客买的票 的结束位置
+            printModel.troubleStation = adapter.getItem(3).getDescription();
+            printModel.name = adapter.getItem(4).getEditTextModel().getEditTextStr();// 旅客名称
+            printModel.cardNum = adapter.getItem(5).getEditTextModel().getEditTextStr();//  身份证号码
+            printModel.ticketNum = adapter.getItem(6).getEditTextModel().getEditTextStr();// 票号
+            printModel.beginStation = adapter.getItem(7).getDescription();// 旅客买的票 的开始位置
+            printModel.stopStation = adapter.getItem(8).getDescription();// 旅客买的票 的结束位置
             printModel.carriageNum = carriageNum;
             printModel.seatNum = seatNum;
 

@@ -82,7 +82,7 @@ public class YjyswpPreviewActivity extends BasePreviewActivity {
         String discrep = null;
         try {
             discrep = "　　" + printModel.year + "年" + printModel.month + "月" + printModel.day + "日，" +
-                    printModel.trainNum + "次列车终到" + printModel.connectStation + "站后，列车员在" + printModel.carriageNum + "车" + printModel.seatNum + "号座（铺）下" +
+                    printModel.trainNum + "次列车终到" + printModel.troubleStation + "站后，列车员在" + printModel.carriageNum + "车" + printModel.seatNum + "号座（铺）下" +
                     replace1.getText().toString() + "，内有现金" + MoneyUtils.arabNumToChineseRMB(Double.parseDouble(printModel.money)) + "，现交你站按章处理 。";
         } catch (Exception e) {
             e.printStackTrace();

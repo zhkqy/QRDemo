@@ -46,6 +46,7 @@ public class YjwcActivity extends NewBaseCommonActivity implements ContractNewCo
         models.add(timeCommonModel);
 
         models.add(new CommonModel("交接车站", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1102));
+        models.add(new CommonModel("发生车站", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1102));
 
         models.add(new CommonModel(
                 new CommonTextEditTextModel("旅客姓名", "", "请输入旅客姓名")));
@@ -79,6 +80,8 @@ public class YjwcActivity extends NewBaseCommonActivity implements ContractNewCo
 
         models.add(new CommonModel("交接车站", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1102)
         .setDescription(printModel.connectStation));
+        models.add(new CommonModel("发生车站", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1102)
+                .setDescription(printModel.troubleStation));
 
         models.add(new CommonModel(
                 new CommonTextEditTextModel("旅客姓名", printModel.name, "请输入旅客姓名")));
@@ -166,13 +169,14 @@ public class YjwcActivity extends NewBaseCommonActivity implements ContractNewCo
             }
 
             printModel.trainNum = adapter.getItem(0).getDescription();
-            printModel.name = adapter.getItem(3).getEditTextModel().getEditTextStr();// 旅客名称
-            printModel.cardNum = adapter.getItem(4).getEditTextModel().getEditTextStr();//  身份证号码
+            printModel.troubleStation = adapter.getItem(3).getDescription();
+            printModel.name = adapter.getItem(4).getEditTextModel().getEditTextStr();// 旅客名称
+            printModel.cardNum = adapter.getItem(5).getEditTextModel().getEditTextStr();//  身份证号码
 
-            printModel.wuchengTrainNum = adapter.getItem(5).getEditTextModel().getEditTextStr();
-            printModel.wuchengBeginStation = adapter.getItem(6).getEditTextModel().getEditTextStr();
-            printModel.wuchengStopStation = adapter.getItem(7).getEditTextModel().getEditTextStr();
-            printModel.wuchengTicketNum = adapter.getItem(8).getEditTextModel().getEditTextStr();
+            printModel.wuchengTrainNum = adapter.getItem(6).getEditTextModel().getEditTextStr();
+            printModel.wuchengBeginStation = adapter.getItem(7).getEditTextModel().getEditTextStr();
+            printModel.wuchengStopStation = adapter.getItem(8).getEditTextModel().getEditTextStr();
+            printModel.wuchengTicketNum = adapter.getItem(9).getEditTextModel().getEditTextStr();
 
             Intent mIntent = new Intent(this, YjwcPreviewActivity.class);
             Bundle mBundle = new Bundle();

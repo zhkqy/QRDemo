@@ -57,7 +57,7 @@ public class YjwcPreviewActivity extends BasePreviewActivity {
 
     private void refreshDescription() {
         String discrep = "　　" + printModel.year + "年" + printModel.month + "月" + printModel.day + "日，"
-                + printModel.trainNum + "次列车" + printModel.connectStation + "站开车后，发现旅客" +
+                + printModel.trainNum + "次列车，" + printModel.troubleStation + "站开车后，发现旅客" +
                 "，身份证号码" + printModel.cardNum + "，持当日" + printModel.wuchengTrainNum + "次" + printModel.wuchengBeginStation + "站至" +
                 printModel.wuchengStopStation + "站的车票，票号" + printModel.wuchengTicketNum + "，误乘本次列车，现移交你站，请按章办理。";
 

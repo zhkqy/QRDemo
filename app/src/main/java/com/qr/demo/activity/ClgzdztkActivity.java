@@ -50,6 +50,7 @@ public class ClgzdztkActivity extends NewBaseCommonActivity implements ContractN
         models.add(timeCommonModel);
 
         models.add(new CommonModel("交接车站", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1102));
+        models.add(new CommonModel("发生车站", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1102));
 
         models.add(new CommonModel("车厢号　", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1106));
         models.add(new CommonModel(
@@ -81,6 +82,8 @@ public class ClgzdztkActivity extends NewBaseCommonActivity implements ContractN
 
         models.add(new CommonModel("交接车站", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1102)
                 .setDescription(printModel.connectStation));
+        models.add(new CommonModel("发生车站", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1102)
+                .setDescription(printModel.troubleStation));
 
         models.add(new CommonModel("车厢号　", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1106)
                 .setDescription(printModel.carriageNum + "车"));
@@ -170,14 +173,15 @@ public class ClgzdztkActivity extends NewBaseCommonActivity implements ContractN
             }
 
             printModel.trainNum = adapter.getItem(0).getDescription();
+            printModel.troubleStation = adapter.getItem(3).getDescription();
 
             printModel.carriageNum = carriageNum;
-            printModel.limitNum = adapter.getItem(4).getEditTextModel().getEditTextStr();
-            printModel.name = adapter.getItem(5).getEditTextModel().getEditTextStr();// 旅客名称
-            printModel.cardNum = adapter.getItem(6).getEditTextModel().getEditTextStr();//  身份证号码
-            printModel.beginStation = adapter.getItem(7).getDescription();// 旅客买的票 的开始位置
-            printModel.stopStation = adapter.getItem(8).getDescription();// 旅客买的票 的结束位置
-            printModel.ticketNum = adapter.getItem(9).getEditTextModel().getEditTextStr();// 票号
+            printModel.limitNum = adapter.getItem(5).getEditTextModel().getEditTextStr();
+            printModel.name = adapter.getItem(6).getEditTextModel().getEditTextStr();// 旅客名称
+            printModel.cardNum = adapter.getItem(7).getEditTextModel().getEditTextStr();//  身份证号码
+            printModel.beginStation = adapter.getItem(8).getDescription();// 旅客买的票 的开始位置
+            printModel.stopStation = adapter.getItem(9).getDescription();// 旅客买的票 的结束位置
+            printModel.ticketNum = adapter.getItem(10).getEditTextModel().getEditTextStr();// 票号
 
             Intent mIntent = new Intent(this, ClgzdztkPreviewActivity.class);
             Bundle mBundle = new Bundle();

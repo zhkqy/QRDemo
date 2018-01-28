@@ -48,6 +48,7 @@ public class YjwhzzcplkActivity extends NewBaseCommonActivity implements Contrac
         models.add(timeCommonModel);
 
         models.add(new CommonModel("交接车站", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1102));
+        models.add(new CommonModel("发生车站", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1102));
 
         models.add(new CommonModel(
                 new CommonTextEditTextModel("旅客姓名", "", "请输入旅客姓名")));
@@ -81,6 +82,9 @@ public class YjwhzzcplkActivity extends NewBaseCommonActivity implements Contrac
 
         models.add(new CommonModel("交接车站", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1102)
                 .setDescription(printModel.connectStation));
+
+        models.add(new CommonModel("发生车站", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1102)
+                .setDescription(printModel.troubleStation));
 
         models.add(new CommonModel(
                 new CommonTextEditTextModel("旅客姓名", printModel.name, "请输入旅客姓名")));
@@ -168,12 +172,14 @@ public class YjwhzzcplkActivity extends NewBaseCommonActivity implements Contrac
 
             printModel.trainNum = adapter.getItem(0).getDescription();
             printModel.connectStation = adapter.getItem(2).getDescription();
-            printModel.name = adapter.getItem(3).getEditTextModel().getEditTextStr();// 旅客名称
-            printModel.cardNum = adapter.getItem(4).getEditTextModel().getEditTextStr();//  身份证号码
-            printModel.netOrderNum = adapter.getItem(5).getEditTextModel().getEditTextStr();//网购订单号
-            printModel.netErrorReason = adapter.getItem(6).getEditTextModel().getEditTextStr();//自述原因
-            printModel.netBeginStation = adapter.getItem(7).getDescription();// 旅客买的票 的开始位置
-            printModel.netStopStation = adapter.getItem(8).getDescription();// 旅客买的票 的结束位置
+
+            printModel.troubleStation = adapter.getItem(3).getDescription();
+            printModel.name = adapter.getItem(4).getEditTextModel().getEditTextStr();// 旅客名称
+            printModel.cardNum = adapter.getItem(5).getEditTextModel().getEditTextStr();//  身份证号码
+            printModel.netOrderNum = adapter.getItem(6).getEditTextModel().getEditTextStr();//网购订单号
+            printModel.netErrorReason = adapter.getItem(7).getEditTextModel().getEditTextStr();//自述原因
+            printModel.netBeginStation = adapter.getItem(8).getDescription();// 旅客买的票 的开始位置
+            printModel.netStopStation = adapter.getItem(9).getDescription();// 旅客买的票 的结束位置
             printModel.carriageNum = carriageNum;// 旅客买的票 的结束位置
             printModel.seatNum = seatNum;
 

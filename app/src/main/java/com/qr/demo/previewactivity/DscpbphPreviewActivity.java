@@ -47,12 +47,12 @@ public class DscpbphPreviewActivity extends BasePreviewActivity {
 
         printModel = (PrintModel) getIntent().getSerializableExtra("data");
 
-        recordThing.setText( printModel.recordThing);
+        recordThing.setText(printModel.recordThing);
 
         connectStation.setText(printModel.connectStation + "站:");
 
         String discrep = "　　" + printModel.year + "年" + printModel.month + "月" + printModel.day + "日，" + printModel.trainNum + "次列车," +
-                printModel.connectStation + "站开车后，" + "旅客" + printModel.name + ",身份证号码" + printModel.cardNum +
+                printModel.troubleStation + "站开车后，" + "旅客" + printModel.name + ",身份证号码" + printModel.cardNum +
                 "，旅客自述在" + printModel.diupiaoStation + "站购买的车票丢失，" + "列车站车交互系统未查询该旅客购票信息，按规定补" +
                 printModel.bupiaoBeginStation + "站至" + printModel.stopStation + "站的车票（票号" + printModel.bupiaoTicketNum + "），" +
                 printModel.foundStation + "站开车后该旅客又找到原票（" + printModel.beginStation + "站至" + printModel.stopStation + "站的车票，票号" + printModel.ticketNum +
