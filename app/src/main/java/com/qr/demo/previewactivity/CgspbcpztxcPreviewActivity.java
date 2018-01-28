@@ -59,7 +59,7 @@ public class CgspbcpztxcPreviewActivity extends BasePreviewActivity {
 
         connectStation.setText(printModel.connectStation + "站:");
 
-        String discrep = "　　" + printModel.year + "年" + printModel.month + "月" + printModel.day + "日，" + printModel.trainNum + "次列车," + printModel.connectStation + "站开车后，" +
+        String discrep = "　　" + printModel.year + "年" + printModel.month + "月" + printModel.day + "日，" + printModel.trainNum + "次列车," + printModel.troubleStation + "站开车后，" +
                 "旅客" + printModel.name + ",身份证号码" + printModel.cardNum + ",持" + printModel.beginStation + "站至" + printModel.stopStation + "站车票，"
                 + printModel.carriageNum + "车" + printModel.seatNum + "号席（铺）位," +
                 "票号" + printModel.ticketNum + ",要求在你站下车，经确认席位使用正常，可办理退票，现交你站，请按章办理。";
