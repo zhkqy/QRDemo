@@ -30,6 +30,7 @@ import com.qr.demo.activity.YjjsNoThreeActivity;
 import com.qr.demo.activity.YjjsycActivity;
 import com.qr.demo.activity.YjlcwdzzActivity;
 import com.qr.demo.activity.YjtslkActivity;
+import com.qr.demo.activity.YjtslkNoThreeActivity;
 import com.qr.demo.activity.YjwcActivity;
 import com.qr.demo.activity.YjwhzzcplkActivity;
 import com.qr.demo.activity.YjwpryActivity;
@@ -39,8 +40,6 @@ import com.qr.demo.activity.YjzsActivity;
 import com.qr.demo.activity.YjzsNoThreeActivity;
 import com.qr.demo.db.SaveHelper;
 import com.qr.demo.model.PrintModel;
-import com.qr.demo.previewactivity.CyMessagePreViewActivity;
-import com.qr.demo.previewactivity.YjjsPreviewNoThreeActivity;
 import com.qr.demo.utils.DisplayUtil;
 import com.qr.demo.utils.SharedPreferencesUtil;
 
@@ -161,7 +160,9 @@ public class EditDialog extends Dialog implements View.OnClickListener {
                     skip(ClgzdztkActivity.class, datas.recordThing);
                 } else if ("移交烫伤旅客".equals(datas.recordThing)) {
                     skip(YjtslkActivity.class, datas.recordThing);
-                } else if ("移交不明物体击伤旅客".equals(datas.recordThing)) {
+                } else if ("移交烫伤旅客(无第三者责任)".equals(datas.recordThing)) {
+                    skip(YjtslkNoThreeActivity.class, datas.recordThing);
+                }else if ("移交不明物体击伤旅客".equals(datas.recordThing)) {
                     skip(YjbmwtjsActivity.class, datas.recordThing);
                 } else if ("移交砸伤旅客".equals(datas.recordThing)) {
                     skip(YjzsActivity.class, datas.recordThing);
@@ -178,6 +179,11 @@ public class EditDialog extends Dialog implements View.OnClickListener {
                 } else if ("石击列车电报".equals(datas.recordThing)) {
                     skip(SjlcMessageActivity.class, datas.recordThing);
                 }
+
+
+
+
+
                 dismiss();
                 break;
             case R.id.delete:

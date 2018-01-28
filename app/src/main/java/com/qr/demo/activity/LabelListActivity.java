@@ -178,7 +178,7 @@ public class LabelListActivity extends BaseActivity {
         } else if ("移交挤手旅客(无第三者责任)".equals(str)) {
             startActivity(new Intent(mContext, YjjsNoThreeActivity.class).putExtra("title", str));
         } else if ("移交烫伤旅客(无第三者责任)".equals(str)) {
-            startActivity(new Intent(mContext, SjlcMessageActivity.class).putExtra("title", str));
+            startActivity(new Intent(mContext, YjtslkNoThreeActivity.class).putExtra("title", str));
         }
 
 
