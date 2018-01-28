@@ -26,6 +26,7 @@ import com.qr.demo.activity.YjbmwtjsActivity;
 import com.qr.demo.activity.YjgzlkActivity;
 import com.qr.demo.activity.YjhblkActivity;
 import com.qr.demo.activity.YjjsActivity;
+import com.qr.demo.activity.YjjsNoThreeActivity;
 import com.qr.demo.activity.YjjsycActivity;
 import com.qr.demo.activity.YjlcwdzzActivity;
 import com.qr.demo.activity.YjtslkActivity;
@@ -39,6 +40,7 @@ import com.qr.demo.activity.YjzsNoThreeActivity;
 import com.qr.demo.db.SaveHelper;
 import com.qr.demo.model.PrintModel;
 import com.qr.demo.previewactivity.CyMessagePreViewActivity;
+import com.qr.demo.previewactivity.YjjsPreviewNoThreeActivity;
 import com.qr.demo.utils.DisplayUtil;
 import com.qr.demo.utils.SharedPreferencesUtil;
 
@@ -167,6 +169,8 @@ public class EditDialog extends Dialog implements View.OnClickListener {
                     skip(YjzsNoThreeActivity.class, datas.recordThing);
                 } else if ("移交挤手旅客".equals(datas.recordThing)) {
                     skip(YjjsActivity.class, datas.recordThing);
+                } else if ("移交挤手旅客(无第三者责任)".equals(datas.recordThing)) {
+                    skip(YjjsNoThreeActivity.class, datas.recordThing);
                 } else if ("超员电报".equals(datas.recordThing)) {
                     skip(CyMessageActivity.class, datas.recordThing);
                 } else if ("旅客意外伤电报".equals(datas.recordThing)) {

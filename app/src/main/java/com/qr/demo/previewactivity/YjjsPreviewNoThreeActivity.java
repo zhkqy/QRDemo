@@ -7,32 +7,26 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.qr.demo.R;
-import com.qr.demo.activity.BaseActivity;
 import com.qr.demo.model.PrintModel;
 import com.qr.demo.view.CustomFontsTextView;
 
-import butterknife.BindView;
 import butterknife.OnClick;
 
 /**
  * Created by sun on 2017/12/29.
  */
 
-public class YjjsPreviewActivity extends BasePreviewActivity {
+public class YjjsPreviewNoThreeActivity extends BasePreviewActivity {
 
-    private String replaceStr1 = "硬座车厢一名";
-    private String replaceStr2 = "上厕所关门时不慎将";
-    private String replaceStr3 = "左手中指挤破流血";
+    private String replaceStr1 = "上厕所关门时不慎将自己的左手中指挤破流血，列车进行了简单包扎处理，该旅客要求下车治疗，";
 
     @Override
     protected void setContentView() {
-        setContentView(R.layout.activity_preview_replace3);
+        setContentView(R.layout.activity_preview_replace1);
         recordThing = (TextView) findViewById(R.id.recordThing);
         connectStation = (TextView) findViewById(R.id.connectStation);
         description = (CustomFontsTextView) findViewById(R.id.description);
         replace1 = (EditText) findViewById(R.id.replace1);
-        replace2 = (EditText) findViewById(R.id.replace2);
-        replace3 = (EditText) findViewById(R.id.replace3);
         isEditStatus = getIntent().getBooleanExtra("isEditStatus", false);
     }
 
@@ -50,8 +44,6 @@ public class YjjsPreviewActivity extends BasePreviewActivity {
     protected void initListener() {
         save();
         replace1.addTextChangedListener(new MyTextWatcher());
-        replace2.addTextChangedListener(new MyTextWatcher());
-        replace3.addTextChangedListener(new MyTextWatcher());
     }
 
 
@@ -61,14 +53,10 @@ public class YjjsPreviewActivity extends BasePreviewActivity {
         printModel = (PrintModel) getIntent().getSerializableExtra("data");
         if (isEditStatus) {
             replaceStr1 = printModel.replace1;
-            replaceStr2 = printModel.replace2;
-            replaceStr3 = printModel.replace3;
         }
         replace1.setText(replaceStr1);
-        replace2.setText(replaceStr2);
-        replace3.setText(replaceStr3);
 
-        recordThing.setText( printModel.recordThing);
+        recordThing.setText(printModel.recordThing);
         connectStation.setText(printModel.connectStation + "站:");
 
         refreshDescription();
@@ -77,11 +65,8 @@ public class YjjsPreviewActivity extends BasePreviewActivity {
     private void refreshDescription() {
 
         String discrep = "　　" + printModel.year + "年" + printModel.month + "月" + printModel.day + "日，" + printModel.trainNum + "次列车，" + printModel.troubleStation
-                + "站到站前，" + printModel.carriageNum + "号" + replace1.getText().toString() + "旅客" + printModel.name + "，身份证号码" + printModel.cardNum + "，持" + printModel.beginStation +
-                "站至" + printModel.stopStation + "站硬座车票，票号" + printModel.ticketNum + "，" + replace2.getText().toString() + "旅客" + printModel.otherName +
-                "（身份证号码" + printModel.otherCardNum + "，持" + printModel.otherBeginStation + "站至" +
-                printModel.otherStopStation + "站的硬座车票，票号" + printModel.otherTicketNum + ")的" +
-                replace3.getText().toString() + "，列车进行了简单包扎处理，该旅客要求下车治疗，现移交你站，请按章办理。";
+                + "站到站前，" + printModel.carriageNum + "号硬座车厢一名旅客" + printModel.name + "，身份证号码" + printModel.cardNum + "，持" + printModel.beginStation +
+                "站至" + printModel.stopStation + "站硬座车票，票号" + printModel.ticketNum + "，" + replace1.getText().toString() + "现移交你站，请按章办理。";
 
         description.setText(discrep);
     }

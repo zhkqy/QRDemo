@@ -9,20 +9,19 @@ import com.qr.demo.adapter.CommonModel;
 import com.qr.demo.adapter.ContractNewCommonAdapter;
 import com.qr.demo.common.CommonTextEditTextModel;
 import com.qr.demo.db.DbHelper;
-import com.qr.demo.dialog.CarriageAndSeatDialog;
 import com.qr.demo.dialog.CarriageDialog;
 import com.qr.demo.dialog.DateTimePickerDialog;
 import com.qr.demo.dialog.ListViewDialog;
-import com.qr.demo.model.PrintModel;
 import com.qr.demo.previewactivity.YjjsPreviewActivity;
+import com.qr.demo.previewactivity.YjjsPreviewNoThreeActivity;
 import com.qr.demo.utils.TimeUtils;
 
 import java.util.Calendar;
 
 /**
- * 移交挤手旅客
+ * 移交挤手旅客(无第三者责任)
  */
-public class YjjsActivity extends NewBaseCommonActivity implements ContractNewCommonAdapter.CommonListener {
+public class YjjsNoThreeActivity extends NewBaseCommonActivity implements ContractNewCommonAdapter.CommonListener {
 
     CommonModel timeCommonModel;
     public Calendar currentCalendar;
@@ -62,18 +61,6 @@ public class YjjsActivity extends NewBaseCommonActivity implements ContractNewCo
         models.add(new CommonModel("原票到站", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1102));
         models.add(new CommonModel("车厢号　", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1106));
 
-
-        models.add(new CommonModel("旅客B", CommonModel.TYPE_LINE));
-        models.add(new CommonModel(
-                new CommonTextEditTextModel("旅客姓名", "", "请输入旅客姓名")));
-        models.add(new CommonModel(
-                new CommonTextEditTextModel("身份证号", "", "请输入身份证号")));
-        models.add(new CommonModel(
-                new CommonTextEditTextModel("原票票号", "", "请输入原票票号")));
-        models.add(new CommonModel("原票发站", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1102));
-
-        models.add(new CommonModel("原票到站", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1102));
-
         models.add(new CommonModel("预览", CommonModel.TYPE_BUTTON).setRequestCode(1105));
     }
 
@@ -107,19 +94,6 @@ public class YjjsActivity extends NewBaseCommonActivity implements ContractNewCo
         models.add(new CommonModel("车厢号　", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1106)
                 .setDescription(printModel.carriageNum + "车"));
 
-
-        models.add(new CommonModel("旅客B", CommonModel.TYPE_LINE));
-        models.add(new CommonModel(
-                new CommonTextEditTextModel("旅客姓名", printModel.otherName, "请输入旅客姓名")));
-        models.add(new CommonModel(
-                new CommonTextEditTextModel("身份证号", printModel.otherCardNum, "请输入身份证号")));
-        models.add(new CommonModel(
-                new CommonTextEditTextModel("原票票号", printModel.otherTicketNum, "请输入原票票号")));
-        models.add(new CommonModel("原票发站", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1102)
-                .setDescription(printModel.otherBeginStation));
-
-        models.add(new CommonModel("原票到站", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1102)
-                .setDescription(printModel.otherStopStation));
 
         models.add(new CommonModel("预览", CommonModel.TYPE_BUTTON).setRequestCode(1105));
     }
@@ -199,15 +173,9 @@ public class YjjsActivity extends NewBaseCommonActivity implements ContractNewCo
             printModel.beginStation = adapter.getItem(8).getDescription();// 旅客买的票 的开始位置
             printModel.stopStation = adapter.getItem(9).getDescription();// 旅客买的票 的结束位置
 
-            printModel.otherName = adapter.getItem(12).getEditTextModel().getEditTextStr();
-            printModel.otherCardNum = adapter.getItem(13).getEditTextModel().getEditTextStr();
-            printModel.otherTicketNum = adapter.getItem(14).getEditTextModel().getEditTextStr();
-            printModel.otherBeginStation = adapter.getItem(15).getDescription();  //other发站
-            printModel.otherStopStation = adapter.getItem(16).getDescription();  //other到站
-
             printModel.carriageNum = carriageNum;
 
-            Intent mIntent = new Intent(this, YjjsPreviewActivity.class);
+            Intent mIntent = new Intent(this, YjjsPreviewNoThreeActivity.class);
             Bundle mBundle = new Bundle();
             mBundle.putSerializable("data", printModel);
             mBundle.putBoolean("isEditStatus", isEditStatus);
@@ -223,7 +191,7 @@ public class YjjsActivity extends NewBaseCommonActivity implements ContractNewCo
             carriageDialog.setListener(new CarriageDialog.Listener() {
                 @Override
                 public void onItemClicked(String carriageNum) {
-                    YjjsActivity.this.carriageNum = carriageNum;
+                    YjjsNoThreeActivity.this.carriageNum = carriageNum;
                     adapter.getItem(position).setDescription(carriageNum + "车");
                     adapter.notifyDataSetChanged();
                 }
