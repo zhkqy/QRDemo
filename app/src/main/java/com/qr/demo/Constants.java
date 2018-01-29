@@ -38,9 +38,11 @@ public class Constants {
         list.add("移交砸伤旅客");
         list.add("移交挤手旅客");
         list.add("移交烫伤旅客");
+        list.add("移交摔伤旅客");
         list.add("移交砸伤旅客(无第三者责任)");
         list.add("移交挤手旅客(无第三者责任)");
         list.add("移交烫伤旅客(无第三者责任)");
+        list.add("移交摔伤旅客(无第三者责任)");
 
         return list;
     }

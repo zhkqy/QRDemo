@@ -8,9 +8,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.qr.demo.Label.DianBaoLabel;
-import com.qr.demo.Label.DianBaoLabel2;
 import com.qr.demo.Label.keYunRecordLabel;
-import com.qr.demo.Label.keYunRecordLabel2;
 import com.qr.demo.MyApplication;
 import com.qr.demo.R;
 import com.qr.demo.model.PrintModel;
