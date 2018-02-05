@@ -68,7 +68,7 @@ public class YjjsPreviewActivity extends BasePreviewActivity {
         replace2.setText(replaceStr2);
         replace3.setText(replaceStr3);
 
-        recordThing.setText( printModel.recordThing);
+        recordThing.setText(printModel.recordThing);
         connectStation.setText(printModel.connectStation + "站:");
 
         refreshDescription();
@@ -77,7 +77,7 @@ public class YjjsPreviewActivity extends BasePreviewActivity {
     private void refreshDescription() {
 
         String discrep = "　　" + printModel.year + "年" + printModel.month + "月" + printModel.day + "日，" + printModel.trainNum + "次列车，" + printModel.troubleStation
-                + "站到站前，" + printModel.carriageNum + "号" + replace1.getText().toString() + "旅客" + printModel.name + "，身份证号码" + printModel.cardNum + "，持" + printModel.beginStation +
+                + "站到站前，" + printModel.chexiang + replace1.getText().toString() + "旅客" + printModel.name + "，身份证号码" + printModel.cardNum + "，持" + printModel.beginStation +
                 "站至" + printModel.stopStation + "站硬座车票，票号" + printModel.ticketNum + "，" + replace2.getText().toString() + "旅客" + printModel.otherName +
                 "（身份证号码" + printModel.otherCardNum + "，持" + printModel.otherBeginStation + "站至" +
                 printModel.otherStopStation + "站的硬座车票，票号" + printModel.otherTicketNum + ")的" +

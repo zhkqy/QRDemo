@@ -30,7 +30,6 @@ public class YjjsNoThreeActivity extends NewBaseCommonActivity implements Contra
 
     ListViewDialog listViewDialog;
     String strTitle;
-    private CarriageDialog carriageDialog;
 
     @Override
     protected void normalNoEditData() {
@@ -59,8 +58,8 @@ public class YjjsNoThreeActivity extends NewBaseCommonActivity implements Contra
                 new CommonTextEditTextModel("原票票号", "", "请输入原票票号")));
         models.add(new CommonModel("原票发站", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1102));
         models.add(new CommonModel("原票到站", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1102));
-        models.add(new CommonModel("车厢号　", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1106));
-
+        models.add(new CommonModel(
+                new CommonTextEditTextModel("车厢号　", "", "请输入车厢号")));
         models.add(new CommonModel("预览", CommonModel.TYPE_BUTTON).setRequestCode(1105));
     }
 
@@ -91,9 +90,8 @@ public class YjjsNoThreeActivity extends NewBaseCommonActivity implements Contra
                 .setDescription(printModel.beginStation));
         models.add(new CommonModel("原票到站", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1102)
                 .setDescription(printModel.stopStation));
-        models.add(new CommonModel("车厢号　", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1106)
-                .setDescription(printModel.carriageNum + "车"));
-
+        models.add(new CommonModel(
+                new CommonTextEditTextModel("车厢号　", printModel.chexiang, "请输入车厢号")));
 
         models.add(new CommonModel("预览", CommonModel.TYPE_BUTTON).setRequestCode(1105));
     }
@@ -173,7 +171,7 @@ public class YjjsNoThreeActivity extends NewBaseCommonActivity implements Contra
             printModel.beginStation = adapter.getItem(8).getDescription();// 旅客买的票 的开始位置
             printModel.stopStation = adapter.getItem(9).getDescription();// 旅客买的票 的结束位置
 
-            printModel.carriageNum = carriageNum;
+            printModel.chexiang = adapter.getItem(10).getEditTextModel().getEditTextStr();
 
             Intent mIntent = new Intent(this, YjjsPreviewNoThreeActivity.class);
             Bundle mBundle = new Bundle();
@@ -182,21 +180,6 @@ public class YjjsNoThreeActivity extends NewBaseCommonActivity implements Contra
             mIntent.putExtras(mBundle);
 
             startActivity(mIntent);
-        } else if (model.getRequestCode() == 1106) {
-
-            if (carriageDialog == null) {
-                carriageDialog = new CarriageDialog(this, R.style.listDialog);
-            }
-            carriageDialog.setListener(null);
-            carriageDialog.setListener(new CarriageDialog.Listener() {
-                @Override
-                public void onItemClicked(String carriageNum) {
-                    YjjsNoThreeActivity.this.carriageNum = carriageNum;
-                    adapter.getItem(position).setDescription(carriageNum + "车");
-                    adapter.notifyDataSetChanged();
-                }
-            });
-            carriageDialog.show();
         }
     }
 }

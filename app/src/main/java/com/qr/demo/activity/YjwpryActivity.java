@@ -7,11 +7,10 @@ import android.os.Bundle;
 import com.qr.demo.R;
 import com.qr.demo.adapter.CommonModel;
 import com.qr.demo.adapter.ContractNewCommonAdapter;
+import com.qr.demo.common.CommonTextEditTextModel;
 import com.qr.demo.db.DbHelper;
-import com.qr.demo.dialog.CarriageAndSeatDialog;
 import com.qr.demo.dialog.DateTimePickerDialog;
 import com.qr.demo.dialog.ListViewDialog;
-import com.qr.demo.model.PrintModel;
 import com.qr.demo.previewactivity.YjwpryPreviewActivity;
 import com.qr.demo.utils.TimeUtils;
 
@@ -29,7 +28,6 @@ public class YjwpryActivity extends NewBaseCommonActivity implements ContractNew
 
     ListViewDialog listViewDialog;
     String strTitle;
-    private CarriageAndSeatDialog carriageAndSeatDialog;
 
     @Override
     protected void normalNoEditData() {
@@ -48,9 +46,8 @@ public class YjwpryActivity extends NewBaseCommonActivity implements ContractNew
 
         models.add(new CommonModel("交接车站", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1102));
         models.add(new CommonModel("发生车站", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1102));
-
-        models.add(new CommonModel("车厢号　", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1103));
-
+        models.add(new CommonModel(
+                new CommonTextEditTextModel("车厢号　", "", "请输入车厢号")));
         models.add(new CommonModel("自述上站", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1104));
 
         models.add(new CommonModel("预览", CommonModel.TYPE_BUTTON).setRequestCode(1105));
@@ -71,8 +68,8 @@ public class YjwpryActivity extends NewBaseCommonActivity implements ContractNew
         models.add(new CommonModel("发生车站", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1102)
                 .setDescription(printModel.troubleStation));
 
-        models.add(new CommonModel("车厢号　", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1103)
-                .setDescription(printModel.carriageNum + "车" + printModel.seatNum + "号"));
+        models.add(new CommonModel(
+                new CommonTextEditTextModel("车厢号　", printModel.chexiang, "请输入车厢号")));
 
         models.add(new CommonModel("自述上站", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1104)
                 .setDescription(printModel.zishuStartStation));
@@ -148,9 +145,8 @@ public class YjwpryActivity extends NewBaseCommonActivity implements ContractNew
 
             printModel.trainNum = adapter.getItem(0).getDescription();
             printModel.troubleStation = adapter.getItem(3).getDescription();
+            printModel.chexiang = adapter.getItem(4).getEditTextModel().getEditTextStr();
             printModel.zishuStartStation = adapter.getItem(5).getDescription();
-            printModel.carriageNum = carriageNum;
-            printModel.seatNum = seatNum;
 
             Intent mIntent = new Intent(this, YjwpryPreviewActivity.class);
             Bundle mBundle = new Bundle();
@@ -159,25 +155,7 @@ public class YjwpryActivity extends NewBaseCommonActivity implements ContractNew
             mIntent.putExtras(mBundle);
 
             startActivity(mIntent);
-        } else if (model.getRequestCode() == 1103) {
 
-            if (carriageAndSeatDialog == null) {
-                carriageAndSeatDialog = new CarriageAndSeatDialog(this, R.style.listDialog);
-            }
-            carriageAndSeatDialog.setListener(null);
-            carriageAndSeatDialog.setListener(new CarriageAndSeatDialog.Listener() {
-                @Override
-                public void onItemClicked(String carriageNum, String seatNum) {
-
-                    YjwpryActivity.this.carriageNum = carriageNum;
-                    YjwpryActivity.this.seatNum = seatNum;
-
-                    adapter.getItem(position).setDescription(carriageNum + "车" + seatNum + "号");
-                    adapter.notifyDataSetChanged();
-                }
-            });
-            carriageAndSeatDialog.show();
         }
-
     }
 }

@@ -79,7 +79,7 @@ public class YjyswpPreviewActivity extends BasePreviewActivity {
         String discrep = null;
         try {
             discrep = "　　" + printModel.year + "年" + printModel.month + "月" + printModel.day + "日，" +
-                    printModel.trainNum + "次列车终到" + printModel.troubleStation + "站后，列车员在" + printModel.chexiangshoushu + "座（铺）下," +
+                    printModel.trainNum + "次列车终到" + printModel.troubleStation + "站后，列车员在" + printModel.chexiang + "座（铺）下," +
                     replace1.getText().toString();
         } catch (Exception e) {
             e.printStackTrace();

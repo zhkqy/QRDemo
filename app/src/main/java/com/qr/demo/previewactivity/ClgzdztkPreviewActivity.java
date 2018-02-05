@@ -1,24 +1,15 @@
 package com.qr.demo.previewactivity;
 
-import android.content.Intent;
-import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.google.gson.Gson;
 import com.qr.demo.R;
-import com.qr.demo.activity.BaseActivity;
-import com.qr.demo.activity.PrintActivity;
-import com.qr.demo.db.SaveHelper;
 import com.qr.demo.model.PrintModel;
-import com.qr.demo.utils.ToastUtils;
-import com.qr.demo.utils.Utils;
 import com.qr.demo.view.CustomFontsTextView;
 
-import butterknife.BindView;
 import butterknife.OnClick;
 
 /**
@@ -69,7 +60,7 @@ public class ClgzdztkPreviewActivity extends BasePreviewActivity {
         replace1.setText(replaceStr1);
         replace2.setText(replaceStr2);
 
-        recordThing.setText(  printModel.recordThing);
+        recordThing.setText(printModel.recordThing);
 
         connectStation.setText(printModel.connectStation + "站:");
 
@@ -79,7 +70,7 @@ public class ClgzdztkPreviewActivity extends BasePreviewActivity {
     private void refreshDescription() {
 
         String discrep = "　　" + printModel.year + "年" + printModel.month + "月" + printModel.day + "日，" +
-                printModel.trainNum + "次列车运行至" + printModel.troubleStation + "站，" + printModel.carriageNum + "车," + "定员" + printModel.limitNum + "人," + replace1.getText().toString() +
+                printModel.trainNum + "次列车运行至" + printModel.troubleStation + "站，" + printModel.chexiang + "," + "定员" + printModel.limitNum + "人," + replace1.getText().toString() +
                 ",旅客" + printModel.name + ",身份证号码" + printModel.cardNum + ",持" + printModel.beginStation + "站至" + printModel.stopStation + "站车票，" +
                 "票号" + printModel.ticketNum + "," + replace2.getText().toString() + ",现交你站，请按章办理。";
 

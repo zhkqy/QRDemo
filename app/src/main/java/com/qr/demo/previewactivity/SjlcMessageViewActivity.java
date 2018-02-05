@@ -78,7 +78,7 @@ public class SjlcMessageViewActivity extends BasePreviewActivity {
         String discrep = "内容：" + printModel.year + "年" + printModel.month + "月" + printModel.day + "日，" +
                 printModel.trainNum + "次列车" + printModel.troubleStation + "站开车后" + printModel.troubleMinute + "分钟，列车机次第" + printModel.jicheOne + "位、" +
                 "第" + printModel.jicheTwo + "位、第" + printModel.jicheThree + "位，车窗玻璃被不明物体连续击中，造成共" + printModel.glassNum + "块玻璃破损" +
-                "及" + printModel.carriageNum + "车" + printModel.seatNum + "号座席处旅客" + printModel.name + "（身份证号码" + printModel.cardNum + "，" +
+                "及" + printModel.chexiang + "座席处旅客" + printModel.name + "（身份证号码" + printModel.cardNum + "，" +
                 "持" + printModel.beginStation + "站至" + printModel.stopStation + "站硬座车票，" +
                 "票号" + printModel.ticketNum + ")" + replace2.getText().toString() + "，列车进行了简单包扎，该旅客要求下车治疗，" +
                 "列车已做" + printModel.troubleRecord + "号记录，将受伤旅客及两份证明材料交" + printModel.connectStation + "站按章办理，特电声明。";

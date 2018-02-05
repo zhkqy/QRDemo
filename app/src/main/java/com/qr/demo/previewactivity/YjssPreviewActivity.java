@@ -99,7 +99,7 @@ public class YjssPreviewActivity extends BasePreviewActivity {
 
         String discrep = "　　" + printModel.year + "年" + printModel.month + "月" + printModel.day + "日，" +
                 printModel.trainNum + "次列车," + printModel.troubleStation + "站到站前,"
-                + printModel.carriageNum + "车" + printModel.seatNum + "座席旅客" + printModel.name + "，身份证号码" + printModel.cardNum +
+                + printModel.chexiang + "座席旅客" + printModel.name + "，身份证号码" + printModel.cardNum +
                 ",持" + printModel.beginStation + "站至" + printModel.stopStation + "站硬座车票，" +
                 "票号" + printModel.ticketNum + "," + replace1.getText().toString()
                 + "旅客" + printModel.otherName + "（身份证号码" + printModel.otherCardNum + "，持" + printModel.otherBeginStation

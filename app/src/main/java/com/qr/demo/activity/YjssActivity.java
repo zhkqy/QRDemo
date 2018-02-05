@@ -9,11 +9,9 @@ import com.qr.demo.adapter.CommonModel;
 import com.qr.demo.adapter.ContractNewCommonAdapter;
 import com.qr.demo.common.CommonTextEditTextModel;
 import com.qr.demo.db.DbHelper;
-import com.qr.demo.dialog.CarriageAndSeatDialog;
 import com.qr.demo.dialog.DateTimePickerDialog;
 import com.qr.demo.dialog.ListViewDialog;
 import com.qr.demo.previewactivity.YjssPreviewActivity;
-import com.qr.demo.previewactivity.YjzsPreviewActivity;
 import com.qr.demo.utils.TimeUtils;
 
 import java.util.Calendar;
@@ -30,7 +28,6 @@ public class YjssActivity extends NewBaseCommonActivity implements ContractNewCo
 
     ListViewDialog listViewDialog;
     String strTitle;
-    private CarriageAndSeatDialog carriageAndSeatDialog;
 
     @Override
     protected void normalNoEditData() {
@@ -61,7 +58,8 @@ public class YjssActivity extends NewBaseCommonActivity implements ContractNewCo
 
         models.add(new CommonModel("原票发站", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1102));
         models.add(new CommonModel("原票到站", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1102));
-        models.add(new CommonModel("车厢号　", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1106));
+        models.add(new CommonModel(
+                new CommonTextEditTextModel("车厢号　", "", "请输入车厢号")));
         models.add(new CommonModel("旅客B", CommonModel.TYPE_LINE));
         models.add(new CommonModel(
                 new CommonTextEditTextModel("旅客姓名", "", "请输入旅客姓名")));
@@ -102,8 +100,8 @@ public class YjssActivity extends NewBaseCommonActivity implements ContractNewCo
                 .setDescription(printModel.beginStation));
         models.add(new CommonModel("原票到站", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1102)
                 .setDescription(printModel.stopStation));
-        models.add(new CommonModel("车厢号　", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1106).
-                setDescription(printModel.carriageNum + "车" + printModel.seatNum + "号"));
+        models.add(new CommonModel(
+                new CommonTextEditTextModel("车厢号　", printModel.chexiang, "请输入车厢号")));
 
         models.add(new CommonModel("旅客B", CommonModel.TYPE_LINE));
         models.add(new CommonModel(
@@ -198,15 +196,14 @@ public class YjssActivity extends NewBaseCommonActivity implements ContractNewCo
             printModel.beginStation = adapter.getItem(8).getDescription();// 旅客买的票 的开始位置
             printModel.stopStation = adapter.getItem(9).getDescription();// 旅客买的票 的结束位置
 
+            printModel.chexiang = adapter.getItem(10).getEditTextModel().getEditTextStr();
+
             printModel.otherName = adapter.getItem(12).getEditTextModel().getEditTextStr();
             printModel.otherCardNum = adapter.getItem(13).getEditTextModel().getEditTextStr();
             printModel.otherTicketNum = adapter.getItem(14).getEditTextModel().getEditTextStr();
             printModel.otherBeginStation = adapter.getItem(15).getDescription();  //other发站
             printModel.otherStopStation = adapter.getItem(16).getDescription();  //other到站
 
-
-            printModel.carriageNum = carriageNum;
-            printModel.seatNum = seatNum;
 
             Intent mIntent = new Intent(this, YjssPreviewActivity.class);
             Bundle mBundle = new Bundle();
@@ -215,42 +212,6 @@ public class YjssActivity extends NewBaseCommonActivity implements ContractNewCo
             mIntent.putExtras(mBundle);
 
             startActivity(mIntent);
-        } else if (model.getRequestCode() == 1106) {
-
-            if (carriageAndSeatDialog == null) {
-                carriageAndSeatDialog = new CarriageAndSeatDialog(this, R.style.listDialog);
-            }
-            carriageAndSeatDialog.setListener(null);
-            carriageAndSeatDialog.setListener(new CarriageAndSeatDialog.Listener() {
-                @Override
-                public void onItemClicked(String carriageNum, String seatNum) {
-
-                    YjssActivity.this.carriageNum = carriageNum;
-                    YjssActivity.this.seatNum = seatNum;
-
-                    adapter.getItem(position).setDescription(carriageNum + "车" + seatNum + "号");
-                    adapter.notifyDataSetChanged();
-                }
-            });
-            carriageAndSeatDialog.show();
-        } else if (model.getRequestCode() == 1107) {
-
-            if (carriageAndSeatDialog == null) {
-                carriageAndSeatDialog = new CarriageAndSeatDialog(this, R.style.listDialog);
-            }
-            carriageAndSeatDialog.setListener(null);
-            carriageAndSeatDialog.setListener(new CarriageAndSeatDialog.Listener() {
-                @Override
-                public void onItemClicked(String carriageNum, String seatNum) {
-
-                    YjssActivity.this.otherCarriageNum = carriageNum;
-                    YjssActivity.this.otherSeatNum = seatNum;
-
-                    adapter.getItem(position).setDescription(carriageNum + "车" + seatNum + "号");
-                    adapter.notifyDataSetChanged();
-                }
-            });
-            carriageAndSeatDialog.show();
         }
     }
 }

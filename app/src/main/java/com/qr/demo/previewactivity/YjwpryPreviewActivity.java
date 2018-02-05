@@ -4,11 +4,9 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.qr.demo.R;
-import com.qr.demo.activity.BaseActivity;
 import com.qr.demo.model.PrintModel;
 import com.qr.demo.view.CustomFontsTextView;
 
-import butterknife.BindView;
 import butterknife.OnClick;
 
 /**
@@ -54,7 +52,7 @@ public class YjwpryPreviewActivity extends BasePreviewActivity {
 
         String discrep = "　　" + printModel.year + "年" + printModel.month + "月" + printModel.day + "日，" + printModel.trainNum + "次列车," +
                 printModel.troubleStation + "站开车后验票，" +
-                "在" + printModel.carriageNum + "车" + printModel.seatNum + "号座席发现一无票人员自述从" + printModel.zishuStartStation + "站上车，但拒绝补票，现移交你站，请按章办理。";
+                "在" + printModel.chexiang + "座席发现一无票人员自述从" + printModel.zishuStartStation + "站上车，但拒绝补票，现移交你站，请按章办理。";
 
         description.setText(discrep);
     }

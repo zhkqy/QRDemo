@@ -101,10 +101,10 @@ public class YjzsPreviewActivity extends BasePreviewActivity {
 
         String discrep = "　　" + printModel.year + "年" + printModel.month + "月" + printModel.day + "日，" +
                 printModel.trainNum + "次列车运行至" + printModel.runBeginStation + "站至" + printModel.runStopStation + "站间,"
-                + printModel.carriageNum + "车" + printModel.seatNum + "座席旅客" + printModel.name + "，身份证号码" + printModel.cardNum +
+                + printModel.chexiang + "座席旅客" + printModel.name + "，身份证号码" + printModel.cardNum +
                 ",持" + printModel.beginStation + "站至" + printModel.stopStation + "站硬座车票，" +
                 "票号" + printModel.ticketNum + "," + replace1.getText().toString()
-                + printModel.otherCarriageNum + "车" + printModel.otherSeatNum + "座席旅客" + printModel.otherName + "，(身份证号码" + printModel.otherCardNum +
+                + printModel.otherChexiang + "座席旅客" + printModel.otherName + "，(身份证号码" + printModel.otherCardNum +
                 ",持" + printModel.otherBeginStation + "站至" + printModel.otherStopStation + "站车票，" +
                 "票号" + printModel.otherTicketNum + ")的" + replace2.getText().toString() + "，要求下车治疗，现交你站，请按章办理。";
 

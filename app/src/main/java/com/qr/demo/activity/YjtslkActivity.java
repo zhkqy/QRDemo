@@ -31,7 +31,6 @@ public class YjtslkActivity extends NewBaseCommonActivity implements ContractNew
 
     ListViewDialog listViewDialog;
     String strTitle;
-    private CarriageAndSeatDialog carriageAndSeatDialog;
 
     @Override
     protected void normalNoEditData() {
@@ -63,8 +62,8 @@ public class YjtslkActivity extends NewBaseCommonActivity implements ContractNew
         models.add(new CommonModel("原票发站", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1102));
 
         models.add(new CommonModel("原票到站", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1102));
-        models.add(new CommonModel("车厢号　", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1106));
-
+        models.add(new CommonModel(
+                new CommonTextEditTextModel("车厢号　", "", "请输入车厢号")));
 
         models.add(new CommonModel("旅客B", CommonModel.TYPE_LINE));
 
@@ -81,7 +80,8 @@ public class YjtslkActivity extends NewBaseCommonActivity implements ContractNew
 
         models.add(new CommonModel("原票到站", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1102));
 
-        models.add(new CommonModel("车厢号　", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1107));
+        models.add(new CommonModel(
+                new CommonTextEditTextModel("车厢号　", "", "请输入车厢号")));
 
         models.add(new CommonModel("预览", CommonModel.TYPE_BUTTON).setRequestCode(1105));
     }
@@ -117,8 +117,8 @@ public class YjtslkActivity extends NewBaseCommonActivity implements ContractNew
 
         models.add(new CommonModel("原票到站", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1102)
                 .setDescription(printModel.stopStation));
-        models.add(new CommonModel("车厢号　", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1106)
-                .setDescription(printModel.carriageNum + "车" + printModel.seatNum + "号"));
+        models.add(new CommonModel(
+                new CommonTextEditTextModel("车厢号　", printModel.chexiang, "请输入车厢号")));
 
         models.add(new CommonModel("旅客B", CommonModel.TYPE_LINE));
 
@@ -137,8 +137,8 @@ public class YjtslkActivity extends NewBaseCommonActivity implements ContractNew
         models.add(new CommonModel("原票到站", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1102)
                 .setDescription(printModel.otherStopStation));
 
-        models.add(new CommonModel("车厢号　", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1107)
-                .setDescription(printModel.otherCarriageNum + "车" + printModel.otherSeatNum + "号"));
+        models.add(new CommonModel(
+                new CommonTextEditTextModel("车厢号　", printModel.otherChexiang, "请输入车厢号")));
 
         models.add(new CommonModel("预览", CommonModel.TYPE_BUTTON).setRequestCode(1105));
     }
@@ -217,8 +217,7 @@ public class YjtslkActivity extends NewBaseCommonActivity implements ContractNew
             printModel.ticketNum = adapter.getItem(7).getEditTextModel().getEditTextStr();// 票号
             printModel.beginStation = adapter.getItem(8).getDescription();// 旅客买的票 的开始位置
             printModel.stopStation = adapter.getItem(9).getDescription();// 旅客买的票 的结束位置
-            printModel.carriageNum = carriageNum;
-            printModel.seatNum = seatNum;
+            printModel.chexiang = adapter.getItem(10).getEditTextModel().getEditTextStr();
 
             printModel.otherName = adapter.getItem(12).getEditTextModel().getEditTextStr();  //other旅客姓名
             printModel.otherAge = adapter.getItem(13).getEditTextModel().getEditTextStr();  //other旅客年龄
@@ -227,8 +226,7 @@ public class YjtslkActivity extends NewBaseCommonActivity implements ContractNew
 
             printModel.otherBeginStation = adapter.getItem(16).getDescription();  //other发站
             printModel.otherStopStation = adapter.getItem(17).getDescription();  //other到站
-            printModel.otherCarriageNum = otherCarriageNum;  //other发站车厢号
-            printModel.otherSeatNum = otherSeatNum;  //other发站座位号
+            printModel.otherChexiang = adapter.getItem(18).getEditTextModel().getEditTextStr();  //other发站车厢号
 
             Intent mIntent = new Intent(this, YjtslkPreviewActivity.class);
             Bundle mBundle = new Bundle();
@@ -237,42 +235,6 @@ public class YjtslkActivity extends NewBaseCommonActivity implements ContractNew
             mIntent.putExtras(mBundle);
 
             startActivity(mIntent);
-        } else if (model.getRequestCode() == 1106) {
-
-            if (carriageAndSeatDialog == null) {
-                carriageAndSeatDialog = new CarriageAndSeatDialog(this, R.style.listDialog);
-            }
-            carriageAndSeatDialog.setListener(null);
-            carriageAndSeatDialog.setListener(new CarriageAndSeatDialog.Listener() {
-                @Override
-                public void onItemClicked(String carriageNum, String seatNum) {
-
-                    YjtslkActivity.this.carriageNum = carriageNum;
-                    YjtslkActivity.this.seatNum = seatNum;
-
-                    adapter.getItem(position).setDescription(carriageNum + "车" + seatNum + "号");
-                    adapter.notifyDataSetChanged();
-                }
-            });
-            carriageAndSeatDialog.show();
-        } else if (model.getRequestCode() == 1107) {
-
-            if (carriageAndSeatDialog == null) {
-                carriageAndSeatDialog = new CarriageAndSeatDialog(this, R.style.listDialog);
-            }
-            carriageAndSeatDialog.setListener(null);
-            carriageAndSeatDialog.setListener(new CarriageAndSeatDialog.Listener() {
-                @Override
-                public void onItemClicked(String carriageNum, String seatNum) {
-
-                    YjtslkActivity.this.otherCarriageNum = carriageNum;
-                    YjtslkActivity.this.otherSeatNum = seatNum;
-
-                    adapter.getItem(position).setDescription(carriageNum + "车" + seatNum + "号");
-                    adapter.notifyDataSetChanged();
-                }
-            });
-            carriageAndSeatDialog.show();
         }
     }
 }

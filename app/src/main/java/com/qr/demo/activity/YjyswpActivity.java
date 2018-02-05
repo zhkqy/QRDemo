@@ -9,10 +9,8 @@ import com.qr.demo.adapter.CommonModel;
 import com.qr.demo.adapter.ContractNewCommonAdapter;
 import com.qr.demo.common.CommonTextEditTextModel;
 import com.qr.demo.db.DbHelper;
-import com.qr.demo.dialog.CarriageAndSeatDialog;
 import com.qr.demo.dialog.DateTimePickerDialog;
 import com.qr.demo.dialog.ListViewDialog;
-import com.qr.demo.model.PrintModel;
 import com.qr.demo.previewactivity.YjyswpPreviewActivity;
 import com.qr.demo.utils.TimeUtils;
 
@@ -30,7 +28,6 @@ public class YjyswpActivity extends NewBaseCommonActivity implements ContractNew
 
     ListViewDialog listViewDialog;
     String strTitle;
-    private CarriageAndSeatDialog carriageAndSeatDialog;
 
     @Override
     protected void normalNoEditData() {
@@ -49,7 +46,8 @@ public class YjyswpActivity extends NewBaseCommonActivity implements ContractNew
 
         models.add(new CommonModel("交接车站", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1102));
         models.add(new CommonModel("发生车站", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1102));
-        models.add(new CommonModel("车厢号", CommonModel.TYPE_TEXT_EDITTEXT).setRequestCode(1106));
+        models.add(new CommonModel(
+                new CommonTextEditTextModel("车厢号　", "", "请输入车厢号")));
 
         models.add(new CommonModel("预览", CommonModel.TYPE_BUTTON).setRequestCode(1105));
     }
@@ -68,8 +66,8 @@ public class YjyswpActivity extends NewBaseCommonActivity implements ContractNew
                 .setDescription(printModel.connectStation));
         models.add(new CommonModel("发生车站", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1102)
                 .setDescription(printModel.troubleStation));
-        models.add(new CommonModel("车厢号", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1106)
-                .setDescription(printModel.chexiangshoushu));
+        models.add(new CommonModel(
+                new CommonTextEditTextModel("车厢号　", printModel.chexiang, "请输入车厢号")));
         models.add(new CommonModel("预览", CommonModel.TYPE_BUTTON).setRequestCode(1105));
     }
 
@@ -140,7 +138,7 @@ public class YjyswpActivity extends NewBaseCommonActivity implements ContractNew
 
             printModel.trainNum = adapter.getItem(0).getDescription();
 
-            printModel.chexiangshoushu = adapter.getItem(4).getEditTextModel().getEditTextStr();
+            printModel.chexiang = adapter.getItem(4).getEditTextModel().getEditTextStr();
             printModel.troubleStation = adapter.getItem(3).getDescription();
 
             Intent mIntent = new Intent(this, YjyswpPreviewActivity.class);
@@ -150,24 +148,6 @@ public class YjyswpActivity extends NewBaseCommonActivity implements ContractNew
             mIntent.putExtras(mBundle);
 
             startActivity(mIntent);
-        } else if (model.getRequestCode() == 1106) {
-
-            if (carriageAndSeatDialog == null) {
-                carriageAndSeatDialog = new CarriageAndSeatDialog(this, R.style.listDialog);
-            }
-            carriageAndSeatDialog.setListener(null);
-            carriageAndSeatDialog.setListener(new CarriageAndSeatDialog.Listener() {
-                @Override
-                public void onItemClicked(String carriageNum, String seatNum) {
-
-                    YjyswpActivity.this.carriageNum = carriageNum;
-                    YjyswpActivity.this.seatNum = seatNum;
-
-                    adapter.getItem(position).setDescription(carriageNum + "车" + seatNum + "号");
-                    adapter.notifyDataSetChanged();
-                }
-            });
-            carriageAndSeatDialog.show();
         }
 
     }

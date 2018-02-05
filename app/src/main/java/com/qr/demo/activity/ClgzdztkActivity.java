@@ -9,13 +9,9 @@ import com.qr.demo.adapter.CommonModel;
 import com.qr.demo.adapter.ContractNewCommonAdapter;
 import com.qr.demo.common.CommonTextEditTextModel;
 import com.qr.demo.db.DbHelper;
-import com.qr.demo.dialog.CarriageAndSeatDialog;
-import com.qr.demo.dialog.CarriageDialog;
 import com.qr.demo.dialog.DateTimePickerDialog;
 import com.qr.demo.dialog.ListViewDialog;
-import com.qr.demo.model.PrintModel;
 import com.qr.demo.previewactivity.ClgzdztkPreviewActivity;
-import com.qr.demo.previewactivity.YjgzlkPreviewActivity;
 import com.qr.demo.utils.TimeUtils;
 
 import java.util.Calendar;
@@ -32,7 +28,6 @@ public class ClgzdztkActivity extends NewBaseCommonActivity implements ContractN
 
     ListViewDialog listViewDialog;
     String strTitle;
-    private CarriageDialog carriageDialog;
 
     @Override
     protected void normalNoEditData() {
@@ -52,7 +47,9 @@ public class ClgzdztkActivity extends NewBaseCommonActivity implements ContractN
         models.add(new CommonModel("交接车站", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1102));
         models.add(new CommonModel("发生车站", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1102));
 
-        models.add(new CommonModel("车厢号　", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1106));
+        models.add(new CommonModel(
+                new CommonTextEditTextModel("车厢号　", "", "请输入车厢号")));
+
         models.add(new CommonModel(
                 new CommonTextEditTextModel("定员人数", "", "请输入定员人数")));
         models.add(new CommonModel(
@@ -85,8 +82,8 @@ public class ClgzdztkActivity extends NewBaseCommonActivity implements ContractN
         models.add(new CommonModel("发生车站", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1102)
                 .setDescription(printModel.troubleStation));
 
-        models.add(new CommonModel("车厢号　", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1106)
-                .setDescription(printModel.carriageNum + "车"));
+        models.add(new CommonModel(
+                new CommonTextEditTextModel("车厢号　", printModel.chexiang, "请输入车厢号")));
 
         models.add(new CommonModel(
                 new CommonTextEditTextModel("定员人数", printModel.limitNum, "请输入定员人数")));
@@ -175,7 +172,7 @@ public class ClgzdztkActivity extends NewBaseCommonActivity implements ContractN
             printModel.trainNum = adapter.getItem(0).getDescription();
             printModel.troubleStation = adapter.getItem(3).getDescription();
 
-            printModel.carriageNum = carriageNum;
+            printModel.chexiang = adapter.getItem(4).getEditTextModel().getEditTextStr();
             printModel.limitNum = adapter.getItem(5).getEditTextModel().getEditTextStr();
             printModel.name = adapter.getItem(6).getEditTextModel().getEditTextStr();// 旅客名称
             printModel.cardNum = adapter.getItem(7).getEditTextModel().getEditTextStr();//  身份证号码
@@ -190,24 +187,6 @@ public class ClgzdztkActivity extends NewBaseCommonActivity implements ContractN
             mIntent.putExtras(mBundle);
 
             startActivity(mIntent);
-        } else if (model.getRequestCode() == 1106) {
-            if (carriageDialog == null) {
-                carriageDialog = new CarriageDialog(this, R.style.listDialog);
-            }
-            carriageDialog.setListener(null);
-            carriageDialog.setListener(new CarriageDialog.Listener() {
-                @Override
-                public void onItemClicked(String carriageNum) {
-
-                    ClgzdztkActivity.this.carriageNum = carriageNum;
-                    ClgzdztkActivity.this.seatNum = seatNum;
-
-                    adapter.getItem(position).setDescription(carriageNum + "车");
-                    adapter.notifyDataSetChanged();
-                }
-            });
-            carriageDialog.show();
         }
-
     }
 }

@@ -31,7 +31,6 @@ public class YjjsActivity extends NewBaseCommonActivity implements ContractNewCo
 
     ListViewDialog listViewDialog;
     String strTitle;
-    private CarriageDialog carriageDialog;
 
     @Override
     protected void normalNoEditData() {
@@ -60,8 +59,8 @@ public class YjjsActivity extends NewBaseCommonActivity implements ContractNewCo
                 new CommonTextEditTextModel("原票票号", "", "请输入原票票号")));
         models.add(new CommonModel("原票发站", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1102));
         models.add(new CommonModel("原票到站", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1102));
-        models.add(new CommonModel("车厢号　", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1106));
-
+        models.add(new CommonModel(
+                new CommonTextEditTextModel("车厢号　", "", "请输入车厢号")));
 
         models.add(new CommonModel("旅客B", CommonModel.TYPE_LINE));
         models.add(new CommonModel(
@@ -104,9 +103,8 @@ public class YjjsActivity extends NewBaseCommonActivity implements ContractNewCo
                 .setDescription(printModel.beginStation));
         models.add(new CommonModel("原票到站", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1102)
                 .setDescription(printModel.stopStation));
-        models.add(new CommonModel("车厢号　", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1106)
-                .setDescription(printModel.carriageNum + "车"));
-
+        models.add(new CommonModel(
+                new CommonTextEditTextModel("车厢号　", printModel.chexiang, "请输入车厢号")));
 
         models.add(new CommonModel("旅客B", CommonModel.TYPE_LINE));
         models.add(new CommonModel(
@@ -198,6 +196,7 @@ public class YjjsActivity extends NewBaseCommonActivity implements ContractNewCo
             printModel.ticketNum = adapter.getItem(7).getEditTextModel().getEditTextStr();// 票号
             printModel.beginStation = adapter.getItem(8).getDescription();// 旅客买的票 的开始位置
             printModel.stopStation = adapter.getItem(9).getDescription();// 旅客买的票 的结束位置
+            printModel.chexiang = adapter.getItem(10).getEditTextModel().getEditTextStr();
 
             printModel.otherName = adapter.getItem(12).getEditTextModel().getEditTextStr();
             printModel.otherCardNum = adapter.getItem(13).getEditTextModel().getEditTextStr();
@@ -205,7 +204,6 @@ public class YjjsActivity extends NewBaseCommonActivity implements ContractNewCo
             printModel.otherBeginStation = adapter.getItem(15).getDescription();  //other发站
             printModel.otherStopStation = adapter.getItem(16).getDescription();  //other到站
 
-            printModel.carriageNum = carriageNum;
 
             Intent mIntent = new Intent(this, YjjsPreviewActivity.class);
             Bundle mBundle = new Bundle();
@@ -214,21 +212,6 @@ public class YjjsActivity extends NewBaseCommonActivity implements ContractNewCo
             mIntent.putExtras(mBundle);
 
             startActivity(mIntent);
-        } else if (model.getRequestCode() == 1106) {
-
-            if (carriageDialog == null) {
-                carriageDialog = new CarriageDialog(this, R.style.listDialog);
-            }
-            carriageDialog.setListener(null);
-            carriageDialog.setListener(new CarriageDialog.Listener() {
-                @Override
-                public void onItemClicked(String carriageNum) {
-                    YjjsActivity.this.carriageNum = carriageNum;
-                    adapter.getItem(position).setDescription(carriageNum + "车");
-                    adapter.notifyDataSetChanged();
-                }
-            });
-            carriageDialog.show();
         }
     }
 }

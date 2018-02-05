@@ -9,7 +9,6 @@ import com.qr.demo.adapter.CommonModel;
 import com.qr.demo.adapter.ContractNewCommonAdapter;
 import com.qr.demo.common.CommonTextEditTextModel;
 import com.qr.demo.db.DbHelper;
-import com.qr.demo.dialog.CarriageAndSeatDialog;
 import com.qr.demo.dialog.DateTimePickerDialog;
 import com.qr.demo.dialog.ListViewDialog;
 import com.qr.demo.previewactivity.YjlcwdzzPreviewActivity;
@@ -26,7 +25,6 @@ public class YjlcwdzzActivity extends NewBaseCommonActivity implements ContractN
     private Calendar currentCalendar;
     private DateTimePickerDialog dialog;
     private ListViewDialog listViewDialog;
-    private CarriageAndSeatDialog carriageAndSeatDialog;
 
     private String strTitle;
 
@@ -61,16 +59,16 @@ public class YjlcwdzzActivity extends NewBaseCommonActivity implements ContractN
         models.add(new CommonModel("原票发站", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1103));
         models.add(new CommonModel("原票到站", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1104));
         models.add(new CommonModel(new CommonTextEditTextModel("原票票号", "", "请输入原票票号")));
-        models.add(new CommonModel("车厢号　", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1106));
-
+        models.add(new CommonModel(
+                new CommonTextEditTextModel("车厢号　", "", "请输入车厢号")));
 
         models.add(new CommonModel("中转数据", CommonModel.TYPE_LINE));
         models.add(new CommonModel(new CommonTextEditTextModel("中转车次", "", "请输入中转车次")));
         models.add(new CommonModel(new CommonTextEditTextModel("中转发站", "", "请输入中转发站")));
         models.add(new CommonModel(new CommonTextEditTextModel("中转到站", "", "请输入中转到站")));
         models.add(new CommonModel(new CommonTextEditTextModel("中转票号", "", "请输入中转票号")));
-        models.add(new CommonModel(new CommonTextEditTextModel("中转车厢号", "", "请输入中转车厢号")));
-        models.add(new CommonModel(new CommonTextEditTextModel("中转座位号", "", "中转座位号")));
+        models.add(new CommonModel(
+                new CommonTextEditTextModel("车厢号　", "", "请输入车厢号")));
 
         models.add(new CommonModel("预览", CommonModel.TYPE_BUTTON).setRequestCode(1105));
     }
@@ -106,16 +104,18 @@ public class YjlcwdzzActivity extends NewBaseCommonActivity implements ContractN
         models.add(new CommonModel("原票到站", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1104)
                 .setDescription(printModel.stopStation));
         models.add(new CommonModel(new CommonTextEditTextModel("原票票号", printModel.ticketNum, "请输入原票票号")));
-        models.add(new CommonModel("车厢号　", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1106)
-                .setDescription(printModel.carriageNum + "车" + printModel.seatNum + "号"));
+        models.add(new CommonModel(
+                new CommonTextEditTextModel("车厢号　", printModel.chexiang, "请输入车厢号")));
+
 
         models.add(new CommonModel("中转数据", CommonModel.TYPE_LINE));
         models.add(new CommonModel(new CommonTextEditTextModel("中转车次", printModel.zhongzTrainNum, "请输入中转车次")));
         models.add(new CommonModel(new CommonTextEditTextModel("中转发站", printModel.zhongzBeginStation, "请输入中转发站")));
         models.add(new CommonModel(new CommonTextEditTextModel("中转到站", printModel.zhongzStopStation, "请输入中转到站")));
         models.add(new CommonModel(new CommonTextEditTextModel("中转票号", printModel.zhongzTicketNum, "请输入中转票号")));
-        models.add(new CommonModel(new CommonTextEditTextModel("中转车厢号", printModel.zhongzCarriageNum, "请输入中转车厢号")));
-        models.add(new CommonModel(new CommonTextEditTextModel("中转座位号", printModel.zhongzSeatNum, "中转座位号")));
+        models.add(new CommonModel(
+                new CommonTextEditTextModel("车厢号　", printModel.zhongzChexiang, "请输入车厢号")));
+
 
         models.add(new CommonModel("预览", CommonModel.TYPE_BUTTON).setRequestCode(1105));
     }
@@ -194,16 +194,13 @@ public class YjlcwdzzActivity extends NewBaseCommonActivity implements ContractN
             printModel.stopStation = adapter.getItem(9).getDescription();// 旅客买的票 的结束位置
             printModel.ticketNum = adapter.getItem(10).getEditTextModel().getEditTextStr();
 
-            printModel.carriageNum = carriageNum;// 旅客买的票 的结束位置
-            printModel.seatNum = seatNum;
-
+            printModel.chexiang = adapter.getItem(11).getEditTextModel().getEditTextStr();
 
             printModel.zhongzTrainNum = adapter.getItem(13).getEditTextModel().getEditTextStr();  //中转车次
             printModel.zhongzBeginStation = adapter.getItem(14).getEditTextModel().getEditTextStr();  //中转发站
             printModel.zhongzStopStation = adapter.getItem(15).getEditTextModel().getEditTextStr();  //中转到站
             printModel.zhongzTicketNum = adapter.getItem(16).getEditTextModel().getEditTextStr();  //中转票号
-            printModel.zhongzCarriageNum = adapter.getItem(17).getEditTextModel().getEditTextStr();  //中转车厢号
-            printModel.zhongzSeatNum = adapter.getItem(18).getEditTextModel().getEditTextStr();  //中转座位号
+            printModel.zhongzChexiang = adapter.getItem(17).getEditTextModel().getEditTextStr();
 
 
             Intent mIntent = new Intent(this, YjlcwdzzPreviewActivity.class);
@@ -213,37 +210,6 @@ public class YjlcwdzzActivity extends NewBaseCommonActivity implements ContractN
             mIntent.putExtras(mBundle);
 
             startActivity(mIntent);
-        } else if (model.getRequestCode() == 1106) {
-            if (carriageAndSeatDialog == null) {
-                carriageAndSeatDialog = new CarriageAndSeatDialog(this, R.style.listDialog);
-            }
-            carriageAndSeatDialog.setListener(null);
-            carriageAndSeatDialog.setListener(new CarriageAndSeatDialog.Listener() {
-                @Override
-                public void onItemClicked(String carriageNum, String seatNum) {
-
-                    YjlcwdzzActivity.this.carriageNum = carriageNum;
-                    YjlcwdzzActivity.this.seatNum = seatNum;
-
-                    adapter.getItem(position).setDescription(carriageNum + "车" + seatNum + "号");
-                    adapter.notifyDataSetChanged();
-                }
-            });
-            carriageAndSeatDialog.show();
-        } else if (model.getRequestCode() == 1109) {
-            if (carriageAndSeatDialog == null) {
-                carriageAndSeatDialog = new CarriageAndSeatDialog(this, R.style.listDialog);
-            }
-            carriageAndSeatDialog.setListener(null);
-            carriageAndSeatDialog.setListener(new CarriageAndSeatDialog.Listener() {
-                @Override
-                public void onItemClicked(String carriageNum, String seatNum) {
-
-                    adapter.getItem(position).setDescription(carriageNum + "车" + seatNum + "号");
-                    adapter.notifyDataSetChanged();
-                }
-            });
-            carriageAndSeatDialog.show();
         }
 
     }

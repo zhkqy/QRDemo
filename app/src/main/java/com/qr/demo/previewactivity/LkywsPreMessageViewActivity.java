@@ -86,7 +86,7 @@ public class LkywsPreMessageViewActivity extends BasePreviewActivity {
         String chaosong = "抄送:" + replace1.getText().toString();
 
         String discrep = "内容：" + printModel.year + "年" + printModel.month + "月" + printModel.day + "日，" +
-                printModel.trainNum + "次列车" + printModel.troubleStation + "站开车后，" + printModel.carriageNum + "车" + printModel.seatNum + "座旅客" + printModel.name +
+                printModel.trainNum + "次列车" + printModel.troubleStation + "站开车后，" + printModel.chexiang + "座旅客" + printModel.name +
                 "（身份证号码" + printModel.cardNum + "，持" + printModel.beginStation + "站至" + printModel.stopStation + "站硬座车票，票号" + printModel.ticketNum + ")" +
                 "，" + replace2.getText().toString() + printModel.otherName + "（身份证号码" + printModel.otherCardNum + "，" +
                 "持" + printModel.otherBeginStation + "站至" + printModel.otherStopStation + "站硬座车票，票号" + printModel.otherTicketNum + ")" +

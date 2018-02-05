@@ -3,7 +3,6 @@ package com.qr.demo.activity;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.qr.demo.R;
 import com.qr.demo.adapter.CommonModel;
@@ -35,11 +34,6 @@ public abstract class NewBaseCommonActivity extends BaseActivity {
 
     public boolean isEditStatus = false;
 
-    protected String carriageNum = "";
-    protected String seatNum = "";
-    protected String otherCarriageNum = "";  //other发站车厢号
-    protected String otherSeatNum = "";  //other发站座位号
-
     PrintModel printModel = new PrintModel();
 
     @Override
@@ -51,10 +45,6 @@ public abstract class NewBaseCommonActivity extends BaseActivity {
             PrintModel p = (PrintModel) getIntent().getSerializableExtra("data");
             if (p != null) {
                 printModel = p;
-                carriageNum = printModel.carriageNum;
-                seatNum = printModel.seatNum;
-                otherCarriageNum = printModel.otherCarriageNum;
-                otherSeatNum = printModel.otherSeatNum;
             }
         }
         if (isEditStatus) {

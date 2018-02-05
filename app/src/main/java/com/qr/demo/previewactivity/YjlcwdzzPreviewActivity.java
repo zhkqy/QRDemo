@@ -52,10 +52,10 @@ public class YjlcwdzzPreviewActivity extends BasePreviewActivity {
 
         String discrep = "　　" + printModel.year + "年" + printModel.month + "月" + printModel.day + "日，" + printModel.trainNum + "次列车到达" +
                 printModel.troubleStation + "站时晚点" + printModel.lateMinute + ",旅客" + printModel.name + ",身份证号码" + printModel.cardNum + "," +
-                "持一张" + printModel.beginStation + "站至" + printModel.stopStation + "站车票," + printModel.carriageNum + "车" + printModel.seatNum + "号，" +
+                "持一张" + printModel.beginStation + "站至" + printModel.stopStation + "站车票," + printModel.chexiang + "，" +
                 "票号" + printModel.ticketNum + ",因列车晚点无法正常中转换乘" + printModel.zhongzTrainNum + "次列车," +
                 "" + "持" + printModel.zhongzBeginStation + "车站至" + printModel.zhongzStopStation + "车站车票，" +
-                printModel.zhongzCarriageNum + "车" + printModel.zhongzSeatNum + "车号席（铺）位，票号" + printModel.zhongzTicketNum + "，现移交你站，请按章办理。";
+                printModel.zhongzChexiang + "席（铺）位，票号" + printModel.zhongzTicketNum + "，现移交你站，请按章办理。";
 
         description.setText(discrep);
     }

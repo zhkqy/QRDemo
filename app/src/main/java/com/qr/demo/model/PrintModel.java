@@ -24,10 +24,10 @@ public class PrintModel extends BmobObject implements Serializable {
     public String stopStation = "";// 旅客买的票 的结束位置
     public String ticketNum = "";// 票号
 
-    public String carriageNum = "";// 车厢号
-    public String seatNum = "";// 座位号
+//    public String carriageNum = "";// 车厢号
+//    public String seatNum = "";// 座位号
 
-    public String chexiangshoushu = "";//最后改成了手动输入的车厢号
+    public String chexiang = "";//最后改成了手动输入的车厢号
 
     public String netOrderNum = "";//网购订单号
     public String netBeginStation = "";//网购原票发站
@@ -42,8 +42,10 @@ public class PrintModel extends BmobObject implements Serializable {
     public String zhongzBeginStation = "";  //中转发站
     public String zhongzStopStation = "";  //中转到站
     public String zhongzTicketNum = "";  //中转票号
-    public String zhongzCarriageNum = "";  //中转车厢号
-    public String zhongzSeatNum = "";  //中转座位号
+//    public String zhongzCarriageNum = "";  //中转车厢号
+//    public String zhongzSeatNum = "";  //中转座位号
+
+    public String zhongzChexiang = "";//中转乘客的车厢号
 
     public String wuchengTrainNum = "";  //误乘车次
     public String wuchengBeginStation = "";  //误乘发站
@@ -74,8 +76,11 @@ public class PrintModel extends BmobObject implements Serializable {
     public String otherBeginStation = "";  //other发站
     public String otherStopStation = "";  //other发站到站
     public String otherTicketNum = "";  //other发站票号
-    public String otherCarriageNum = "";  //other发站车厢号
-    public String otherSeatNum = "";  //other发站座位号
+//    public String otherCarriageNum = "";  //other发站车厢号
+//    public String otherSeatNum = "";  //other发站座位号
+
+    public String otherChexiang = "";//中转乘客的车厢号
+
     public String otherAge = "";  //other旅客年龄
     public String otherSex = "";  //other旅客性别
     public String otherCardNum = "";  //other旅客身份证号
