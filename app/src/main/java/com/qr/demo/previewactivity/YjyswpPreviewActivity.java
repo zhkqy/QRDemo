@@ -7,12 +7,9 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.qr.demo.R;
-import com.qr.demo.activity.BaseActivity;
 import com.qr.demo.model.PrintModel;
-import com.qr.demo.utils.MoneyUtils;
 import com.qr.demo.view.CustomFontsTextView;
 
-import butterknife.BindView;
 import butterknife.OnClick;
 
 /**
@@ -21,7 +18,7 @@ import butterknife.OnClick;
 
 public class YjyswpPreviewActivity extends BasePreviewActivity {
 
-    String replaceStr1 = "拾到黑色行李箱一个，经会同乘警共同清点";
+    String replaceStr1 = "拾到黑色行李箱一个，经会同乘警共同清点，内有现金xx元，现交你站按章处理 。";
 
     @Override
     protected void setContentView() {
@@ -82,8 +79,8 @@ public class YjyswpPreviewActivity extends BasePreviewActivity {
         String discrep = null;
         try {
             discrep = "　　" + printModel.year + "年" + printModel.month + "月" + printModel.day + "日，" +
-                    printModel.trainNum + "次列车终到" + printModel.troubleStation + "站后，列车员在" + printModel.carriageNum + "车" + printModel.seatNum + "号座（铺）下" +
-                    replace1.getText().toString() + "，内有现金" + MoneyUtils.arabNumToChineseRMB(Double.parseDouble(printModel.money)) + "，现交你站按章处理 。";
+                    printModel.trainNum + "次列车终到" + printModel.troubleStation + "站后，列车员在" + printModel.chexiangshoushu + "座（铺）下," +
+                    replace1.getText().toString();
         } catch (Exception e) {
             e.printStackTrace();
         }

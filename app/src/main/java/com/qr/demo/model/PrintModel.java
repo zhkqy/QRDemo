@@ -24,9 +24,10 @@ public class PrintModel extends BmobObject implements Serializable {
     public String stopStation = "";// 旅客买的票 的结束位置
     public String ticketNum = "";// 票号
 
-
     public String carriageNum = "";// 车厢号
     public String seatNum = "";// 座位号
+
+    public String chexiangshoushu = "";//最后改成了手动输入的车厢号
 
     public String netOrderNum = "";//网购订单号
     public String netBeginStation = "";//网购原票发站

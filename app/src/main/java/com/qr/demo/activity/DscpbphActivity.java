@@ -11,7 +11,6 @@ import com.qr.demo.common.CommonTextEditTextModel;
 import com.qr.demo.db.DbHelper;
 import com.qr.demo.dialog.DateTimePickerDialog;
 import com.qr.demo.dialog.ListViewDialog;
-import com.qr.demo.model.PrintModel;
 import com.qr.demo.previewactivity.DscpbphPreviewActivity;
 import com.qr.demo.utils.TimeUtils;
 
@@ -54,7 +53,7 @@ public class DscpbphActivity extends NewBaseCommonActivity implements ContractNe
                 new CommonTextEditTextModel("身份证号", "", "请输入身份证号")));
 
 
-        models.add(new CommonModel("丢票车站", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1102));
+        models.add(new CommonModel("原票发站", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1102));
         models.add(new CommonModel("找到车站", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1102));
 
 
@@ -97,7 +96,7 @@ public class DscpbphActivity extends NewBaseCommonActivity implements ContractNe
                 new CommonTextEditTextModel("身份证号", printModel.cardNum, "请输入身份证号")));
 
 
-        models.add(new CommonModel("丢票车站", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1102)
+        models.add(new CommonModel("原票发站", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1102)
                 .setDescription(printModel.diupiaoStation));
         models.add(new CommonModel("找到车站", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1102)
                 .setDescription(printModel.foundStation));

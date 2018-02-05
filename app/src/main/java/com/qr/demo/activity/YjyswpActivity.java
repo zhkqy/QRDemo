@@ -49,9 +49,7 @@ public class YjyswpActivity extends NewBaseCommonActivity implements ContractNew
 
         models.add(new CommonModel("交接车站", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1102));
         models.add(new CommonModel("发生车站", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1102));
-        models.add(new CommonModel("车厢号", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1106));
-        models.add(new CommonModel(
-                new CommonTextEditTextModel("现　金　", "", "请输入现金")));
+        models.add(new CommonModel("车厢号", CommonModel.TYPE_TEXT_EDITTEXT).setRequestCode(1106));
 
         models.add(new CommonModel("预览", CommonModel.TYPE_BUTTON).setRequestCode(1105));
     }
@@ -71,9 +69,7 @@ public class YjyswpActivity extends NewBaseCommonActivity implements ContractNew
         models.add(new CommonModel("发生车站", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1102)
                 .setDescription(printModel.troubleStation));
         models.add(new CommonModel("车厢号", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1106)
-                .setDescription(printModel.carriageNum + "车" + printModel.seatNum + "号"));
-        models.add(new CommonModel(
-                new CommonTextEditTextModel("现　金　", printModel.money, "请输入现金")));
+                .setDescription(printModel.chexiangshoushu));
         models.add(new CommonModel("预览", CommonModel.TYPE_BUTTON).setRequestCode(1105));
     }
 
@@ -129,7 +125,6 @@ public class YjyswpActivity extends NewBaseCommonActivity implements ContractNew
             listViewDialog.show();
         } else if (model.getRequestCode() == 1105) {
 
-
             printModel.recordThing = strTitle;
             printModel.connectStation = adapter.getItem(2).getDescription();
 
@@ -144,10 +139,9 @@ public class YjyswpActivity extends NewBaseCommonActivity implements ContractNew
             }
 
             printModel.trainNum = adapter.getItem(0).getDescription();
-            printModel.carriageNum = carriageNum;
-            printModel.seatNum = seatNum;
+
+            printModel.chexiangshoushu = adapter.getItem(4).getEditTextModel().getEditTextStr();
             printModel.troubleStation = adapter.getItem(3).getDescription();
-            printModel.money = adapter.getItem(5).getEditTextModel().getEditTextStr();
 
             Intent mIntent = new Intent(this, YjyswpPreviewActivity.class);
             Bundle mBundle = new Bundle();
