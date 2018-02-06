@@ -155,7 +155,7 @@ public class LabelListActivity extends BaseActivity {
             startActivity(new Intent(mContext, YjjsycActivity.class).putExtra("title", str));
         } else if ("移交精神异常旅客（有同行人）".equals(str)) {
             startActivity(new Intent(mContext, YjjsycTongXingActivity.class).putExtra("title", str));
-        }else if ("移交遗失物品".equals(str)) {
+        } else if ("移交遗失物品".equals(str)) {
             startActivity(new Intent(mContext, YjyswpActivity.class).putExtra("title", str));
         } else if ("移交危险品".equals(str)) {
             startActivity(new Intent(mContext, YjwxpActivity.class).putExtra("title", str));
@@ -167,6 +167,8 @@ public class LabelListActivity extends BaseActivity {
             startActivity(new Intent(mContext, YjtslkActivity.class).putExtra("title", str));
         } else if ("移交不明物体击伤旅客".equals(str)) {
             startActivity(new Intent(mContext, YjbmwtjsActivity.class).putExtra("title", str));
+        } else if ("移交不明物体击伤旅客（有同行人）".equals(str)) {
+            startActivity(new Intent(mContext, YjbmwtjsTongXingActivity.class).putExtra("title", str));
         } else if ("移交砸伤旅客".equals(str)) {
             startActivity(new Intent(mContext, YjzsActivity.class).putExtra("title", str));
         } else if ("移交挤手旅客".equals(str)) {

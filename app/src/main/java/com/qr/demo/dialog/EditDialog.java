@@ -23,6 +23,7 @@ import com.qr.demo.activity.PrintActivity;
 import com.qr.demo.activity.SjlcMessageActivity;
 import com.qr.demo.activity.WswgdzActivity;
 import com.qr.demo.activity.YjbmwtjsActivity;
+import com.qr.demo.activity.YjbmwtjsTongXingActivity;
 import com.qr.demo.activity.YjgzlkActivity;
 import com.qr.demo.activity.YjhblkActivity;
 import com.qr.demo.activity.YjhblkTongxingActivity;
@@ -157,7 +158,7 @@ public class EditDialog extends Dialog implements View.OnClickListener {
                     skip(DscpbphActivity.class, datas.recordThing);
                 } else if ("移交精神异常旅客".equals(datas.recordThing)) {
                     skip(YjjsycActivity.class, datas.recordThing);
-                }else if ("移交精神异常旅客（有同行人）".equals(datas.recordThing)) {
+                } else if ("移交精神异常旅客（有同行人）".equals(datas.recordThing)) {
                     skip(YjjsycTongXingActivity.class, datas.recordThing);
                 } else if ("移交遗失物品".equals(datas.recordThing)) {
                     skip(YjyswpActivity.class, datas.recordThing);
@@ -173,6 +174,8 @@ public class EditDialog extends Dialog implements View.OnClickListener {
                     skip(YjtslkNoThreeActivity.class, datas.recordThing);
                 } else if ("移交不明物体击伤旅客".equals(datas.recordThing)) {
                     skip(YjbmwtjsActivity.class, datas.recordThing);
+                } else if ("移交不明物体击伤旅客（有同行人）".equals(datas.recordThing)) {
+                    skip(YjbmwtjsTongXingActivity.class, datas.recordThing);
                 } else if ("移交砸伤旅客".equals(datas.recordThing)) {
                     skip(YjzsActivity.class, datas.recordThing);
                 } else if ("移交砸伤旅客(无第三者责任)".equals(datas.recordThing)) {

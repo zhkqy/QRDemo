@@ -19,7 +19,7 @@ import java.util.Calendar;
 /**
  * 移交不明物体击伤旅客
  */
-public class YjbmwtjsActivity extends NewBaseCommonActivity implements ContractNewCommonAdapter.CommonListener {
+public class YjbmwtjsTongXingActivity extends NewBaseCommonActivity implements ContractNewCommonAdapter.CommonListener {
 
     private CommonModel timeCommonModel;
     public Calendar currentCalendar;
@@ -175,7 +175,7 @@ public class YjbmwtjsActivity extends NewBaseCommonActivity implements ContractN
             Bundle mBundle = new Bundle();
             mBundle.putSerializable("data", printModel);
             mBundle.putBoolean("isEditStatus", isEditStatus);
-            mBundle.putBoolean("tongxing", false);
+            mBundle.putBoolean("tongxing", true);
             mIntent.putExtras(mBundle);
 
             startActivity(mIntent);
