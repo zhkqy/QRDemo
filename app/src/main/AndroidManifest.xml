@@ -85,6 +85,12 @@
             android:name=".activity.YjhblkActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden" />
+
+        <activity
+            android:name=".activity.YjhblkTongxingActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden" />
+
         <activity
             android:name=".activity.GsbcpdztkActivity"
             android:screenOrientation="portrait"

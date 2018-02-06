@@ -37,6 +37,7 @@ public class BasePreviewActivity extends BaseActivity {
     protected TextView chasong;
 
 
+
     protected boolean isEditStatus;
 
 

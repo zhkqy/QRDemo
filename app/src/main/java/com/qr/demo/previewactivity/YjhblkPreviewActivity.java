@@ -22,6 +22,8 @@ public class YjhblkPreviewActivity extends BasePreviewActivity {
 
     String replaceStr1 = "突发疾病，列车已进行简单救治，该旅客要求下车治疗，先交你站，按章办理。";
 
+    boolean tongxing = false;
+
     @Override
     protected void setContentView() {
         setContentView(R.layout.activity_preview_replace1);
@@ -30,6 +32,8 @@ public class YjhblkPreviewActivity extends BasePreviewActivity {
         description = (CustomFontsTextView) findViewById(R.id.description);
         replace1 = (EditText) findViewById(R.id.replace1);
         isEditStatus = getIntent().getBooleanExtra("isEditStatus", false);
+
+        tongxing = getIntent().getBooleanExtra("tongxing", false);
     }
 
     @Override
@@ -81,12 +85,16 @@ public class YjhblkPreviewActivity extends BasePreviewActivity {
 
     private void refreshDescription() {
 
-        printModel.attachContent = "附：同行人：姓名、身份证号码、车票信息（日期、车次、发到站、票号）。";
+        if (tongxing) {
+            printModel.attachContent = "附：同行人姓名：×、身份证号码：×、车次×、车票发站：×、车票到站：×、票号×。";
+        } else {
+            printModel.attachContent = "";
+        }
 
         String discrep = "　　" + printModel.year + "年" + printModel.month + "月" + printModel.day + "日，" + printModel.trainNum + "次列车，" + printModel.troubleStation + "站开车后，" +
                 "旅客" + printModel.name + ",身份证号码" + printModel.cardNum + ",持" + printModel.beginStation + "站至" + printModel.stopStation + "站车票，"
                 + printModel.chexiang + "席（铺）位," +
-                "票号" + printModel.ticketNum + "," + replace1.getText().toString() + printModel.attachContent;
+                "票号" + printModel.ticketNum + "," + replace1.getText().toString();
 
 
         description.setText(discrep);

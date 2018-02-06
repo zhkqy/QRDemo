@@ -22,6 +22,7 @@ public class Constants {
 
         list.add("移交过站旅客");
         list.add("移交患病旅客");
+        list.add("移交患病旅客（有同行人）");
         list.add("持挂失补车票中途下车到站退款");
         list.add("挂失补车票到站退款");
         list.add("移交未换纸质车票旅客");
@@ -30,11 +31,13 @@ public class Constants {
         list.add("移交误乘旅客");
         list.add("丢失车票补票后又找到原票到站退票");
         list.add("移交精神异常旅客");
+        list.add("移交精神异常旅客（有同行人）");
         list.add("移交遗失物品");
         list.add("移交危险品");
         list.add("误售、误购到站退票");
         list.add("车辆故障到站退款");
         list.add("移交不明物体击伤旅客");
+        list.add("移交不明物体击伤旅客（有同行人）");
         list.add("移交砸伤旅客");
         list.add("移交挤手旅客");
         list.add("移交烫伤旅客");

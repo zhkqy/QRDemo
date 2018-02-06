@@ -17,9 +17,9 @@ import com.qr.demo.utils.TimeUtils;
 import java.util.Calendar;
 
 /**
- * 移交患病旅客
+ * 移交患病旅客（有同行人）
  */
-public class YjhblkActivity extends NewBaseCommonActivity implements ContractNewCommonAdapter.CommonListener {
+public class YjhblkTongxingActivity extends NewBaseCommonActivity implements ContractNewCommonAdapter.CommonListener {
 
     private CommonModel timeCommonModel;
     public Calendar currentCalendar;
@@ -178,8 +178,8 @@ public class YjhblkActivity extends NewBaseCommonActivity implements ContractNew
             Intent mIntent = new Intent(this, YjhblkPreviewActivity.class);
             Bundle mBundle = new Bundle();
             mBundle.putBoolean("isEditStatus", isEditStatus);
+            mBundle.putBoolean("tongxing", true);
             mBundle.putSerializable("data", printModel);
-            mBundle.putBoolean("tongxing", false);
             mIntent.putExtras(mBundle);
 
             startActivity(mIntent);

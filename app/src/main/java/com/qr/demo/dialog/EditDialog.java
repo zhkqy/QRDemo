@@ -25,6 +25,7 @@ import com.qr.demo.activity.WswgdzActivity;
 import com.qr.demo.activity.YjbmwtjsActivity;
 import com.qr.demo.activity.YjgzlkActivity;
 import com.qr.demo.activity.YjhblkActivity;
+import com.qr.demo.activity.YjhblkTongxingActivity;
 import com.qr.demo.activity.YjjsActivity;
 import com.qr.demo.activity.YjjsNoThreeActivity;
 import com.qr.demo.activity.YjjsycActivity;
@@ -137,6 +138,8 @@ public class EditDialog extends Dialog implements View.OnClickListener {
                     skip(YjgzlkActivity.class, datas.recordThing);
                 } else if ("移交患病旅客".equals(datas.recordThing)) {
                     skip(YjhblkActivity.class, datas.recordThing);
+                } else if ("移交患病旅客（有同行人）".equals(datas.recordThing)) {
+                    skip(YjhblkTongxingActivity.class, datas.recordThing);
                 } else if ("持挂失补车票中途下车到站退款".equals(datas.recordThing)) {
                     skip(CgspbcpztxcActivity.class, datas.recordThing);
                 } else if ("挂失补车票到站退款".equals(datas.recordThing)) {
