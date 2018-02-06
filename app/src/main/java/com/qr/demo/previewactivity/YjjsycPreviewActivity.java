@@ -21,6 +21,8 @@ import butterknife.OnClick;
 public class YjjsycPreviewActivity extends BasePreviewActivity {
 
 
+    boolean tongxing = false;
+
     String replaceStr1 = "突发精神异常，危及他人安全";
 
     @Override
@@ -31,6 +33,7 @@ public class YjjsycPreviewActivity extends BasePreviewActivity {
         description = (CustomFontsTextView) findViewById(R.id.description);
         replace1 = (EditText) findViewById(R.id.replace1);
         isEditStatus = getIntent().getBooleanExtra("isEditStatus", false);
+        tongxing = getIntent().getBooleanExtra("tongxing", false);
     }
 
     @Override
@@ -78,6 +81,12 @@ public class YjjsycPreviewActivity extends BasePreviewActivity {
     }
 
     private void refreshDescription() {
+
+        if (tongxing) {
+            printModel.attachContent = "附：同行人姓名：×、身份证号码：×、车次×、车票发站：×、车票到站：×、票号×。";
+        } else {
+            printModel.attachContent = "";
+        }
 
         String discrep = "　　" + printModel.year + "年" + printModel.month + "月" + printModel.day + "日，" + printModel.trainNum + "次列车运行至" + printModel.troubleStation + "站间，" +
                 "旅客" + printModel.name + ",身份证号码" + printModel.cardNum + "家住" + printModel.address + ",持" + printModel.beginStation + "站至" + printModel.stopStation + "站的车票，" +

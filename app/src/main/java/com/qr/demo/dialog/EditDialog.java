@@ -29,6 +29,7 @@ import com.qr.demo.activity.YjhblkTongxingActivity;
 import com.qr.demo.activity.YjjsActivity;
 import com.qr.demo.activity.YjjsNoThreeActivity;
 import com.qr.demo.activity.YjjsycActivity;
+import com.qr.demo.activity.YjjsycTongXingActivity;
 import com.qr.demo.activity.YjlcwdzzActivity;
 import com.qr.demo.activity.YjssActivity;
 import com.qr.demo.activity.YjssNoThreeActivity;
@@ -156,6 +157,8 @@ public class EditDialog extends Dialog implements View.OnClickListener {
                     skip(DscpbphActivity.class, datas.recordThing);
                 } else if ("移交精神异常旅客".equals(datas.recordThing)) {
                     skip(YjjsycActivity.class, datas.recordThing);
+                }else if ("移交精神异常旅客（有同行人）".equals(datas.recordThing)) {
+                    skip(YjjsycTongXingActivity.class, datas.recordThing);
                 } else if ("移交遗失物品".equals(datas.recordThing)) {
                     skip(YjyswpActivity.class, datas.recordThing);
                 } else if ("移交危险品".equals(datas.recordThing)) {

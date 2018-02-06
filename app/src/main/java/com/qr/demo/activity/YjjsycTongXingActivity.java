@@ -11,16 +11,15 @@ import com.qr.demo.common.CommonTextEditTextModel;
 import com.qr.demo.db.DbHelper;
 import com.qr.demo.dialog.DateTimePickerDialog;
 import com.qr.demo.dialog.ListViewDialog;
-import com.qr.demo.model.PrintModel;
 import com.qr.demo.previewactivity.YjjsycPreviewActivity;
 import com.qr.demo.utils.TimeUtils;
 
 import java.util.Calendar;
 
 /**
- * 移交精神异常旅客
+ * 移交精神异常旅客（有同行人）
  */
-public class YjjsycActivity extends NewBaseCommonActivity implements ContractNewCommonAdapter.CommonListener {
+public class YjjsycTongXingActivity extends NewBaseCommonActivity implements ContractNewCommonAdapter.CommonListener {
 
     private CommonModel timeCommonModel;
     public Calendar currentCalendar;
@@ -79,7 +78,7 @@ public class YjjsycActivity extends NewBaseCommonActivity implements ContractNew
         models.add(timeCommonModel);
 
         models.add(new CommonModel("事故车站", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1102)
-        .setDescription(printModel.troubleStation));
+                .setDescription(printModel.troubleStation));
 
         models.add(new CommonModel("交接车站", CommonModel.TYPE_TEXT_ARROW).setRequestCode(1102)
                 .setDescription(printModel.connectStation));
@@ -143,7 +142,7 @@ public class YjjsycActivity extends NewBaseCommonActivity implements ContractNew
 
         if (model.getRequestCode() == 1101) {
             showDialog();
-        } else if (model.getRequestCode() == 1102 ) {
+        } else if (model.getRequestCode() == 1102) {
             if (listViewDialog == null) {
                 listViewDialog = new ListViewDialog(this, R.style.listDialog);
             }
@@ -159,7 +158,6 @@ public class YjjsycActivity extends NewBaseCommonActivity implements ContractNew
         } else if (model.getRequestCode() == 1105) {
 
             printModel.recordThing = strTitle;
-
 
 
             String time = adapter.getItem(1).getDescription();
@@ -187,7 +185,7 @@ public class YjjsycActivity extends NewBaseCommonActivity implements ContractNew
             Bundle mBundle = new Bundle();
             mBundle.putBoolean("isEditStatus", isEditStatus);
             mBundle.putSerializable("data", printModel);
-            mBundle.putBoolean("tongxing", false);
+            mBundle.putBoolean("tongxing", true);
             mIntent.putExtras(mBundle);
 
             startActivity(mIntent);
