@@ -39,35 +39,35 @@ public abstract class BaseLabel {
 
     private void printBottom(int position) {
 
-        int bottomfontPoint = fontPoint1;
-        int bottomfont = 1;
-
-        //倒叙的顺序
-
-        int bottomY1 = position - bottomPadding - bottomfontPoint;
-        int bottomY2 = bottomY1 - bottomfontPoint * 2 - bottomfontPoint / 2;
-        int bottomY3 = bottomY2 - bottomfontPoint / 2;
-        int bottomY4 = bottomY3 - bottomfontPoint * 2 - bottomfontPoint / 2;
-        int bottomY5 = bottomY4 - bottomfontPoint / 2;
-
-
-        iPrinter.drawText(0, bottomY5 - bottomfontPoint * 3 - 8, pageWidth, bottomfontPoint,
-                "注：1.站、车需要编织记录时适用。", bottomfont, 0, 0, false, false);
-
-        iPrinter.drawText(0, bottomY5 - bottomfontPoint * 2, pageWidth, bottomfontPoint,
-                "　　2.本记录不能作为乘车凭证。", bottomfont, 0, 0, false, false);
-
-
-        iPrinter.drawText(pageWidth - 18 * bottomfontPoint, bottomY4, pageWidth, bottomfont,
-                "大连客运段编制人员　　　　　　（印）", bottomfont, 0, 0, false, false);
-
-        iPrinter.drawText(pageWidth - 14 * bottomfontPoint, bottomY2, pageWidth, bottomfont,
-                "站签收人员　　　　　　（印）", bottomfont, 0, 0, false, false);
-
-        String time = year + "年" + month + "月" + day + "日编制　";
-
-        iPrinter.drawText(pageWidth - 10 * bottomfontPoint, bottomY1, pageWidth, bottomfont,
-                time, bottomfont, 0, 0, false, false);
+//        int bottomfontPoint = fontPoint1;
+//        int bottomfont = 1;
+//
+//        //倒叙的顺序
+//
+//        int bottomY1 = position - bottomPadding - bottomfontPoint;
+//        int bottomY2 = bottomY1 - bottomfontPoint * 2 - bottomfontPoint / 2;
+//        int bottomY3 = bottomY2 - bottomfontPoint / 2;
+//        int bottomY4 = bottomY3 - bottomfontPoint * 2 - bottomfontPoint / 2;
+//        int bottomY5 = bottomY4 - bottomfontPoint / 2;
+//
+//
+//        iPrinter.drawText(0, bottomY5 - bottomfontPoint * 3 - 8, pageWidth, bottomfontPoint,
+//                "注：1.站、车需要编织记录时适用。", bottomfont, 0, 0, false, false);
+//
+//        iPrinter.drawText(0, bottomY5 - bottomfontPoint * 2, pageWidth, bottomfontPoint,
+//                "　　2.本记录不能作为乘车凭证。", bottomfont, 0, 0, false, false);
+//
+//
+//        iPrinter.drawText(pageWidth - 18 * bottomfontPoint, bottomY4, pageWidth, bottomfont,
+//                "大连客运段编制人员　　　　　　（印）", bottomfont, 0, 0, false, false);
+//
+//        iPrinter.drawText(pageWidth - 14 * bottomfontPoint, bottomY2, pageWidth, bottomfont,
+//                "站签收人员　　　　　　（印）", bottomfont, 0, 0, false, false);
+//
+//        String time = year + "年" + month + "月" + day + "日编制　";
+//
+//        iPrinter.drawText(pageWidth - 10 * bottomfontPoint, bottomY1, pageWidth, bottomfont,
+//                time, bottomfont, 0, 0, false, false);
 
     }
 
@@ -95,25 +95,6 @@ public abstract class BaseLabel {
         printTop(0);
         printMiddle();
         printBottom(pageHeight);
-        iPrinter.print(0, 0);
-    }
-
-
-    /**
-     * 打印两份
-     */
-    protected void print2() {
-        if (iPrinter == null) {
-            return;
-        }
-        pageSetup();
-        printTop(0);
-        printMiddle();
-        printBottom(800);
-
-        printTop(800 + 80);
-        printMiddle();
-        printBottom(800 * 2 + 80);
         iPrinter.print(0, 0);
     }
 

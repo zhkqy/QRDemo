@@ -67,86 +67,12 @@
             app:cardUseCompatPadding="true">
 
             <TextView
-                android:id="@+id/passengerrecord"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:background="@color/white"
-                android:gravity="center"
-                android:text="客运记录模板"
-                android:textSize="16sp" />
-
-        </android.support.v7.widget.CardView>
-
-        <android.support.v7.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:cardElevation="1dp"
-            app:cardPreventCornerOverlap="false"
-            app:cardUseCompatPadding="true">
-
-
-            <TextView
-                android:id="@+id/traintelegram"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:background="@color/white"
-                android:gravity="center"
-                android:text="列车电报模板"
-                android:textSize="16sp" />
-
-        </android.support.v7.widget.CardView>
-
-        <android.support.v7.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:cardElevation="1dp"
-            app:cardPreventCornerOverlap="false"
-            app:cardUseCompatPadding="true">
-
-            <TextView
                 android:id="@+id/saveList"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:background="@color/white"
                 android:gravity="center"
                 android:text="查看已存列表"
-                android:textSize="16sp" />
-
-        </android.support.v7.widget.CardView>
-
-        <android.support.v7.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:cardElevation="1dp"
-            app:cardPreventCornerOverlap="false"
-            app:cardUseCompatPadding="true">
-
-            <TextView
-                android:id="@+id/upload"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:background="@color/white"
-                android:gravity="center"
-                android:text="同步上传数据"
-                android:textSize="16sp" />
-
-        </android.support.v7.widget.CardView>
-
-
-        <android.support.v7.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:cardElevation="1dp"
-            app:cardPreventCornerOverlap="false"
-            app:cardUseCompatPadding="true">
-
-            <TextView
-                android:id="@+id/update_local"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:background="@color/white"
-                android:gravity="center"
-                android:text="更新本地数据"
                 android:textSize="16sp" />
 
         </android.support.v7.widget.CardView>

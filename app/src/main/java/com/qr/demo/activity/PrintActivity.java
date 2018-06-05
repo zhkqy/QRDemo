@@ -7,7 +7,6 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.qr.demo.Label.DianBaoLabel;
 import com.qr.demo.Label.keYunRecordLabel;
 import com.qr.demo.MyApplication;
 import com.qr.demo.R;
@@ -98,22 +97,10 @@ public class PrintActivity extends BaseActivity {
                 @Override
                 public void run() {
                     isSending = true;
-                    if (((MyApplication) getApplication()).isConnected()) {
-
-                        if (printModel != null) {
-                            if (printModel.recordThing.contains("电报")) {
-                                DianBaoLabel pl = new DianBaoLabel(printPP_cpcl, PrintActivity.this);
-                                pl.Lable(printModel, printModel.saveRecordThing, printModel.saveZhusongDianBao,
-                                        printModel.saveChaosongDianBao, printModel.savedescription);
-                            } else {
-                                keYunRecordLabel pl = new keYunRecordLabel(printPP_cpcl, PrintActivity.this);
-                                pl.Lable(printModel, printModel.saveRecordThing, printModel.saveConnectStation,
-                                        printModel.savedescription, printModel.attachContent);
-                            }
-                        }
-                    }
+                    keYunRecordLabel pl = new keYunRecordLabel(printPP_cpcl, PrintActivity.this);
+                    pl.Lable();
                     try {
-                        interval = 0;
+                        interval = 1000;
                         Thread.sleep(interval);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
@@ -123,40 +110,6 @@ public class PrintActivity extends BaseActivity {
             }).start();
         }
     }
-
-//    @OnClick(R.id.printTwo)
-//    public void printTwoOnclicked(View v) {
-//        final PrintPP_CPCL printPP_cpcl = ((MyApplication) getApplication()).getPrintPP_cpcl();
-//        if (!isSending) {
-//            new Thread(new Runnable() {
-//                @Override
-//                public void run() {
-//                    isSending = true;
-//                    if (((MyApplication) getApplication()).isConnected()) {
-//
-//                        if (printModel != null) {
-//                            if (printModel.recordThing.contains("电报")) {
-//                                DianBaoLabel2 pl = new DianBaoLabel2(printPP_cpcl,PrintActivity.this);
-//                                pl.Lable(printModel, printModel.saveRecordThing, printModel.saveZhusongDianBao,
-//                                        printModel.saveChaosongDianBao, printModel.savedescription);
-//                            } else {
-//                                keYunRecordLabel2 pl = new keYunRecordLabel2(printPP_cpcl, PrintActivity.this);
-//                                pl.Lable(printModel, printModel.saveRecordThing, printModel.saveConnectStation,
-//                                        printModel.savedescription, printModel.attachContent);
-//                            }
-//                        }
-//                    }
-//                    try {
-//                        interval = 0;
-//                        Thread.sleep(interval);
-//                    } catch (InterruptedException e) {
-//                        e.printStackTrace();
-//                    }
-//                    isSending = false;
-//                }
-//            }).start();
-//        }
-//    }
 
 
     @Override

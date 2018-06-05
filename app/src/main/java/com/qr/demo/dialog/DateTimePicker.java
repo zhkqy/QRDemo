@@ -7,7 +7,6 @@ import android.widget.FrameLayout;
 import android.widget.NumberPicker;
 import android.widget.NumberPicker.OnValueChangeListener;
 
-
 import com.qr.demo.R;
 
 import java.util.Calendar;

@@ -10,21 +10,15 @@ import android.widget.Toast;
 
 import com.qr.demo.activity.BaseActivity;
 import com.qr.demo.activity.DeviceListActivity;
-import com.qr.demo.activity.LabelListActivity;
-import com.qr.demo.activity.SaveListActivity;
-import com.qr.demo.db.DBManager;
+import com.qr.demo.activity.PrintActivity;
 import com.qr.demo.dialog.WikiLoadingDialog;
-import com.qr.demo.helper.BmobHelper;
 import com.qr.demo.utils.SharedPreferencesUtil;
 import com.qr.print.PrintPP_CPCL;
 
 import butterknife.BindView;
 import butterknife.OnClick;
 import cn.bmob.v3.Bmob;
-import cn.bmob.v3.listener.BmobUpdateListener;
 import cn.bmob.v3.update.BmobUpdateAgent;
-import cn.bmob.v3.update.UpdateResponse;
-import cn.bmob.v3.update.UpdateStatus;
 
 
 public class MainActivity extends BaseActivity {
@@ -60,6 +54,8 @@ public class MainActivity extends BaseActivity {
         myApplication = (MyApplication) getApplication();
         printPP_cpcl = new PrintPP_CPCL();
         myApplication.setPrintPP_cpcl(printPP_cpcl);
+
+        startActivity(new Intent(this, PrintActivity.class));
     }
 
     @Override
@@ -109,40 +105,11 @@ public class MainActivity extends BaseActivity {
         startActivityForResult(serverIntent, REQUEST_CONNECT_DEVICE);
     }
 
-    @OnClick(R.id.passengerrecord)
-    public void passengerrecordOnClicked(View v) {
-        startActivity(new Intent(this, LabelListActivity.class).putExtra("type", "passengerrecord"));
-    }
-
-    @OnClick(R.id.traintelegram)
-    public void traintelegramOnClicked(View v) {
-        startActivity(new Intent(this, LabelListActivity.class).putExtra("type", "traintelegram"));
-    }
-
-    @OnClick(R.id.saveList)
-    public void saveListOnClicked(View v) {
-        startActivity(new Intent(this, SaveListActivity.class));
-    }
-
     @OnClick(R.id.logout)
     public void logoutOnClicked(View v) {
         SharedPreferencesUtil.getInstance(this).putString(SharedPreferencesUtil.ACCOUNT, "");
         finish();
     }
-
-    @OnClick(R.id.upload)
-    public void uploadOnClicked(View v) {
-        BmobHelper.synchAdd(this);
-        BmobHelper.synchUpdate(this);
-        BmobHelper.synchDelete(this);
-    }
-
-
-    @OnClick(R.id.update_local)
-    public void uploadLocalOnClicked(View v) {
-        DBManager.deleteLocalFIle(this);
-    }
-
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, final Intent data) {
